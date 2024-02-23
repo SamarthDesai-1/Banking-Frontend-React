@@ -8,9 +8,20 @@ function Otp() {
   const navigate = useNavigate();
 
   const [otp, setotp] = useState('');
-  
 
-  
+  /* Function */
+
+  const sendotpdata = async () => {
+    const data = await axios.post('http://localhost:5000/test/api/users/verify', { otp }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).catch(e => alert("OTP is invalid"))
+    if(data){
+      navigate("/")
+    }
+    handleVerifyOTP();
+  }
 
   useEffect(() => {
     const inputs = document.querySelectorAll("input");
@@ -48,18 +59,18 @@ function Otp() {
       const otp = Array.from(inputs).map(input => input.value).join('');
       setotp(otp);
       console.log(setotp(otp));
-      
+
       // Check if all inputs are filled and update button state
       if (!Array.from(inputs).some(input => input.value === "") && otp.length === 6) {
-          button.classList.add("active");
-        } else {
-            button.classList.remove("active");
-        }
+        button.classList.add("active");
+      } else {
+        button.classList.remove("active");
+      }
     };
-    
+
     // Add event listeners
     inputs.forEach((input) => {
-        input.addEventListener("keyup", handleInputKeyUp);
+      input.addEventListener("keyup", handleInputKeyUp);
     });
 
     // Remove event listeners on cleanup
@@ -76,7 +87,7 @@ function Otp() {
     console.log("OTP Value:", otp);
     // Add your verification logic here
   };
- 
+
 
   return (
     <>
@@ -89,13 +100,13 @@ function Otp() {
                   <i className="bx bxs-check-shield"></i>
                 </header>
                 <h4>Enter OTP Code</h4>
-                <form action="#">
+                <form action="">
                   <div className="input-field">
                     {[...Array(6)].map((_, index) => (
                       <input key={index} type="number" disabled={index !== 0} />
                     ))}
                   </div>
-                  <button type='button' onClick={handleVerifyOTP} className="btn" >Verify OTP</button>
+                  <button type='button' onClick={sendotpdata} className="btn" >Verify OTP</button>
                 </form>
               </div>
             </div>
