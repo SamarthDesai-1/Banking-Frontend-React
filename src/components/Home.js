@@ -11,7 +11,7 @@ import PaymentOutlinedIcon from '@mui/icons-material/PaymentOutlined';
 import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
 import { NavLink } from 'react-router-dom';
 
-/* Hello piyush from github */
+/* Hello piyush from github samarth */
 
 function Home() {
 
