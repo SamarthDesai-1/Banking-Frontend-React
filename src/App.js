@@ -5,6 +5,7 @@ import About_us from "./components/About_us";
 import Contect from './components/Contect'
 import Signup_Signin from "./components/Signup_Signin";
 import Otp from "./components/Otp";
+import Help from "./components/Help";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/Contect" element={<Contect/>} />
           <Route exact path="/Signup_Signin" element={<Signup_Signin/>} />
           <Route exact path="/Otp" element={<Otp/>} />
+          <Route exact path="/Help" element={<Help/>} />
         </Routes>
       </BrowserRouter>
   </>

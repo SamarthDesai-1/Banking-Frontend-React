@@ -23,10 +23,10 @@ function Navbar() {
               <NavLink className="nav-link active" aria-current="page" to="/Contect">Contect</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" href="#">Insurance</NavLink>
+                <NavLink className="nav-link active" aria-current="page" to="#">Insurance</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" href="#">Help</NavLink>
+                <NavLink className="nav-link active" aria-current="page" to="/Help">Help</NavLink>
               </li>
             </ul>
 
