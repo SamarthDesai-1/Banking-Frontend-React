@@ -46,9 +46,20 @@ function Signup_Signin() {
             headers: {
                 'Content-Type': 'application/json'
             }
+        }).then(() => {
+            
+            navigate("/Otp");
+            
+        }).catch(e => {
+            console.log(e);
+            console.log(e.response.data.msg);
+
+            if (e.response.data.msg) {
+                alert("Your account is already open kindly login..");
+            } 
         });
+
         console.log(data);
-        setOpen(false);
         navigate("/Otp");
 
     }
@@ -61,16 +72,17 @@ function Signup_Signin() {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(response => {
-            if (response?.status === 200) {
-                alert("Login successful");
-                setemail("");
-                setpassword("");
-                navigate("/");
-            }
-            
-        }).catch((e) => alert("Invalid username or password"));
-        setOpen(false);
+        }).catch(e => console.log(e));
+        if (response?.status === 200) {
+            alert("Login successful");
+            setemail("");
+            setpassword("");
+            navigate("/");
+        }
+        else {
+            alert("Email or password is invalid");
+        }
+
     }
 
 
