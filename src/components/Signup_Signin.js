@@ -47,42 +47,53 @@ function Signup_Signin() {
                 'Content-Type': 'application/json'
             }
         }).then(() => {
-            
             navigate("/Otp");
-            
         }).catch(e => {
             console.log(e);
             console.log(e.response.data.msg);
-
             if (e.response.data.msg) {
                 alert("Your account is already open kindly login..");
-            } 
+            }
         });
-
         console.log(data);
-        navigate("/Otp");
-
+        setOpen(false);
     }
 
+
     /* Login API handling .*/
-    
+
     const hendleLogin = async () => {
         setOpen(true);
         await axios.post('http://localhost:5000/test/api/users/login', { email, password }, {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).catch(e => console.log(e));
-        if (response?.status === 200) {
-            alert("Login successful");
-            setemail("");
-            setpassword("");
-            navigate("/");
-        }
-        else {
-            alert("Email or password is invalid");
-        }
+        }).then(response => {
+            if (response?.status === 200) {
 
+                console.log(response);
+                console.log("Token : ", response.data.Token);
+
+                localStorage.setItem("Token", JSON.stringify(response.data.Token));
+
+                // use body to pass token;
+
+                // body: JSON.stringify(localStorage.getItem("Token"));
+
+                // headers: {
+                //     authorization: JSON.parse(localStorage.getItem("Token"));
+                // }
+
+                /* Change */
+
+                alert("Login successful");
+                setemail("");
+                setpassword("");
+                navigate("/");
+            }
+
+        }).catch((e) => alert("Invalid Username or Password"));
+        setOpen(false);
     }
 
 
@@ -112,7 +123,7 @@ function Signup_Signin() {
 
     return (
         <>
-         <Backdrop
+            <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={open}
             // onClick={handleClose}

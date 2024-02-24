@@ -18,14 +18,14 @@ function Otp() {
   /* Function */
 
   const sendotpdata = async () => {
-    // setOpen(true)
+    setOpen(true)
     const data = await axios.post('http://localhost:5000/test/api/users/verify', { otp }, {
       headers: {
         'Content-Type': 'application/json'
       }
     }).catch((e) => alert("OTP is invalid"))
-    // setotp("");
-    // setOpen(false)
+    setotp("");
+    setOpen(false)
     if (data) {
       navigate("/")
     }
