@@ -40,9 +40,20 @@ function Signup_Signin() {
             headers: {
                 'Content-Type': 'application/json'
             }
+        }).then(() => {
+            
+            navigate("/Otp");
+            
+        }).catch(e => {
+            console.log(e);
+            console.log(e.response.data.msg);
+
+            if (e.response.data.msg) {
+                alert("Your account is already open kindly login..");
+            } 
         });
+
         console.log(data);
-        navigate("/Otp");
 
     }
 
@@ -54,6 +65,24 @@ function Signup_Signin() {
             }
         }).catch(e => console.log(e));
         if (response?.status === 200) {
+            
+            /* piyush aa niche ni badhi vastu delete nai karto token mate che ok Change */
+
+            console.log(response);
+            console.log("Token : ", response.data.Token);
+
+            localStorage.setItem("Token", JSON.stringify(response.data.Token));
+
+            // use body to pass token;
+
+            // body: JSON.stringify(localStorage.getItem("Token"));
+
+            // headers: {
+            //     authorization: JSON.parse(localStorage.getItem("Token"));
+            // }
+
+            /* Change */
+            
             alert("Login successful");
             setemail("");
             setpassword("");
