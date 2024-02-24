@@ -115,8 +115,8 @@ function Home() {
                                             <img src="./IMAGES/curr1.jpg" alt="Error" className="blog-images" />
                                             <div className="content">
                                                 <p>Aryan Malhotra</p>
-                                                <h4>Recieve money in any<br />
-                                                    currency with no fees.</h4>
+                                                <h5>Recieve money in any<br />
+                                                    currency with no fees.</h5>
                                                 <p className="blog-section-content-text">The world is getting smaller and<br />
                                                     we are becoming more mobile.So,<br />
                                                     why should you be forced.<br />
@@ -129,8 +129,8 @@ function Home() {
                                             <img src="./IMAGES/curr2.jpg" alt="Error" className="blog-images" />
                                             <div className="content">
                                                 <p>Mitesh Sharma</p>
-                                                <h4>Recieve money in any<br />
-                                                    currency with no fees.</h4>
+                                                <h5>Recieve money in any<br />
+                                                    currency with no fees.</h5>
                                                 <p className="blog-section-content-text">Our simple budgeting feature<br />
                                                     allow to seperate out your<br />
                                                     spending and set realistic limits<br />
@@ -144,7 +144,7 @@ function Home() {
                                             <img src="./IMAGES/curr3.jpg" alt="Error" className="blog-images" />
                                             <div className="content">
                                                 <p>Anurag bassi</p>
-                                                <h4>Take Your Easybank card<br />whereever you go.</h4>
+                                                <h5>Take Your Easybank card<br />whereever you go.</h5>
                                                 <p className="blog-section-content-text">We want you to enjoy your travels.<br />This is why we don't
                                                     charge any<br />fees on purchase while you're <br />abroad.We'll
                                                     even show you...</p>
@@ -157,10 +157,10 @@ function Home() {
                                             <img src="./IMAGES/curr4.jpg" alt="Error" className="blog-images" />
                                             <div className="content">
                                                 <p>Piyush Grover</p>
-                                                <h4>Our invite-only Beta<br />accounts are live now!</h4>
+                                                <h5>Our invite-only Beta<br />accounts are live now!</h5>
                                                 <p className="blog-section-content-text">After a lot of hardwork by the<br />
                                                     whole team,we're excited to launch<br />
-                                                    our closed beta.It's easy to request <br />an invite through the
+                                                    our closed beta.It's easy to  <br />an invite through the
                                                     site.</p>
                                             </div>
                                         </div>
@@ -173,7 +173,7 @@ function Home() {
                     <div className="hbox">
 
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-4" data-aos="zoom-in">
                             <div class="card" style={{textAlign:"center"}}>
                                 <div class="card-body">
                                 <LockOutlinedIcon color="primary" style={{fontSize:'60px',margin:"0px 0px"}}></LockOutlinedIcon>
@@ -183,7 +183,7 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4" data-aos="zoom-in">
                             <div class="card" style={{textAlign:"center"}}>
                                 <div class="card-body">
                                 <PaymentOutlinedIcon color="primary" style={{fontSize:'60px',margin:"0px 0px"}}></PaymentOutlinedIcon>
@@ -193,7 +193,7 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4" data-aos="zoom-in">
                             <div class="card" style={{textAlign:"center"}}>
                                 <div class="card-body">
                                     <SecurityOutlinedIcon color="primary" style={{fontSize:'60px',margin:"0px 0px"}}></SecurityOutlinedIcon>

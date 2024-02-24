@@ -3,21 +3,30 @@ import axios from 'axios';
 import '../style-css/Otp.css';
 import { useNavigate } from 'react-router-dom';
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 function Otp() {
 
   const navigate = useNavigate();
 
   const [otp, setotp] = useState('');
 
+  const [open, setOpen] = React.useState(false);
+
+
   /* Function */
 
   const sendotpdata = async () => {
+    // setOpen(true)
     const data = await axios.post('http://localhost:5000/test/api/users/verify', { otp }, {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).catch(e => alert("OTP is invalid"))
-    if(data){
+    }).catch((e) => alert("OTP is invalid"))
+    // setotp("");
+    // setOpen(false)
+    if (data) {
       navigate("/")
     }
     handleVerifyOTP();
@@ -91,6 +100,14 @@ function Otp() {
 
   return (
     <>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+
       <div className="otp">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-body">

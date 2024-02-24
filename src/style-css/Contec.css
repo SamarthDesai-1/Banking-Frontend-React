@@ -43,7 +43,7 @@
 
 .form-container {
 	background-color: #fff;
-	border: 3px solid #4895ef;
+	/* border: 3px solid #4895ef; */
 	border-radius: 10px;
 	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 	display: flex;
@@ -136,5 +136,5 @@
 }
 
 .contect-map{
-  background-color: rgb(241, 241, 241);
+  background-color: rgb(252, 252, 252);
 }
