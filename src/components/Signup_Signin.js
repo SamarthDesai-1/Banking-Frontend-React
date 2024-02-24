@@ -7,10 +7,6 @@ import { useForm } from 'react-hook-form';
 import joi from 'joi';
 import { joiResolver } from '@hookform/resolvers/joi';
 
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
-import Button from '@mui/material/Button';
-
 const schema = joi.object({
     fname: joi.string().min(2).max(50).required(),
     lname: joi.string().min(2).max(50).required(),
@@ -35,13 +31,11 @@ function Signup_Signin() {
     const [password, setpassword] = useState("");
     const [cpassword, setcpassword] = useState("");
 
-    const [open, setOpen] = React.useState(false);
-
 
     const navigate = useNavigate();
 
     const sendData = async () => {
-        setOpen(true);
+
         const data = await axios.post('http://localhost:5000/test/api/users/signup', { fname, lname, email, password, cpassword }, {
             headers: {
                 'Content-Type': 'application/json'
@@ -60,20 +54,35 @@ function Signup_Signin() {
         });
 
         console.log(data);
-        navigate("/Otp");
 
     }
 
-    /* Login API handling .*/
-    
+    /* Login API handling */
     const hendleLogin = async () => {
-        setOpen(true);
-        await axios.post('http://localhost:5000/test/api/users/login', { email, password }, {
+        const response = await axios.post('http://localhost:5000/test/api/users/login', { email, password }, {
             headers: {
                 'Content-Type': 'application/json'
             }
         }).catch(e => console.log(e));
         if (response?.status === 200) {
+            
+            /* piyush aa niche ni badhi vastu delete nai karto token mate che ok Change */
+
+            console.log(response);
+            console.log("Token : ", response.data.Token);
+
+            localStorage.setItem("Token", JSON.stringify(response.data.Token));
+
+            // use body to pass token;
+
+            // body: JSON.stringify(localStorage.getItem("Token"));
+
+            // headers: {
+            //     authorization: JSON.parse(localStorage.getItem("Token"));
+            // }
+
+            /* Change */
+            
             alert("Login successful");
             setemail("");
             setpassword("");
@@ -112,14 +121,6 @@ function Signup_Signin() {
 
     return (
         <>
-         <Backdrop
-                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                open={open}
-            // onClick={handleClose}
-            >
-                <CircularProgress color="inherit" />
-            </Backdrop>
-
             <Navbar></Navbar>
             <div className='Sign_Login'>
                 <div className={`container ${isSignUpMode ? 'sign-up-mode' : ''} ${isSignUpMode2 ? 'sign-up-mode2' : ''}`}>
