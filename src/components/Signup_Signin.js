@@ -91,7 +91,6 @@ function Signup_Signin() {
                 setpassword("");
                 navigate("/");
             }
-
         }).catch((e) => alert("Invalid Username or Password"));
         setOpen(false);
     }
