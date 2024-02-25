@@ -1,0 +1,281 @@
+import React,{useState} from 'react'
+import axios from 'axios';
+import '../style-css/Create_Account.css'
+
+import { useNavigate } from 'react-router-dom';
+
+// validation 
+import { useForm } from 'react-hook-form';
+import joi from 'joi';
+import { joiResolver } from '@hookform/resolvers/joi';
+
+
+const schema = joi.object({
+    FirstName: joi.string().min(2).required(),
+    LastName: joi.string().min(2).required(),
+    Photo: joi.string().uri().required(),
+    DOB: joi.date().iso().required(),
+    AccountType: joi.string().required(),
+    Mobile: joi.string().pattern(/^[0-9]{10}$/).required(),
+    PanCard: joi.string().pattern(/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/).required(),
+    AadharCard: joi.string().pattern(/^[0-9]{12}$/).required(),
+    Nominee: joi.string().min(2).required(),
+    NomineeAadharCard: joi.string().pattern(/^[0-9]{12}$/).required(),
+    Address: joi.string().min(10).required(),
+    MonthlyIncome: joi.number().min(0).required()
+});
+
+
+
+function Create_Account() {
+
+    const { register, handleSubmit, formState } = useForm({
+        resolver: joiResolver(schema),
+    });
+    const errors = formState?.errors;
+
+    const [FirstName, setFirstName] = useState("");
+    const [LastName, setLastName] = useState("");
+    const [Photo, setPhoto] = useState("");
+    const [DOB, setDOB] = useState("");
+    const [AccountType, setAccountType] = useState("");
+    const [Mobile, setMobile] = useState("");
+    const [PanCard, setPanCard] = useState("");
+    const [AadharCard, setAadharCard] = useState("");
+    const [Nominee, setNominee] = useState("");
+    const [NomineeAadharCard, setNomineeAadharCard] = useState("");
+    const [Address, setAddress] = useState("");
+    const [MonthlyIncome, setMonthlyIncome] = useState("");
+
+
+    const navigate = useNavigate();
+
+    const CreateAccount = async () => {
+
+        const data = await axios.post('http://localhost:5000/test/api/users/open-account', { FirstName, LastName, Photo, DOB, AccountType, Mobile, PanCard, AadharCard, Nominee, NomineeAadharCard, Address, MonthlyIncome }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(() => {
+            // navigate("/Otp");
+        }).catch(e => { console.log(e) });
+        console.log(data);
+    }
+
+
+    return (
+        <div className='Create_account mb-4 mt-4'>
+            <form action="" onSubmit={handleSubmit(CreateAccount)}>
+                <div style={{ paddingRight: "20px" }} className="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-4xl" data-v0-t="card">
+                    <div className="flex flex-col space-y-1.5 p-6">
+                        <h2 className=" font-semibold whitespace-nowrap leading-none tracking-tight">Open a new account</h2>
+                        <h4 className=" mt-3 text-sm text-muted-foreground">Enter your information to open a new account.</h4>
+                    </div>
+                    <div className="p-6 space-y-6">
+                        <div className="grid grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <label
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    for="first-name"
+                                >
+                                    First name
+                                </label>
+                                <input {...register('FirstName')} value={FirstName} onChange={(e) => setFirstName(e.target.value)}
+                                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="first-name"
+                                    placeholder="Enter your first name"
+                                />
+                                {errors && errors.FirstName && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.FirstName.message}</p>}
+                            </div>
+                            <div className="space-y-2">
+                                <label
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    for="last-name"
+                                >
+                                    Last name
+                                </label>
+                                <input {...register('LastName')} value={LastName} onChange={(e) => setLastName(e.target.value)}
+                                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="last-name"
+                                    placeholder="Enter your last name"
+                                />
+                                 {errors && errors.LastName && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.LastName.message}</p>}
+                            </div>
+                        </div>
+                        <div className="space-y-2">
+                            <label
+                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                for="photo"
+                            >
+                                Photo
+                            </label>
+                            <input {...register('Photo')} value={Photo} onChange={(e) => setPhoto(e.target.value)}
+                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                id="photo"
+                                accept="image/*"
+                                type="file"
+                            />
+                             {errors && errors.Photo && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Photo.message}</p>}
+                        </div>
+                        <div className="grid grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <label
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    for="dob"
+                                >
+                                    Date of Birth
+                                </label>
+                                <input
+                                {...register('DOB')} value={DOB} onChange={(e) => setDOB(e.target.value)}
+                                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="dob"
+                                    type="date"
+                                />
+                                 {errors && errors.DOB && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.DOB.message}</p>}
+                            </div>
+                            <div className="space-y-2">
+                                <label
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    htmlFor="account-type" // Change 'for' to 'htmlFor'
+                                >
+                                    Account Type
+                                </label>
+                                <div className="relative"> {/* Wrap the button and select in a relative container */}
+
+                                    <select {...register('AccountType')} value={AccountType} onChange={(e) => setAccountType(e.target.value)}
+                                     style={{
+                                        height: "2.5rem", backgroundColor: "#f3f4f6", border: "1px solid #e5e7eb",
+                                        borderRadius: "0.5rem", marginTop: "8px"
+                                    }}
+                                        aria-hidden="true"
+                                        tabIndex="-1"
+                                        className=" absolute text-sm font-medium leading-none peer-disabled:cursor-not-allowed top-0 left-0 w-full h-full opacity-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" // Move the select off-screen using CSS classes
+                                        id="account-type"
+                                    >
+                                        <option value="">----- select -----</option>
+                                        <option value="Saving Account">Saving Account</option>
+                                        <option value="Current Account">Current Account</option>
+                                        <option value="Recurring Deposit Account">Recurring Deposit Account</option>
+                                        <option value="Fix Deposit Account">Fix Deposit Account</option>
+                                    </select>
+                                </div>
+                                {errors && errors.AccountType && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.AccountType.message}</p>}
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <label
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    for="mobile"
+                                >
+                                    Mobile Number
+                                </label>
+                                <input {...register('Mobile')} value={Mobile} onChange={(e) => setMobile(e.target.value)}
+                                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="mobile"
+                                    placeholder="Enter your mobile number"
+                                    type="tel"
+                                />
+                                 {errors && errors.Mobile && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Mobile.message}</p>}
+                            </div>
+                            <div className="space-y-2">
+                                <label
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    for="pancard"
+                                >
+                                    Pancard Number
+                                </label>
+                                <input
+                                {...register('PanCard')} value={PanCard} onChange={(e) => setPanCard(e.target.value)}
+                                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="pancard"
+                                    placeholder="Enter your Pancard number"
+                                />
+                                {errors && errors.PanCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.PanCard.message}</p>}
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <label
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    for="adharcard"
+                                >
+                                    Adharcard Number
+                                </label>
+                                <input {...register('AadharCard')} value={AadharCard} onChange={(e) => setAadharCard(e.target.value)}
+                                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="adharcard"
+                                    placeholder="Enter your Adharcard number"
+                                />
+                                 {errors && errors.AadharCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.AadharCard.message}</p>}
+                            </div>
+                            <div className="space-y-2">
+                                <label
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    for="nominee"
+                                >
+                                    Nominee
+                                </label>
+                                <input {...register('Nominee')} value={Nominee} onChange={(e) => setNominee(e.target.value)}
+                                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="nominee"
+                                    placeholder="Enter your nominee"
+                                />
+                                 {errors && errors.Nominee && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Nominee.message}</p>}
+                            </div>
+                        </div>
+                        <div className="space-y-2">
+                            <label
+                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                for="nominee-adharcard"
+                            >
+                                Nominee Adharcard Number
+                            </label>
+                            <input {...register('NomineeAadharCard')} value={NomineeAadharCard} onChange={(e) => setNomineeAadharCard(e.target.value)}
+                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                id="nominee-adharcard"
+                                placeholder="Enter your nominee Adharcard number"
+                            />
+                            {errors && errors.NomineeAadharCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.NomineeAadharCard.message}</p>}
+                        </div>
+                        <div className="space-y-2">
+                            <label
+                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                for="address"
+                            >
+                                Address
+                            </label>
+                            <input {...register('Address')} value={Address} onChange={(e) => setAddress(e.target.value)}
+                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                id="address"
+                                placeholder="Enter your address"
+                            />
+                              {errors && errors.Address && <p style={{marginBottom:"0rem"}}  className='text-danger'>{errors.Address.message}</p>}
+                        </div>
+                        <div className="space-y-2">
+                            <label
+                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                for="income"
+                            >
+                                Monthly Income
+                            </label>
+                            <input {...register('MonthlyIncome')} value={MonthlyIncome} onChange={(e) => setMonthlyIncome(e.target.value)}
+                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                id="income"
+                                placeholder="Enter your monthly income"
+                            />
+                            {errors && errors.MonthlyIncome && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.MonthlyIncome.message}</p>}
+                        </div>
+                    </div>
+                    <div className="items-center p-6 flex">
+                        <button className="mb-4 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-5 py-4 ml-auto">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    )
+}
+
+export default Create_Account

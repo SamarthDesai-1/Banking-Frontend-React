@@ -1,0 +1,196 @@
+
+
+/* Container styles */
+
+.Create_account{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Create_account .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .Create_account .border {
+    border: 1px solid #e5e7eb;
+  }
+  
+  .Create_account .bg-card {
+    background-color: #ffffff;
+  }
+  
+  .Create_account .text-card-foreground {
+    color: #333333;
+  }
+  
+  .Create_account .shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .Create_account .max-w-4xl {
+    max-width: 64rem;
+  }
+  
+  /* Heading styles */
+  .Create_account .text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .Create_account .font-semibold {
+    font-weight: 600;
+  }
+  
+  .Create_account .whitespace-nowrap {
+    white-space: nowrap;
+  }
+  .Create_account .space-y-2 label{
+    font-size: 15px;
+    margin-top: 15px;
+  }
+  
+  .Create_account .leading-none {
+    line-height: 1;
+  }
+  
+  .Create_account .tracking-tight {
+    letter-spacing: -0.025em;
+  }
+  
+  .Create_account .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .Create_account .text-muted-foreground {
+    color: #6b7280;
+  }
+  
+  /* Input styles */
+  .Create_account .space-y-1 {
+    margin-bottom: 0.375rem;
+  }
+  
+  .Create_account .p-6 {
+    padding: 20px 0px 0px 20px;
+  }
+  
+  .Create_account .grid {
+    display: grid;
+  }
+  
+  .Create_account .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .Create_account .gap-6 {
+    gap: 1.5rem;
+  }
+  
+  .Create_account .space-y-2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .Create_account .peer-disabled\:cursor-not-allowed:disabled {
+    cursor: not-allowed;
+  }
+  
+  .Create_account .peer-disabled\:opacity-70:disabled {
+    opacity: 0.7;
+  }
+  
+  .Create_account .border-input {
+    border: 1px solid #e5e7eb;
+  }
+  
+  .Create_account .bg-background {
+    background-color: #f3f4f6;
+  }
+  
+  .Create_account .px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .Create_account .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .Create_account .placeholder-text-muted-foreground::placeholder {
+    color: #6b7280;
+  }
+  
+  .Create_account .focus-visible\:outline-none:focus-visible {
+    outline: none;
+  }
+  
+  .Create_account .focus-visible\:ring-2:focus-visible {
+    --tw-ring-color: #2563eb;
+    --tw-ring-offset-color: rgba(37, 99, 235, 0.2);
+    box-shadow: 0 0 0 3px var(--tw-ring-offset-color), 0 0 0 2px var(--tw-ring-color);
+  }
+  
+  /* Button styles */
+  .Create_account .items-center {
+    align-items: center;
+  }
+  
+  .Create_account .inline-flex {
+    display: inline-flex;
+  }
+  
+  .Create_account .justify-between {
+    justify-content: space-between;
+  }
+  
+  .Create_account .whitespace-nowrap {
+    white-space: nowrap;
+  }
+  
+  .Create_account .rounded-md {
+    border-radius: 0.375rem;
+  }
+  
+  .Create_account .ring-offset-background {
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) #fff;
+  }
+  
+  .Create_account .transition-colors {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  .Create_account .pointer-events-none {
+    pointer-events: none;
+  }
+  
+  .Create_account .bg-primary {
+    background-color: #2563eb;
+  }
+  
+  .Create_account .text-primary-foreground {
+    color: #ffffff;
+  }
+  
+  .Create_account .hover\:bg-primary:hover {
+    background-color: #1e40af;
+  }
+  
+  .Create_account .hover\:bg-primary\/90:hover {
+    background-color: rgba(37, 99, 235, 0.9);
+  }
+  
+  .Create_account .h-10 {
+    height: 2.5rem;
+  }
+  
+  .Create_account .w-full {
+    width: 100%;
+  }
+  
+  .Create_account .font-medium {
+    font-weight: 500;
+  }
+  .Create_account input{
+    margin-top: 8px;
+  }

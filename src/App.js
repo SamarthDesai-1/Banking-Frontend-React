@@ -7,6 +7,8 @@ import Contect from './components/Contect'
 import Signup_Signin from "./components/Signup_Signin";
 import Otp from "./components/Otp";
 import Help from "./components/Help";
+import Create_Account from "./components/Create_Account";
+import PINvarify from "./components/PINvarify";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route exact path="/Signup_Signin" element={<Signup_Signin/>} />
           <Route exact path="/Otp" element={<Otp/>} />
           <Route exact path="/Help" element={<Help/>} />
+          <Route exact path="/Create_Account" element={<Create_Account/>} />
+          <Route exact path="/PINvarify" element={<PINvarify/>} />
         </Routes>
       </BrowserRouter>
   </>

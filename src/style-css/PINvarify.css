@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap'); 
+
+.pin .container {
+    font-family: 'Poppins', sans-serif;
+    max-width: 1180px;
+    margin-inline: auto;
+    /* margin-block: 50px; */
+    display: flex;
+    column-gap: 50px;
+}
+.pin .big-font {
+    font-size: 3rem;
+}
+.pin .box-2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px 50px;
+}
+.pin .box-2>h1 {
+    margin-block: 20px;
+}
+.pin .box-2>h3 {
+    color: #4895ef;
+}
+.pin .liner {
+    border-top: 1px solid #4895ef;
+    margin-bottom: 10px;
+}
+
+.pin .admin-image {
+    position: relative;
+    top: 50px;
+    left: 85px;
+    border-radius: 50%;
+}
+.pin .form-section {
+    min-width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 75px 20px;
+}
+.pin .inner-section {
+    display: flex;
+}
+.pin .format {
+    padding: 20px 20px;
+    color: #4895ef;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    min-width: 250px;
+    background-color: rgb(228, 233, 236);
+    letter-spacing: 5px;
+    text-align: center;
+    font-size: 1rem;
+}
+.pin .format::placeholder {
+    color: #4895ef;
+    font-weight: bold;
+}
+.pin .btn-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.pin .btn-primary {
+    background: transparent;
+    color: #4895ef;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 10px;
+    border: none;
+    font-weight: bold;
+
+}
+.pin .btn {
+    padding: 10px 30px;
+    background-color: #4895ef;
+    color: white;
+    border: 2px solid #4895ef;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.pin .btn:hover {
+    background-color: #4361ee;
+}
+
+
+

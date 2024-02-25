@@ -31,7 +31,8 @@ function Navbar() {
             </ul>
 
             <div className="button">
-            <input type="button" value="My Account" name="account" className="btn btn-primary m-2" />
+              <NavLink to="/Create_Account"><input type="button" value="My Account" name="account" className="btn btn-primary m-2" /></NavLink>
+              
             <button type="button" className="btn btn-outline-primary m-2">Explore</button>
             </div>
 
