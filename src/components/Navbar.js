@@ -3,6 +3,7 @@ import '../style-css/Navbar.css'
 import { NavLink } from 'react-router-dom'
 
 function Navbar() {
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,7 +21,7 @@ function Navbar() {
                 <NavLink className="nav-link active" aria-current="page" to="/About_us">About</NavLink>
               </li>
               <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="/Contect">Contect</NavLink>
+                <NavLink className="nav-link active" aria-current="page" to="/Contect">Contact</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="#">Insurance</NavLink>
@@ -32,17 +33,17 @@ function Navbar() {
 
             <div className="button">
               <NavLink to="/Create_Account"><input type="button" value="My Account" name="account" className="btn btn-primary m-2" /></NavLink>
-              
-            <button type="button" className="btn btn-outline-primary m-2">Explore</button>
+
+              <button type="button" className="btn btn-outline-primary m-2">Explore</button>
             </div>
 
             <form className="d-flex">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button className="btn btn-outline-success" type="submit">Search</button>
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <button className="btn btn-outline-success" type="submit">Search</button>
             </form>
 
-<NavLink to="/Signup_Signin"><input type="button" value="Login" name="account" className="btn btn-primary m-2"/>
-</NavLink>
+            <NavLink to="/Signup_Signin"><input type="button" value="Login" name="account" className="btn btn-primary m-2" />
+            </NavLink>
 
           </div>
         </div>

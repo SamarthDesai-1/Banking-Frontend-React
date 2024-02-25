@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
 import '../style-css/Create_Account.css'
 
@@ -85,7 +85,7 @@ function Create_Account() {
                                     id="first-name"
                                     placeholder="Enter your first name"
                                 />
-                                {errors && errors.FirstName && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.FirstName.message}</p>}
+                                {errors && errors.FirstName && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.FirstName.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -99,7 +99,7 @@ function Create_Account() {
                                     id="last-name"
                                     placeholder="Enter your last name"
                                 />
-                                 {errors && errors.LastName && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.LastName.message}</p>}
+                                {errors && errors.LastName && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.LastName.message}</p>}
                             </div>
                         </div>
                         <div className="space-y-2">
@@ -115,7 +115,7 @@ function Create_Account() {
                                 accept="image/*"
                                 type="file"
                             />
-                             {errors && errors.Photo && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Photo.message}</p>}
+                            {errors && errors.Photo && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.Photo.message}</p>}
                         </div>
                         <div className="grid grid-cols-2 gap-6">
                             <div className="space-y-2">
@@ -126,12 +126,12 @@ function Create_Account() {
                                     Date of Birth
                                 </label>
                                 <input
-                                {...register('DOB')} value={DOB} onChange={(e) => setDOB(e.target.value)}
+                                    {...register('DOB')} value={DOB} onChange={(e) => setDOB(e.target.value)}
                                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                     id="dob"
                                     type="date"
                                 />
-                                 {errors && errors.DOB && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.DOB.message}</p>}
+                                {errors && errors.DOB && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.DOB.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -143,10 +143,10 @@ function Create_Account() {
                                 <div className="relative"> {/* Wrap the button and select in a relative container */}
 
                                     <select {...register('AccountType')} value={AccountType} onChange={(e) => setAccountType(e.target.value)}
-                                     style={{
-                                        height: "2.5rem", backgroundColor: "#f3f4f6", border: "1px solid #e5e7eb",
-                                        borderRadius: "0.5rem", marginTop: "8px"
-                                    }}
+                                        style={{
+                                            height: "2.5rem", backgroundColor: "#f3f4f6", border: "1px solid #e5e7eb",
+                                            borderRadius: "0.5rem", marginTop: "8px"
+                                        }}
                                         aria-hidden="true"
                                         tabIndex="-1"
                                         className=" absolute text-sm font-medium leading-none peer-disabled:cursor-not-allowed top-0 left-0 w-full h-full opacity-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" // Move the select off-screen using CSS classes
@@ -159,7 +159,7 @@ function Create_Account() {
                                         <option value="Fix Deposit Account">Fix Deposit Account</option>
                                     </select>
                                 </div>
-                                {errors && errors.AccountType && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.AccountType.message}</p>}
+                                {errors && errors.AccountType && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.AccountType.message}</p>}
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-6">
@@ -176,7 +176,7 @@ function Create_Account() {
                                     placeholder="Enter your mobile number"
                                     type="tel"
                                 />
-                                 {errors && errors.Mobile && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Mobile.message}</p>}
+                                {errors && errors.Mobile && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.Mobile.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -186,12 +186,12 @@ function Create_Account() {
                                     Pancard Number
                                 </label>
                                 <input
-                                {...register('PanCard')} value={PanCard} onChange={(e) => setPanCard(e.target.value)}
+                                    {...register('PanCard')} value={PanCard} onChange={(e) => setPanCard(e.target.value)}
                                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                     id="pancard"
                                     placeholder="Enter your Pancard number"
                                 />
-                                {errors && errors.PanCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.PanCard.message}</p>}
+                                {errors && errors.PanCard && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.PanCard.message}</p>}
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-6">
@@ -207,7 +207,7 @@ function Create_Account() {
                                     id="adharcard"
                                     placeholder="Enter your Adharcard number"
                                 />
-                                 {errors && errors.AadharCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.AadharCard.message}</p>}
+                                {errors && errors.AadharCard && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.AadharCard.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -221,7 +221,7 @@ function Create_Account() {
                                     id="nominee"
                                     placeholder="Enter your nominee"
                                 />
-                                 {errors && errors.Nominee && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Nominee.message}</p>}
+                                {errors && errors.Nominee && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.Nominee.message}</p>}
                             </div>
                         </div>
                         <div className="space-y-2">
@@ -236,7 +236,7 @@ function Create_Account() {
                                 id="nominee-adharcard"
                                 placeholder="Enter your nominee Adharcard number"
                             />
-                            {errors && errors.NomineeAadharCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.NomineeAadharCard.message}</p>}
+                            {errors && errors.NomineeAadharCard && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.NomineeAadharCard.message}</p>}
                         </div>
                         <div className="space-y-2">
                             <label
@@ -250,7 +250,7 @@ function Create_Account() {
                                 id="address"
                                 placeholder="Enter your address"
                             />
-                              {errors && errors.Address && <p style={{marginBottom:"0rem"}}  className='text-danger'>{errors.Address.message}</p>}
+                            {errors && errors.Address && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.Address.message}</p>}
                         </div>
                         <div className="space-y-2">
                             <label
@@ -264,7 +264,7 @@ function Create_Account() {
                                 id="income"
                                 placeholder="Enter your monthly income"
                             />
-                            {errors && errors.MonthlyIncome && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.MonthlyIncome.message}</p>}
+                            {errors && errors.MonthlyIncome && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.MonthlyIncome.message}</p>}
                         </div>
                     </div>
                     <div className="items-center p-6 flex">
