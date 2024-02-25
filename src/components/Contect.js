@@ -4,18 +4,21 @@ import MarkunreadOutlinedIcon from '@mui/icons-material/MarkunreadOutlined';
 import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { NavLink } from 'react-router-dom';
 
 function Contect() {
     return (
         <>
-        <Navbar></Navbar>
+            <Navbar></Navbar>
             <div className="Contect">
                 <div className="image">
-                    <img src="https://d3dy70zhjs5mi1.cloudfront.net/s3fs-public/styles/large/public/2022-10/orl_contact_us_ReachOutToUs__838x796px_121022_D.jpeg?itok=KUcmc14W" className="card-img con-imag" alt="..." />
+                    <img src="https://th.bing.com/th/id/OIP.PNH4TdpcQox9PgC47bjtvAHaDl?w=347&h=169&c=7&r=0&o=5&dpr=1.5&pid=1.7" className="card-img con-imag" alt="..." />
                     <div className="card-img-overlay" data-aos="zoom-in">
                         <b><h1 className="card-title text-center " style={{ color: "#4895ef" }}>Contect Information</h1></b>
-                        <p className='text-light' style={{ padding: "0px 200px", textAlign: "center" }}>Have questions or need assistance? Feel free to reach out to us! Our dedicated team is here to help you with any inquiries you may have.</p>
-                        <b><p className=' text-center text-light'><a href="" className='con-link'>Home  </a>|  <a href="" className='con-link'>About us</a></p></b>
+                        <p className='text-dark' style={{ padding: "0px 200px", textAlign: "center" }}>Have questions or need assistance? Feel free to reach out to us! Our dedicated team is here to help you with any inquiries you may have.</p>
+
+                        <b><p className=' text-center' style={{ color: "black" }}><NavLink style={{ color: "#4895ef" }} to="/" className='con-link' >Home  </NavLink> |  <NavLink to="/About_us" style={{ color: "#4895ef" }} className='con-link'>About us</NavLink></p></b>
+
                     </div>
                 </div>
 

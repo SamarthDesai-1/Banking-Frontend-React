@@ -1,6 +1,6 @@
 .Contect .image .con-imag{
     height: 70vh;
-    opacity:0.9;
+    /* opacity:0.9; */
     padding: 20px;
     border-radius: 30px;
 }
