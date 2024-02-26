@@ -76,13 +76,8 @@ function Signup_Signin() {
                 console.log("Email : ", response.data.Email);
 
                 /* send this two fields to every request to maintain session behaviour */
-                
-                sessionStorage.setItem("Token", JSON.stringify(response.data.Token));
-                sessionStorage.setItem("Email", JSON.stringify(response.data.Email));
-
-                localStorage.clear();
-
-                console.log("Localstorage is clear now");
+                localStorage.setItem("Token", JSON.stringify(response.data.Token));
+                localStorage.setItem("Email", JSON.stringify(response.data.Email));
 
                 // use body to pass token;
 
@@ -92,7 +87,7 @@ function Signup_Signin() {
                 //     authorization: JSON.parse(localStorage.getItem("Token"));
                 // }
 
-                /* Change */
+                /* Change. */
 
                 alert("Login successful");
                 setemail("");

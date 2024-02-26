@@ -29,6 +29,10 @@ function Reset_Password() {
 
             setPassword("");
             setCpassword("");
+            alert("your password is reset succesfully")
+
+            navigate("/")
+
 
         }).catch(() => console.log("Error from API response"));
 

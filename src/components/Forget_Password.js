@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../style-css/Forget_Password.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
