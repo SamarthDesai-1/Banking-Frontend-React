@@ -76,8 +76,13 @@ function Signup_Signin() {
                 console.log("Email : ", response.data.Email);
 
                 /* send this two fields to every request to maintain session behaviour */
-                localStorage.setItem("Token", JSON.stringify(response.data.Token));
-                localStorage.setItem("Email", JSON.stringify(response.data.Email));
+                
+                sessionStorage.setItem("Token", JSON.stringify(response.data.Token));
+                sessionStorage.setItem("Email", JSON.stringify(response.data.Email));
+
+                localStorage.clear();
+
+                console.log("Localstorage is clear now");
 
                 // use body to pass token;
 

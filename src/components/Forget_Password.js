@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import '../style-css/Forget_Password.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -11,18 +11,26 @@ function Forget_Password() {
 
     const forgetpass = async () => {
 
-        const data = await axios.post('http://localhost:5000/test/api/users/forget-password', {email}, {
+        const data = await axios.post('http://localhost:5000/test/api/users/forget-password', { email }, {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then((response) => {
-            console.log(response)
-            navigate("/Reset_Password");
+        }).then(response => {
+
+            console.log("Response from server or forget-password : ", response);
+
+            const tokenString = response.data.RandomString;
+            console.log("Random String : ", tokenString);
+
+            setemail("");
+
+            navigate("/Reset_Password", { state: { tokenString } });
+
         }).catch(e => {
             console.log(e);
             console.log(e.response.data.msg);
             if (e.response.data.msg) {
-                alert(`${email} is not exist kindly Ragistration`);
+                alert(`${email} is not exist kindly Registration`);
             }
         });
         console.log(data);
@@ -45,7 +53,7 @@ function Forget_Password() {
                     <div class="form-data">
                         <form action="" class="form-fill">
                             <p class="text-info">Enter the email address associated with your account</p>
-                            <input onChange={(e) => setemail(e.target.value)}  value={email} type="email" name="email" id="" class="email-box" placeholder="Enter email address" />
+                            <input onChange={(e) => setemail(e.target.value)} value={email} type="email" name="email" id="" class="email-box" placeholder="Enter email address" />
                             <button type="button" onClick={forgetpass} class="btn">Verify</button>
                         </form>
                     </div>
