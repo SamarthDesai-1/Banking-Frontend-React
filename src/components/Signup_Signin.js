@@ -73,8 +73,11 @@ function Signup_Signin() {
 
                 console.log(response);
                 console.log("Token : ", response.data.Token);
+                console.log("Email : ", response.data.Email);
 
+                /* send this two fields to every request to maintain session behaviour */
                 localStorage.setItem("Token", JSON.stringify(response.data.Token));
+                localStorage.setItem("Email", JSON.stringify(response.data.Email));
 
                 // use body to pass token;
 

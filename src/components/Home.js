@@ -172,39 +172,39 @@ function Home() {
 
                     <div className="hbox">
 
-                    <div class="row">
-                        <div class="col-sm-4" data-aos="zoom-in">
-                            <div class="card" style={{textAlign:"center"}}>
-                                <div class="card-body">
-                                <LockOutlinedIcon color="primary" style={{fontSize:'60px',margin:"0px 0px"}}></LockOutlinedIcon>
-                                    <h5 class="card-title">Manage your Pin</h5>
-                                    <p class="card-text">Create, View or Change your PIN with a few simple steps</p>
-                                    <NavLink to="/Signup_Signin"><Button size="large" className='lern' variant="contained">Login Now</Button></NavLink>
+                        <div class="row">
+                            <div class="col-sm-4" data-aos="zoom-in">
+                                <div class="card" style={{ textAlign: "center" }}>
+                                    <div class="card-body">
+                                        <LockOutlinedIcon color="primary" style={{ fontSize: '60px', margin: "0px 0px" }}></LockOutlinedIcon>
+                                        <h5 class="card-title">Manage your Pin</h5>
+                                        <p class="card-text">Create, View or Change your PIN with a few simple steps</p>
+                                        <NavLink to="/Signup_Signin"><Button size="large" className='lern' variant="contained">Login Now</Button></NavLink>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-4" data-aos="zoom-in">
-                            <div class="card" style={{textAlign:"center"}}>
-                                <div class="card-body">
-                                <PaymentOutlinedIcon color="primary" style={{fontSize:'60px',margin:"0px 0px"}}></PaymentOutlinedIcon>
-                                    <h5 class="card-title">Replace your Card</h5>
-                                    <p class="card-text">Request for a replacement Card in case your Card was lost, stolen, damaged.</p>
-                                    <Button size="large" className='lern' variant="contained">Request for a replacement</Button>
+                            <div class="col-sm-4" data-aos="zoom-in">
+                                <div class="card" style={{ textAlign: "center" }}>
+                                    <div class="card-body">
+                                        <PaymentOutlinedIcon color="primary" style={{ fontSize: '60px', margin: "0px 0px" }}></PaymentOutlinedIcon>
+                                        <h5 class="card-title">Replace your Card</h5>
+                                        <p class="card-text">Request for a replacement Card in case your Card was lost, stolen, damaged.</p>
+                                        <Button size="large" className='lern' variant="contained">Request for a replacement</Button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-4" data-aos="zoom-in">
-                            <div class="card" style={{textAlign:"center"}}>
-                                <div class="card-body">
-                                    <SecurityOutlinedIcon color="primary" style={{fontSize:'60px',margin:"0px 0px"}}></SecurityOutlinedIcon>
-                                    <h5 class="card-title">Learn about Card Security</h5>
-                                    <p class="card-text">Our features and tips, all designed to help you stay safe.</p>
-                                    <NavLink to="/About_us"><Button size="large" className='lern' variant="contained">Learn more</Button></NavLink>
+                            <div class="col-sm-4" data-aos="zoom-in">
+                                <div class="card" style={{ textAlign: "center" }}>
+                                    <div class="card-body">
+                                        <SecurityOutlinedIcon color="primary" style={{ fontSize: '60px', margin: "0px 0px" }}></SecurityOutlinedIcon>
+                                        <h5 class="card-title">Learn about Card Security</h5>
+                                        <p class="card-text">Our features and tips, all designed to help you stay safe.</p>
+                                        <NavLink to="/About_us"><Button size="large" className='lern' variant="contained">Learn more</Button></NavLink>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
                 </div>
@@ -215,3 +215,4 @@ function Home() {
 }
 
 export default Home
+
