@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../style-css/Signup_Signin.css'
 import Navbar from '../components/Navbar'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // validation form
 import { useForm } from 'react-hook-form';
@@ -145,6 +145,7 @@ function Signup_Signin() {
                                 <i className="fas fa-lock"></i>
                                 <input type="password" placeholder="Password" onChange={(e) => setpassword(e.target.value)} />
                             </div>
+                            <p><NavLink to="/Forget_Password">Forget password</NavLink></p>
                             <input type="button" value="Login" className="btn" onClick={hendleLogin} />
 
                             <p className="account-text">Don't have an account? <a href="/" id="sign-up-btn2">Sign up</a></p>
