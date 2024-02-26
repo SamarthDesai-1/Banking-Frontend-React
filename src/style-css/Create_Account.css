@@ -38,6 +38,10 @@
     font-weight: 600;
   }
   
+  .Create_account .err{
+    margin-bottom: 0rem;
+    margin-top: 10px;
+  }
   .Create_account .whitespace-nowrap {
     white-space: nowrap;
   }

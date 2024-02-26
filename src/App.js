@@ -9,6 +9,8 @@ import Otp from "./components/Otp";
 import Help from "./components/Help";
 import Create_Account from "./components/Create_Account";
 import PINvarify from "./components/PINvarify";
+import Forget_Password from "./components/Forget_Password";
+import Reset_Password from "./components/Reset_Password";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route exact path="/Help" element={<Help/>} />
           <Route exact path="/Create_Account" element={<Create_Account/>} />
           <Route exact path="/PINvarify" element={<PINvarify/>} />
+          <Route exact path="/Forget_Password" element={<Forget_Password/>} />
+          <Route exact path="/Reset_Password" element={<Reset_Password/>} />
         </Routes>
       </BrowserRouter>
   </>

@@ -85,7 +85,7 @@ function Create_Account() {
                                     id="first-name"
                                     placeholder="Enter your first name"
                                 />
-                                {errors && errors.FirstName && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.FirstName.message}</p>}
+                                {errors && errors.FirstName && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.FirstName.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -99,7 +99,7 @@ function Create_Account() {
                                     id="last-name"
                                     placeholder="Enter your last name"
                                 />
-                                {errors && errors.LastName && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.LastName.message}</p>}
+                                 {errors && errors.LastName && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.LastName.message}</p>}
                             </div>
                         </div>
                         <div className="space-y-2">
@@ -115,7 +115,7 @@ function Create_Account() {
                                 accept="image/*"
                                 type="file"
                             />
-                            {errors && errors.Photo && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.Photo.message}</p>}
+                             {errors && errors.Photo && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Photo.message}</p>}
                         </div>
                         <div className="grid grid-cols-2 gap-6">
                             <div className="space-y-2">
@@ -131,7 +131,7 @@ function Create_Account() {
                                     id="dob"
                                     type="date"
                                 />
-                                {errors && errors.DOB && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.DOB.message}</p>}
+                                 {errors && errors.DOB && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.DOB.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -159,7 +159,7 @@ function Create_Account() {
                                         <option value="Fix Deposit Account">Fix Deposit Account</option>
                                     </select>
                                 </div>
-                                {errors && errors.AccountType && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.AccountType.message}</p>}
+                                {errors && errors.AccountType && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.AccountType.message}</p>}
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-6">
@@ -176,7 +176,7 @@ function Create_Account() {
                                     placeholder="Enter your mobile number"
                                     type="tel"
                                 />
-                                {errors && errors.Mobile && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.Mobile.message}</p>}
+                                 {errors && errors.Mobile && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Mobile.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -191,7 +191,7 @@ function Create_Account() {
                                     id="pancard"
                                     placeholder="Enter your Pancard number"
                                 />
-                                {errors && errors.PanCard && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.PanCard.message}</p>}
+                                {errors && errors.PanCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.PanCard.message}</p>}
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-6">
@@ -207,7 +207,7 @@ function Create_Account() {
                                     id="adharcard"
                                     placeholder="Enter your Adharcard number"
                                 />
-                                {errors && errors.AadharCard && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.AadharCard.message}</p>}
+                                 {errors && errors.AadharCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.AadharCard.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -221,7 +221,7 @@ function Create_Account() {
                                     id="nominee"
                                     placeholder="Enter your nominee"
                                 />
-                                {errors && errors.Nominee && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.Nominee.message}</p>}
+                                 {errors && errors.Nominee && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Nominee.message}</p>}
                             </div>
                         </div>
                         <div className="space-y-2">
@@ -236,7 +236,7 @@ function Create_Account() {
                                 id="nominee-adharcard"
                                 placeholder="Enter your nominee Adharcard number"
                             />
-                            {errors && errors.NomineeAadharCard && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.NomineeAadharCard.message}</p>}
+                            {errors && errors.NomineeAadharCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.NomineeAadharCard.message}</p>}
                         </div>
                         <div className="space-y-2">
                             <label
@@ -250,7 +250,7 @@ function Create_Account() {
                                 id="address"
                                 placeholder="Enter your address"
                             />
-                            {errors && errors.Address && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.Address.message}</p>}
+                              {errors && errors.Address && <p style={{marginBottom:"0rem"}}  className='text-danger'>{errors.Address.message}</p>}
                         </div>
                         <div className="space-y-2">
                             <label
@@ -264,7 +264,7 @@ function Create_Account() {
                                 id="income"
                                 placeholder="Enter your monthly income"
                             />
-                            {errors && errors.MonthlyIncome && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.MonthlyIncome.message}</p>}
+                            {errors && errors.MonthlyIncome && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.MonthlyIncome.message}</p>}
                         </div>
                     </div>
                     <div className="items-center p-6 flex">
