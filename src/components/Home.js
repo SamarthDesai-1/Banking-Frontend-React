@@ -21,6 +21,9 @@ function Home() {
             backSpeed: 50,
             loop: true
         });
+
+        sessionStorage.removeItem("Random");
+        
     }, []);
 
     return (

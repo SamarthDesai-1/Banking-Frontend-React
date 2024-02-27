@@ -3,11 +3,9 @@ import '../style-css/Reset_Password.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-import { useLocation } from 'react-router-dom';
 
 function Reset_Password() {
 
-    const location = useLocation();
     const navigate = useNavigate();
 
     const [password, setPassword] = useState();
@@ -15,14 +13,17 @@ function Reset_Password() {
 
     const resetpass = async () => {
 
-        const tokenString = location.state.tokenString;
+        const tokenString = sessionStorage.getItem("Random");
 
-        const data = await axios.post('http://localhost:5000/test/api/users/reset-password', { password, cpassword, tokenString }, {
+        console.log(`Random String from session storage : ${tokenString}`);
+
+        if (password === cpassword) {
+            const data = await axios.post('http://localhost:5000/test/api/users/reset-password', { password, cpassword, tokenString }, {
             headers: {
                 'Content-Type': 'application/json'
             }
-            
-        }).then((data) => {
+
+            }).then((data) => {
 
             console.log(data);
             console.log("Token string comming from forget-password page : ", tokenString);
@@ -34,9 +35,14 @@ function Reset_Password() {
             navigate("/")
 
 
-        }).catch(() => console.log("Error from API response"));
+            }).catch(() => console.log("Error from API response"));
 
-        console.log(data);
+            console.log(data);
+        }
+        else {
+            alert("Retype password and confirm password");
+        }
+        
     }
 
 

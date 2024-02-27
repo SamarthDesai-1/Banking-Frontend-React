@@ -12,6 +12,8 @@ import PINvarify from "./components/PINvarify";
 import Forget_Password from "./components/Forget_Password";
 import Reset_Password from "./components/Reset_Password";
 
+import ForgetPasswordOTP from "../src/components/ForgetPasswordOTP"
+
 function App() {
   return (
   <>
@@ -27,6 +29,8 @@ function App() {
           <Route exact path="/PINvarify" element={<PINvarify/>} />
           <Route exact path="/Forget_Password" element={<Forget_Password/>} />
           <Route exact path="/Reset_Password" element={<Reset_Password/>} />
+          
+          <Route exact path="/ForgetPasswordOTP" element={<ForgetPasswordOTP/>} />
         </Routes>
       </BrowserRouter>
   </>

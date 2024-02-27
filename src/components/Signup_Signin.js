@@ -75,9 +75,12 @@ function Signup_Signin() {
                 console.log("Token : ", response.data.Token);
                 console.log("Email : ", response.data.Email);
 
-                /* send this two fields to every request to maintain session behaviour */
-                localStorage.setItem("Token", JSON.stringify(response.data.Token));
-                localStorage.setItem("Email", JSON.stringify(response.data.Email));
+                /* send this two fields to every request to maintain session behaviour and authentication */
+
+                sessionStorage.setItem("Token", JSON.stringify(response.data.Token));
+                sessionStorage.setItem("Email", JSON.stringify(response.data.Email));
+
+                localStorage.clear();
 
                 // use body to pass token;
 
@@ -148,7 +151,7 @@ function Signup_Signin() {
                                 <i className="fas fa-lock"></i>
                                 <input type="password" placeholder="Password" onChange={(e) => setpassword(e.target.value)} />
                             </div>
-                            <p><NavLink to="/Forget_Password">Forget password</NavLink></p>
+                            <p><NavLink to="/Forget_Password">Forget password ?</NavLink></p>
                             <input type="button" value="Login" className="btn" onClick={hendleLogin} />
 
                             <p className="account-text">Don't have an account? <a href="/" id="sign-up-btn2">Sign up</a></p>

@@ -11,7 +11,15 @@ function Forget_Password() {
 
     const forgetpass = async () => {
 
-        const data = await axios.post('http://localhost:5000/test/api/users/forget-password', { email }, {
+
+        alert("Check your inbox mail and enter OTP below for authentication.");
+
+        const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
+        const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+        console.log(`Accessing session email from sessionStorage : ${sessionEmail}`);
+        console.log(`Accessing session Token from sessionStorage : ${sessionToken}`);
+
+        const data = await axios.post('http://localhost:5000/test/api/users/forget-password', { email, sessionEmail, sessionToken }, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -20,16 +28,25 @@ function Forget_Password() {
             console.log("Response from server or forget-password : ", response);
 
             const tokenString = response.data.RandomString;
-            console.log("Random String : ", tokenString);
 
+            sessionStorage.setItem("Random", response.data.RandomString);
+
+            console.log("Random String : ", tokenString);
             setemail("");
 
-            navigate("/Reset_Password", { state: { tokenString } });
+            /* OTP page */ navigate("/ForgetPasswordOTP");
+
 
         }).catch(e => {
+
+            const errorMessage = e.response.data.msg;
             console.log(e);
-            console.log(e.response.data.msg);
-            if (e.response.data.msg) {
+            console.log(`Error Message : ${errorMessage}`);
+
+            if (e.response.data.Access === true) {
+                alert(`You can only valid to change password of your ${sessionEmail} account only`);
+            }
+            else if (e.response.data.isMailFound === true) {
                 alert(`${email} is not exist kindly Registration`);
             }
         });
