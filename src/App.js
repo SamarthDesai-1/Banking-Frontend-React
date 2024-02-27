@@ -11,7 +11,7 @@ import Create_Account from "./components/Create_Account";
 import PINvarify from "./components/PINvarify";
 import Forget_Password from "./components/Forget_Password";
 import Reset_Password from "./components/Reset_Password";
-
+import User_Profile from "./components/User_Profile";
 import ForgetPasswordOTP from "../src/components/ForgetPasswordOTP"
 
 function App() {
@@ -29,8 +29,8 @@ function App() {
           <Route exact path="/PINvarify" element={<PINvarify/>} />
           <Route exact path="/Forget_Password" element={<Forget_Password/>} />
           <Route exact path="/Reset_Password" element={<Reset_Password/>} />
-          
           <Route exact path="/ForgetPasswordOTP" element={<ForgetPasswordOTP/>} />
+          <Route exact path="/User_Profile" element={<User_Profile/>} />
         </Routes>
       </BrowserRouter>
   </>

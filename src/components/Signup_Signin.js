@@ -16,8 +16,8 @@ const schema = joi.object({
     lname: joi.string().min(2).max(50).required(),
     email: joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'org', 'io'] }, }).required(),
     password: joi.string().min(4).required(),
-    cpassword: joi.string().min(4).max(100).required().label('password')
-});
+    cpassword: joi.string().min(4).max(100).valid(joi.ref('password')).label('Confirm password')
+}).with('password','cpassword').required();
 
 
 function Signup_Signin() {
@@ -52,7 +52,8 @@ function Signup_Signin() {
             console.log(e);
             console.log(e.response.data.msg);
             if (e.response.data.msg) {
-                alert("Your account is already open kindly login..");
+                // alert("Your account is already open kindly login..");
+                alert(`${email} email is already in use. Please try a different one.`)
             }
         });
         console.log(data);

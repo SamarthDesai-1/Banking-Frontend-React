@@ -32,7 +32,7 @@ function Reset_Password() {
             setCpassword("");
             alert("your password is reset succesfully")
 
-            navigate("/")
+            navigate("/Signup_Signin")
 
 
             }).catch(() => console.log("Error from API response"));
