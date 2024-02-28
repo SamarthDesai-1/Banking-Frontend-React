@@ -1,6 +1,46 @@
-import React from 'react'
+// import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function User_Profile() {
+
+  const [data, setData] = useState(undefined);
+  const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+  const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
+
+  useEffect(() => {
+
+    /** Send email from session storage to API */
+    /** Call fetch customer financial API */
+
+    const fetchData = async () => {
+
+
+      console.log("Session Token : ", sessionToken);
+
+      try {
+        console.log("API execute soon");
+        const response = await axios.post("http://localhost:5000/test/api/users/customer-finance", { sessionEmail, sessionToken }, {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        console.log("API execute successfully");
+        console.log(response);
+        console.log("Response data : ", response.data.data[0]);
+        setData(response.data.data[0]);
+      }
+      catch (error) {
+        console.log("Error : ", error);
+      }
+    };
+
+    fetchData();
+    
+  }, []);
+
+  // console.log("Data : ", data.data[0]);
+
   return (
     <div>
           <div style={{minHeight: '100vh', backgroundColor: '#f3f4f6', display: 'grid', gridTemplateRows: 'auto 1fr auto', color: '#111', fontFamily: 'Arial, sans-serif'}}>
@@ -9,8 +49,9 @@ function User_Profile() {
           <div style={{display: 'flex', alignItems: 'center', gap: '20px' , width: '92vw'}}>
             <div style={{width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#ccc'}}></div>
             <div style={{display: 'grid', gridGap: '5px'}}>
-              <h1 style={{fontSize: '1.5rem', fontWeight: 'bold', margin: 0}}>Walter White</h1>
-              <p style={{fontSize: '0.875rem', margin: 0, color: '#666'}}>ID: 1234567890</p>
+              {/* <img src={data.Photo} alt='cannot load the image' /> */}
+              {/* <h1 style={{fontSize: '1.5rem', fontWeight: 'bold', margin: 0}}>{`${data.FirstName} ${data.LastName}`}</h1> */}
+              {/* <p style={{fontSize: '0.875rem', margin: 0, color: '#666'}}>Account No : {data._id}</p> */}
             </div>
             <div style={{marginLeft: 'auto'}}>
               <button style={{padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px'}}>Edit Profile</button>
@@ -19,15 +60,15 @@ function User_Profile() {
           <div style={{borderTop: '1px solid #ddd', borderBottom: '1px solid #ddd', padding: '20px 0'}}>
             <div style={{display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px'}}>
               <div style={{fontSize: '0.875rem', fontWeight: 'bold', color: '#666'}}>Email</div>
-              <div style={{marginLeft:"218px"}}>walter@example.com</div>
+              {/* <div style={{marginLeft:"218px"}}>{data.Email}</div> */}
             </div>
             <div style={{display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px'}}>
               <div style={{fontSize: '0.875rem', fontWeight: 'bold', color: '#666'}}>Phone</div>
-              <div style={{marginLeft:"212px"}}>+1 (123) 456-7890</div>
+              {/* <div style={{marginLeft:"212px"}}>{data.Mobile}</div> */}
             </div>
             <div style={{display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px'}}>
               <div style={{fontSize: '0.875rem', fontWeight: 'bold', color: '#666'}}>Address</div>
-              <div style={{marginLeft:"200px"}}>308 Negra Arroyo Lane, Albuquerque, New Mexico</div>
+              {/* <div style={{marginLeft:"200px"}}>{data.Address}</div> */}
             </div>
           </div>
         </div>
@@ -38,11 +79,11 @@ function User_Profile() {
           <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px'}}>
             <div style={{display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px'}}>
               <div style={{fontSize: '0.875rem', fontWeight: 'bold', color: '#666'}}>Account Number</div>
-              <div style={{marginLeft:"180px"}}>1234567890</div>
+              {/* <div style={{marginLeft:"180px"}}>{data._id}</div> */}
             </div>
             <div style={{display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px'}}>
               <div style={{fontSize: '0.875rem', fontWeight: 'bold', color: '#666'}}>Account Type</div>
-              <div style={{marginLeft:"180px"}}>Checking</div>
+              {/* <div style={{marginLeft:"180px"}}>{data.AccountType}</div> */}
             </div>
             <div style={{display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px'}}>
               <div style={{fontSize: '0.875rem', fontWeight: 'bold', color: '#666'}}>Balance</div>
@@ -105,4 +146,5 @@ function User_Profile() {
   )
 }
 
-export default User_Profile
+export default User_Profile;
+

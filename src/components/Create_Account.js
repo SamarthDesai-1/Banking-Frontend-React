@@ -98,6 +98,8 @@ function Create_Account() {
         
             /* Redirect to Generate PIN page */
             
+            navigate("/Generate_PIN");
+            
         }).catch(e => { console.log(e); });
         console.log(data);
     }

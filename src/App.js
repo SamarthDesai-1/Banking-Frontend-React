@@ -35,6 +35,7 @@ function App() {
           <Route exact path="/PINvarify" element={<PINvarify/>} />
           <Route exact path="/Create_Account" element={<Create_Account/>} />
           <Route exact path="/Generate_PIN" element={<Generate_PIN/>} />
+          <Route exact path="/User_Profile" element={<User_Profile/>} />
         </Routes>
       </BrowserRouter>
   </>

@@ -1,17 +1,39 @@
 import React, { useState } from 'react'
 import '../style-css/Generate_PIN.css';
+import { useNavigate } from 'react-router-dom';
+
+
+const forFirstTimeOnly = {
+    PIN: undefined,
+    boolean: false 
+};
 
 function Generate_PIN() {
 
-    const [randomNumber, setRandomNumber] = useState(null);
+    const navigate = useNavigate();
 
-    // Function to generate a random number between min and max
+    const [randomNumber, setRandomNumber] = useState("");
+
     const generateRandomNumber = () => {
-        const min = 1001;
-        const max = 9999;
-        const random = Math.floor(Math.random() * (max - min + 1)) + min;
-        setRandomNumber(random);
-        console.log(randomNumber)
+
+        if (forFirstTimeOnly.PIN === undefined && forFirstTimeOnly.boolean === false) {
+            const min = 1001;
+            const max = 9999;
+            const random = Math.floor(Math.random() * (max - min + 1)) + min;
+            setRandomNumber(random);
+
+            console.log("Random value from state : ", randomNumber);
+
+            console.log("Random value : ", random);
+
+            forFirstTimeOnly.PIN = random;
+            forFirstTimeOnly.boolean = true;
+        }
+        else {
+            console.log("PIN is already generated check dashBoard"); /* Or alert */
+            navigate("/PINvarify");
+        }
+
     };
 
 
@@ -51,8 +73,9 @@ function Generate_PIN() {
                             <h1 className="head-text">Generate PIN</h1>
                         </div>
                         <div className="generate-section">
-                            <h1 >Generate PIN from here.</h1>
-                            <h3 className='mt-4'>By simply click on generate button.</h3>
+                            {/* <h1 >Generate PIN from here.</h1> */}
+                            <img src='./IMAGES/PINimage.webp' className='format-image' />
+                            {/* <h3 className='mt-4'>By simply click on generate button.</h3> */}
                           
                             <button onClick={() => generateRandomNumber()} type="button" className="btn mt-4" id="open-popup" >Generate</button>
                         </div>
@@ -62,7 +85,7 @@ function Generate_PIN() {
                 <div className="box-1">
 
                         <div className="forget-section">
-                            <h1>Forget PIN ??</h1>
+                            <h1>Crendentials.</h1>
                             <ul>
                                 <li>You can easily retrive your PIN using your Email.</li>
                                 <li>Don't share your PIN with third party it can harm your privacy & security.</li>
@@ -70,7 +93,7 @@ function Generate_PIN() {
                                 <li>PIN makes you safer mover from rest peoples.</li>
                             </ul>
                             <div className="company-section">
-                                <h4>American Express</h4>
+                                <h4>Transact Payments.</h4>
                             </div>
                         </div>
                     </div>
@@ -85,8 +108,8 @@ function Generate_PIN() {
                     <div className="popup-content">
                         <h2>Your PIN</h2>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, ad quia voluptatem labore cum officia vel sed aliquam incidunt itaque explicabo reprehenderit. Voluptatum, ex nisi provident eius dolore labore quasi!</p><br/><p>Go back to Home page and refresh the page and you can see your financials.</p>
-                            <p><h4>{`Your Account PIN is : ${randomNumber}`}</h4></p>
+                        <p>Protecting your PIN is crucial for safeguarding your financial security. Always opt for a PIN that is complex, comprising a mix of numbers, letters, and special characters, if possible. Aim for a longer PIN to enhance its strength against potential threats.</p><br/>
+                            <p><h4>{`Your Account PIN is : ${forFirstTimeOnly.PIN}`}</h4></p>
 
                             <div className="controls">
                                 <button className="close-btn">Close</button>
@@ -101,4 +124,4 @@ function Generate_PIN() {
     )
 }
 
-export default Generate_PIN
+export default Generate_PIN;
