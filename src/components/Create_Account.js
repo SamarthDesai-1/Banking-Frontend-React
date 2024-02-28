@@ -59,7 +59,7 @@ function Create_Account() {
 
         console.log(FirstName);
         console.log(LastName);
-        console.log(Photo.name);
+        // console.log(Photo.name);
         console.log(DOB);
         console.log(AccountType);
         console.log(Mobile);
@@ -95,19 +95,7 @@ function Create_Account() {
             }
         }).then((response) => {
             console.log(response);
-            setFirstName("");
-            setLastName("");
-            setPhoto();
-            setDOB("");
-            setAccountType("");
-            setMobile("");
-            setPanCard("");
-            setAadharCard("");
-            setNominee("");
-            setAddress("");
-            setNomineeAadharCard("");
-            setMonthlyIncome("");
-
+        
             /* Redirect to Generate PIN page */
             
         }).catch(e => { console.log(e); });
@@ -320,7 +308,7 @@ function Create_Account() {
                         </div>
                     </div>
                     <div className="items-center p-6 flex">
-                        <button type='button' onClick={CreateAccount} className="mb-4 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-5 py-4 ml-auto">
+                        <button onClick={CreateAccount} className="mb-4 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-5 py-4 ml-auto">
                             Submit
                         </button>
                     </div>

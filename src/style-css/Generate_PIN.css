@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap");
+
+.generatepin .container {
+  font-family: "Poppins", sans-serif;
+  max-width: 1180px;
+  margin-inline: auto;
+  background-color: #fff;
+  position: relative;
+  top: 30px;
+  box-shadow: 0px 3px 20px #d2d3d4;
+  padding: 20px 20px;
+  border-radius: 8px;
+}
+.generatepin .box-1 {
+  display: flex;
+  column-gap: 50px;
+}
+.generatepin .generate-section ul li {
+  list-style: none;
+}
+.generatepin .generate-section {
+  margin-top: 100px;
+  margin-left: 25px;
+}
+.generatepin .forget-section {
+  padding: 50px 20px;
+  display: flex;
+  margin-top: 70px;
+  flex-direction: column;
+  row-gap: 22px;
+  justify-content: center;
+  margin-bottom: 55px;
+}
+.generatepin .btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #4895ef;
+  border: 2px solid #4895ef;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  max-width: 150px;
+  border-radius: 5px;
+}
+.generatepin .btn:hover {
+  background-color: #0775f4;
+}
+
+.generatepin .generate-section ul li {
+  list-style: none;
+}
+.generatepin .company-section {
+  color: #0775f4;
+}
+.generatepin .header-section {
+  /* border: 1px solid red; */
+  padding: 0px 20px;
+  max-width: 600px;
+}
+.generatepin .head-text {
+  font-size: 4rem;
+}
+
+.generatepin .center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.generatepin .popup {
+  position: fixed;
+  top: 100vh;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+.generatepin .popup-content {
+  box-shadow: 0px 0px 20px #d2d4d6;
+}
+.generatepin .popup .overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0, 0, 5);
+  opacity: 0;
+
+  transition: opacity 100ms ease-in-out 200ms;
+}
+.generatepin .popup .popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.15);
+  opacity: 0;
+  width: 95%;
+  max-width: 350px;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 2px 5px (0, 0, 0, 0, 05);
+  transition: all 300ms ease-in-out;
+}
+.generatepin .popup .popup-content h2 {
+  margin: 10px 0px;
+  font-size: 25px;
+  color: #111;
+  text-align: center;
+}
+.generatepin .popup .popup-content p {
+  margin: 15px 0px;
+  color: #222;
+  font-size: 16px;
+  text-align: center;
+}
+.generatepin .popup .popup-content .controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px 0px;
+}
+.generatepin .popup .popup-content .controls button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.generatepin .popup .popup-content .controls .close-btn {
+  background: transparent;
+  color: #3284ed;
+}
+.generatepin .popup .popup-content .controls .submit-btn {
+  background: #3284ed;
+  color: #fff;
+}
+.popup.active {
+  top: 0px;
+  transition: top 0ms ease-in-out 0ms;
+}
+.popup.active .overlay {
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+}
+.popup.active .popup-content {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.popup-content p {
+  display: flex;
+  justify-content: center;
+}
