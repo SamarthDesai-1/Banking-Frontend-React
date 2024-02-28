@@ -13,7 +13,7 @@ import { joiResolver } from '@hookform/resolvers/joi';
 const schema = joi.object({
     FirstName: joi.string().min(2).required(),
     LastName: joi.string().min(2).required(),
-    Photo: joi.string().uri().required(),
+    // Photo: joi.string().required(),
     DOB: joi.date().iso().required(),
     AccountType: joi.string().required(),
     Mobile: joi.string().pattern(/^[0-9]{10}$/).required(),
@@ -36,7 +36,7 @@ function Create_Account() {
 
     const [FirstName, setFirstName] = useState("");
     const [LastName, setLastName] = useState("");
-    const [Photo, setPhoto] = useState("");
+    let [Photo, setPhoto] = useState();
     const [DOB, setDOB] = useState("");
     const [AccountType, setAccountType] = useState("");
     const [Mobile, setMobile] = useState("");
@@ -50,22 +50,74 @@ function Create_Account() {
 
     const navigate = useNavigate();
 
-    const CreateAccount = async () => {
+    const CreateAccount = async (e) => {
 
-        const data = await axios.post('http://localhost:5000/test/api/users/open-account', { FirstName, LastName, Photo, DOB, AccountType, Mobile, PanCard, AadharCard, Nominee, NomineeAadharCard, Address, MonthlyIncome }, {
+        // e.preventDefault();
+
+        const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
+        const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+
+        console.log(FirstName);
+        console.log(LastName);
+        console.log(Photo.name);
+        console.log(DOB);
+        console.log(AccountType);
+        console.log(Mobile);
+        console.log(PanCard);
+        console.log(AadharCard);
+        console.log(Nominee);
+        console.log(NomineeAadharCard);
+        console.log(Address);
+        console.log(MonthlyIncome);
+        console.log(sessionToken);
+        console.log(sessionEmail);
+
+        const formData = new FormData();
+        formData.append('FirstName', FirstName);
+        formData.append('LastName', LastName);
+        formData.append('Photo', Photo);
+        formData.append('DOB', DOB);
+        formData.append('AccountType', AccountType);
+        formData.append('Mobile', Mobile);
+        formData.append('PanCard', PanCard);
+        formData.append('AadharCard', AadharCard);
+        formData.append('Nominee', Nominee);
+        formData.append('NomineeAadharCard', NomineeAadharCard);
+        formData.append('Address', Address);
+        formData.append('MonthlyIncome', MonthlyIncome);
+        formData.append('sessionToken', sessionToken);
+        formData.append('sessionEmail', sessionEmail);
+
+
+        const data = await axios.post('http://localhost:5000/test/api/users/open-account', formData, /* { FirstName, LastName, Photo, DOB, AccountType, Mobile, PanCard, AadharCard, Nominee, NomineeAadharCard, Address, MonthlyIncome, sessionToken, sessionEmail }, */ {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'multipart/form-data'
             }
-        }).then(() => {
-            // navigate("/Otp");
-        }).catch(e => { console.log(e) });
+        }).then((response) => {
+            console.log(response);
+            setFirstName("");
+            setLastName("");
+            setPhoto();
+            setDOB("");
+            setAccountType("");
+            setMobile("");
+            setPanCard("");
+            setAadharCard("");
+            setNominee("");
+            setAddress("");
+            setNomineeAadharCard("");
+            setMonthlyIncome("");
+
+            /* Redirect to Generate PIN page */
+            
+        }).catch(e => { console.log(e); });
         console.log(data);
     }
 
 
     return (
         <div className='Create_account mb-4 mt-4'>
-            <form action="" onSubmit={handleSubmit(CreateAccount)}>
+            <form onSubmit={handleSubmit()}>
                 <div style={{ paddingRight: "20px" }} className="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-4xl" data-v0-t="card">
                     <div className="flex flex-col space-y-1.5 p-6">
                         <h2 className=" font-semibold whitespace-nowrap leading-none tracking-tight">Open a new account</h2>
@@ -109,13 +161,13 @@ function Create_Account() {
                             >
                                 Photo
                             </label>
-                            <input {...register('Photo')} value={Photo} onChange={(e) => setPhoto(e.target.value)}
+                            <input {...register('Photo')} onChange={(e) => setPhoto(e.target.files[0])}
                                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                 id="photo"
                                 accept="image/*"
                                 type="file"
                             />
-                             {errors && errors.Photo && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Photo.message}</p>}
+                             {/* {errors && errors.Photo && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Photo.message}</p>} */}
                         </div>
                         <div className="grid grid-cols-2 gap-6">
                             <div className="space-y-2">
@@ -268,7 +320,7 @@ function Create_Account() {
                         </div>
                     </div>
                     <div className="items-center p-6 flex">
-                        <button className="mb-4 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-5 py-4 ml-auto">
+                        <button type='button' onClick={CreateAccount} className="mb-4 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-5 py-4 ml-auto">
                             Submit
                         </button>
                     </div>

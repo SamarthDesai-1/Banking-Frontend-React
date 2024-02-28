@@ -31,6 +31,8 @@ function App() {
           <Route exact path="/Reset_Password" element={<Reset_Password/>} />
           <Route exact path="/ForgetPasswordOTP" element={<ForgetPasswordOTP/>} />
           <Route exact path="/User_Profile" element={<User_Profile/>} />
+          <Route exact path="/PINvarify" element={<PINvarify/>} />
+          <Route exact path="/Create_Account" element={<Create_Account/>} />
         </Routes>
       </BrowserRouter>
   </>

@@ -1,8 +1,39 @@
-import React from 'react'
-import '../style-css/Navbar.css'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import '../style-css/Navbar.css';
+import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
+
+  const navigate = useNavigate();
+
+  const verifyUser = async () => {
+
+    const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
+    const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+    console.log("Session Token : ", sessionToken);
+
+    const data = await axios.post("http://localhost:5000/test/api/users/account-exists", { sessionToken, sessionEmail }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(response => {
+      console.log("Response from API http://localhost:5000/test/api/users/account-exists : ", response);
+
+      if (response.data.isExistsAccount) {
+        navigate("/PINvarify");
+      }
+      else {
+        navigate("/Create_Account");
+      }
+      
+    }).catch(e => {
+      console.log(e.response.data.msg);
+      alert(e.response.data.msg);
+    });
+
+  };
 
   return (
     <>
@@ -32,9 +63,11 @@ function Navbar() {
             </ul>
 
             <div className="button">
-              <NavLink to="/Create_Account"><input type="button" value="My Account" name="account" className="btn btn-primary m-2" /></NavLink>
+              {/* <NavLink to="/Create_Account"><input type="button" value="My Account" name="account" className="btn btn-primary m-2" onClick={verifyUser} /></NavLink> */}
+              <input type="button" value="My Account" name="account" className="btn btn-primary m-2" onClick={verifyUser} />
 
               <button type="button" className="btn btn-outline-primary m-2">Explore</button>
+
             </div>
 
             <form className="d-flex">

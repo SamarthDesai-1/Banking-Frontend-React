@@ -18,9 +18,14 @@ function Forget_Password() {
     
         console.log(`Accessing session Token from sessionStorage : ${sessionToken}`);
 
-        const data = await axios.post('http://localhost:5000/test/api/users/forget-password', { /* user email*/ email, sessionToken }, {
+        const data = await axios.post('http://localhost:5000/test/api/users/forget-password', { /* user email*/ email }, {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+
+                /* Send token to backend for verification */
+
+                // 'Authorization': `Bearer ${sessionToken}`
+                
             }
         }).then(response => {
 

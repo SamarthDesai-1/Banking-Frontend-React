@@ -25,11 +25,11 @@ function PINvarify() {
 
                 <div class="box-2">
                     <h1 class="big-font">Privacy & Policy</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime earum quibusdam explicabo. Alias dolores saepe voluptatibus, consequatur nisi modi minus!</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis necessitatibus ullam veniam nemo aliquam excepturi a, commodi impedit, expedita ipsam id nobis et aperiam placeat sunt doloremque nam corrupti consectetur.</p>
+                    <p>A Personal Identification Number (PIN) is a numeric or alphanumeric code used as a security measure to authenticate a user's identity, typically in electronic transactions or access control systems. PINs are widely used in various contexts, including banking, mobile devices, email accounts, and access to physical facilities.</p>
+                    <p>Privacy and policy, often referred to as privacy policies, are legal documents or statements that outline how an organization collects, uses, manages, and protects the personal information of individuals. Privacy policies are essential for maintaining transparency and establishing trust between businesses and their users or customers..</p>
                     <br /><br />
                     <div class="liner"></div>
-                    <h3>Transect Banking Company.</h3>
+                    <h3>Transact Banking Company.</h3>
 
                 </div>
 
