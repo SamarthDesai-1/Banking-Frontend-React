@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react'
 import '../style-css/Forget_Password.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+//loading bar
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Forget_Password() {
 
     const navigate = useNavigate();
-
     const [email, setemail] = useState("");
+
+    const [open, setOpen] = React.useState(false);
+
 
     const forgetpass = async () => {
 
-
         alert("Check your inbox mail and enter OTP below for authentication.");
-
+        setOpen(true);
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
     
         console.log(`Accessing session Token from sessionStorage : ${sessionToken}`);
@@ -52,10 +56,18 @@ function Forget_Password() {
             }
         });
         console.log(data);
+        setOpen(false);
     }
 
     return (
         <div className='Forget'>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            // onClick={handleClose}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <div class="container">
 
                 <div class="image-section">

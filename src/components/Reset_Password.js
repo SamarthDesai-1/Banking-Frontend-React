@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import '../style-css/Reset_Password.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+//loading bar
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 function Reset_Password() {
@@ -11,7 +14,11 @@ function Reset_Password() {
     const [password, setPassword] = useState();
     const [cpassword, setCpassword] = useState();
 
+    const [open, setOpen] = React.useState(false);
+
     const resetpass = async () => {
+
+        setOpen(true)
 
         const tokenString = sessionStorage.getItem("Random");
 
@@ -19,20 +26,20 @@ function Reset_Password() {
 
         if (password === cpassword) {
             const data = await axios.post('http://localhost:5000/test/api/users/reset-password', { password, cpassword, tokenString }, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
+                headers: {
+                    'Content-Type': 'application/json'
+                }
 
             }).then((data) => {
 
-            console.log(data);
-            console.log("Token string comming from forget-password page : ", tokenString);
+                console.log(data);
+                console.log("Token string comming from forget-password page : ", tokenString);
 
-            setPassword("");
-            setCpassword("");
-            alert("your password is reset succesfully")
+                setPassword("");
+                setCpassword("");
+                alert("your password is reset succesfully")
 
-            navigate("/Signup_Signin")
+                navigate("/Signup_Signin")
 
 
             }).catch(() => console.log("Error from API response"));
@@ -42,12 +49,20 @@ function Reset_Password() {
         else {
             alert("Retype password and confirm password");
         }
-        
+        setOpen(false)
+
     }
 
 
     return (
         <div className='Reset'>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            // onClick={handleClose}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <div class="container">
 
                 <div class="component-container">
