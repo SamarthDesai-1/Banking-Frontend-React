@@ -31,7 +31,7 @@ function Generate_PIN() {
         }
         else {
             console.log("PIN is already generated check dashBoard"); /* Or alert */
-            navigate("/PINvarify");
+            // navigate("/PINvarify");
         }
 
     };

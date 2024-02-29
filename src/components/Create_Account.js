@@ -52,8 +52,6 @@ function Create_Account() {
 
     const CreateAccount = async (e) => {
 
-        // e.preventDefault();
-
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
         const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
 
@@ -88,12 +86,12 @@ function Create_Account() {
         formData.append('sessionToken', sessionToken);
         formData.append('sessionEmail', sessionEmail);
 
-
-        const data = await axios.post('http://localhost:5000/test/api/users/open-account', formData, /* { FirstName, LastName, Photo, DOB, AccountType, Mobile, PanCard, AadharCard, Nominee, NomineeAadharCard, Address, MonthlyIncome, sessionToken, sessionEmail }, */ {
+        const data = await axios.post('http://localhost:5000/test/api/users/open-account', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
-        }).then((response) => {
+        }).then(response => {
+
             console.log(response);
         
             /* Redirect to Generate PIN page */
