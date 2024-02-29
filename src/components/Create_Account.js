@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import joi from 'joi';
 import { joiResolver } from '@hookform/resolvers/joi';
+//loading bar
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 const schema = joi.object({
@@ -48,11 +51,15 @@ function Create_Account() {
     const [MonthlyIncome, setMonthlyIncome] = useState("");
 
 
+    const [open, setOpen] = React.useState(false);
+
+
     const navigate = useNavigate();
 
     /** Test success */
     const CreateAccount = async (e) => {
         
+
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
         const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
 
@@ -86,13 +93,13 @@ function Create_Account() {
         formData.append('MonthlyIncome', MonthlyIncome);
         formData.append('sessionToken', sessionToken);
         formData.append('sessionEmail', sessionEmail);
-
         const data = await axios.post('http://localhost:5000/test/api/users/open-account', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         }).then(async response => {
-
+           setOpen(true)
+            
             console.log("API  executed : ", response);
             if (response?.status === 200) {
 
@@ -102,11 +109,14 @@ function Create_Account() {
             else {
                 console.log("Error regarding form");
             }
+            setOpen(false)
             
-        }).catch(e => { 
+        }).catch(e => {
 
-            console.log("Error : ", e);
-            
+            /** git push successfully */
+            console.log("Fill form properly error from frontend : ", e);
+            const error = e.response.data.msg;
+            alert(error);
          });
 
         console.log(data);
@@ -115,7 +125,14 @@ function Create_Account() {
 
     return (
         <div className='Create_account mb-4 mt-4'>
-            <form onSubmit={handleSubmit()}>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            // onClick={handleClose}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
+            <form action="" onSubmit={handleSubmit(CreateAccount)}>
                 <div style={{ paddingRight: "20px" }} className="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-4xl" data-v0-t="card">
                     <div className="flex flex-col space-y-1.5 p-6">
                         <h2 className=" font-semibold whitespace-nowrap leading-none tracking-tight">Open a new account</h2>
@@ -135,7 +152,7 @@ function Create_Account() {
                                     id="first-name"
                                     placeholder="Enter your first name"
                                 />
-                                {errors && errors.FirstName && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.FirstName.message}</p>}
+                                {errors && errors.FirstName && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.FirstName.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -149,7 +166,7 @@ function Create_Account() {
                                     id="last-name"
                                     placeholder="Enter your last name"
                                 />
-                                 {errors && errors.LastName && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.LastName.message}</p>}
+                                {errors && errors.LastName && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.LastName.message}</p>}
                             </div>
                         </div>
                         <div className="space-y-2">
@@ -165,7 +182,7 @@ function Create_Account() {
                                 accept="image/*"
                                 type="file"
                             />
-                             {/* {errors && errors.Photo && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Photo.message}</p>} */}
+                            {/* {errors && errors.Photo && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Photo.message}</p>} */}
                         </div>
                         <div className="grid grid-cols-2 gap-6">
                             <div className="space-y-2">
@@ -181,7 +198,7 @@ function Create_Account() {
                                     id="dob"
                                     type="date"
                                 />
-                                 {errors && errors.DOB && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.DOB.message}</p>}
+                                {errors && errors.DOB && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.DOB.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -209,7 +226,7 @@ function Create_Account() {
                                         <option value="Fix Deposit Account">Fix Deposit Account</option>
                                     </select>
                                 </div>
-                                {errors && errors.AccountType && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.AccountType.message}</p>}
+                                {errors && errors.AccountType && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.AccountType.message}</p>}
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-6">
@@ -226,7 +243,7 @@ function Create_Account() {
                                     placeholder="Enter your mobile number"
                                     type="tel"
                                 />
-                                 {errors && errors.Mobile && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Mobile.message}</p>}
+                                {errors && errors.Mobile && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.Mobile.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -241,7 +258,7 @@ function Create_Account() {
                                     id="pancard"
                                     placeholder="Enter your Pancard number"
                                 />
-                                {errors && errors.PanCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.PanCard.message}</p>}
+                                {errors && errors.PanCard && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.PanCard.message}</p>}
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-6">
@@ -257,7 +274,7 @@ function Create_Account() {
                                     id="adharcard"
                                     placeholder="Enter your Adharcard number"
                                 />
-                                 {errors && errors.AadharCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.AadharCard.message}</p>}
+                                {errors && errors.AadharCard && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.AadharCard.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -271,7 +288,7 @@ function Create_Account() {
                                     id="nominee"
                                     placeholder="Enter your nominee"
                                 />
-                                 {errors && errors.Nominee && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.Nominee.message}</p>}
+                                {errors && errors.Nominee && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.Nominee.message}</p>}
                             </div>
                         </div>
                         <div className="space-y-2">
@@ -286,7 +303,7 @@ function Create_Account() {
                                 id="nominee-adharcard"
                                 placeholder="Enter your nominee Adharcard number"
                             />
-                            {errors && errors.NomineeAadharCard && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.NomineeAadharCard.message}</p>}
+                            {errors && errors.NomineeAadharCard && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.NomineeAadharCard.message}</p>}
                         </div>
                         <div className="space-y-2">
                             <label
@@ -300,7 +317,7 @@ function Create_Account() {
                                 id="address"
                                 placeholder="Enter your address"
                             />
-                              {errors && errors.Address && <p style={{marginBottom:"0rem"}}  className='text-danger'>{errors.Address.message}</p>}
+                            {errors && errors.Address && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.Address.message}</p>}
                         </div>
                         <div className="space-y-2">
                             <label
@@ -314,13 +331,11 @@ function Create_Account() {
                                 id="income"
                                 placeholder="Enter your monthly income"
                             />
-                            {errors && errors.MonthlyIncome && <p style={{marginBottom:"0rem"}} className='text-danger'>{errors.MonthlyIncome.message}</p>}
+                            {errors && errors.MonthlyIncome && <p style={{ marginBottom: "0rem" }} className='text-danger'>{errors.MonthlyIncome.message}</p>}
                         </div>
                     </div>
                     <div className="items-center p-6 flex">
-                        <button onClick={CreateAccount} className="mb-4 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-5 py-4 ml-auto">
-                            Submit
-                        </button>
+                        <input type="submit" value="Submit" className="mb-4 btn btn-primary px-3" />
                     </div>
                 </div>
             </form>
