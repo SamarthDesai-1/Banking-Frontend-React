@@ -50,9 +50,9 @@ function Create_Account() {
 
     const navigate = useNavigate();
 
+    /** Test success */
     const CreateAccount = async (e) => {
-        // debugger
-
+        
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
         const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
 
