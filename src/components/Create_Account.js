@@ -51,6 +51,7 @@ function Create_Account() {
     const navigate = useNavigate();
 
     const CreateAccount = async (e) => {
+        debugger
 
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
         const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
@@ -90,13 +91,14 @@ function Create_Account() {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
-        }).then(response => {
+        }).then(async response => {
 
             console.log(response);
-            // if (response?.status === 200) {
+            if (response?.status === 200) {
 
+                /* Redirect to Generate PIN page */
                 navigate("/Generate_PIN");
-            // }
+            }
             /* Redirect to Generate PIN page */
         }).catch(e => { console.log(e); });
 
