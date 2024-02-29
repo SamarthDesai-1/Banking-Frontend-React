@@ -51,8 +51,6 @@ function Create_Account() {
     const navigate = useNavigate();
 
     const CreateAccount = async (e) => {
-        // debugger
-
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
         const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
 
@@ -104,6 +102,8 @@ function Create_Account() {
             }
             
         }).catch(e => { 
+
+            /** git push successfully */
             console.log("Fill form properly error from frontend : ", e);
             const error = e.response.data.msg;
             alert(error);
