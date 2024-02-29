@@ -105,10 +105,8 @@ function Create_Account() {
             
         }).catch(e => { 
 
-            /** git push successfully */
-            console.log("Fill form properly error from frontend : ", e);
-            const error = e.response.data.msg;
-            alert(error);
+            console.log("Error : ", e);
+            
          });
 
         console.log(data);
