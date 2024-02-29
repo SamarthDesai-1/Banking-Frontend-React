@@ -51,7 +51,6 @@ function Create_Account() {
     const navigate = useNavigate();
 
     const CreateAccount = async (e) => {
-        debugger
 
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
         const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
@@ -93,14 +92,21 @@ function Create_Account() {
             }
         }).then(async response => {
 
-            console.log(response);
+            console.log("API  executed : ", response);
             if (response?.status === 200) {
 
                 /* Redirect to Generate PIN page */
                 navigate("/Generate_PIN");
             }
-            /* Redirect to Generate PIN page */
-        }).catch(e => { console.log(e); });
+            else {
+                console.log("Error regarding form");
+            }
+            
+        }).catch(e => { 
+            console.log("Fill form properly error from frontend : ", e);
+            const error = e.response.data.msg;
+            alert(error);
+         });
 
         console.log(data);
     }
