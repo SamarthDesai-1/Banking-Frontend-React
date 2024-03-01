@@ -3,12 +3,20 @@ import '../style-css/Navbar.css';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+//loading
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 function Navbar() {
+
+  const [open, setOpen] = React.useState(false);
 
   const navigate = useNavigate();
 
   const verifyUser = async () => {
+
+    setOpen(true)
 
     const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
     const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
@@ -32,11 +40,19 @@ function Navbar() {
       console.log(e.response.data.msg);
       alert(e.response.data.msg);
     });
-
+    setOpen(false)
   };
 
   return (
     <>
+     <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            // onClick={handleClose}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
+
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand imgnav" href="#">Transact</a>

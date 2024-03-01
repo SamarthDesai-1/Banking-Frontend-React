@@ -79,15 +79,15 @@ function User_Profile() {
             <div style={{ borderTop: '1px solid #ddd', borderBottom: '1px solid #ddd', padding: '20px 0' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                 <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Email</div>
-                {/* <div style={{marginLeft:"218px"}}>{data.Email}</div> */}
+                <div style={{marginLeft:"218px"}}>{data.Email}</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                 <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Phone</div>
-                {/* <div style={{marginLeft:"212px"}}>{data.Mobile}</div> */}
+                <div style={{marginLeft:"212px"}}>{data.Mobile}</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                 <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Address</div>
-                {/* <div style={{marginLeft:"200px"}}>{data.Address}</div> */}
+                <div style={{marginLeft:"200px"}}>{data.Address}</div>
               </div>
             </div>
           </div>
