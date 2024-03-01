@@ -6,8 +6,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 function User_Profile() {
 
-  const [data, setData] = useState(undefined);
+  const [data, setData] = useState("");
   const [image, setImage] = useState();
+
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
@@ -32,11 +33,11 @@ function User_Profile() {
         });
         console.log("API execute successfully");
         console.log(response);
-        console.log("Response data : ", response.data.data[0]);
+        console.log("Response data : ", response.data.Data[0]);
 
-        console.log("Image Path : ", response.data.data[0].Photo);
-        setData(response.data.data[0]);
-        setImage(response.data.data[0].Photo);
+        console.log("Image Path : ", response.data.Data[0].Photo);
+        setData(response.data.Data[0]);
+        setImage(response.data.Data[0].Photo);
       }
       catch (error) {
         console.log("Error : ", error);
@@ -66,10 +67,10 @@ function User_Profile() {
               <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#ccc' }}></div>
               <div style={{ display: 'grid', gridGap: '5px' }}>
 
-                <img src={`http://localhost:5000/${data.Photo}`} alt='cannot load the image' style={{ width: '300px' }} />
+                <img src={`http://localhost:5000/uploads/${image}`} alt='cannot load the image' style={{ width: '300px' }} />
 
                 <h1 style={{fontSize: '1.5rem', fontWeight: 'bold', margin: 0}}>{`${data.FirstName} ${data.LastName}`}</h1>
-                <p style={{fontSize: '0.875rem', margin: 0, color: '#666'}}>Account No : {data._id}</p>
+                <p style={{fontSize: '0.875rem', margin: 0, color: '#666'}}>Account No : {!data ? "Waiting..." :  data._id}</p>
               </div>
               <div style={{ marginLeft: 'auto' }}>
                 <button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Edit Profile</button>

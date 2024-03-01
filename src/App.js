@@ -14,6 +14,7 @@ import Reset_Password from "./components/Reset_Password";
 import User_Profile from "./components/User_Profile";
 import ForgetPasswordOTP from "../src/components/ForgetPasswordOTP"
 import Generate_PIN from "./components/Generate_PIN";
+import FormComponent from "./components/FormDemo";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
           <Route exact path="/Create_Account" element={<Create_Account/>} />
           <Route exact path="/Generate_PIN" element={<Generate_PIN/>} />
           <Route exact path="/User_Profile" element={<User_Profile/>} />
+
+          
+          <Route exact path="/FormComponent" element={<FormComponent/>} />
         </Routes>
       </BrowserRouter>
   </>
