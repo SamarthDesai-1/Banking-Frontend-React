@@ -1,7 +1,70 @@
-import React from 'react'
-import '../style-css/PINvarify.css'
+import React, { useState } from 'react';
+import '../style-css/PINvarify.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function PINvarify() {
+
+    const [pin, setPin] = useState("");
+    const navigate = useNavigate();
+
+    const verifyPIN = async () => {
+
+        console.log("User click verify PIN");
+
+        const PIN = pin;
+
+        if (PIN === "") {
+            alert("Enter PIN first to access your profile");
+            return;
+        }
+
+        const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+        const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
+
+        console.log(PIN);
+        
+        try {
+            const response = await axios.post("http://localhost:5000/test/api/users/verify-pin", { PIN, sessionEmail, sessionToken }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then(response => {
+                if (response?.status === 200) {
+                    console.log(response);
+                    navigate("/User_Profile");
+                }
+            }).catch(async e => {
+                console.log(e.response.data.msg);
+                console.log("Error : ", e);
+                alert(e.response.data.msg);
+            })
+        }
+        catch(e) {
+            console.log("Error : ", e);
+        }
+    };
+
+    const forgetPIN = async () => {
+
+        const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
+        const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+        console.log("User click forget PIN");
+        alert("Check your inbox mail and enter OTP below for authentication.");
+
+        const data = await axios.post("http://localhost:5000/test/api/users/forget-pin", { sessionToken, sessionEmail }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            if (response?.status == 200) {
+                console.log(response);
+                navigate("/ForgetPINOTP");
+            }
+        }).catch(e => console.log("Error : ", e));
+
+    }
+
     return (
         <div className='pin'>
             <div class="container">
@@ -11,12 +74,12 @@ function PINvarify() {
                         <img src="./IMAGES/PINvarify.png" alt="" class="admin-image" />
                     </div>
                     <div class="form-section">
-                        <form method="post">
-                            <input type="password" class="format" placeholder="PIN" maxlength="4" name="pin" />
+                        <form>
+                            <input type="password" class="format" placeholder="PIN" maxlength="4" name="pin" onChange={(e) => setPin(e.target.value)} />
                             <br />
                             <div class="btn-section">
-                                <input type="submit" value="Verify" class="btn" name="subbtn" />
-                                <input type="submit" value="Forget PIN" class="btn-primary" />
+                                <input type="button" value="Verify" class="btn" name="subbtn" onClick={verifyPIN} />
+                                <input type="button" value="Forget PIN" class="btn-primary" onClick={forgetPIN} />
                             </div>
                         </form>
 
@@ -40,4 +103,4 @@ function PINvarify() {
     )
 }
 
-export default PINvarify
+export default PINvarify;

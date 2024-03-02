@@ -33,11 +33,11 @@ function User_Profile() {
         });
         console.log("API execute successfully");
         console.log(response);
-        console.log("Response data : ", response.data.Data[0]);
+        console.log("Response data : ", response.data.data[0]);
 
-        console.log("Image Path : ", response.data.Data[0].Photo);
-        setData(response.data.Data[0]);
-        setImage(response.data.Data[0].Photo);
+        console.log("Image Path : ", response.data.data[0].Photo);
+        setData(response.data.data[0]);
+        setImage(response.data.data[0].Photo);
       }
       catch (error) {
         console.log("Error : ", error);

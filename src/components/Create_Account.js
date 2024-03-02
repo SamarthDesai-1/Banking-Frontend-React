@@ -102,6 +102,10 @@ const Create_Account = () => {
         const formDataToSend = new FormData();
       
         console.log(PhototRef.current.files[0]);
+
+        console.log("Session Email : ", sessionEmail);
+        console.log("Session Token : ", sessionToken);
+
         formDataToSend.append("FirstName",formData.FirstName);
         formDataToSend.append("LastName",formData.LastName);
         formDataToSend.append('Photo',PhototRef.current.files[0]);
@@ -154,7 +158,7 @@ const Create_Account = () => {
 
             <form onSubmit={handleSubmit}>
 
-               <div style={{ paddingRight: "20px" }} className="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-4xl"              data-v0-t="card">
+               <div style={{ paddingRight: "20px" }} className="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-4xl" data-v0-t="card">
                     <div className="flex flex-col space-y-1.5 p-6">
                         <h2 className=" font-semibold whitespace-nowrap leading-none tracking-tight">Open a new account</h2>
                         <h4 className=" mt-3 text-sm text-muted-foreground">Enter your information to open a new account.</h4>

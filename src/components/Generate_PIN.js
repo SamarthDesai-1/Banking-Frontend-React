@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../style-css/Generate_PIN.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const forFirstTimeOnly = {
@@ -36,6 +37,37 @@ function Generate_PIN() {
 
     };
 
+    const savePin = async () => { /** call API of customer bank details. */
+
+        
+        const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
+        const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+        console.log("Session Email : ", sessionEmail);
+        console.log("Session Token : ", sessionToken);
+
+        console.log("Save PIN in call");
+        const PIN = forFirstTimeOnly.PIN;
+
+        const setPIN = async () => {
+            console.log("API call success");
+
+            const data = await axios.post("http://localhost:5000/test/api/users/customer-finance", { PIN, sessionEmail, sessionToken }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then(response => {
+                if (response?.status === 200) {
+                    console.log("PIN save successfully");
+                    alert("PIN set successfully kindly");
+                    navigate("/PINvarify");
+                }
+            }).catch(e => {
+                console.log("Something went wrong : ", e);
+            })
+        }
+        await setPIN();
+    };
+
 
     let flag = true;
     if (flag != false) {
@@ -62,7 +94,6 @@ function Generate_PIN() {
             document.querySelector("#open-popup").addEventListener("click", popup);
         }, 1000);
     }
-
 
     return (
         <div className='generatepin'>
@@ -113,7 +144,7 @@ function Generate_PIN() {
 
                             <div className="controls">
                                 <button className="close-btn">Close</button>
-                                <button className="submit-btn">Save</button>
+                                <button className="submit-btn" onClick={savePin}>Save</button>
                             </div>
                     </div>
                 </div>

@@ -15,6 +15,8 @@ import User_Profile from "./components/User_Profile";
 import ForgetPasswordOTP from "../src/components/ForgetPasswordOTP"
 import Generate_PIN from "./components/Generate_PIN";
 import FormComponent from "./components/FormDemo";
+import ForgetPINOTP from "./components/ForgetPINOTP";
+import Update_PIN from "./components/Updata_PIN";
 
 function App() {
   return (
@@ -36,7 +38,10 @@ function App() {
           <Route exact path="/PINvarify" element={<PINvarify/>} />
           <Route exact path="/Create_Account" element={<Create_Account/>} />
           <Route exact path="/Generate_PIN" element={<Generate_PIN/>} />
-          <Route exact path="/User_Profile" element={<User_Profile/>} />
+          <Route exact path="/Generate_PIN" element={<Generate_PIN/>} />
+          <Route exact path="/ForgetPINOTP" element={<ForgetPINOTP/>} />
+          <Route exact path="/ForgetPINOTP" element={<ForgetPINOTP/>} />
+          <Route exact path="/Update_PIN" element={<Update_PIN/>} />
 
           
           <Route exact path="/FormComponent" element={<FormComponent/>} />
