@@ -3,10 +3,13 @@ import '../style-css/Generate_PIN.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const forFirstTimeOnly = {
     PIN: undefined,
-    boolean: false 
+    boolean: false
 };
 
 function Generate_PIN() {
@@ -14,6 +17,9 @@ function Generate_PIN() {
     const navigate = useNavigate();
 
     const [randomNumber, setRandomNumber] = useState("");
+
+
+    const [open, setOpen] = React.useState(false);
 
     const generateRandomNumber = () => {
 
@@ -39,7 +45,7 @@ function Generate_PIN() {
 
     const savePin = async () => { /** call API of customer bank details. */
 
-        
+        setOpen(true)
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
         const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
         console.log("Session Email : ", sessionEmail);
@@ -66,6 +72,7 @@ function Generate_PIN() {
             })
         }
         await setPIN();
+        setOpen(true)
     };
 
 
@@ -97,6 +104,15 @@ function Generate_PIN() {
 
     return (
         <div className='generatepin'>
+
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            // onClick={handleClose}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
+
             <div className="container">
                 <div className="row">
                     <div className="col-md-6">
@@ -107,29 +123,29 @@ function Generate_PIN() {
                             {/* <h1 >Generate PIN from here.</h1> */}
                             <img src='./IMAGES/PINimage.webp' className='format-image' />
                             {/* <h3 className='mt-4'>By simply click on generate button.</h3> */}
-                          
+
                             <button onClick={() => generateRandomNumber()} type="button" className="btn mt-4" id="open-popup" >Generate</button>
                         </div>
                     </div>
 
                     <div className="col-md-6">
-                <div className="box-1">
+                        <div className="box-1">
 
-                        <div className="forget-section">
-                            <h1>Crendentials.</h1>
-                            <ul>
-                                <li>You can easily retrive your PIN using your Email.</li>
-                                <li>Don't share your PIN with third party it can harm your privacy & security.</li>
-                                <li>With PIN you can track your statements.</li>
-                                <li>PIN makes you safer mover from rest peoples.</li>
-                            </ul>
-                            <div className="company-section">
-                                <h4>Transact Payments.</h4>
+                            <div className="forget-section">
+                                <h1>Crendentials.</h1>
+                                <ul>
+                                    <li>You can easily retrive your PIN using your Email.</li>
+                                    <li>Don't share your PIN with third party it can harm your privacy & security.</li>
+                                    <li>With PIN you can track your statements.</li>
+                                    <li>PIN makes you safer mover from rest peoples.</li>
+                                </ul>
+                                <div className="company-section">
+                                    <h4>Transact Payments.</h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
 
                 </div>
 
@@ -139,13 +155,13 @@ function Generate_PIN() {
                     <div className="popup-content">
                         <h2>Your PIN</h2>
 
-                        <p>Protecting your PIN is crucial for safeguarding your financial security. Always opt for a PIN that is complex, comprising a mix of numbers, letters, and special characters, if possible. Aim for a longer PIN to enhance its strength against potential threats.</p><br/>
-                            <p><h4>{`Your Account PIN is : ${forFirstTimeOnly.PIN}`}</h4></p>
+                        <p>Protecting your PIN is crucial for safeguarding your financial security. Always opt for a PIN that is complex, comprising a mix of numbers, letters, and special characters, if possible. Aim for a longer PIN to enhance its strength against potential threats.</p><br />
+                        <p><h4>{`Your Account PIN is : ${forFirstTimeOnly.PIN}`}</h4></p>
 
-                            <div className="controls">
-                                <button className="close-btn">Close</button>
-                                <button className="submit-btn" onClick={savePin}>Save</button>
-                            </div>
+                        <div className="controls">
+                            <button className="close-btn">Close</button>
+                            <button className="submit-btn" onClick={savePin}>Save</button>
+                        </div>
                     </div>
                 </div>
 

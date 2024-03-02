@@ -6,13 +6,41 @@ import { useNavigate } from 'react-router-dom';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import OtpInput from 'react-otp-input';
+
 function ForgetPINOTP() {
 
   const navigate = useNavigate();
 
+  const [countdown, setCountdown] = useState(180);
+
   const [otp, setotp] = useState("");
 
+  const [otp1, setOtp1] = useState('');
+
   const [open, setOpen] = React.useState(false);
+
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown(prevCountdown => {
+        if (prevCountdown === 0) {
+          clearInterval(timer); // Stop the timer when countdown reaches 0
+          return 0;
+        } else {
+          return prevCountdown - 1;
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  };
 
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
@@ -20,7 +48,7 @@ function ForgetPINOTP() {
   /* Function */
 
   const sendotpdata = async () => {
-    // setOpen(true)
+
     console.log("API call soon");
     const data = await axios.post('http://localhost:5000/test/api/users/match-pin', { otp, sessionEmail, sessionToken }, {
       headers: {
@@ -35,12 +63,14 @@ function ForgetPINOTP() {
 
     }).catch((e) => alert("OTP is invalid"))
     setotp("");
-    // setOpen(false)
     if (data) {
       navigate("/Reset_Password");
     }
     handleVerifyOTP();
+
   }
+
+
 
   useEffect(() => {
     const inputs = document.querySelectorAll("input");
@@ -128,12 +158,18 @@ function ForgetPINOTP() {
                 <h4>Enter OTP Code</h4>
                 <form action="">
                   <div className="input-field">
-                    {[...Array(6)].map((_, index) => (
-                      <input key={index} type="number" disabled={index !== 0} />
-                    ))}
+                    <OtpInput
+                      inputStyle={{ width: "40px" }}
+                      value={otp1}
+                      onChange={setOtp1}
+                      numInputs={6}
+                      renderSeparator={<span>-</span>}
+                      renderInput={(props) => <input {...props} />}
+                    />
                   </div>
                   <button type='button' onClick={sendotpdata} className="btn" >Verify OTP</button>
                 </form>
+                <p>Time remaining: {formatTime(countdown)}</p>
               </div>
             </div>
           </div>

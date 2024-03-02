@@ -46,7 +46,7 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-5">
+                        <div className="col-md-6">
                             <div className="content-image-section" data-aos="zoom-in">
                                 <img className="image-setting" src="./IMAGES/img14.webp" alt="Error" />
                             </div>

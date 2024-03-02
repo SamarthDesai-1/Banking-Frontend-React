@@ -1,10 +1,10 @@
 .imgnav {
-  background: -webkit-linear-gradient(-45deg, #141c96, #e73c7e, #23a6d5, #23d5ab);
+  background: -webkit-linear-gradient(-45deg, #141c96, #2600ff, #3fc1f0, #ffffff);
   animation: gradient 15s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 30px;
-  text-shadow: 0px 0px 23px black;
+  /* text-shadow: 0px 0px 23px black; */
   font-weight: bold;
   margin-right: 20px;
 }

@@ -17,6 +17,7 @@ import Generate_PIN from "./components/Generate_PIN";
 import FormComponent from "./components/FormDemo";
 import ForgetPINOTP from "./components/ForgetPINOTP";
 import Update_PIN from "./components/Updata_PIN";
+import Edit_Profile from "./components/Edit_Profile";
 
 function App() {
   return (
@@ -42,9 +43,8 @@ function App() {
           <Route exact path="/ForgetPINOTP" element={<ForgetPINOTP/>} />
           <Route exact path="/ForgetPINOTP" element={<ForgetPINOTP/>} />
           <Route exact path="/Update_PIN" element={<Update_PIN/>} />
-
-          
           <Route exact path="/FormComponent" element={<FormComponent/>} />
+          <Route exact path="/Edit_Profile" element={<Edit_Profile/>} />
         </Routes>
       </BrowserRouter>
   </>

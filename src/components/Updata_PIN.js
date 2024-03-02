@@ -77,9 +77,9 @@ function Update_PIN() {
                         </div>
                         <div class="input-section">
                             <form action="" class="form-section">
-                                <input value={PIN} onChange={(e) => setPin(e.target.value)} type="password" class="format-text" placeholder="Enter new PIN" />
+                                <input  maxLength={4} value={PIN} onChange={(e) => setPin(e.target.value)} type="password" class="format-text" placeholder="Enter new PIN" />
                                 <div class="seperator"></div>
-                                <input value={CPIN} onChange={(e) => setCpin(e.target.value)} t type="password" class="format-text" placeholder="Confirm PIN" />
+                                <input maxLength={4}  value={CPIN} onChange={(e) => setCpin(e.target.value)} t type="password" class="format-text" placeholder="Confirm PIN" />
                                 <button onClick={resetPIN} type="button" class="btn">Reset PIN</button>
                             </form>
                         </div>

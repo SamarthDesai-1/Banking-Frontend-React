@@ -3,6 +3,8 @@ import axios from 'axios';
 import '../style-css/Otp.css';
 import { useNavigate } from 'react-router-dom';
 
+import OtpInput from 'react-otp-input';
+
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -13,6 +15,8 @@ function Otp() {
   const [otp, setotp] = useState('');
 
   const [open, setOpen] = React.useState(false);
+
+  const [otp1, setOtp1] = useState('');
 
 
   /* Function */
@@ -119,9 +123,14 @@ function Otp() {
                 <h4>Enter OTP Code</h4>
                 <form action="">
                   <div className="input-field">
-                    {[...Array(6)].map((_, index) => (
-                      <input key={index} type="number" disabled={index !== 0} />
-                    ))}
+                    <OtpInput
+                      inputStyle={{ width: "40px" }}
+                      value={otp1}
+                      onChange={setOtp1}
+                      numInputs={6}
+                      renderSeparator={<span>-</span>}
+                      renderInput={(props) => <input {...props} />}
+                    />
                   </div>
                   <button type='button' onClick={sendotpdata} className="btn" >Verify OTP</button>
                 </form>

@@ -2,10 +2,17 @@ import React, { useState } from 'react';
 import '../style-css/PINvarify.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+// loading bar
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function PINvarify() {
 
     const [pin, setPin] = useState("");
+
+
+    const [open, setOpen] = React.useState(false);
+
     const navigate = useNavigate();
 
     const verifyPIN = async () => {
@@ -23,7 +30,7 @@ function PINvarify() {
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
         console.log(PIN);
-        
+
         try {
             const response = await axios.post("http://localhost:5000/test/api/users/verify-pin", { PIN, sessionEmail, sessionToken }, {
                 headers: {
@@ -39,14 +46,16 @@ function PINvarify() {
                 console.log("Error : ", e);
                 alert(e.response.data.msg);
             })
+            
         }
-        catch(e) {
+        catch (e) {
             console.log("Error : ", e);
+            alert("Invalid PIN");
         }
     };
 
     const forgetPIN = async () => {
-
+        setOpen(true)
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
         const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
         console.log("User click forget PIN");
@@ -62,11 +71,19 @@ function PINvarify() {
                 navigate("/ForgetPINOTP");
             }
         }).catch(e => console.log("Error : ", e));
-
+        setOpen(false)
     }
 
     return (
         <div className='pin'>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            // onClick={handleClose}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
+
             <div class="container">
 
                 <div class="box-1">

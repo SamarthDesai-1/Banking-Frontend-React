@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import { NavLink } from 'react-router-dom';
 
 function User_Profile() {
 
@@ -64,30 +65,27 @@ function User_Profile() {
         <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '92vw' }}>
-              <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#ccc' }}></div>
+              <img src={`http://localhost:5000/uploads/${image}`} width="100" height="100"  style={{ borderRadius: '50%', objectFit: 'cover' }} />
               <div style={{ display: 'grid', gridGap: '5px' }}>
-
-                <img src={`http://localhost:5000/uploads/${image}`} alt='cannot load the image' style={{ width: '300px' }} />
-
-                <h1 style={{fontSize: '1.5rem', fontWeight: 'bold', margin: 0}}>{`${data.FirstName} ${data.LastName}`}</h1>
-                <p style={{fontSize: '0.875rem', margin: 0, color: '#666'}}>Account No : {!data ? "Waiting..." :  data._id}</p>
+                <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>{`${data.FirstName} ${data.LastName}`}</h1>
+                <p style={{ fontSize: '0.875rem', margin: 0, color: '#666' }}>Account No : {!data ? "Waiting..." : data._id}</p>
               </div>
-              <div style={{ marginLeft: 'auto' }}>
-                <button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Edit Profile</button>
+              <div style={{ position:"absolute",right:"35px"}}>
+               <NavLink to="/Edit_Profile"> <button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Edit Profile</button></NavLink>
               </div>
             </div>
             <div style={{ borderTop: '1px solid #ddd', borderBottom: '1px solid #ddd', padding: '20px 0' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                 <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Email</div>
-                <div style={{marginLeft:"218px"}}>{data.Email}</div>
+                <div style={{ marginLeft: "218px" }}>{data.Email}</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                 <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Phone</div>
-                <div style={{marginLeft:"212px"}}>{data.Mobile}</div>
+                <div style={{ marginLeft: "212px" }}>{data.Mobile}</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                 <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Address</div>
-                <div style={{marginLeft:"200px"}}>{data.Address}</div>
+                <div style={{ marginLeft: "200px" }}>{data.Address}</div>
               </div>
             </div>
           </div>
