@@ -16,6 +16,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const Create_Account = () => {
 
+  const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
+  const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const PhototRef = useRef();
@@ -95,10 +98,6 @@ const Create_Account = () => {
       console.log("API execute successfully");
       console.log("Form Data : ", formData);
 
-      const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
-      const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
-
-      console.log(sessionEmail);
       const formDataToSend = new FormData();
 
       console.log(PhototRef.current.files[0]);
@@ -117,7 +116,7 @@ const Create_Account = () => {
       formDataToSend.append('sessionToken', sessionToken);
       formDataToSend.append('sessionEmail', sessionEmail);
 
-      console.log("Form Data to send : ", formDataToSend);
+      console.log("Form data : ", formData);
       
       const response = await axios.post('http://localhost:5000/test/api/users/open-account', formDataToSend, {
         method: 'POST',
