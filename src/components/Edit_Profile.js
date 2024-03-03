@@ -28,7 +28,6 @@ function Edit_Profile() {
   });
 
   useEffect(() => {
-
     /** Fetch data from Account open database */
 
     const fetchData = async () => {
@@ -39,6 +38,7 @@ function Edit_Profile() {
       console.log("Session Token : ", sessionToken);
 
       try {
+        setOpen(true)
         console.log("API execute soon");
         const response = await axios.post("http://localhost:5000/test/api/users/fetch-account-details", { sessionEmail, sessionToken }, {
           headers: {
@@ -54,11 +54,10 @@ function Edit_Profile() {
       catch (error) {
         console.log("Error : ", error);
       }
-    
+      setOpen(false)
     };
 
     fetchData();
-
   }, []);
 
   const [open, setOpen] = useState(false);
@@ -124,8 +123,8 @@ function Edit_Profile() {
     console.log("Handle submit is call");
 
     // If form data is valid, proceed to API call
+    setOpen(true)
     try {
-      setOpen(true)
       console.log("API execute successfully");
       console.log("Form Data : ", formData);
 
