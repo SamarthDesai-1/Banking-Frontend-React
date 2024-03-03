@@ -68,7 +68,7 @@ function User_Profile() {
               <img src={`http://localhost:5000/uploads/${image}`} width="100" height="100"  style={{ borderRadius: '50%', objectFit: 'cover' }} />
               <div style={{ display: 'grid', gridGap: '5px' }}>
                 <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>{`${data.FirstName} ${data.LastName}`}</h1>
-                <p style={{ fontSize: '0.875rem', margin: 0, color: '#666' }}>Account No : {!data ? "Waiting..." : data._id}</p>
+                <p style={{ fontSize: '0.875rem', margin: 0, color: '#666' }}>Account No : { !data ? "Waiting..." : data._id }</p>
               </div>
               <div style={{ position:"absolute",right:"35px"}}>
                <NavLink to="/Edit_Profile"> <button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Edit Profile</button></NavLink>
@@ -83,10 +83,12 @@ function User_Profile() {
                 <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Phone</div>
                 <div style={{ marginLeft: "212px" }}>{data.Mobile}</div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+
+              {/* <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                 <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Address</div>
                 <div style={{ marginLeft: "200px" }}>{data.Address}</div>
-              </div>
+              </div> */}
+              
             </div>
           </div>
         </div>
@@ -96,15 +98,15 @@ function User_Profile() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                 <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Number</div>
-                {/* <div style={{marginLeft:"180px"}}>{data._id}</div> */}
+                <div style={{marginLeft:"180px"}}>{data._id}</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                 <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Type</div>
-                {/* <div style={{marginLeft:"180px"}}>{data.AccountType}</div> */}
+                <div style={{marginLeft:"180px"}}>{data.AccountType}</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                 <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Balance</div>
-                <div style={{ marginLeft: "244px" }}>$5,432.10</div>
+                <div style={{ marginLeft: "244px" }}>${data.Balance}</div>
               </div>
             </div>
           </div>

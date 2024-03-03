@@ -142,7 +142,6 @@ const Create_Account = () => {
     setOpen(false)
   };
 
-
   return (
     <div className='Create_account mb-4 mt-4'>
 
