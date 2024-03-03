@@ -12,15 +12,15 @@ function ForgetPINOTP() {
 
   const navigate = useNavigate();
 
-  const [countdown, setCountdown] = useState(180);
-
+  
   const [otp, setotp] = useState("");
-
+  
   const [otp1, setOtp1] = useState('');
-
+  
   const [open, setOpen] = React.useState(false);
-
-
+  
+  
+  const [countdown, setCountdown] = useState(180);
   useEffect(() => {
     const timer = setInterval(() => {
       setCountdown(prevCountdown => {

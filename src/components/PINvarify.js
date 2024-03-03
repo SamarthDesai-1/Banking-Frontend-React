@@ -30,7 +30,7 @@ function PINvarify() {
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
         console.log(PIN);
-
+        setOpen(true)
         try {
             const response = await axios.post("http://localhost:5000/test/api/users/verify-pin", { PIN, sessionEmail, sessionToken }, {
                 headers: {
@@ -52,6 +52,7 @@ function PINvarify() {
             console.log("Error : ", e);
             alert("Invalid PIN");
         }
+        setOpen(false)
     };
 
     const forgetPIN = async () => {

@@ -18,6 +18,27 @@ function Otp() {
 
   const [otp1, setOtp1] = useState('');
 
+  const [countdown, setCountdown] = useState(180);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown(prevCountdown => {
+        if (prevCountdown === 0) {
+          clearInterval(timer); // Stop the timer when countdown reaches 0
+          return 0;
+        } else {
+          return prevCountdown - 1;
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  };
 
   /* Function */
 
@@ -134,6 +155,7 @@ function Otp() {
                   </div>
                   <button type='button' onClick={sendotpdata} className="btn" >Verify OTP</button>
                 </form>
+                <p>Time remaining: {formatTime(countdown)}</p>
               </div>
             </div>
           </div>
