@@ -1,0 +1,13 @@
+.account .row{
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0
+}
+.account .accountform{
+    padding-left: 40px;
+}
+.accountform input{
+    border: 1px solid black;
+}
+.accountform textarea{
+    border: 1px solid black;
+}

@@ -1,0 +1,10 @@
+.Transection .download{
+position: absolute;
+right: 35px;
+top: 85px;
+font-size: 50px;
+}
+.Transection .row{
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0
+}

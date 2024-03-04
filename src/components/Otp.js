@@ -52,7 +52,7 @@ function Otp() {
     setotp("");
     setOpen(false)
     if (data) {
-      navigate("/")
+      navigate("/Signup_Signin")
     }
     handleVerifyOTP();
   }

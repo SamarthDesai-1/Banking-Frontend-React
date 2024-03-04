@@ -18,6 +18,14 @@ import FormComponent from "./components/FormDemo";
 import ForgetPINOTP from "./components/ForgetPINOTP";
 import Update_PIN from "./components/Updata_PIN";
 import Edit_Profile from "./components/Edit_Profile";
+import Deshbord_Navbar from "./components/Deshbord_Navbar";
+import Deshbord_Sidebar from "./components/Deshbord_Sidebar";
+import Deshbord from "./components/Deshbord";
+import Account_Transfer from "./components/Account_Transfer";
+import NotFound from "./components/NotFound";
+import Transection from "./components/Transection";
+import Add_Money from "./components/Add_Money";
+import Withdrow from "./components/Withdrow";
 
 function App() {
   return (
@@ -45,6 +53,14 @@ function App() {
           <Route exact path="/Update_PIN" element={<Update_PIN/>} />
           <Route exact path="/FormComponent" element={<FormComponent/>} />
           <Route exact path="/Edit_Profile" element={<Edit_Profile/>} />
+          <Route exact path="/Deshbord_Navbar" element={<Deshbord_Navbar/>} />
+          <Route exact path="/Deshbord_Sidebar" element={<Deshbord_Sidebar/>} />
+          <Route exact path="/Deshbord" element={<Deshbord/>} />
+          <Route exact path="/Account_Transfer" element={<Account_Transfer/>} />
+          <Route exact path="/NotFound" element={<NotFound/>} />
+          <Route exact path="/Transection" element={<Transection/>} />
+          <Route exact path="/Add_Money" element={<Add_Money/>} />
+          <Route exact path="/Withdrow" element={<Withdrow/>} />
         </Routes>
       </BrowserRouter>
   </>
