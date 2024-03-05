@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 function NotFound() {
   return (
 
-    // ready for NotFound
+    // ready for NotFound.
     <div className='notfound'>
        <div className="container">
       <section>
