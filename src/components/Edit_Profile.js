@@ -159,7 +159,6 @@ function Edit_Profile() {
         },
       }).then(response => {
         if (response?.status === 200) {
-          // Handle successful API call
           console.log(response);
           console.log('Data updated successfully.');
           navigate("/PINvarify");
