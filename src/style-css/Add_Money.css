@@ -8,3 +8,6 @@
 .money input{
     border: 1px solid black;
 }
+.pin-only {
+    letter-spacing: 1rem;
+}

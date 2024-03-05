@@ -11,3 +11,6 @@
 .accountform textarea{
     border: 1px solid black;
 }
+.pin-only {
+    letter-spacing: 1rem;
+}
