@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../style-css/User_Profile.css'
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { NavLink } from 'react-router-dom';
+import Deshbord_Navbar from './Deshbord_Navbar';
+import Deshbord_Sidebar from './Deshbord_Sidebar';
 
 function User_Profile() {
 
@@ -53,7 +56,7 @@ function User_Profile() {
   // console.log("Data : ", data.data[0]);
 
   return (
-    <div>
+    <div className='user'>
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
@@ -61,10 +64,17 @@ function User_Profile() {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-      <div style={{ minHeight: '100vh', backgroundColor: '#f3f4f6', display: 'grid', gridTemplateRows: 'auto 1fr auto', color: '#111', fontFamily: 'Arial, sans-serif' }}>
+
+      <Deshbord_Navbar></Deshbord_Navbar>
+      <div className="row usermain">
+        <div className="col-sm-3">
+        <Deshbord_Sidebar></Deshbord_Sidebar>
+        </div>
+        <div className="col-sm-9">
+        <div style={{ minHeight: '100vh', backgroundColor: '#f3f4f6', display: 'grid', gridTemplateRows: 'auto 1fr auto', color: '#111', fontFamily: 'Arial, sans-serif' }}>
         <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '92vw' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '70vw' }}>
               <img src={`http://localhost:5000/uploads/${image}`} width="100" height="100"  style={{ borderRadius: '50%', objectFit: 'cover' }} />
               <div style={{ display: 'grid', gridGap: '5px' }}>
                 <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>{`${data.FirstName} ${data.LastName}`}</h1>
@@ -111,7 +121,7 @@ function User_Profile() {
             </div>
           </div>
         </div>
-        <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto', width: '92vw' }}>
+        <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto', width: '70vw' }}>
           <div>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: '0 0 10px' }}>Transaction History</h2>
             <div style={{ overflowX: 'auto' }}>
@@ -158,6 +168,8 @@ function User_Profile() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
         </div>
       </div>
 

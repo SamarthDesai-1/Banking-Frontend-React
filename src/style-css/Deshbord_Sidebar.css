@@ -1,0 +1,24 @@
+ .sidebar {
+    background-color: #f8f9fa;
+    height: 100vh;
+    color: rgb(135, 135, 135);
+  }
+   .sidenav .row {
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0;
+  }
+  .sidebar .menuname {
+    list-style: none;
+    margin-bottom: 30px;
+  }
+  .sidebar .uimenu{
+      margin-top: 50px;
+  }
+  .sidebar .menuname .linka {
+    text-decoration: none;
+    color: rgb(135, 135, 135);
+  }
+  .sidebar .iconmi{
+      position: relative;
+      right: 10px;
+  }

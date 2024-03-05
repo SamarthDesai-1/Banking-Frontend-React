@@ -1,0 +1,10 @@
+.money .row{
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0
+}
+.money .addform{
+    padding-left: 40px;
+}
+.money input{
+    border: 1px solid black;
+}

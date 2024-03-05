@@ -1,0 +1,13 @@
+.Withdrow .row{
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0
+}
+.Withdrow .withdrowform{
+    padding-left: 40px;
+}
+.Withdrow input{
+    border: 1px solid black;
+}
+.Withdrow textarea{
+    border: 1px solid black;
+}
