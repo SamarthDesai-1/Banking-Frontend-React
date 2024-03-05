@@ -1,0 +1,18 @@
+.applydebit .row{
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0
+}
+.applydebit .debitappbtn{
+    position: absolute;
+    top: 315px;
+    left: 60px;
+}
+.applydebit .carddebit{
+    width:60vw;
+    display: flex;
+    text-align: center;
+    margin:  60px auto;
+}
+.applydebit .sidebar{
+    height: 138vh;
+}

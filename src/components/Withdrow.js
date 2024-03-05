@@ -4,9 +4,15 @@ import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import Deshbord_Navbar from "./Deshbord_Navbar";
 import axios from "axios";
 
+//loading bar
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 function Withdrow() {
   const [amount, setAmount] = useState();
   const [pin, setPin] = useState("");
+
+  const [open, setOpen] = React.useState(false);
 
   const handleData = async () => {
     const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
@@ -18,39 +24,50 @@ function Withdrow() {
     console.log(`Amount : ${amount} Pin : ${pin}`);
 
     try {
+      setOpen(true)
       if (amount !== undefined && pin !== "") {
         const data = await axios.post("http://localhost:5000/test/api/users/withdraw-funds", { sessionEmail, sessionToken, amount, pin }, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
+          headers: {
+            'Content-Type': 'application/json'
+          }
         }).then(response => {
 
-            console.log(response);
+          console.log(response);
 
-            // setAmount();
-            // setPin("")
+          // setAmount();
+          // setPin("")
 
         }).catch(e => {
-            let msgFromServer = e.response.data.msg;
-            console.log("Server says : ",msgFromServer);
-            alert(msgFromServer);
-            return;
+          let msgFromServer = e.response.data.msg;
+          console.log("Server says : ", msgFromServer);
+          alert(msgFromServer);
+          return;
         })
       } else {
         alert("Fill the add funds details properly");
         return;
       }
-    } catch (error) {}
+    } catch (error) { }
+    setOpen(false)
   };
 
   return (
     <div className="Withdrow">
+
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+
       <Deshbord_Navbar></Deshbord_Navbar>
       <div className="row">
         <div className="col-sm-3">
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
-        <div className="col-sm-4 withdrowform">
+        <div className="col-sm-6 withdrowform">
           <form className="p-5">
             <h2 className="">Withdraw Money</h2>
             <p>Enter the amount you eant to Withdrow.</p>

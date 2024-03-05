@@ -4,6 +4,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PaidIcon from '@mui/icons-material/Paid';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
 import AddIcon from '@mui/icons-material/Add';
 import '../style-css/Deshbord_Sidebar.css'
 import { NavLink } from 'react-router-dom';
@@ -47,6 +48,10 @@ function Deshbord_Sidebar() {
                                     <li className='menuname'>
                                         <NavLink to="/Transection" className='linka'>Transection</NavLink>
                                         <FileCopyIcon style={{ position: "relative", left: "122px" }}></FileCopyIcon>
+                                    </li>
+                                    <li className='menuname'>
+                                        <NavLink to="/Applydebit" className='linka'>Debit Card</NavLink>
+                                        <CreditCardIcon style={{ position: "relative", left: "131px" }}></CreditCardIcon>
                                     </li>
                                 </ul>
                             </div>

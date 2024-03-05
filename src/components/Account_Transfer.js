@@ -5,12 +5,18 @@ import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import { useState } from "react";
 import axios from "axios";
 
+//loading bar
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 function Account_Transfer() {
 
   const [amount, setAmount] = useState();
   const [pin, setPin] = useState("");
   const [msg, setMsg] = useState("");
   const [recevier, setRecevierAccount] = useState("");
+
+  const [open, setOpen] = React.useState(false);
 
   const handleData = async () => {
     console.log("Handle data");
@@ -27,6 +33,7 @@ function Account_Transfer() {
     console.log(recevier);
 
     try {
+      setOpen(true)
         if (amount !== undefined && pin !== undefined && msg !== undefined && recevier !== undefined) {
             const data = await axios.post("http://localhost:5000/test/api/users/tranfer-funds", { sessionEmail, sessionToken, amount, pin, msg, recevier }, {
                 'Content-Type': 'application/json'
@@ -49,6 +56,7 @@ function Account_Transfer() {
             alert("Fill fields properly");
             return;
         }
+        setOpen(false)
     }
     catch (error) {}
   };
@@ -56,12 +64,19 @@ function Account_Transfer() {
 
   return (
     <div className="account">
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Deshbord_Navbar></Deshbord_Navbar>
       <div className="row">
         <div className="col-sm-3">
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
-        <div className="col-sm-4 accountform">
+        <div className="col-sm-6 accountform">
           <form className="p-5">
             <h2 className="">Transfer Account</h2>
             <p>Enter the amount you eant to Transfer.</p>

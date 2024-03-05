@@ -26,6 +26,9 @@ import NotFound from "./components/NotFound";
 import Transection from "./components/Transection";
 import Add_Money from "./components/Add_Money";
 import Withdrow from "./components/Withdrow";
+import Applydebit from "./components/Applydebit";
+import Dabitcard_form from "./components/Dabitcard_form";
+import Debitcard from "./components/Debitcard";
 
 function App() {
   return (
@@ -59,6 +62,9 @@ function App() {
           <Route exact path="/Transection" element={<Transection/>} />
           <Route exact path="/Add_Money" element={<Add_Money/>} />
           <Route exact path="/Withdrow" element={<Withdrow/>} />
+          <Route exact path="/Applydebit" element={<Applydebit/>} />
+          <Route exact path="/Dabitcard_form" element={<Dabitcard_form/>} />
+          <Route exact path="/Debitcard" element={<Debitcard/>} />
         </Routes>
       </BrowserRouter>
   </>

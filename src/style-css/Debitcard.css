@@ -1,0 +1,25 @@
+.debitcard .row{
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0
+}
+.debitcard .debit{
+    width:60vw;
+    display: flex;
+    text-align: center;
+    margin:  60px auto;
+}
+.debitcard .cardno{
+    position: absolute;
+    top: 340px;
+    left: 150px;
+}
+.debitcard .expire{
+    position: absolute;
+    top: 240px;
+    right: 300px;
+}
+.debitcard .cvv{
+    position: absolute;
+    top: 200px;
+    right: 322px;
+}

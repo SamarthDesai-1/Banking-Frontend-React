@@ -14,3 +14,6 @@
 .pin-only {
     letter-spacing: 1rem;
 }
+.account .sidebar{
+    height: 106vh;
+}

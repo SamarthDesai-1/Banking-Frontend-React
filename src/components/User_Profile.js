@@ -68,60 +68,100 @@ function User_Profile() {
       <Deshbord_Navbar></Deshbord_Navbar>
       <div className="row usermain">
         <div className="col-sm-3">
-        <Deshbord_Sidebar></Deshbord_Sidebar>
+          <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
         <div className="col-sm-9">
-        <div style={{ minHeight: '100vh', backgroundColor: '#f3f4f6', display: 'grid', gridTemplateRows: 'auto 1fr auto', color: '#111', fontFamily: 'Arial, sans-serif' }}>
-        <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '70vw' }}>
-              <img src={`http://localhost:5000/uploads/${image}`} width="100" height="100"  style={{ borderRadius: '50%', objectFit: 'cover' }} />
-              <div style={{ display: 'grid', gridGap: '5px' }}>
-                <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>{`${data.FirstName} ${data.LastName}`}</h1>
-                <p style={{ fontSize: '0.875rem', margin: 0, color: '#666' }}>Account No : { !data ? "Waiting..." : data._id }</p>
-              </div>
-              <div style={{ position:"absolute",right:"35px"}}>
-               <NavLink to="/Edit_Profile"> <button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Edit Profile</button></NavLink>
+          <div style={{ minHeight: '100vh', backgroundColor: '#f3f4f6', display: 'grid', gridTemplateRows: 'auto 1fr auto', color: '#111', fontFamily: 'Arial, sans-serif' }}>
+            <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '20px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '70vw' }}>
+                  <img src={`http://localhost:5000/uploads/${image}`} width="100" height="100" style={{ borderRadius: '50%', objectFit: 'cover' }} />
+                  <div style={{ display: 'grid', gridGap: '5px' }}>
+                    <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>{`${data.FirstName} ${data.LastName}`}</h1>
+                    <p style={{ fontSize: '0.875rem', margin: 0, color: '#666' }}>Account No : {!data ? "Waiting..." : data._id}</p>
+                  </div>
+                  <div style={{ position: "absolute", right: "35px" }}>
+                    <NavLink to="/Edit_Profile"> <button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Edit Profile</button></NavLink>
+                  </div>
+                </div>
+                {/* content */}
               </div>
             </div>
-            <div style={{ borderTop: '1px solid #ddd', borderBottom: '1px solid #ddd', padding: '20px 0' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
-                <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Email</div>
-                <div style={{ marginLeft: "218px" }}>{data.Email}</div>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
-                <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Phone</div>
-                <div style={{ marginLeft: "212px" }}>{data.Mobile}</div>
+            <div style={{ borderTop: '1px solid #ddd', padding: '20px 0' }}>
+              <div className="d-flex">
+                <h2 style={{ fontWeight: 'bold', color: '#666' }} className='ps-4'>Balance</h2>
+                <h2 className='ms-5'>${data.Balance}</h2>
               </div>
 
-              {/* <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
-                <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Address</div>
-                <div style={{ marginLeft: "200px" }}>{data.Address}</div>
-              </div> */}
-              
+              <hr />
+              <div style={{ padding: '0 20px', maxWidth: '1200px', margin: '0 auto' }}>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: '0 0 10px' }}>Account Details</h2>
+                {/* <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}> */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Number</div>
+                  <div style={{ marginLeft: "230px" }}>{data._id}</div>
+                </div>
+                {/* </div> */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Type</div>
+                  <div style={{ marginLeft: "254px" }}>{data.AccountType}</div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>IFSC</div>
+                  <div style={{ marginLeft: "322px" }}>${data.Balance}</div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>MICR</div>
+                  <div style={{ marginLeft: "316px" }}>${data.Balance}</div>
+                </div>
+                <hr />
+
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: '0 0 10px' }}>Personal Details</h2>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>First Name</div>
+                  <div style={{ marginLeft: "275px" }}>{data.Email}</div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Last Name</div>
+                  <div style={{ marginLeft: "277px" }}>{data.Mobile}</div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Mobile Number</div>
+                  <div style={{ marginLeft: "243px" }}>{data.Mobile}</div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Email Address</div>
+                  <div style={{ marginLeft: "251px" }}>{data.Mobile}</div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Pancard Number</div>
+                  <div style={{ marginLeft: "231px" }}>{data.Mobile}</div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>AadharCard Number</div>
+                  <div style={{ marginLeft: "202px" }}>{data.Mobile}</div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Nominee</div>
+                  <div style={{ marginLeft: "289px" }}>{data.Mobile}</div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>NomineeAadharCard Number</div>
+                  <div style={{ marginLeft: "137px" }}>{data.Mobile}</div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Address</div>
+                  <div style={{ marginLeft: "295px" }}>{data.Mobile}</div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Date of Birth</div>
+                  <div style={{ marginLeft: "266px" }}>{data.Mobile}</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div style={{ borderTop: '1px solid #ddd', padding: '20px 0' }}>
-          <div style={{ padding: '0 20px', maxWidth: '1200px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: '0 0 10px' }}>Account Details</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
-                <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Number</div>
-                <div style={{marginLeft:"180px"}}>{data._id}</div>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
-                <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Type</div>
-                <div style={{marginLeft:"180px"}}>{data.AccountType}</div>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
-                <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Balance</div>
-                <div style={{ marginLeft: "244px" }}>${data.Balance}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto', width: '70vw' }}>
+
+            {/* <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto', width: '70vw' }}>
           <div>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: '0 0 10px' }}>Transaction History</h2>
             <div style={{ overflowX: 'auto' }}>
@@ -156,20 +196,20 @@ function User_Profile() {
               </table>
             </div>
           </div>
-        </div>
-        <div style={{ borderTop: '1px solid #ddd', padding: '20px 0' }}>
-          <div style={{ padding: '0 20px', maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <div>
-                <button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Transfer Funds</button>
-              </div>
-              <div>
-                <button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>View Statements</button>
+        </div> */}
+            <div style={{ borderTop: '1px solid #ddd', padding: '20px 0' }}>
+              <div style={{ padding: '0 20px', maxWidth: '1200px', margin: '0 auto' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <div>
+                    <NavLink to="/Account_Transfer"><button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Transfer Funds</button></NavLink>
+                  </div>
+                  <div>
+                    <NavLink to="/Transection"><button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>View Statements</button></NavLink>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
         </div>
       </div>
 
