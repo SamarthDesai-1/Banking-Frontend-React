@@ -37,7 +37,6 @@ function Transection() {
                                     </div>
                             </div>
 
-
                             <div className="trans p-4 mt-3">
                                 <table class="table table-striped">
                                     <thead>
