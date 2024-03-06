@@ -73,8 +73,9 @@
     height: 50px;
     background: #f0f0f0;
     margin: 10px 0;
-    border: 2px solid #1c4ecc;
-    border-radius: 50px;
+    border: 1px solid #1c4ecc;
+    /* border-radius: 50px; */
+    border-radius: 10px;
     display: flex;
     align-items: center;
 }
@@ -98,7 +99,7 @@
     width: 150px;
     height: 50px;
     border: none;
-    border-radius: 50px;
+    border-radius: 10px;
     background: #1c4ecc;
     color: #fff;
     font-weight: 600;
@@ -255,3 +256,6 @@
     }
 }
 
+.text-samarth {
+    font-weight: bold;
+}

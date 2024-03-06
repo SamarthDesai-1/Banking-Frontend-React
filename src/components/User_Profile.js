@@ -8,52 +8,24 @@ import { NavLink } from 'react-router-dom';
 import Deshbord_Navbar from './Deshbord_Navbar';
 import Deshbord_Sidebar from './Deshbord_Sidebar';
 
+import { useLocation } from 'react-router-dom';
+
 function User_Profile() {
 
-  const [data, setData] = useState("");
+  // const { DataOBJ } = location.state;
+  const location = useLocation();
+  console.log(location.state.foo);
+
+
+  // const [data, setData] = useState("");
   const [image, setImage] = useState();
+  const [accountOpenData, setAccountOpenData] = useState("");
 
-  const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
-  const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-
-    /** Send email from session storage to API */
-    /** Call fetch customer financial API */
-
-    const fetchData = async () => {
-
-      setOpen(true)
-      console.log("Session Token : ", sessionToken);
-
-      try {
-        console.log("API execute soon");
-        const response = await axios.post("http://localhost:5000/test/api/users/customer-finance", { sessionEmail, sessionToken }, {
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        });
-        console.log("API execute successfully");
-        console.log(response);
-        console.log("Response data : ", response.data.data[0]);
-
-        console.log("Image Path : ", response.data.data[0].Photo);
-        setData(response.data.data[0]);
-        setImage(response.data.data[0].Photo);
-      }
-      catch (error) {
-        console.log("Error : ", error);
-      }
-      setOpen(false)
-    };
-
-    fetchData();
-
-  }, []);
-
-  // console.log("Data : ", data.data[0]);
+  console.log("Customer data comming from deshboard");
+  // console.log(DataOBJ);
 
   return (
     <div className='user'>
@@ -75,10 +47,10 @@ function User_Profile() {
             <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '20px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '70vw' }}>
-                  <img src={`http://localhost:5000/uploads/${image}`} width="100" height="100" style={{ borderRadius: '50%', objectFit: 'cover' }} />
+                  {/* <img src={`http://localhost:5000/uploads/${image}`} width="100" height="100" style={{ borderRadius: '50%', objectFit: 'cover' }} /> */}
                   <div style={{ display: 'grid', gridGap: '5px' }}>
-                    <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>{`${data.FirstName} ${data.LastName}`}</h1>
-                    <p style={{ fontSize: '0.875rem', margin: 0, color: '#666' }}>Account No : {!data ? "Waiting..." : data._id}</p>
+                    {/* <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>{`${data.FirstName} ${data.LastName}`}</h1> */}
+                    {/* <p style={{ fontSize: '0.875rem', margin: 0, color: '#666' }}>Customer ID : {!data ? "Waiting..." : data._id}</p> */}
                   </div>
                   <div style={{ position: "absolute", right: "35px" }}>
                     <NavLink to="/Edit_Profile"> <button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Edit Profile</button></NavLink>
@@ -90,7 +62,7 @@ function User_Profile() {
             <div style={{ borderTop: '1px solid #ddd', padding: '20px 0' }}>
               <div className="d-flex">
                 <h2 style={{ fontWeight: 'bold', color: '#666' }} className='ps-4'>Balance</h2>
-                <h2 className='ms-5'>${data.Balance}</h2>
+                {/* <h2 className='ms-5'>${data.Balance}</h2> */}
               </div>
 
               <hr />
@@ -99,20 +71,20 @@ function User_Profile() {
                 {/* <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}> */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Number</div>
-                  <div style={{ marginLeft: "230px" }}>{data._id}</div>
+                  {/* <div style={{ marginLeft: "230px" }}>{data.AccountNo}</div> */}
                 </div>
                 {/* </div> */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Type</div>
-                  <div style={{ marginLeft: "254px" }}>{data.AccountType}</div>
+                  {/* <div style={{ marginLeft: "254px" }}>{data.AccountType}</div> */}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>IFSC</div>
-                  <div style={{ marginLeft: "322px" }}>${data.Balance}</div>
+                  {/* <div style={{ marginLeft: "322px" }}>{data.IFSC}</div> */}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>MICR</div>
-                  <div style={{ marginLeft: "316px" }}>${data.Balance}</div>
+                  {/* <div style={{ marginLeft: "316px" }}>{data.MICR}</div> */}
                 </div>
                 <hr />
 
@@ -120,83 +92,47 @@ function User_Profile() {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>First Name</div>
-                  <div style={{ marginLeft: "275px" }}>{data.Email}</div>
+                  {/* <div style={{ marginLeft: "275px" }}>{data.FirstName}</div> */}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Last Name</div>
-                  <div style={{ marginLeft: "277px" }}>{data.Mobile}</div>
+                  {/* <div style={{ marginLeft: "277px" }}>{data.LastName}</div> */}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Mobile Number</div>
-                  <div style={{ marginLeft: "243px" }}>{data.Mobile}</div>
+                  {/* <div style={{ marginLeft: "243px" }}>{data.Mobile}</div> */}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Email Address</div>
-                  <div style={{ marginLeft: "251px" }}>{data.Mobile}</div>
+                  {/* <div style={{ marginLeft: "251px" }}>{data.Email}</div> */}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Pancard Number</div>
-                  <div style={{ marginLeft: "231px" }}>{data.Mobile}</div>
+                  {/* <div style={{ marginLeft: "231px" }}>{data.PanCard}</div> */}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
-                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>AadharCard Number</div>
-                  <div style={{ marginLeft: "202px" }}>{data.Mobile}</div>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Aadhar Card Number</div>
+                  {/* <div style={{ marginLeft: "202px" }}>{data.AadharCard}</div> */}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Nominee</div>
-                  <div style={{ marginLeft: "289px" }}>{data.Mobile}</div>
+                  {/* <div style={{ marginLeft: "289px" }}>{accountOpenData.Nominee}</div> */}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
-                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>NomineeAadharCard Number</div>
-                  <div style={{ marginLeft: "137px" }}>{data.Mobile}</div>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Nominee Aadhar Card Number</div>
+                  {/* <div style={{ marginLeft: "137px" }}>{accountOpenData.NomineeAadharCard}</div> */}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Address</div>
-                  <div style={{ marginLeft: "295px" }}>{data.Mobile}</div>
+                  {/* <div style={{ marginLeft: "295px" }}>{accountOpenData.Address}</div> */}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Date of Birth</div>
-                  <div style={{ marginLeft: "266px" }}>{data.Mobile}</div>
+                  {/* <div style={{ marginLeft: "266px" }}>{accountOpenData.DOB}</div> */}
                 </div>
               </div>
             </div>
 
-            {/* <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto', width: '70vw' }}>
-          <div>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: '0 0 10px' }}>Transaction History</h2>
-            <div style={{ overflowX: 'auto' }}>
-              <table class="table table-striped table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div> */}
             <div style={{ borderTop: '1px solid #ddd', padding: '20px 0' }}>
               <div style={{ padding: '0 20px', maxWidth: '1200px', margin: '0 auto' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>

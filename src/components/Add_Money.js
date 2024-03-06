@@ -76,7 +76,7 @@ function Add_Money() {
         <div className="col-sm-6 addform">
           <form className="p-5">
             <h2 className="">Add Money</h2>
-            <p>Enter the amount you eant to add.</p>
+            <p>Enter the amount you want to add.</p>
             <div class="mb-3 mt-5">
               <label for="exampleInputEmail1" class="form-label">
                 Account Number

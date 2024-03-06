@@ -1,10 +1,22 @@
-.Transection .download{
-position: absolute;
-right: 35px;
-top: 85px;
-font-size: 50px;
+.Transection .download {
+  position: absolute;
+  right: 35px;
+  top: 85px;
+  font-size: 50px;
 }
-.Transection .row{
-    --bs-gutter-x: 0rem;
-    --bs-gutter-y: 0
+.Transection .row {
+  --bs-gutter-x: 0rem;
+  --bs-gutter-y: 0;
+}
+
+.status-debit {
+  color: red;
+  font-weight: bold;
+}
+.status-credit {
+    color: green;
+    font-weight: bold;
+}
+.text-deco {
+    font-weight: bold;
 }

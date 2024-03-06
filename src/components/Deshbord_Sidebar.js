@@ -1,66 +1,172 @@
-import React from 'react'
-import HomeIcon from '@mui/icons-material/Home';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import PaidIcon from '@mui/icons-material/Paid';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
-import CreditCardIcon from '@mui/icons-material/CreditCard';
-import AddIcon from '@mui/icons-material/Add';
-import '../style-css/Deshbord_Sidebar.css'
-import { NavLink } from 'react-router-dom';
-
+import React, { useEffect } from "react";
+import HomeIcon from "@mui/icons-material/Home";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import PaidIcon from "@mui/icons-material/Paid";
+import FileCopyIcon from "@mui/icons-material/FileCopy";
+import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
+import AddIcon from "@mui/icons-material/Add";
+import "../style-css/Deshbord_Sidebar.css";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 function Deshbord_Sidebar() {
-    return (
-        <div>
-            <div className="sidenav">
-                <div className="row">
-                    <div className="tpart col-sm-12">
-                        <div className="sidebar">
+  const [data, setData] = useState("");
+  const [accountOpenData, setAccountOpenData] = useState("");
 
-                            <div className="photo text-center pt-4">
-                                <img src="./IMAGES/img6.jpg" width="100" height="100" style={{ borderRadius: '50%', objectFit: 'cover' }} />
-                                <p className='mt-2'>Piyush dobariya</p>
-                            </div>
+  const [image, setImage] = useState();
+  const [open, setOpen] = React.useState(false);
 
-                            <div className="menubar ">
-                                <ul className='uimenu'>
-                                    <li className='menuname'>
-                                        <NavLink to="/Deshbord" className='linka'>Deshbord</NavLink>
-                                        <HomeIcon style={{ position: "relative", left: "140px" }}></HomeIcon>
-                                    </li>
-                                    <li className='menuname'>
-                                        <NavLink to="/User_Profile" className='linka'>UserProfile</NavLink>
-                                        <AccountCircleIcon style={{ position: "relative", left: "134px" }}></AccountCircleIcon>
-                                    </li>
-                                    <li className='menuname'>
-                                        <NavLink to="/Add_Money" className='linka'>Add Money</NavLink>
-                                        <AddIcon style={{ position: "relative", left: "127px" }}></AddIcon>
-                                    </li>
-                                    <li className='menuname'>
-                                        <NavLink to="/Withdrow" className='linka'>Withdrow Money</NavLink>
-                                        <RemoveOutlinedIcon style={{ position: "relative", left: "85px" }}></RemoveOutlinedIcon>
-                                    </li>
-                                    <li className='menuname'>
-                                        <NavLink to="/Account_Transfer" className='linka'>Transfer Fund</NavLink>
-                                        <PaidIcon style={{ position: "relative", left: "109px" }}></PaidIcon>
-                                    </li>
-                                    <li className='menuname'>
-                                        <NavLink to="/Transection" className='linka'>Transection</NavLink>
-                                        <FileCopyIcon style={{ position: "relative", left: "122px" }}></FileCopyIcon>
-                                    </li>
-                                    <li className='menuname'>
-                                        <NavLink to="/Applydebit" className='linka'>Debit Card</NavLink>
-                                        <CreditCardIcon style={{ position: "relative", left: "131px" }}></CreditCardIcon>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+  const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
+
+  let DataOBJ = undefined;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setOpen(true);
+      console.log("Session Token : ", sessionToken);
+
+      try {
+        console.log("API execute soon");
+        const response = await axios.post(
+          "http://localhost:5000/test/api/users/customer-finance",
+          { sessionEmail, sessionToken },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        console.log("API execute successfully");
+        console.log(response);
+        console.log("Response data : ", response.data.data[0]);
+
+        console.log("Image Path : ", response.data.data[0].Photo);
+        setData(response.data.data[0]);
+        console.log("Data : " , data);
+        setImage(response.data.data[0].Photo);
+
+        // let getData = true;
+        // const AccountData = await axios.post("http://localhost:5000/test/api/users/customer-finance", { sessionToken, sessionEmail, getData }, {
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   }
+        // });
+        // console.log("Account Data : ", AccountData.data.Data[0]);
+        // setAccountOpenData(AccountData.data.Data[0]);
+
+        // const dataOBJ = JSON.stringify(AccountData.data.Data[0]);
+        // sessionStorage.setItem("AccountData", dataOBJ);
+
+        // console.log(accountOpenData);
+        // console.log("DataOBJ : ", DataOBJ);
+      } catch (error) {
+        console.log("Error : ", error);
+      }
+      setOpen(false);
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <div className="sidenav">
+        <div className="row">
+          <div className="tpart col-sm-12">
+            <div className="sidebar">
+              <div className="photo text-center pt-4">
+                <img
+                  src={`http://localhost:5000/uploads/${image}`}
+                  width="100"
+                  height="100"
+                  style={{ borderRadius: "50%", objectFit: "cover" }}
+                />
+                <p className="mt-2">
+                  {data && data.FirstName} {data && data.LastName}
+                </p>
+              </div>
+
+              <div className="menubar ">
+                <ul className="uimenu">
+                  <li className="menuname">
+                    <NavLink to="/Deshbord" className="linka">
+                      Dashbord
+                    </NavLink>
+                    <HomeIcon
+                      style={{ position: "relative", left: "140px" }}
+                    ></HomeIcon>
+                  </li>
+                  <li className="menuname">
+                    {/* <NavLink to="/User_Profile" className="linka">
+                      Profile
+                    </NavLink> */}
+                    {data && (
+                      <NavLink
+                        to={{
+                          pathname: "/User_Profile",
+                          state: { foo: data },
+                        }}
+                        className="linka"
+                      >
+                        Profile
+                      </NavLink>
+                    )}
+
+                    <AccountCircleIcon
+                      style={{ position: "relative", left: "134px" }}
+                    ></AccountCircleIcon>
+                  </li>
+                  <li className="menuname">
+                    <NavLink to="/Add_Money" className="linka">
+                      Add Money
+                    </NavLink>
+                    <AddIcon
+                      style={{ position: "relative", left: "127px" }}
+                    ></AddIcon>
+                  </li>
+                  <li className="menuname">
+                    <NavLink to="/Withdrow" className="linka">
+                      Withdrow Money
+                    </NavLink>
+                    <RemoveOutlinedIcon
+                      style={{ position: "relative", left: "85px" }}
+                    ></RemoveOutlinedIcon>
+                  </li>
+                  <li className="menuname">
+                    <NavLink to="/Account_Transfer" className="linka">
+                      Transfer Fund
+                    </NavLink>
+                    <PaidIcon
+                      style={{ position: "relative", left: "109px" }}
+                    ></PaidIcon>
+                  </li>
+                  <li className="menuname">
+                    <NavLink to="/Transection" className="linka">
+                      Statement
+                    </NavLink>
+                    <FileCopyIcon
+                      style={{ position: "relative", left: "122px" }}
+                    ></FileCopyIcon>
+                  </li>
+                  <li className="menuname">
+                    <NavLink to="/Applydebit" className="linka">
+                      Debit Card
+                    </NavLink>
+                    <CreditCardIcon
+                      style={{ position: "relative", left: "131px" }}
+                    ></CreditCardIcon>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default Deshbord_Sidebar
+export default Deshbord_Sidebar;

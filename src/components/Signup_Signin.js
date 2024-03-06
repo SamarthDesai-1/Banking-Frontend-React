@@ -203,8 +203,8 @@ function Signup_Signin() {
                     <div className="panels-container">
                         <div className="panel left-panel">
                             <div className="content" >
-                                <h3>Member of Brand?</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque accusantium dolor, eos incidunt minima iure?</p>
+                                <h3>Welcomt to transact</h3>
+                                <p className='text-samarth'>Effortlessly sign up on the banking website to create your account, providing essential details for secure access to financial services and personalized banking solutions.</p>
                                 <button className="btn" id="sign-in-btn" onClick={toggleSignInMode}>Sign in</button>
                             </div>
                             <img src="signin.svg" alt="" className="image" />
@@ -212,7 +212,7 @@ function Signup_Signin() {
                         <div className="panel right-panel">
                             <div className="content" >
                                 <h3>New to Brand?</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque accusantium dolor, eos incidunt minima iure?</p>
+                                <p className='text-samarth'>Easily log in to your banking website to securely manage accounts, conduct transactions, and access financial services hassle-free.</p>
                                 <button className="btn" id="sign-up-btn" onClick={toggleSignUpMode}>Sign up</button>
                             </div>
                             <img src="signup.svg" alt="" className="image" />

@@ -76,10 +76,10 @@ function Account_Transfer() {
         <div className="col-sm-3">
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
-        <div className="col-sm-6 accountform">
+        <div className="col-sm-5 accountform">
           <form className="p-5">
-            <h2 className="">Transfer Account</h2>
-            <p>Enter the amount you eant to Transfer.</p>
+            <h2 className="">Account Transfer</h2>
+            <p>Enter the amount you want to Transfer.</p>
             <div class="mb-3 mt-5">
               <label for="exampleInputEmail1" class="form-label">
                 Account Number (Recevier)
