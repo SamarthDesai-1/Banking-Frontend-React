@@ -36,11 +36,23 @@ function Add_Money() {
           headers: {
             'Content-Type': 'application/json'
           }
-        }).then(response => {
+        }).then(async response => {
           console.log(response);
+
+          if (response?.status == 200) {
+            const data = await axios.post("http://localhost:5000/test/api/users/customer-finance", { sessionEmail, sessionToken }, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }).then(response => {
+              console.log("Updated Data : ", response.data.data[0]);
+              sessionStorage.setItem("AccountData", JSON.stringify(response.data.data[0]));
+            }).catch(e => console.log(e));
+          }
           setAccountNo("");
           setAmount("");
           setPin("");
+
         }).catch(e => {
           let msgFromServer = e.response.data.msg;
           console.log("Server says : ", msgFromServer);

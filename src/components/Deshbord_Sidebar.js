@@ -13,62 +13,83 @@ import axios from "axios";
 
 function Deshbord_Sidebar() {
   const [data, setData] = useState("");
-  const [accountOpenData, setAccountOpenData] = useState("");
 
   const [image, setImage] = useState();
   const [open, setOpen] = React.useState(false);
+
+  const [count, setCount] = useState(0);
 
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
   let DataOBJ = undefined;
 
+  const [bool, setBool] = useState(true);
+
   useEffect(() => {
-    const fetchData = async () => {
-      setOpen(true);
-      console.log("Session Token : ", sessionToken);
+    if (bool) {
 
-      try {
-        console.log("API execute soon");
-        const response = await axios.post(
-          "http://localhost:5000/test/api/users/customer-finance",
-          { sessionEmail, sessionToken },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
+      const fetchData = async () => {
+        setOpen(true);
+        console.log("Session Token : ", sessionToken);
+
+        try {
+          console.log("API execute soon");
+          const response = await axios.post(
+            "http://localhost:5000/test/api/users/customer-finance",
+            { sessionEmail, sessionToken },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          console.log("API execute successfully");
+          console.log(response);
+          console.log("Response data : ", response.data.data[0]);
+
+          console.log("Image Path : ", response.data.data[0].Photo);
+          setData(response.data.data[0]);
+          sessionStorage.setItem(
+            "AccountData",
+            JSON.stringify(response.data.data[0])
+          );
+
+          console.log("Data : ", data);
+          setImage(response.data.data[0].Photo);
+
+          let getData = true;
+          const AccountData = await axios
+            .post(
+              "http://localhost:5000/test/api/users/customer-finance",
+              { sessionToken, sessionEmail, getData },
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            )
+            .then((response) => {
+              console.log("Response from BILLIOns : ", response);
+              console.log("Account open data : ", response.data.Data[0]);
+              sessionStorage.setItem(
+                "AccountOpenData",
+                JSON.stringify(response.data.Data[0])
+              );
+            });
+
+          } catch (error) {
+            console.log("Error : ", error);
           }
-        );
-        console.log("API execute successfully");
-        console.log(response);
-        console.log("Response data : ", response.data.data[0]);
-
-        console.log("Image Path : ", response.data.data[0].Photo);
-        setData(response.data.data[0]);
-        console.log("Data : " , data);
-        setImage(response.data.data[0].Photo);
-
-        // let getData = true;
-        // const AccountData = await axios.post("http://localhost:5000/test/api/users/customer-finance", { sessionToken, sessionEmail, getData }, {
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   }
-        // });
-        // console.log("Account Data : ", AccountData.data.Data[0]);
-        // setAccountOpenData(AccountData.data.Data[0]);
-
-        // const dataOBJ = JSON.stringify(AccountData.data.Data[0]);
-        // sessionStorage.setItem("AccountData", dataOBJ);
-
-        // console.log(accountOpenData);
-        // console.log("DataOBJ : ", DataOBJ);
-      } catch (error) {
-        console.log("Error : ", error);
-      }
+        };
+        
       setOpen(false);
-    };
+      fetchData();
+      setBool(false);
+    }
 
-    fetchData();
+
+    setCount(count + 1);
   }, []);
 
   return (
@@ -100,21 +121,9 @@ function Deshbord_Sidebar() {
                     ></HomeIcon>
                   </li>
                   <li className="menuname">
-                    {/* <NavLink to="/User_Profile" className="linka">
+                    <NavLink to="/User_Profile" className="linka">
                       Profile
-                    </NavLink> */}
-                    {data && (
-                      <NavLink
-                        to={{
-                          pathname: "/User_Profile",
-                          state: { foo: data },
-                        }}
-                        className="linka"
-                      >
-                        Profile
-                      </NavLink>
-                    )}
-
+                    </NavLink>
                     <AccountCircleIcon
                       style={{ position: "relative", left: "134px" }}
                     ></AccountCircleIcon>

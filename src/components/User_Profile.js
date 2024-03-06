@@ -8,24 +8,28 @@ import { NavLink } from 'react-router-dom';
 import Deshbord_Navbar from './Deshbord_Navbar';
 import Deshbord_Sidebar from './Deshbord_Sidebar';
 
-import { useLocation } from 'react-router-dom';
-
 function User_Profile() {
 
-  // const { DataOBJ } = location.state;
-  const location = useLocation();
-  console.log(location.state.foo);
-
-
-  // const [data, setData] = useState("");
+  const [data, setData] = useState("");
+  const [accountOpen, setAccountOpen] = useState("");
   const [image, setImage] = useState();
-  const [accountOpenData, setAccountOpenData] = useState("");
-
 
   const [open, setOpen] = useState(false);
 
-  console.log("Customer data comming from deshboard");
-  // console.log(DataOBJ);
+  
+  useEffect(() => {
+
+    let obj = JSON.parse(sessionStorage.getItem("AccountData"));
+    setImage(obj.Photo);
+    setData(obj);
+
+    let OBJ = JSON.parse(sessionStorage.getItem("AccountOpenData"));
+    setAccountOpen(OBJ);
+
+    console.log(data);
+    console.log(accountOpen);
+    
+  }, []);
 
   return (
     <div className='user'>
@@ -47,10 +51,10 @@ function User_Profile() {
             <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '20px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '70vw' }}>
-                  {/* <img src={`http://localhost:5000/uploads/${image}`} width="100" height="100" style={{ borderRadius: '50%', objectFit: 'cover' }} /> */}
+                  <img src={`http://localhost:5000/uploads/${image}`} width="100" height="100" style={{ borderRadius: '50%', objectFit: 'cover' }} />
                   <div style={{ display: 'grid', gridGap: '5px' }}>
-                    {/* <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>{`${data.FirstName} ${data.LastName}`}</h1> */}
-                    {/* <p style={{ fontSize: '0.875rem', margin: 0, color: '#666' }}>Customer ID : {!data ? "Waiting..." : data._id}</p> */}
+                    <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>{`${data.FirstName} ${data.LastName}`}</h1>
+                    <p style={{ fontSize: '0.875rem', margin: 0, color: '#666' }}>Customer ID : {!data ? "Waiting..." : data._id}</p>
                   </div>
                   <div style={{ position: "absolute", right: "35px" }}>
                     <NavLink to="/Edit_Profile"> <button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Edit Profile</button></NavLink>
@@ -62,29 +66,33 @@ function User_Profile() {
             <div style={{ borderTop: '1px solid #ddd', padding: '20px 0' }}>
               <div className="d-flex">
                 <h2 style={{ fontWeight: 'bold', color: '#666' }} className='ps-4'>Balance</h2>
-                {/* <h2 className='ms-5'>${data.Balance}</h2> */}
+                <h2 className='ms-5'>${data.Balance}</h2>
               </div>
 
               <hr />
               <div style={{ padding: '0 20px', maxWidth: '1200px', margin: '0 auto' }}>
                 <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: '0 0 10px' }}>Account Details</h2>
-                {/* <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}> */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
-                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Number</div>
-                  {/* <div style={{ marginLeft: "230px" }}>{data.AccountNo}</div> */}
-                </div>
-                {/* </div> */}
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}></div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                    <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Number</div>
+                    <div style={{ marginLeft: "230px" }}>{data.AccountNo}</div>
+                  </div>
+
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Type</div>
-                  {/* <div style={{ marginLeft: "254px" }}>{data.AccountType}</div> */}
+                  <div style={{ marginLeft: "254px" }}>{data.AccountType}</div>
                 </div>
+
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>IFSC</div>
-                  {/* <div style={{ marginLeft: "322px" }}>{data.IFSC}</div> */}
+                  <div style={{ marginLeft: "322px" }}>{data.IFSC}</div>
                 </div>
+
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>MICR</div>
-                  {/* <div style={{ marginLeft: "316px" }}>{data.MICR}</div> */}
+                  <div style={{ marginLeft: "316px" }}>{data.MICR}</div>
                 </div>
                 <hr />
 
@@ -92,43 +100,43 @@ function User_Profile() {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>First Name</div>
-                  {/* <div style={{ marginLeft: "275px" }}>{data.FirstName}</div> */}
+                  <div style={{ marginLeft: "275px" }}>{data.FirstName}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Last Name</div>
-                  {/* <div style={{ marginLeft: "277px" }}>{data.LastName}</div> */}
+                  <div style={{ marginLeft: "277px" }}>{data.LastName}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Mobile Number</div>
-                  {/* <div style={{ marginLeft: "243px" }}>{data.Mobile}</div> */}
+                  <div style={{ marginLeft: "243px" }}>{data.Mobile}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Email Address</div>
-                  {/* <div style={{ marginLeft: "251px" }}>{data.Email}</div> */}
+                  <div style={{ marginLeft: "251px" }}>{data.Email}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Pancard Number</div>
-                  {/* <div style={{ marginLeft: "231px" }}>{data.PanCard}</div> */}
+                  <div style={{ marginLeft: "231px" }}>{data.PanCard}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Aadhar Card Number</div>
-                  {/* <div style={{ marginLeft: "202px" }}>{data.AadharCard}</div> */}
+                  <div style={{ marginLeft: "202px" }}>{data.AadharCard}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Nominee</div>
-                  {/* <div style={{ marginLeft: "289px" }}>{accountOpenData.Nominee}</div> */}
+                  <div style={{ marginLeft: "289px" }}>{accountOpen.Nominee}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Nominee Aadhar Card Number</div>
-                  {/* <div style={{ marginLeft: "137px" }}>{accountOpenData.NomineeAadharCard}</div> */}
+                  <div style={{ marginLeft: "137px" }}>{accountOpen.NomineeAadharCard}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Address</div>
-                  {/* <div style={{ marginLeft: "295px" }}>{accountOpenData.Address}</div> */}
+                  <div style={{ marginLeft: "295px" }}>{accountOpen.Address}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Date of Birth</div>
-                  {/* <div style={{ marginLeft: "266px" }}>{accountOpenData.DOB}</div> */}
+                  <div style={{ marginLeft: "266px" }}>{accountOpen.DOB}</div>
                 </div>
               </div>
             </div>
