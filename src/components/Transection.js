@@ -20,6 +20,8 @@ function Transection() {
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
+  const [balance, setBalance] = useState(0);
+
   useEffect(() => {
     const fetchData = async () => {
       setOpen(true);
@@ -32,9 +34,25 @@ function Transection() {
               "Content-Type": "application/json",
             },
           }
-        );
-        setStatement(response.data.Data[0]);
-        setFilteredStatement(response.data.Data[0].TransactionHistory); // Initially set filteredStatement to all transactions
+        ).then(async ResponseData => {
+
+          setStatement(ResponseData.data.Data[0]);
+          setFilteredStatement(ResponseData.data.Data[0].TransactionHistory); 
+
+          if (ResponseData?.status == 200) {
+            const data = await axios.post("http://localhost:5000/test/api/users/customer-finance", { sessionEmail, sessionToken }, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }).then(async response => {
+              console.log("Updated Data : ", response.data.data[0]);
+              setBalance(response.data.data[0].Balance);
+              sessionStorage.setItem("AccountData", JSON.stringify(response.data.data[0]));
+            }).catch(e => console.log(e));
+          }
+        });
+
+
       } catch (error) {
         console.log("Error : ", error);
       }
@@ -152,7 +170,7 @@ function Transection() {
                     <td className="text-deco">{index + 1}</td>
                     <td className="text-deco">{elem.date?.substring(0, 10)}</td>
                     <td className="text-deco">{elem.msg}</td>
-                    <td className="text-deco">{elem.statementStatus}</td>
+                    <td className="text-deco">{elem.statementStatus === "Dr" ? "Debit" : "Credit"}</td>
                     <td
                       className="status"
                       style={{
@@ -164,6 +182,13 @@ function Transection() {
                     </td>
                   </tr>
                 ))}
+                <tr>
+                  <td className="text-deco">Net Balance</td>
+                  <td className="text-deco"></td>
+                  <td className="text-deco"></td>
+                  <td className="text-deco"></td>
+                  <td className="text-deco">${balance}</td>
+                </tr>
               </tbody>
             </table>
           </div>
