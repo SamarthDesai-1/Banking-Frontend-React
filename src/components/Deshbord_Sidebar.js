@@ -104,7 +104,7 @@ function Deshbord_Sidebar() {
   const [data, setData] = useState("");
   useEffect(() => {
     const fetchData = () => {
-      const OBJ = JSON.parse(sessionStorage.getItem("AccountOpenData"));
+      const OBJ = JSON.parse(sessionStorage.getItem("AccountData"));
       console.log("OBJECT : ", OBJ);
       setData(OBJ);
     };

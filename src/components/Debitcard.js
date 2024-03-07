@@ -5,8 +5,15 @@ import "../style-css/Debitcard.css";
 import axios from "axios";
 
 function Debitcard() {
-  const OBJ = JSON.parse(sessionStorage.getItem("CardData"));
-  console.log("OBJECT : ", OBJ);
+
+  const [data, setData] = useState("");
+  useEffect(() => {
+    
+    const OBJ = JSON.parse(sessionStorage.getItem("CardData"));
+    console.log("OBJECT : ", OBJ);
+    setData(OBJ);
+
+  }, [])
 
   return (
     <div className="debitcard">
@@ -19,10 +26,10 @@ function Debitcard() {
           <div class="card text-white debit">
             <img src="/IMAGES/dabitcard.png" class="card-img" alt="..." />
             <div class="card-img-overlay">
-              <p className="cvv">{OBJ.CVV}</p>
-              <p className="expire">EX:- {OBJ.ExpiryDate}</p>
+              <p className="cvv">{data && data.CVV}</p>
+              <p className="expire">EX:- {data && data.ExpiryDate}</p>
               <h4 className="cardno">
-                {OBJ.DebitCardNumber.match(/.{1,4}/g).map((group, index) => (
+                {data && data.DebitCardNumber.match(/.{1,4}/g).map((group, index) => (
                   <span key={index}>
                     {group} {/* Add a space after each group */}
                   </span>
@@ -37,3 +44,4 @@ function Debitcard() {
 }
 
 export default Debitcard;
+

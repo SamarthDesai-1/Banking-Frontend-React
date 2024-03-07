@@ -24,7 +24,7 @@ function Applydebit() {
               </NavLink>
             </div>
           </div>
-          <h3 className="px-5">Term and Condition⭐</h3>
+          <h3 className="px-5">Term and Condition</h3>
           <p className="px-5 mt-3">
             Debit cards can be used at various points of sale, ATMs, and for
             online transactions. It's important to keep the card secure and

@@ -108,7 +108,10 @@ function Edit_Profile() {
     e.preventDefault();
 
     // Validate form data
-    const { _id, Photo, IFSC, MICR, Email, __v, AccountType, ...formDataWithoutCertainData } = data; // Extract Photo from formData
+    
+    console.log(data);
+
+    const { _id, Photo, IFSC, MICR, Email, __v, AccountType, DigitalSignature, AccountNo, Date, ...formDataWithoutCertainData } = data; // Extract Photo from formData
     const { error } = schema.validate(formDataWithoutCertainData, { abortEarly: false });
     if (error) {
       console.log("Error : ", error);
