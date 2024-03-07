@@ -12,85 +12,105 @@ import { useState } from "react";
 import axios from "axios";
 
 function Deshbord_Sidebar() {
-  const [data, setData] = useState("");
+  // const [data, setData] = useState("");
+  // const [image, setImage] = useState();
+  // const [open, setOpen] = React.useState(false);
+  // const [count, setCount] = useState(0);
 
-  const [image, setImage] = useState();
-  const [open, setOpen] = React.useState(false);
+  // const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+  // const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
-  const [count, setCount] = useState(0);
+  // let DataOBJ = undefined;
 
-  const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
-  const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
+  // const [bool, setBool] = useState(true);
 
-  let DataOBJ = undefined;
+  // useEffect(() => {
+  //   if (bool) {
 
-  const [bool, setBool] = useState(true);
+  //     const fetchData = async () => {
+  //       setOpen(true);
+  //       console.log("Session Token : ", sessionToken);
 
-  useEffect(() => {
-    if (bool) {
+  //       try {
+  //         console.log("API execute soon");
+  //         const response = await axios.post(
+  //           "http://localhost:5000/test/api/users/customer-finance",
+  //           { sessionEmail, sessionToken },
+  //           {
+  //             headers: {
+  //               "Content-Type": "application/json",
+  //             },
+  //           }
+  //         );
+  //         console.log("API execute successfully");
+  //         console.log(response);
+  //         console.log("Response data : ", response.data.data[0]);
 
-      const fetchData = async () => {
-        setOpen(true);
-        console.log("Session Token : ", sessionToken);
+  //         console.log("Image Path : ", response.data.data[0].Photo);
+  //         setData(response.data.data[0]);
+  //         sessionStorage.setItem(
+  //           "AccountData",
+  //           JSON.stringify(response.data.data[0])
+  //         );
 
-        try {
-          console.log("API execute soon");
-          const response = await axios.post(
-            "http://localhost:5000/test/api/users/customer-finance",
-            { sessionEmail, sessionToken },
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-          console.log("API execute successfully");
-          console.log(response);
-          console.log("Response data : ", response.data.data[0]);
+  //         console.log("Data : ", data);
+  //         setImage(response.data.data[0].Photo);
 
-          console.log("Image Path : ", response.data.data[0].Photo);
-          setData(response.data.data[0]);
-          sessionStorage.setItem(
-            "AccountData",
-            JSON.stringify(response.data.data[0])
-          );
+  //         let getData = true;
+  //         const AccountData = await axios
+  //           .post(
+  //             "http://localhost:5000/test/api/users/customer-finance",
+  //             { sessionToken, sessionEmail, getData },
+  //             {
+  //               headers: {
+  //                 "Content-Type": "application/json",
+  //               },
+  //             }
+  //           )
+  //           .then((response) => {
+  //             console.log("Response from BILLIOns : ", response);
+  //             console.log("Account open data : ", response.data.Data[0]);
+  //             sessionStorage.setItem(
+  //               "AccountOpenData",
+  //               JSON.stringify(response.data.Data[0])
+  //             );
+  //           });
 
-          console.log("Data : ", data);
-          setImage(response.data.data[0].Photo);
+  //           const CardData = await axios.post("http://localhost:5000/test/api/users/card-detail-fetcher" ,{ sessionEmail, sessionToken }, {
+  //             headers: {
+  //               'Content-Type': 'application/json',
+  //             },
+  //           }).then(response => {
 
-          let getData = true;
-          const AccountData = await axios
-            .post(
-              "http://localhost:5000/test/api/users/customer-finance",
-              { sessionToken, sessionEmail, getData },
-              {
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            )
-            .then((response) => {
-              console.log("Response from BILLIOns : ", response);
-              console.log("Account open data : ", response.data.Data[0]);
-              sessionStorage.setItem(
-                "AccountOpenData",
-                JSON.stringify(response.data.Data[0])
-              );
-            });
+  //             console.log("Response from debit card database : ", response);
+  //             sessionStorage.setItem("CardData", JSON.stringify(response.data.Data[0]));
+              
+  //           }).catch((e) => console.log(e));
 
-          } catch (error) {
-            console.log("Error : ", error);
-          }
-        };
+  //         } catch (error) {
+  //           console.log("Error : ", error);
+  //         }
+  //       };
         
-      setOpen(false);
-      fetchData();
-      setBool(false);
-    }
+  //     setOpen(false);
+  //     fetchData();
+  //     setBool(false);
+  //   }
 
 
-    setCount(count + 1);
-  }, []);
+  //   setCount(count + 1);
+  // }, []);
+
+  // const [data, setData] = useState("");
+  // useEffect(() => {
+    // const fetchData = () => {
+      const OBJ = JSON.parse(sessionStorage.getItem("AccountOpenData"));
+      console.log("OBJECT : ", OBJ);
+      // setData(OBJ);
+    // };
+
+    // fetchData();
+  // }, []);
 
   return (
     <div>
@@ -100,13 +120,13 @@ function Deshbord_Sidebar() {
             <div className="sidebar">
               <div className="photo text-center pt-4">
                 <img
-                  src={`http://localhost:5000/uploads/${image}`}
+                  src={`http://localhost:5000/uploads/${OBJ.Photo}`}
                   width="100"
                   height="100"
                   style={{ borderRadius: "50%", objectFit: "cover" }}
                 />
                 <p className="mt-2">
-                  {data && data.FirstName} {data && data.LastName}
+                  {OBJ && OBJ.FirstName} {OBJ && OBJ.LastName}
                 </p>
               </div>
 
@@ -161,9 +181,9 @@ function Deshbord_Sidebar() {
                     ></FileCopyIcon>
                   </li>
                   <li className="menuname">
-                    <NavLink to="/Applydebit" className="linka">
-                      Debit Card
-                    </NavLink>
+                    
+                    {OBJ.DebitCard === "No issue" ?  <NavLink to="/Applydebit" className="linka">Debit Card</NavLink> :  <NavLink to="/Debitcard" className="linka">Debit Card</NavLink>}
+                   
                     <CreditCardIcon
                       style={{ position: "relative", left: "131px" }}
                     ></CreditCardIcon>
