@@ -125,7 +125,7 @@ function Deshbord_Sidebar() {
                       Profile
                     </NavLink>
                     <AccountCircleIcon
-                      style={{ position: "relative", left: "134px" }}
+                      style={{ position: "relative", left: "169px" }}
                     ></AccountCircleIcon>
                   </li>
                   <li className="menuname">
@@ -133,7 +133,7 @@ function Deshbord_Sidebar() {
                       Add Money
                     </NavLink>
                     <AddIcon
-                      style={{ position: "relative", left: "127px" }}
+                      style={{ position: "relative", left: "126px" }}
                     ></AddIcon>
                   </li>
                   <li className="menuname">
@@ -141,7 +141,7 @@ function Deshbord_Sidebar() {
                       Withdrow Money
                     </NavLink>
                     <RemoveOutlinedIcon
-                      style={{ position: "relative", left: "85px" }}
+                      style={{ position: "relative", left: "82px" }}
                     ></RemoveOutlinedIcon>
                   </li>
                   <li className="menuname">
@@ -149,7 +149,7 @@ function Deshbord_Sidebar() {
                       Transfer Fund
                     </NavLink>
                     <PaidIcon
-                      style={{ position: "relative", left: "109px" }}
+                      style={{ position: "relative", left: "107px" }}
                     ></PaidIcon>
                   </li>
                   <li className="menuname">
@@ -157,7 +157,7 @@ function Deshbord_Sidebar() {
                       Statement
                     </NavLink>
                     <FileCopyIcon
-                      style={{ position: "relative", left: "122px" }}
+                      style={{ position: "relative", left: "132px" }}
                     ></FileCopyIcon>
                   </li>
                   <li className="menuname">

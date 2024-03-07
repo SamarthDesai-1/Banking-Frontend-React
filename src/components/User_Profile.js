@@ -120,7 +120,7 @@ function User_Profile() {
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Aadhar Card Number</div>
-                  <div style={{ marginLeft: "202px" }}>{data.AadharCard}</div>
+                  <div style={{ marginLeft: "199px" }}>{data.AadharCard}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Nominee</div>
@@ -128,15 +128,15 @@ function User_Profile() {
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Nominee Aadhar Card Number</div>
-                  <div style={{ marginLeft: "137px" }}>{accountOpen.NomineeAadharCard}</div>
+                  <div style={{ marginLeft: "132px" }}>{accountOpen.NomineeAadharCard}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Address</div>
-                  <div style={{ marginLeft: "295px" }}>{accountOpen.Address}</div>
+                  <div style={{ marginLeft: "297px" }}>{accountOpen.Address}</div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Date of Birth</div>
-                  <div style={{ marginLeft: "266px" }}>{accountOpen.DOB}</div>
+                  <div style={{ marginLeft: "268px" }}>{accountOpen.DOB}</div>
                 </div>
               </div>
             </div>

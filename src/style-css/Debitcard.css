@@ -9,17 +9,17 @@
     margin:  60px auto;
 }
 .debitcard .cardno{
-    position: absolute;
-    top: 340px;
-    left: 150px;
+    position: relative;
+    top: 232px;
+    right: 93px;
 }
 .debitcard .expire{
-    position: absolute;
-    top: 240px;
-    right: 300px;
+    position: relative;
+    top: 195px;
+    left: 45px;
 }
 .debitcard .cvv{
-    position: absolute;
-    top: 200px;
-    right: 322px;
+    position: relative;
+    top: 195px;
+    left: 35px;
 }
