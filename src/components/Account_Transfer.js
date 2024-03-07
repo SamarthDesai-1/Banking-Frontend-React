@@ -6,11 +6,10 @@ import { useState } from "react";
 import axios from "axios";
 
 //loading bar
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Account_Transfer() {
-
   const [amount, setAmount] = useState();
   const [pin, setPin] = useState("");
   const [msg, setMsg] = useState("");
@@ -33,41 +32,49 @@ function Account_Transfer() {
     console.log(recevier);
 
     try {
-      setOpen(true)
-        if (amount !== undefined && pin !== undefined && msg !== undefined && recevier !== undefined) {
-            const data = await axios.post("http://localhost:5000/test/api/users/tranfer-funds", { sessionEmail, sessionToken, amount, pin, msg, recevier }, {
-                'Content-Type': 'application/json'
-            }).then(response => {
-                console.log(response);
+      setOpen(true);
+      if (
+        amount !== undefined &&
+        pin !== undefined &&
+        msg !== undefined &&
+        recevier !== undefined
+      ) {
+        const data = await axios
+          .post(
+            "http://localhost:5000/test/api/users/tranfer-funds",
+            { sessionEmail, sessionToken, amount, pin, msg, recevier },
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((response) => {
+            console.log(response);
 
-                // setAmount();
-                // setPin("");
-                // setMsg("");
-                // setRecevierAccount("");
-
-            }).catch(e => {
-                let msgFromServer = e.response.data.msg;
-                console.log("Server says : ",msgFromServer);
-                alert(msgFromServer);
-                return;
-            })
-        }
-        else {
-            alert("Fill fields properly");
+            // setAmount();
+            // setPin("");
+            // setMsg("");
+            // setRecevierAccount("");
+          })
+          .catch((e) => {
+            let msgFromServer = e.response.data.msg;
+            console.log("Server says : ", msgFromServer);
+            alert(msgFromServer);
             return;
-        }
-        setOpen(false)
-    }
-    catch (error) {}
+          });
+      } else {
+        alert("Fill fields properly");
+        return;
+      }
+      setOpen(false);
+    } catch (error) {}
   };
-
 
   return (
     <div className="account">
       <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
-      // onClick={handleClose}
+        // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
       </Backdrop>

@@ -101,16 +101,16 @@ function Deshbord_Sidebar() {
   //   setCount(count + 1);
   // }, []);
 
-  // const [data, setData] = useState("");
-  // useEffect(() => {
-    // const fetchData = () => {
+  const [data, setData] = useState("");
+  useEffect(() => {
+    const fetchData = () => {
       const OBJ = JSON.parse(sessionStorage.getItem("AccountOpenData"));
       console.log("OBJECT : ", OBJ);
-      // setData(OBJ);
-    // };
+      setData(OBJ);
+    };
 
-    // fetchData();
-  // }, []);
+    fetchData();
+  }, []);
 
   return (
     <div>
@@ -120,13 +120,13 @@ function Deshbord_Sidebar() {
             <div className="sidebar">
               <div className="photo text-center pt-4">
                 <img
-                  src={`http://localhost:5000/uploads/${OBJ.Photo}`}
+                  src={data && `http://localhost:5000/uploads/${data.Photo}`}
                   width="100"
                   height="100"
                   style={{ borderRadius: "50%", objectFit: "cover" }}
                 />
                 <p className="mt-2">
-                  {OBJ && OBJ.FirstName} {OBJ && OBJ.LastName}
+                  {data && data.FirstName} {data && data.LastName}
                 </p>
               </div>
 
@@ -182,7 +182,7 @@ function Deshbord_Sidebar() {
                   </li>
                   <li className="menuname">
                     
-                    {OBJ.DebitCard === "No issue" ?  <NavLink to="/Applydebit" className="linka">Debit Card</NavLink> :  <NavLink to="/Debitcard" className="linka">Debit Card</NavLink>}
+                    {data && data.DebitCard === "No issue" ?  <NavLink to="/Applydebit" className="linka">Debit Card</NavLink> :  <NavLink to="/Debitcard" className="linka">Debit Card</NavLink>}
                    
                     <CreditCardIcon
                       style={{ position: "relative", left: "131px" }}
