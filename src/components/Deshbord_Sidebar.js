@@ -10,6 +10,7 @@ import "../style-css/Deshbord_Sidebar.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import LockClockIcon from '@mui/icons-material/LockClock';
 
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
@@ -206,6 +207,14 @@ function Deshbord_Sidebar() {
                     <CreditCardIcon
                       style={{ position: "relative", left: "131px" }}
                     ></CreditCardIcon>
+                  </li>
+                  <li className="menuname">
+                    <NavLink to="/Apply_fix_recurring" className="linka">
+                      Fix/Recrring Deposits
+                    </NavLink>
+                    <LockClockIcon
+                      style={{ position: "relative", left: "53px" }}
+                    ></LockClockIcon>
                   </li>
                 </ul>
               </div>

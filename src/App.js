@@ -30,6 +30,11 @@ import Applydebit from "./components/Applydebit";
 import Dabitcard_form from "./components/Dabitcard_form";
 import Debitcard from "./components/Debitcard";
 
+import Apply_fix_recurring from "./components/Apply_fix_recurring";
+import Fix_deposit_form from "./components/Fix_deposit_form";
+import Deposit_status from "./components/Deposit_status";
+import View_rates from "./components/View_rates";
+
 function App() {
   return (
   <>
@@ -65,6 +70,10 @@ function App() {
           <Route exact path="/Applydebit" element={<Applydebit/>} />
           <Route exact path="/Dabitcard_form" element={<Dabitcard_form/>} />
           <Route exact path="/Debitcard" element={<Debitcard/>} />
+          <Route exact path="/Apply_fix_recurring" element={<Apply_fix_recurring/>} />
+          <Route exact path="/Fix_deposit_form" element={<Fix_deposit_form/>} />
+          <Route exact path="/Deposit_status" element={<Deposit_status/>} />
+          <Route exact path="/View_rates" element={<View_rates/>} />
         </Routes>
       </BrowserRouter>
   </>

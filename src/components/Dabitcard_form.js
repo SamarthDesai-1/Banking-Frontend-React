@@ -50,7 +50,7 @@ function Dabitcard_form() {
   };
 
   const handleSubmit = async (e) => {
-    setOpen(true);
+    // setOpen(true);
     e.preventDefault();
 
     // Validate form data
@@ -70,8 +70,8 @@ function Dabitcard_form() {
     }
 
     // If form data is valid, proceed to API call
-    setOpen(true);
     try {
+      setOpen(true);
       console.log("API execute successfully");
       console.log("Form Data : ", formData);
 

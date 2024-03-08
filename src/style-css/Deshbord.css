@@ -2,3 +2,26 @@
     --bs-gutter-x: 0rem;
     --bs-gutter-y: 0
 }
+.Deshbord .card1{
+    background-color: rgb(146, 224, 136);
+    height: 45vh;
+    width: 20vw;
+}
+.Deshbord .card2{
+    background-color: rgb(136, 190, 224);
+    height: 45vh;
+    width: 20vw;
+}
+.Deshbord .card3{
+    background-color: rgb(189, 136, 224);
+    height: 45vh;
+    width: 20vw;
+}
+
+.Deshbord .cardrow{
+    justify-content: space-around;
+    padding-top: 30px;
+}
+.Deshbord .sidebar{
+    height: 110vh;
+}
