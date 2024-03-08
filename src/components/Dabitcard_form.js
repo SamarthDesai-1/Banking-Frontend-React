@@ -75,6 +75,7 @@ function Dabitcard_form() {
           'Content-Type': 'application/json',
         },
       }).then(response => {
+        
         if (response?.status === 200) {
           console.log('Data inserted successfully.');
           navigate("/Debitcard");
@@ -82,7 +83,7 @@ function Dabitcard_form() {
 
       }).catch(e => {
         console.error('Failed to insert data OR may be user enter duplicate data.');
-        alert("Please enter non-duplicate data")
+        alert(e.response.data.msg);
       })
     }
     catch (error) {
