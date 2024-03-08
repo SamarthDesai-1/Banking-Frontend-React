@@ -77,7 +77,13 @@ function Dabitcard_form() {
       }).then(response => {
         
         if (response?.status === 200) {
+
           console.log('Data inserted successfully.');
+          console.log("Response from issue debit card : ", response);
+          sessionStorage.setItem(
+            "CardData",
+            JSON.stringify(response.data.Data)
+          );
           navigate("/Debitcard");
         }
 

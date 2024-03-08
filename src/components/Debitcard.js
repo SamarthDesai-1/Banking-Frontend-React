@@ -7,34 +7,15 @@ import axios from "axios";
 function Debitcard() {
 
   const [data, setData] = useState("");
-  const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
-  const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
-  // useEffect(() => {
+  useEffect(() => {
     
-    // const OBJ = JSON.parse(sessionStorage.getItem("CardData"));
-    // console.log("OBJECT : ", OBJ);
-    // setData(OBJ);
+    const OBJ = JSON.parse(sessionStorage.getItem("CardData"));
+    console.log("OBJECT : ", OBJ);
+    setData(OBJ);
 
-    const fetchData = async () => {
-      const responseData = await axios.post("http://localhost:5000/test/api/users/update-card-detail-fetcher", { sessionEmail, sessionToken }, {
-        headers: {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      }).then(response => {
-        if (response?.status === 200) {
-          setData(response.data.Data[0]);
-        }
-      }).catch(e => {
-        console.log("Error : ", e);
-      });
-    };
 
-    fetchData();
-
-  // }, [])
+  }, [])
 
   return (
     <div className="debitcard">
@@ -65,4 +46,3 @@ function Debitcard() {
 }
 
 export default Debitcard;
-
