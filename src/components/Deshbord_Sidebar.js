@@ -12,14 +12,10 @@ import { useState } from "react";
 import axios from "axios";
 
 //loading bar
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Deshbord_Sidebar() {
-
-
-
-
   // const [data, setData] = useState("");
   // const [image, setImage] = useState();
   const [open, setOpen] = React.useState(false);
@@ -105,7 +101,6 @@ function Deshbord_Sidebar() {
   //     setBool(false);
   //   }
 
-
   //   setCount(count + 1);
   // }, []);
 
@@ -117,18 +112,16 @@ function Deshbord_Sidebar() {
       console.log("OBJECT : ", OBJ);
       setData(OBJ);
     };
-    
+
     fetchData();
   }, []);
-
- 
 
   return (
     <div>
       <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
-      // onClick={handleClose}
+        // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
@@ -199,8 +192,16 @@ function Deshbord_Sidebar() {
                     ></FileCopyIcon>
                   </li>
                   <li className="menuname">
-
-                    {data && data.DebitCard === "No issue" ? <NavLink to="/Applydebit" className="linka">Debit Card</NavLink> : <NavLink to="/Debitcard" className="linka">Debit Card</NavLink>}
+                    
+                    {data && data.DebitCard === "No issue" ? (
+                      <NavLink to="/Applydebit" className="linka">
+                        Debit Card
+                      </NavLink>
+                    ) : (
+                      <NavLink to="/Debitcard" className="linka">
+                        Debit Card
+                      </NavLink>
+                    )}
 
                     <CreditCardIcon
                       style={{ position: "relative", left: "131px" }}
