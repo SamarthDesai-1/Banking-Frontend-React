@@ -15,6 +15,7 @@ function PINvarify() {
   const navigate = useNavigate();
 
   const verifyPIN = async () => {
+    setOpen(true);
     console.log("User click verify PIN");
 
     const PIN = pin;
@@ -28,8 +29,8 @@ function PINvarify() {
     const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
     console.log(PIN);
-    setOpen(true);
     try {
+      setOpen(true);
       const response = await axios
         .post(
           "http://localhost:5000/test/api/users/verify-pin",
@@ -41,7 +42,9 @@ function PINvarify() {
           }
         )
         .then((response) => {
+          setOpen(true);
           if (response?.status === 200) {
+            setOpen(true);
             console.log(response);
 
             /** call API's here */
@@ -51,6 +54,7 @@ function PINvarify() {
               console.log("Session Token : ", sessionToken);
 
               try {
+                setOpen(true);
                 console.log("API execute soon");
                 const response = await axios.post(
                   "http://localhost:5000/test/api/users/customer-finance",
@@ -60,11 +64,11 @@ function PINvarify() {
                       "Content-Type": "application/json",
                     },
                   }
-                );
+                  );
+                setOpen(true);
                 console.log("API execute successfully");
                 console.log(response);
                 console.log("Response data : ", response.data.data[0]);
-
                 console.log("Image Path : ", response.data.data[0].Photo);
                 setData(response.data.data[0]);
                 sessionStorage.setItem(
@@ -74,7 +78,7 @@ function PINvarify() {
 
                 console.log("Data : ", data);
                 setImage(response.data.data[0].Photo);
-
+                setOpen(true);
                 let getData = true;
                 const AccountData = await axios
                   .post(
@@ -87,6 +91,7 @@ function PINvarify() {
                     }
                   )
                   .then((response) => {
+                    setOpen(true);
                     console.log("Response from BILLIOns : ", response);
                     console.log("Account open data : ", response.data.Data[0]);
                     sessionStorage.setItem(
@@ -94,7 +99,7 @@ function PINvarify() {
                       JSON.stringify(response.data.Data[0])
                     );
                   });
-
+                  setOpen(true);
                 const CardData = await axios
                   .post(
                     "http://localhost:5000/test/api/users/card-detail-fetcher",
@@ -114,6 +119,7 @@ function PINvarify() {
                       "CardData",
                       JSON.stringify(response.data.Data[0])
                     );
+                    navigate("/Deshbord");
                   })
                   .catch((e) => console.log(e));
               } catch (error) {
@@ -122,8 +128,7 @@ function PINvarify() {
             };
 
             fetchData();
-
-            navigate("/Deshbord");
+            
           }
         })
         .catch(async (e) => {

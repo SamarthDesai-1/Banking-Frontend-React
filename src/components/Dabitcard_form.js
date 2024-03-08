@@ -125,7 +125,7 @@ function Dabitcard_form() {
                         </div>
 
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Adharcard No</label>
+                            <label for="exampleInputPassword1" class="form-label">Account No</label>
                             <input type="number" name='AccountNo' class="form-control" id="exampleInputPassword1" onChange={handleInputChange} />
                             {errors.AccountNo && <div style={{ marginBottom: "0rem" }} className='text-danger error'>{errors.AccountNo}</div>}
                         </div>

@@ -11,10 +11,18 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
+//loading bar
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 function Deshbord_Sidebar() {
+
+
+
+
   // const [data, setData] = useState("");
   // const [image, setImage] = useState();
-  // const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   // const [count, setCount] = useState(0);
 
   // const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
@@ -84,14 +92,14 @@ function Deshbord_Sidebar() {
 
   //             console.log("Response from debit card database : ", response);
   //             sessionStorage.setItem("CardData", JSON.stringify(response.data.Data[0]));
-              
+
   //           }).catch((e) => console.log(e));
 
   //         } catch (error) {
   //           console.log("Error : ", error);
   //         }
   //       };
-        
+
   //     setOpen(false);
   //     fetchData();
   //     setBool(false);
@@ -102,18 +110,28 @@ function Deshbord_Sidebar() {
   // }, []);
 
   const [data, setData] = useState("");
+
   useEffect(() => {
     const fetchData = () => {
       const OBJ = JSON.parse(sessionStorage.getItem("AccountData"));
       console.log("OBJECT : ", OBJ);
       setData(OBJ);
     };
-
+    
     fetchData();
   }, []);
 
+ 
+
   return (
     <div>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <div className="sidenav">
         <div className="row">
           <div className="tpart col-sm-12">
@@ -181,9 +199,9 @@ function Deshbord_Sidebar() {
                     ></FileCopyIcon>
                   </li>
                   <li className="menuname">
-                    
-                    {data && data.DebitCard === "No issue" ?  <NavLink to="/Applydebit" className="linka">Debit Card</NavLink> :  <NavLink to="/Debitcard" className="linka">Debit Card</NavLink>}
-                   
+
+                    {data && data.DebitCard === "No issue" ? <NavLink to="/Applydebit" className="linka">Debit Card</NavLink> : <NavLink to="/Debitcard" className="linka">Debit Card</NavLink>}
+
                     <CreditCardIcon
                       style={{ position: "relative", left: "131px" }}
                     ></CreditCardIcon>
