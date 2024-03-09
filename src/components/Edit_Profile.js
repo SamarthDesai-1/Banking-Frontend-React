@@ -14,6 +14,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 function Edit_Profile() {
 
+  const [open, setOpen] = useState(false);
+
   const [data, setData] = useState({
     FirstName: '',
     LastName: '',
@@ -60,7 +62,7 @@ function Edit_Profile() {
     fetchData();
   }, []);
 
-  const [open, setOpen] = useState(false);
+  
   const navigate = useNavigate();
   const PhototRef = useRef();
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import '../style-css/Footer.css'
+import { NavLink } from 'react-router-dom'
 
 function Footer() {
     return (
@@ -55,6 +56,7 @@ function Footer() {
                         <p>Trademarks</p>
                         <p>Privacy Centre</p>
                         <p>Sitemap</p>
+                        <NavLink to="/Admin_Login" style={{textDecoration:"none"}}><p>Adimn Login</p></NavLink>
                     </div>
                     <div className="footer-2">
                         <h5>Copyright © 2023 Transact payments Company | Transact Corp.</h5>

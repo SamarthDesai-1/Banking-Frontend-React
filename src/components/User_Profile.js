@@ -16,7 +16,7 @@ function User_Profile() {
 
   const [open, setOpen] = useState(false);
 
-  
+
   useEffect(() => {
 
     let obj = JSON.parse(sessionStorage.getItem("AccountData"));
@@ -28,7 +28,7 @@ function User_Profile() {
 
     console.log(data);
     console.log(accountOpen);
-    
+
   }, []);
 
   return (
@@ -75,10 +75,10 @@ function User_Profile() {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}></div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
-                    <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Number</div>
-                    <div style={{ marginLeft: "230px" }}>{data.AccountNo}</div>
-                  </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Number</div>
+                  <div style={{ marginLeft: "230px" }}>{data.AccountNo}</div>
+                </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px' }}>
                   <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#666' }}>Account Type</div>

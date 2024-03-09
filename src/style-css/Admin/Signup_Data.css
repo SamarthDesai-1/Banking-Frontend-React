@@ -1,0 +1,7 @@
+.adsign .row{
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0
+}
+.adsign .signtable{
+    padding:30px 40px 30px 40px;
+}

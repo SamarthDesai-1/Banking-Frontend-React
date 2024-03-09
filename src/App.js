@@ -35,6 +35,18 @@ import Fix_deposit_form from "./components/Fix_deposit_form";
 import Deposit_status from "./components/Deposit_status";
 import View_rates from "./components/View_rates";
 
+import Admin_Login from "./components/Admin/Admin_Login";
+import Admin_Navbar from "./components/Admin/Admin_Navbar";
+import Admin_Sidebar from "./components/Admin/Admin_Sidebar";
+import Admin_Dashbord from "./components/Admin/Admin_Dashbord";
+import Signup_Data from "./components/Admin/Signup_Data";
+import Create_Account_data from "./components/Admin/Create_Account_data";
+import Debit_Card_data from "./components/Admin/Debit_Card_data";
+import Fix_deposit_data from "./components/Admin/Fix_deposit_data";
+import Ad_User_Profile from "./components/Admin/Ad_User_Profile";
+import Ad_User_Transrction from "./components/Admin/Ad_User_Transrction";
+import View_Deposit_status from "./components/Admin/View_Deposit_status";
+
 function App() {
   return (
   <>
@@ -74,6 +86,18 @@ function App() {
           <Route exact path="/Fix_deposit_form" element={<Fix_deposit_form/>} />
           <Route exact path="/Deposit_status" element={<Deposit_status/>} />
           <Route exact path="/View_rates" element={<View_rates/>} />
+
+          <Route exact path="/Admin_Login" element={<Admin_Login/>} />
+          <Route exact path="/Admin_Navbar" element={<Admin_Navbar/>} />
+          <Route exact path="/Admin_Sidebar" element={<Admin_Sidebar/>} />
+          <Route exact path="/Admin_Dashbord" element={<Admin_Dashbord/>} />
+          <Route exact path="/Signup_Data" element={<Signup_Data/>} />
+          <Route exact path="/Create_Account_data" element={<Create_Account_data/>} />
+          <Route exact path="/Debit_Card_data" element={<Debit_Card_data/>} />
+          <Route exact path="/Fix_deposit_data" element={<Fix_deposit_data/>} />
+          <Route exact path="/Ad_User_Profile" element={<Ad_User_Profile/>} />
+          <Route exact path="/Ad_User_Transrction" element={<Ad_User_Transrction/>} />
+          <Route exact path="/View_Deposit_status" element={<View_Deposit_status/>} />
         </Routes>
       </BrowserRouter>
   </>

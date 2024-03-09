@@ -35,6 +35,7 @@ function Transection() {
             },
           }
         ).then(async ResponseData => {
+          setOpen(true);
 
           setStatement(ResponseData.data.Data[0]);
           setFilteredStatement(ResponseData.data.Data[0].TransactionHistory); 

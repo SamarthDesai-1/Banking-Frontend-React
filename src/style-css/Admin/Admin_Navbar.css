@@ -1,0 +1,14 @@
+.adnav .adlogbtn{
+    position: absolute;
+    right: 40px;
+    top: 8px;
+}
+.adnav .imgnav{
+    padding-left: 52px;
+    font-size: 40px;
+}
+.adnav .adserch{
+    position: absolute;
+    right: 200px;
+    top: 16px;
+}

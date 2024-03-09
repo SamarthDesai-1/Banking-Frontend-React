@@ -1,0 +1,24 @@
+.adsidebar {
+    background-color: #f8f9fa;
+    height: 100vh;
+    color: rgb(135, 135, 135);
+  }
+   .adsidenav .row {
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0;
+  }
+  .adsidebar .menuname {
+    list-style: none;
+    margin-bottom: 30px;
+  }
+  .adsidebar .uimenu{
+      margin-top: 50px;
+  }
+  .adsidebar .menuname .linka {
+    text-decoration: none;
+    color: rgb(135, 135, 135);
+  }
+  .adsidebar .iconmi{
+      position: relative;
+      right: 10px;
+  }

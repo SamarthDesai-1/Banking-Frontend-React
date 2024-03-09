@@ -124,8 +124,8 @@ function Dabitcard_form() {
 
               await fetcher();
             };
-
-            navigate("/Debitcard");
+            alert("Debit card generates successfuly");
+            navigate("/PINvarify");
           }
         })
         .catch((e) => {
