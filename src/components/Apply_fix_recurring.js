@@ -1,11 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import "../style-css/Apply_fix_recurring.css";
 import Deshbord_Navbar from "./Deshbord_Navbar";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Apply_fix_recurring() {
+
+  const [data, setData] = useState();
+  const navigate = useNavigate();
+  
+  const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
+  const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+
+  const handleData = async () => { 
+    
+    const data = await axios.post("http://localhost:5000/test/api/users/exists-fd", { sessionEmail, sessionToken }, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(async response => {
+      if (response?.status === 200) {
+        console.log(response);
+        setData(response.data.Data[0]);
+      }
+    }).catch(e => {
+      alert(e.response.data.msg);
+    })
+  }; 
+
+
 
   return (
     <div className="Apply_fix_recurring">
@@ -33,9 +58,13 @@ function Apply_fix_recurring() {
                   </NavLink>
                 </div>
                 <div className="box">
-                  <NavLink to="../Deposit_status">
-                    <h4 className="ms-3">View Fix/Recurring Deposit Status</h4>
+
+
+                  <a><h4 onClick={handleData} className="ms-3">View Fix/Recurring Deposit Status</h4></a>
+                  <NavLink to="">
+                    {(data) ? navigate("/Deposit_status") : alert("testing") } 
                   </NavLink>
+
                 </div>
               </div>
             </div>
