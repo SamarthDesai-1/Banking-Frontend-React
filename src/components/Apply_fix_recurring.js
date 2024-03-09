@@ -6,16 +6,24 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
+//loading bar
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+
 function Apply_fix_recurring() {
 
   const [data, setData] = useState();
   const navigate = useNavigate();
-  
+
+
+  const [open, setOpen] = React.useState(false);
+
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
 
-  const handleData = async () => { 
-    
+  const handleData = async () => {
+    setOpen(true)
     const data = await axios.post("http://localhost:5000/test/api/users/exists-fd", { sessionEmail, sessionToken }, {
       headers: {
         "Content-Type": "application/json",
@@ -24,16 +32,25 @@ function Apply_fix_recurring() {
       if (response?.status === 200) {
         console.log(response);
         setData(response.data.Data[0]);
+        navigate("/Deposit_status");
       }
     }).catch(e => {
       alert(e.response.data.msg);
     })
-  }; 
+    setOpen(false)
+  };
 
 
 
   return (
     <div className="Apply_fix_recurring">
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Deshbord_Navbar></Deshbord_Navbar>
       <div className="row">
         <div className="col-sm-3">
@@ -59,12 +76,10 @@ function Apply_fix_recurring() {
                 </div>
                 <div className="box">
 
-
-                  <a><h4 onClick={handleData} className="ms-3">View Fix/Recurring Deposit Status</h4></a>
-                  <NavLink to="">
+                  <NavLink onClick={handleData}><h4 className="ms-3">View Fix/Recurring Deposit Status</h4></NavLink>
+                  {/* <NavLink to="">
                     {(data) ? navigate("/Deposit_status") : alert("testing") } 
-                  </NavLink>
-
+                  </NavLink> */}
                 </div>
               </div>
             </div>

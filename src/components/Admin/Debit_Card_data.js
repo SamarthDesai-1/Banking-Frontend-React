@@ -5,11 +5,18 @@ import Admin_Sidebar from "./Admin_Sidebar";
 import { useEffect } from "react";
 import axios from "axios";
 
+//loading bar
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+
 function Debit_Card_data() {
   const [cardData, setCardData] = useState([]);
+  
+  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+        setOpen(true)
       const data = await axios
         .get("http://localhost:5000/test/api/users/get-debit-card-data", {
           headers: {
@@ -23,6 +30,7 @@ function Debit_Card_data() {
           }
         })
         .catch((e) => console.log(e));
+        setOpen(false)
     };
 
     fetchData();
@@ -31,6 +39,13 @@ function Debit_Card_data() {
 
   return (
     <div className="addebitcard">
+           <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Admin_Navbar></Admin_Navbar>
       <div className="row">
         <div className="col-sm-3">

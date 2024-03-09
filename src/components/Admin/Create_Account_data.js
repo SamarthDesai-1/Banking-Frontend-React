@@ -6,13 +6,20 @@ import axios from "axios";
 import { useEffect } from "react";
 import Ad_User_Profile from "../Admin/Ad_User_Profile";
 import { useNavigate } from "react-router-dom";
+//loading bar
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Create_Account_data() {
   const [accountData, setAccountData] = useState([]);
+
+  const [open, setOpen] = React.useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
+        setOpen(true)
       const data = await axios
         .get("http://localhost:5000/test/api/users/get-account-data", {
           headers: {
@@ -27,6 +34,7 @@ function Create_Account_data() {
           }
         })
         .catch((e) => console.log(e));
+        setOpen(false)
     };
 
     fetchData();
@@ -49,6 +57,13 @@ const handleTransaction = async (id) => {
 
   return (
     <div className="adcreat">
+         <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Admin_Navbar></Admin_Navbar>
       <div className="row">
         <div className="col-sm-3">

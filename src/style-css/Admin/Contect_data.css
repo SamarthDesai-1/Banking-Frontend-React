@@ -1,0 +1,7 @@
+.contectdata .row{
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0;
+}
+.contectdata .contecttable{
+    padding:30px 40px 30px 40px;
+}

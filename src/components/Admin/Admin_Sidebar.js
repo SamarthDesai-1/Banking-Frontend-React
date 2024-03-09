@@ -57,6 +57,14 @@ function Admin_Sidebar() {
                       style={{ position: "relative", left: "100px" }}
                     ></HomeIcon>
                   </li>
+                  <li className="menuname">
+                    <NavLink to="/Contect_data" className="linka">
+                      Contec Data
+                    </NavLink>
+                    <HomeIcon
+                      style={{ position: "relative", left: "125px" }}
+                    ></HomeIcon>
+                  </li>
                 </ul>
               </div>
             </div>

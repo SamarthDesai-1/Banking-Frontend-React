@@ -4,10 +4,16 @@ import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+//loading bar
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+
 function Ad_User_Profile() {
   const { userId } = useParams();
   const [customerData, setCustomerData] = useState([]);
   const [accountData, setAccountData] = useState();
+  
+  const [open, setOpen] = React.useState(false);
 
   const [image, setImage] = useState("");
 
@@ -24,6 +30,7 @@ function Ad_User_Profile() {
     }
 
     const fetchData = async () => {
+        setOpen(true)
       /** call customer detail api */
       await axios
         .get("http://localhost:5000/test/api/users/get-customer-data", {
@@ -38,13 +45,22 @@ function Ad_User_Profile() {
           }
         })
         .catch((e) => console.log(e));
+        setOpen(false)
     };
 
     fetchData();
+    
   }, []);
 
   return (
     <div className="aduserprofile">
+        <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <div
         style={{
           minHeight: "100vh",
