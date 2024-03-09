@@ -1,55 +1,100 @@
-import React from 'react'
-import Admin_Navbar from './Admin_Navbar'
-import Admin_Sidebar from './Admin_Sidebar'
-import '../../style-css/Admin/Create_Account_data.css'
+import React, { useState } from "react";
+import Admin_Navbar from "./Admin_Navbar";
+import Admin_Sidebar from "./Admin_Sidebar";
+import "../../style-css/Admin/Create_Account_data.css";
+import axios from "axios";
+import { useEffect } from "react";
+import Ad_User_Profile from "../Admin/Ad_User_Profile";
+import { useNavigate } from "react-router-dom";
 
 function Create_Account_data() {
-    return (
-        <div className='adcreat'>
-            <Admin_Navbar></Admin_Navbar>
-            <div className="row">
-                <div className="col-sm-3">
-                    <Admin_Sidebar></Admin_Sidebar>
-                </div>
-                <div className="col-sm-9">
-                    <div className='createtable'>
-                        <h2 className='mb-3'>Create Account data</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                                <th scope="col">Profile</th>
-                                <th scope="col">Transection</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td><button className='btn btn-primary'>Profile</button></td>
-                                <td> <button className='btn btn-primary'>Transection</button> </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td><button className='btn btn-primary'>Profile</button></td>
-                                <td> <button className='btn btn-primary'>Transection</button> </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-            </div>
+  const [accountData, setAccountData] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await axios
+        .get("http://localhost:5000/test/api/users/get-account-data", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          if (response?.status === 200) {
+            console.log(response);
+            setAccountData(response.data.Data);
+            sessionStorage.setItem("AccountData", JSON.stringify(response.data.Data));
+          }
+        })
+        .catch((e) => console.log(e));
+    };
+
+    fetchData();
+  }, []);
+
+  const handleProfile = async (id) => {
+    console.log("User index : ", id);
+    const obj = accountData[id - 1]._id;
+    console.log(obj);
+    navigate(`/Ad_User_Profile/${id}`);
+    console.log("Handle Profile");
+};
+
+const handleTransaction = async (id) => {
+    console.log("User index : ", id);
+    const obj = accountData[id - 1]._id;
+    navigate(`/Ad_User_Transrction/${obj}`);
+    console.log("Handle Transaction");
+  };
+
+  return (
+    <div className="adcreat">
+      <Admin_Navbar></Admin_Navbar>
+      <div className="row">
+        <div className="col-sm-3">
+          <Admin_Sidebar></Admin_Sidebar>
         </div>
-    )
+        <div className="col-sm-9">
+          <div className="createtable">
+            <h2 className="mb-3">Create Account data</h2>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Mobile</th>
+                  <th scope="col">DOB</th>
+                  <th scope="col">MonthlyIncome</th>
+                </tr>
+              </thead>
+              <tbody>
+                {accountData.map((elem, index) => (
+                  <tr key={index}>
+                    <td className="text-deco">{index + 1}</td>
+                    <td className="text-deco">
+                      {elem.FirstName} {elem.LastName}
+                    </td>
+                    <td className="text-deco">{elem.Mobile}</td>
+                    <td className="text-deco">{elem.DOB}</td>
+                    <td className="text-deco">{elem.MonthlyIncome}</td>
+                    <td className="text-deco">
+                      <button className="btn btn-primary" onClick={() => handleProfile(index + 1)}>Profile</button>
+                    </td>
+                    <td>
+                      {" "}
+                      <button className="btn btn-primary" onClick={() => handleTransaction(index + 1)}>
+                        Transaction
+                      </button>{" "}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Create_Account_data
+export default Create_Account_data;

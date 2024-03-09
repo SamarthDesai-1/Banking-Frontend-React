@@ -95,8 +95,8 @@ function App() {
           <Route exact path="/Create_Account_data" element={<Create_Account_data/>} />
           <Route exact path="/Debit_Card_data" element={<Debit_Card_data/>} />
           <Route exact path="/Fix_deposit_data" element={<Fix_deposit_data/>} />
-          <Route exact path="/Ad_User_Profile" element={<Ad_User_Profile/>} />
-          <Route exact path="/Ad_User_Transrction" element={<Ad_User_Transrction/>} />
+          <Route exact path="/Ad_User_Profile/:userId" element={<Ad_User_Profile/>} />
+          <Route exact path="/Ad_User_Transrction/:userId" element={<Ad_User_Transrction/>} />
           <Route exact path="/View_Deposit_status" element={<View_Deposit_status/>} />
         </Routes>
       </BrowserRouter>
