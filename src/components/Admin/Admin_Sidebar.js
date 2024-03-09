@@ -59,7 +59,7 @@ function Admin_Sidebar() {
                   </li>
                   <li className="menuname">
                     <NavLink to="/Contect_data" className="linka">
-                      Contec Data
+                      Contact Data
                     </NavLink>
                     <HomeIcon
                       style={{ position: "relative", left: "125px" }}

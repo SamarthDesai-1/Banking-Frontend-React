@@ -10,15 +10,18 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
 function Fix_deposit_data() {
-
   const [fdData, setFDdata] = useState([]);
-  
+  const [firstRender, setFirstRender] = useState(true);
+
   const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-        setOpen(true)
-      const data = await axios
+      setOpen(true);
+
+      if (firstRender) {
+
+        await axios
         .get("http://localhost:5000/test/api/users/get-fd-data", {
           headers: {
             "Content-Type": "application/json",
@@ -33,15 +36,18 @@ function Fix_deposit_data() {
         .catch((e) => {
           console.log(e);
         });
-        setOpen(false)
-    };
 
+      }
+      setOpen(false);
+    };
+    
+    setFirstRender(false);
     fetchData();
   }, []);
 
   return (
     <div className="fixdeposit">
-            <Backdrop
+      <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
         // onClick={handleClose}
