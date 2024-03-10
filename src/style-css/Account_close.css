@@ -1,0 +1,25 @@
+
+
+
+
+.acclose .row{
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0
+}
+.acclose .closeform{
+    padding-left: 40px;
+}
+.acclose input{
+    border: 1px solid black;
+}
+.acclose textarea{
+    border: 1px solid black;
+}
+.acclose .sidebar{
+    height: 106vh;
+}
+.acclose .closeform .stbtn{
+    position: absolute;
+    right: 20px;
+    top: 115px;
+}

@@ -6,6 +6,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import ContactsIcon from '@mui/icons-material/Contacts';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 function Admin_Sidebar() {
   return (
@@ -68,6 +69,14 @@ function Admin_Sidebar() {
                     <ContactsIcon
                       style={{ position: "relative", left: "120px" }}
                     ></ContactsIcon>
+                  </li>
+                  <li className="menuname">
+                    <NavLink to="/Account_close_data" className="linka">
+                      Account Close Data
+                    </NavLink>
+                    <CancelIcon
+                      style={{ position: "relative", left: "69px" }}
+                    ></CancelIcon>
                   </li>
                 </ul>
               </div>

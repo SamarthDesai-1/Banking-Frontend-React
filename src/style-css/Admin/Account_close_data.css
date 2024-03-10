@@ -1,0 +1,7 @@
+.acclo .row{
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0
+}
+.acclo .clotable{
+    padding:30px 40px 30px 40px;
+}

@@ -47,6 +47,8 @@ import Ad_User_Profile from "./components/Admin/Ad_User_Profile";
 import Ad_User_Transrction from "./components/Admin/Ad_User_Transrction";
 import View_Deposit_status from "./components/Admin/View_Deposit_status";
 import Contect_data from "./components/Admin/Contect_data";
+import Account_close from "./components/Account_close";
+import Account_close_data from "./components/Admin/Account_close_data";
 
 function App() {
   return (
@@ -100,6 +102,10 @@ function App() {
           <Route exact path="/Ad_User_Transrction/:userId" element={<Ad_User_Transrction/>} />
           <Route exact path="/View_Deposit_status" element={<View_Deposit_status/>} />
           <Route exact path="/Contect_data" element={<Contect_data/>} />
+
+          <Route exact path="/Account_close" element={<Account_close/>} />
+          <Route exact path="/Account_close_data" element={<Account_close_data/>} />
+
         </Routes>
       </BrowserRouter>
   </>

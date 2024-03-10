@@ -119,7 +119,7 @@ function PINvarify() {
                       "CardData",
                       JSON.stringify(response.data.Data[0])
                     );
-                    navigate("/Deshbord");
+                    
                   })
                   .catch((e) => console.log(e));
 
@@ -141,6 +141,7 @@ function PINvarify() {
                       "BalanceData",
                       JSON.stringify(response.data.Data)
                     );
+                    navigate("/Deshbord");
                   })
                   .catch((e) => console.log(e));
 

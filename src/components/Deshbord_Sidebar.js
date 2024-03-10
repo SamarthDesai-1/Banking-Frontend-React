@@ -11,6 +11,8 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import LockClockIcon from '@mui/icons-material/LockClock';
+import CancelIcon from '@mui/icons-material/Cancel';
+
 
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
@@ -216,6 +218,14 @@ function Deshbord_Sidebar() {
                       style={{ position: "relative", left: "53px" }}
                     ></LockClockIcon>
                   </li>
+<li className="menuname">
+                   <NavLink to="/Account_close" className="linka">
+                     Account Close Application
+                   </NavLink>
+                   <CancelIcon
+                     style={{ position: "relative", left: "6px" }}
+                   ></CancelIcon>
+                 </li>
                 </ul>
               </div>
             </div>
