@@ -5,8 +5,8 @@ import "../style-css/Add_Money.css";
 import axios from "axios";
 
 //loading bar
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Add_Money() {
   /** Add loading bar at here */
@@ -14,7 +14,6 @@ function Add_Money() {
   const [accountNo, setAccountNo] = useState("");
   const [amount, setAmount] = useState();
   const [pin, setPin] = useState("");
-
 
   const [open, setOpen] = React.useState(false);
 
@@ -25,58 +24,74 @@ function Add_Money() {
     console.log(sessionEmail);
     console.log(sessionToken);
 
-    console.log(`AccountNo : ${accountNo} Amount : ${typeof amount} Pin : ${pin}`);
+    console.log(
+      `AccountNo : ${accountNo} Amount : ${typeof amount} Pin : ${pin}`
+    );
 
     try {
-      setOpen(true)
+      setOpen(true);
       if (accountNo !== "" && amount !== undefined && pin !== "") {
         /** Call API for add funds */
 
-        const data = await axios.post("http://localhost:5000/test/api/users/add-funds", { sessionToken, sessionEmail, accountNo, amount, pin }, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(async response => {
-          console.log(response);
-
-          if (response?.status == 200) {
-            const data = await axios.post("http://localhost:5000/test/api/users/customer-finance", { sessionEmail, sessionToken }, {
+        const data = await axios
+          .post(
+            "http://localhost:5000/test/api/users/add-funds",
+            { sessionToken, sessionEmail, accountNo, amount, pin },
+            {
               headers: {
                 "Content-Type": "application/json",
               },
-            }).then(response => {
-              console.log("Updated Data : ", response.data.data[0]);
-              sessionStorage.setItem("AccountData", JSON.stringify(response.data.data[0]));
-            }).catch(e => console.log(e));
-          }
-          setAccountNo("");
-          setAmount("");
-          setPin("");
+            }
+          )
+          .then(async (response) => {
+            console.log(response);
 
-        }).catch(e => {
-          let msgFromServer = e.response.data.msg;
-          console.log("Server says : ", msgFromServer);
-          alert(msgFromServer);
-          return;
-        });
-      }
-      else {
+            if (response?.status == 200) {
+              const data = await axios
+                .post(
+                  "http://localhost:5000/test/api/users/customer-finance",
+                  { sessionEmail, sessionToken },
+                  {
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                  }
+                )
+                .then((response) => {
+                  console.log("Updated Data : ", response.data.data[0]);
+                  sessionStorage.setItem(
+                    "AccountData",
+                    JSON.stringify(response.data.data[0])
+                  );
+                })
+                .catch((e) => console.log(e));
+            }
+            setAccountNo("");
+            setAmount("");
+            setPin("");
+          })
+          .catch((e) => {
+            let msgFromServer = e.response.data.msg;
+            console.log("Server says : ", msgFromServer);
+            alert(msgFromServer);
+            return;
+          });
+      } else {
         alert("Fill the add funds details properly");
         return;
       }
     } catch (error) {
       console.log("try catch error : ", error);
     }
-    setOpen(false)
-   
+    setOpen(false);
   };
 
   return (
     <div className="money">
       <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
-      // onClick={handleClose}
+        // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
@@ -144,4 +159,3 @@ function Add_Money() {
 }
 
 export default Add_Money;
-

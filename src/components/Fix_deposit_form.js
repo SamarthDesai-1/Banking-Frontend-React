@@ -5,11 +5,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 //loading bar
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Fix_deposit_form() {
-
   const [account, setAccount] = useState("");
 
   const [open, setOpen] = useState(false);
@@ -90,7 +89,10 @@ function Fix_deposit_form() {
           if (response?.status === 200) {
             console.log("Success from server Fixed deposit");
             console.log(response);
-            sessionStorage.setItem("FDdata", JSON.stringify(response.data.msg.Response.Data));
+            sessionStorage.setItem(
+              "FDdata",
+              JSON.stringify(response.data.msg.Response.Data)
+            );
             navigate("/Apply_fix_recurring");
           }
         })
@@ -108,10 +110,10 @@ function Fix_deposit_form() {
 
   return (
     <div className="fix">
-        <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
-      // onClick={handleClose}
+        // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
       </Backdrop>

@@ -82,10 +82,16 @@ function Deshbord() {
   }, [firstRender]);
 
   const data01 = [
-    { name: "Credit Transaction", value: accountData && credit && (credit.totalAmount / accountData.Balance) },
+    {
+      name: "Credit Transaction",
+      value: accountData && credit && credit.totalAmount / accountData.Balance,
+    },
     {
       name: "Debit Transaction",
-      value: accountData && credit && ((accountData.Balance - credit.totalAmount) / accountData.Balance),
+      value:
+        accountData &&
+        credit &&
+        (accountData.Balance - credit.totalAmount) / accountData.Balance,
     },
   ];
 
@@ -205,42 +211,6 @@ function Deshbord() {
             </PieChart>
             {/* </ResponsiveContainer> */}
           </div>
-
-          {/* <div className="state p-5">
-            <h5 className="mb-4">Mini Statement</h5>
-            <table class="table table-success table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
-            <div>
-              <button className="btn btn-primary mt-2">View Statement</button>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

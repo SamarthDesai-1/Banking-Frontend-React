@@ -66,26 +66,25 @@ function Signup_Data() {
           <div className="signtable">
             <div className="row">
               <div className="col-md-6">
-              <h2 className="mb-3">Signup data</h2>
+                <h2 className="mb-3">Signup data</h2>
               </div>
               <div className="col-md-6">
-              <form className="d-flex adserch">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                value={searchQuery}
-                onChange={handleSearchChange}
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+                <form className="d-flex adserch">
+                  <input
+                    className="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                  />
+                  <button className="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
               </div>
             </div>
-      
-         
+
             <table className="table table-striped">
               <thead>
                 <tr>

@@ -28,9 +28,11 @@ function Create_Account_data() {
         );
         if (response.status === 200) {
           console.log(response);
-          sessionStorage.setItem("AccountData", JSON.stringify(response.data.Data));
+          sessionStorage.setItem(
+            "AccountData",
+            JSON.stringify(response.data.Data)
+          );
           setAccountData(response.data.Data);
-   
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -43,7 +45,6 @@ function Create_Account_data() {
   const handleSearchNameChange = (event) => {
     setSearchQuery(event.target.value);
   };
-
 
   const handleProfile = async (id) => {
     console.log("User index : ", id);
@@ -61,11 +62,11 @@ function Create_Account_data() {
   };
 
   useEffect(() => {
-    const filteredResults = accountData.filter(
-      (item) =>
-        `${item.FirstName} ${item.LastName} ${item.Email} ${item.AccountNo} ${item.Mobile}`
-          .toLowerCase()
-          .includes(searchQuery.toLowerCase()));
+    const filteredResults = accountData.filter((item) =>
+      `${item.FirstName} ${item.LastName} ${item.Email} ${item.AccountNo} ${item.Mobile}`
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
     setFilteredData(filteredResults);
   }, [searchQuery, accountData]);
 
@@ -86,25 +87,25 @@ function Create_Account_data() {
           <div className="createtable">
             <div className="row">
               <div className="col-md-6">
-              <h2 className="mb-3">Create Account data</h2>
+                <h2 className="mb-3">Create Account data</h2>
               </div>
               <div className="col-md-6">
-              <form className="d-flex adserch">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                value={searchQuery}
-                onChange={handleSearchNameChange}
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+                <form className="d-flex adserch">
+                  <input
+                    className="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    value={searchQuery}
+                    onChange={handleSearchNameChange}
+                  />
+                  <button className="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
               </div>
             </div>
-            
+
             <table className="table table-striped">
               <thead>
                 <tr>

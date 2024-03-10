@@ -26,34 +26,44 @@ function Transection() {
     const fetchData = async () => {
       setOpen(true);
       try {
-        const response = await axios.post(
-          "http://localhost:5000/test/api/users/transaction-history",
-          { sessionEmail, sessionToken },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        ).then(async ResponseData => {
-          setOpen(true);
-
-          setStatement(ResponseData.data.Data[0]);
-          setFilteredStatement(ResponseData.data.Data[0].TransactionHistory); 
-
-          if (ResponseData?.status == 200) {
-            const data = await axios.post("http://localhost:5000/test/api/users/customer-finance", { sessionEmail, sessionToken }, {
+        const response = await axios
+          .post(
+            "http://localhost:5000/test/api/users/transaction-history",
+            { sessionEmail, sessionToken },
+            {
               headers: {
                 "Content-Type": "application/json",
               },
-            }).then(async response => {
-              console.log("Updated Data : ", response.data.data[0]);
-              setBalance(response.data.data[0].Balance);
-              sessionStorage.setItem("AccountData", JSON.stringify(response.data.data[0]));
-            }).catch(e => console.log(e));
-          }
-        });
+            }
+          )
+          .then(async (ResponseData) => {
+            setOpen(true);
 
+            setStatement(ResponseData.data.Data[0]);
+            setFilteredStatement(ResponseData.data.Data[0].TransactionHistory);
 
+            if (ResponseData?.status == 200) {
+              const data = await axios
+                .post(
+                  "http://localhost:5000/test/api/users/customer-finance",
+                  { sessionEmail, sessionToken },
+                  {
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                  }
+                )
+                .then(async (response) => {
+                  console.log("Updated Data : ", response.data.data[0]);
+                  setBalance(response.data.data[0].Balance);
+                  sessionStorage.setItem(
+                    "AccountData",
+                    JSON.stringify(response.data.data[0])
+                  );
+                })
+                .catch((e) => console.log(e));
+            }
+          });
       } catch (error) {
         console.log("Error : ", error);
       }
@@ -77,7 +87,7 @@ function Transection() {
       if (filteredTransactions.length === 0) {
         setError(alert("No records found for the selected dates."));
       } else {
-        setError(""); // Reset error message
+        setError("");
       }
     } else {
       setError(alert("Please select valid start and end dates."));
@@ -171,7 +181,9 @@ function Transection() {
                     <td className="text-deco">{index + 1}</td>
                     <td className="text-deco">{elem.date?.substring(0, 10)}</td>
                     <td className="text-deco">{elem.msg}</td>
-                    <td className="text-deco">{elem.statementStatus === "Dr" ? "Debit" : "Credit"}</td>
+                    <td className="text-deco">
+                      {elem.statementStatus === "Dr" ? "Debit" : "Credit"}
+                    </td>
                     <td
                       className="status"
                       style={{
@@ -200,5 +212,3 @@ function Transection() {
 }
 
 export default Transection;
-
-

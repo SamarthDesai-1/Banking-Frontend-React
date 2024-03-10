@@ -27,7 +27,6 @@ function Debit_Card_data() {
         if (response.status === 200) {
           console.log(response);
           setCardData(response.data.Data);
-          
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -41,13 +40,12 @@ function Debit_Card_data() {
     setSearchNoQuery(event.target.value);
   };
 
-
   useEffect(() => {
-    const filteredResults = cardData.filter(
-      (item) =>
-        `${item.FirstName} ${item.LastName} ${item.Email} ${item.DebitCardNumber} ${item.AccountNo}`
-          .toLowerCase()
-          .includes(searchQuery.toLowerCase()));
+    const filteredResults = cardData.filter((item) =>
+      `${item.FirstName} ${item.LastName} ${item.Email} ${item.DebitCardNumber} ${item.AccountNo}`
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
     setFilteredData(filteredResults);
   }, [searchQuery, cardData]);
 
@@ -68,26 +66,25 @@ function Debit_Card_data() {
           <div className="debittable">
             <div className="row">
               <div className="col-md-6">
-              <h2 className="mb-3">Debit Card data</h2>
+                <h2 className="mb-3">Debit Card data</h2>
               </div>
               <div className="col-md-6">
-              <form className="d-flex adserch">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                value={searchQuery}
-                onChange={handleSearchAccountNoChange}
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+                <form className="d-flex adserch">
+                  <input
+                    className="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    value={searchQuery}
+                    onChange={handleSearchAccountNoChange}
+                  />
+                  <button className="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
               </div>
             </div>
-            
-            
+
             <table className="table table-striped">
               <thead>
                 <tr>
@@ -102,7 +99,9 @@ function Debit_Card_data() {
                 {filteredData.map((elem, index) => (
                   <tr key={index}>
                     <td className="text-deco">{index + 1}</td>
-                    <td className="text-deco">{elem.FirstName} {elem.LastName}</td>
+                    <td className="text-deco">
+                      {elem.FirstName} {elem.LastName}
+                    </td>
                     <td className="text-deco">{elem.Email}</td>
                     <td className="text-deco">{elem.AccountNo}</td>
                     <td className="text-deco">{elem.DebitCardNumber}</td>

@@ -10,12 +10,12 @@ import CircularProgress from "@mui/material/CircularProgress";
 function Ad_User_Transrction() {
   const { userId } = useParams();
   const [dataTrans, setData] = useState([]);
-  
+
   const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
-      const fetchData = async () => {
-        setOpen(true)
+    const fetchData = async () => {
+      setOpen(true);
       await axios
         .get(
           `http://localhost:5000/test/api/users/get-transactionr-data/${userId}`,
@@ -35,7 +35,7 @@ function Ad_User_Transrction() {
         .catch((e) => {
           console.log(e);
         });
-        setOpen(false)
+      setOpen(false);
     };
 
     fetchData();
@@ -43,7 +43,7 @@ function Ad_User_Transrction() {
 
   return (
     <div>
-        <Backdrop
+      <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
         // onClick={handleClose}

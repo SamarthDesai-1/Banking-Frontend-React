@@ -27,7 +27,6 @@ function Fix_deposit_data() {
         if (response.status === 200) {
           console.log(response);
           setFDData(response.data.Data);
-          
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -50,7 +49,6 @@ function Fix_deposit_data() {
     setFilteredData(filteredResults);
   }, [searchQuery, fdData]);
 
-
   return (
     <div className="fixdeposit">
       <Backdrop
@@ -68,26 +66,25 @@ function Fix_deposit_data() {
           <div className="fixtable">
             <div className="row">
               <div className="col-md-6">
-              <h2 className="mb-3">Fix Deposit data</h2>
+                <h2 className="mb-3">Fix Deposit data</h2>
               </div>
               <div className="col-md-6">
-              <form className="d-flex adserch">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                value={searchQuery}
-                onChange={handleSearchAccountNoChange}
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+                <form className="d-flex adserch">
+                  <input
+                    className="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    value={searchQuery}
+                    onChange={handleSearchAccountNoChange}
+                  />
+                  <button className="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
               </div>
             </div>
-           
-           
+
             <table className="table table-striped">
               <thead>
                 <tr>
@@ -103,11 +100,13 @@ function Fix_deposit_data() {
                 {filteredData.map((elem, index) => (
                   <tr key={index}>
                     <td className="text-deco">{index + 1}</td>
-                    <td className="text-deco">{elem.FirstName} {elem.LastName}</td>
+                    <td className="text-deco">
+                      {elem.FirstName} {elem.LastName}
+                    </td>
                     <td className="text-deco">{elem.AccountNo}</td>
                     <td className="text-deco">{elem.Email}</td>
                     <td className="text-deco">{elem.Balance}</td>
-                    <td className="text-deco">{elem.date.substring(0,10)}</td>
+                    <td className="text-deco">{elem.date.substring(0, 10)}</td>
                   </tr>
                 ))}
               </tbody>
