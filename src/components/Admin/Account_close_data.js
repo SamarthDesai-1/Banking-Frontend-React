@@ -33,7 +33,7 @@ function Account_close_data() {
 
     const data = await axios
       .post(
-        "",
+        "http://localhost:5000/test/api/users/admin-request",
         { id, status },
         {
           headers: {
@@ -47,6 +47,7 @@ function Account_close_data() {
         }
       })
       .catch((e) => {
+        alert("User delete account request is rejected");
         console.log(e);
       });
   };

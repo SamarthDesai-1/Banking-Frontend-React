@@ -108,13 +108,17 @@ function Account_close() {
         console.log("Status report : ", response);
 
         if (response?.status === 200) {
-          if (response.msg.data.Status === "reject") {
-            alert("Your status is rejected");
+          console.log(response);
+          if (response.data.Data[0].Status === "Pending") {
+            alert(response.data.msg);
+          } 
+          if (response.data.Data[0].Status === "reject") {
+            alert(response.data.msg);
           }
         }
       })
       .catch((e) => {
-        console.log(e.response.data.msg);
+        console.log(e);
         alert(e.response.data.msg);
       });
   };
