@@ -106,10 +106,10 @@ function Contect_data() {
                     <td className="text-deco">{elem.Mobile}</td>
                     <td className="text-deco">{elem.Subject}</td>
                     <td className="text-deco">{elem.Message}</td>
-                    {/* <td className="text-deco">
+                    <td className="text-deco">
                       {" "}
-                      <button className="btn btn-success">Query</button>{" "}
-                    </td> */}
+                      <button className="btn btn-success">Process</button>{" "}
+                    </td>
                   </tr>
                 ))}
               </tbody>

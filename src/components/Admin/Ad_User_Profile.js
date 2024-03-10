@@ -12,7 +12,7 @@ function Ad_User_Profile() {
   const { userId } = useParams();
   const [customerData, setCustomerData] = useState([]);
   const [accountData, setAccountData] = useState();
-  
+
   const [open, setOpen] = React.useState(false);
 
   const [image, setImage] = useState("");
@@ -30,7 +30,7 @@ function Ad_User_Profile() {
     }
 
     const fetchData = async () => {
-        setOpen(true)
+      setOpen(true);
       /** call customer detail api */
       await axios
         .get("http://localhost:5000/test/api/users/get-customer-data", {
@@ -45,16 +45,15 @@ function Ad_User_Profile() {
           }
         })
         .catch((e) => console.log(e));
-        setOpen(false)
+      setOpen(false);
     };
 
     fetchData();
-    
   }, []);
 
   return (
     <div className="aduserprofile">
-        <Backdrop
+      <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
         // onClick={handleClose}
@@ -100,7 +99,9 @@ function Ad_User_Profile() {
               <div style={{ display: "grid", gridGap: "5px" }}>
                 <h1
                   style={{ fontSize: "1.5rem", fontWeight: "bold", margin: 0 }}
-                >{`${accountData && accountData.FirstName} ${accountData && accountData.LastName}`}</h1>
+                >{`${accountData && accountData.FirstName} ${
+                  accountData && accountData.LastName
+                }`}</h1>
                 <p style={{ fontSize: "0.875rem", margin: 0, color: "#666" }}>
                   Customer ID : {!accountData ? "Waiting..." : accountData._id}
                 </p>
@@ -158,7 +159,9 @@ function Ad_User_Profile() {
               >
                 Account Number
               </div>
-              <div style={{ marginLeft: "230px" }}>{accountData && accountData.AccountNo}</div>
+              <div style={{ marginLeft: "230px" }}>
+                {accountData && accountData.AccountNo}
+              </div>
             </div>
 
             <div
@@ -177,7 +180,9 @@ function Ad_User_Profile() {
               >
                 Account Type
               </div>
-              <div style={{ marginLeft: "254px" }}>{accountData && accountData.AccountType}</div>
+              <div style={{ marginLeft: "254px" }}>
+                {accountData && accountData.AccountType}
+              </div>
             </div>
 
             <div
@@ -196,7 +201,9 @@ function Ad_User_Profile() {
               >
                 IFSC
               </div>
-              <div style={{ marginLeft: "322px" }}>{accountData && accountData.IFSC}</div>
+              <div style={{ marginLeft: "322px" }}>
+                {accountData && accountData.IFSC}
+              </div>
             </div>
 
             <div
@@ -215,7 +222,9 @@ function Ad_User_Profile() {
               >
                 MICR
               </div>
-              <div style={{ marginLeft: "316px" }}>{accountData && accountData.MICR}</div>
+              <div style={{ marginLeft: "316px" }}>
+                {accountData && accountData.MICR}
+              </div>
             </div>
             <hr />
 
@@ -245,7 +254,9 @@ function Ad_User_Profile() {
               >
                 First Name
               </div>
-              <div style={{ marginLeft: "275px" }}>{accountData && accountData.FirstName}</div>
+              <div style={{ marginLeft: "275px" }}>
+                {accountData && accountData.FirstName}
+              </div>
             </div>
             <div
               style={{
@@ -263,7 +274,9 @@ function Ad_User_Profile() {
               >
                 Last Name
               </div>
-              <div style={{ marginLeft: "277px" }}>{accountData && accountData.LastName}</div>
+              <div style={{ marginLeft: "277px" }}>
+                {accountData && accountData.LastName}
+              </div>
             </div>
             <div
               style={{
@@ -281,7 +294,9 @@ function Ad_User_Profile() {
               >
                 Mobile Number
               </div>
-              <div style={{ marginLeft: "243px" }}>{accountData && accountData.Mobile}</div>
+              <div style={{ marginLeft: "243px" }}>
+                {accountData && accountData.Mobile}
+              </div>
             </div>
             <div
               style={{
@@ -299,7 +314,9 @@ function Ad_User_Profile() {
               >
                 Email Address
               </div>
-              <div style={{ marginLeft: "251px" }}>{accountData && accountData.Email}</div>
+              <div style={{ marginLeft: "251px" }}>
+                {accountData && accountData.Email}
+              </div>
             </div>
             <div
               style={{
@@ -317,7 +334,9 @@ function Ad_User_Profile() {
               >
                 Pancard Number
               </div>
-              <div style={{ marginLeft: "231px" }}>{accountData && accountData.PanCard}</div>
+              <div style={{ marginLeft: "231px" }}>
+                {accountData && accountData.PanCard}
+              </div>
             </div>
             <div
               style={{
@@ -335,7 +354,9 @@ function Ad_User_Profile() {
               >
                 Aadhar Card Number
               </div>
-              <div style={{ marginLeft: "199px" }}>{accountData && accountData.AadharCard}</div>
+              <div style={{ marginLeft: "199px" }}>
+                {accountData && accountData.AadharCard}
+              </div>
             </div>
             <div
               style={{
@@ -353,7 +374,9 @@ function Ad_User_Profile() {
               >
                 Nominee
               </div>
-              <div style={{ marginLeft: "289px" }}>{accountData && accountData.Nominee}</div>
+              <div style={{ marginLeft: "289px" }}>
+                {accountData && accountData.Nominee}
+              </div>
             </div>
             <div
               style={{
@@ -371,7 +394,9 @@ function Ad_User_Profile() {
               >
                 Nominee Aadhar Card Number
               </div>
-              <div style={{ marginLeft: "132px" }}>{accountData && accountData.NomineeAadharCard}</div>
+              <div style={{ marginLeft: "132px" }}>
+                {accountData && accountData.NomineeAadharCard}
+              </div>
             </div>
             <div
               style={{
@@ -389,7 +414,9 @@ function Ad_User_Profile() {
               >
                 Address
               </div>
-              <div style={{ marginLeft: "297px" }}>{accountData && accountData.Address}</div>
+              <div style={{ marginLeft: "297px" }}>
+                {accountData && accountData.Address}
+              </div>
             </div>
             <div
               style={{
@@ -407,7 +434,9 @@ function Ad_User_Profile() {
               >
                 Date of Birth
               </div>
-              <div style={{ marginLeft: "268px" }}>{accountData && accountData.DOB}</div>
+              <div style={{ marginLeft: "268px" }}>
+                {accountData && accountData.DOB}
+              </div>
             </div>
           </div>
         </div>

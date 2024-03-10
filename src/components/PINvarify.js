@@ -64,7 +64,7 @@ function PINvarify() {
                       "Content-Type": "application/json",
                     },
                   }
-                  );
+                );
                 setOpen(true);
                 console.log("API execute successfully");
                 console.log(response);
@@ -99,7 +99,7 @@ function PINvarify() {
                       JSON.stringify(response.data.Data[0])
                     );
                   });
-                  setOpen(true);
+                setOpen(true);
                 const CardData = await axios
                   .post(
                     "http://localhost:5000/test/api/users/card-detail-fetcher",
@@ -122,13 +122,34 @@ function PINvarify() {
                     navigate("/Deshbord");
                   })
                   .catch((e) => console.log(e));
+
+                /** display amount API */
+                setOpen(true);
+                const balanceData = await axios
+                  .post(
+                    "http://localhost:5000/test/api/users/get-debit-data",
+                    { sessionEmail },
+                    {
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                    }
+                  )
+                  .then((response) => {
+                    console.log(response);
+                    sessionStorage.setItem(
+                      "BalanceData",
+                      JSON.stringify(response.data.Data)
+                    );
+                  })
+                  .catch((e) => console.log(e));
+
               } catch (error) {
                 console.log("Error : ", error);
               }
             };
 
             fetchData();
-            
           }
         })
         .catch(async (e) => {

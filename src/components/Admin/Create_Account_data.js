@@ -28,6 +28,7 @@ function Create_Account_data() {
         );
         if (response.status === 200) {
           console.log(response);
+          sessionStorage.setItem("AccountData", JSON.stringify(response.data.Data));
           setAccountData(response.data.Data);
    
         }
