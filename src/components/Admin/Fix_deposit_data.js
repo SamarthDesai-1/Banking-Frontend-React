@@ -8,8 +8,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 function Fix_deposit_data() {
   const [fdData, setFDData] = useState([]);
-  const [accountNoQuery, setAccountNoQuery] = useState("");
-  const [nameQuery, setNameQuery] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -27,28 +27,29 @@ function Fix_deposit_data() {
         if (response.status === 200) {
           console.log(response);
           setFDData(response.data.Data);
-          setOpen(false);
+          
         }
       } catch (error) {
         console.error("Error fetching data:", error);
-        setOpen(false);
       }
+      setOpen(false);
     };
     fetchData();
   }, []);
 
   const handleSearchAccountNoChange = (event) => {
-    setAccountNoQuery(event.target.value);
+    setSearchQuery(event.target.value);
   };
 
-  const handleSearchNameChange = (event) => {
-    setNameQuery(event.target.value);
-  };
+  useEffect(() => {
+    const filteredResults = fdData.filter((item) =>
+      `${item.FirstName} ${item.LastName}  ${item.Email} ${item.AccountNo} ${item.Balance} ${item.date}`
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
+    setFilteredData(filteredResults);
+  }, [searchQuery, fdData]);
 
-  const filteredData = fdData.filter((item) =>
-    item.AccountNo.toLowerCase().includes(accountNoQuery.toLowerCase()) &&
-    `${item.FirstName} ${item.LastName} ${item.Email}`.toLowerCase().includes(nameQuery.toLowerCase())
-  );
 
   return (
     <div className="fixdeposit">
@@ -65,48 +66,48 @@ function Fix_deposit_data() {
         </div>
         <div className="col-sm-9">
           <div className="fixtable">
-            <h2 className="mb-3">Fix Deposit data</h2>
-            <form className="d-flex adserch">
+            <div className="row">
+              <div className="col-md-6">
+              <h2 className="mb-3">Fix Deposit data</h2>
+              </div>
+              <div className="col-md-6">
+              <form className="d-flex adserch">
               <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Search by Account Number"
+                placeholder="Search"
                 aria-label="Search"
-                value={accountNoQuery}
+                value={searchQuery}
                 onChange={handleSearchAccountNoChange}
-              />
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search by Email"
-                aria-label="Search"
-                value={nameQuery}
-                onChange={handleSearchNameChange}
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
             </form>
+              </div>
+            </div>
+           
+           
             <table className="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
+                  <th scope="col">Name</th>
                   <th scope="col">Account No</th>
                   <th scope="col">Email</th>
                   <th scope="col">FD Amount</th>
-                  <th scope="col">Status</th>
+                  <th scope="col">date</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredData.map((elem, index) => (
                   <tr key={index}>
                     <td className="text-deco">{index + 1}</td>
+                    <td className="text-deco">{elem.FirstName} {elem.LastName}</td>
                     <td className="text-deco">{elem.AccountNo}</td>
                     <td className="text-deco">{elem.Email}</td>
                     <td className="text-deco">{elem.Balance}</td>
-                    <td className="text-deco">
-                      <button className="btn btn-primary">View</button>
-                    </td>
+                    <td className="text-deco">{elem.date.substring(0,10)}</td>
                   </tr>
                 ))}
               </tbody>

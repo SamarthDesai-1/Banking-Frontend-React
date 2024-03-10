@@ -1,7 +1,11 @@
 import React from "react";
 import "../../style-css/Admin/Admin_Sidebar.css";
 import { NavLink } from "react-router-dom";
-import HomeIcon from "@mui/icons-material/Home";
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AddCardIcon from '@mui/icons-material/AddCard';
+import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
+import ContactsIcon from '@mui/icons-material/Contacts';
 
 function Admin_Sidebar() {
   return (
@@ -29,41 +33,41 @@ function Admin_Sidebar() {
                     <NavLink to="/Signup_Data" className="linka">
                       Signup Data
                     </NavLink>
-                    <HomeIcon
+                    <GroupAddIcon
                       style={{ position: "relative", left: "130px" }}
-                    ></HomeIcon>
+                    ></GroupAddIcon>
                   </li>
                   <li className="menuname">
                     <NavLink to="/Create_Account_data" className="linka">
                       Create Account Data
                     </NavLink>
-                    <HomeIcon
+                    <AccountCircleIcon
                       style={{ position: "relative", left: "59px" }}
-                    ></HomeIcon>
+                    ></AccountCircleIcon>
                   </li>
                   <li className="menuname">
                     <NavLink to="/Debit_Card_data" className="linka">
                       DebitCard issue Data
                     </NavLink>
-                    <HomeIcon
+                    <AddCardIcon
                       style={{ position: "relative", left: "58px" }}
-                    ></HomeIcon>
+                    ></AddCardIcon>
                   </li>
                   <li className="menuname">
                     <NavLink to="/Fix_deposit_data" className="linka">
                       Fix Deposit Data
                     </NavLink>
-                    <HomeIcon
+                    <EnergySavingsLeafIcon
                       style={{ position: "relative", left: "100px" }}
-                    ></HomeIcon>
+                    ></EnergySavingsLeafIcon>
                   </li>
                   <li className="menuname">
                     <NavLink to="/Contect_data" className="linka">
                       Contact Data
                     </NavLink>
-                    <HomeIcon
-                      style={{ position: "relative", left: "125px" }}
-                    ></HomeIcon>
+                    <ContactsIcon
+                      style={{ position: "relative", left: "120px" }}
+                    ></ContactsIcon>
                   </li>
                 </ul>
               </div>

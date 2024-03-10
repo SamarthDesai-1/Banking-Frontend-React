@@ -9,8 +9,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 function Debit_Card_data() {
   const [cardData, setCardData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [accountNoQuery, setAccountNoQuery] = useState("");
-  const [nameQuery, setNameQuery] = useState("");
+  const [searchQuery, setSearchNoQuery] = useState("");
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -28,34 +27,29 @@ function Debit_Card_data() {
         if (response.status === 200) {
           console.log(response);
           setCardData(response.data.Data);
-          setOpen(false);
+          
         }
       } catch (error) {
         console.error("Error fetching data:", error);
-        setOpen(false);
       }
+      setOpen(false);
     };
     fetchData();
   }, []);
 
   const handleSearchAccountNoChange = (event) => {
-    setAccountNoQuery(event.target.value);
+    setSearchNoQuery(event.target.value);
   };
 
-  const handleSearchNameChange = (event) => {
-    setNameQuery(event.target.value);
-  };
 
   useEffect(() => {
     const filteredResults = cardData.filter(
       (item) =>
-        item.AccountNo.toString().includes(accountNoQuery) &&
-        `${item.FirstName} ${item.LastName}`
+        `${item.FirstName} ${item.LastName} ${item.Email} ${item.DebitCardNumber} ${item.AccountNo}`
           .toLowerCase()
-          .includes(nameQuery.toLowerCase())
-    );
+          .includes(searchQuery.toLowerCase()));
     setFilteredData(filteredResults);
-  }, [accountNoQuery, nameQuery, cardData]);
+  }, [searchQuery, cardData]);
 
   return (
     <div className="addebitcard">
@@ -72,54 +66,46 @@ function Debit_Card_data() {
         </div>
         <div className="col-sm-9">
           <div className="debittable">
-            <h2 className="mb-3">Debit Card data</h2>
-            <form className="d-flex adserch">
+            <div className="row">
+              <div className="col-md-6">
+              <h2 className="mb-3">Debit Card data</h2>
+              </div>
+              <div className="col-md-6">
+              <form className="d-flex adserch">
               <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Search by Account Number"
+                placeholder="Search"
                 aria-label="Search"
-                value={accountNoQuery}
+                value={searchQuery}
                 onChange={handleSearchAccountNoChange}
-              />
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search by Name"
-                aria-label="Search"
-                value={nameQuery}
-                onChange={handleSearchNameChange}
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
             </form>
+              </div>
+            </div>
+            
+            
             <table className="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Account No</th>
-                  <th scope="col">Card Issuer</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Expiry Date</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Mobile</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Account No</th>
+                  <th scope="col">Debit Card Number</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredData.map((elem, index) => (
                   <tr key={index}>
                     <td className="text-deco">{index + 1}</td>
-                    <td className="text-deco">{elem.AccountNo}</td>
-                    <td className="text-deco">{elem.CardIssuer}</td>
+                    <td className="text-deco">{elem.FirstName} {elem.LastName}</td>
                     <td className="text-deco">{elem.Email}</td>
-                    <td className="text-deco">
-                      {elem.ExpiryDate.substring(0, 10)}
-                    </td>
-                    <td className="text-deco">
-                      {elem.FirstName} {elem.LastName}
-                    </td>
-                    <td className="text-deco">{elem.Mobile}</td>
+                    <td className="text-deco">{elem.AccountNo}</td>
+                    <td className="text-deco">{elem.DebitCardNumber}</td>
                   </tr>
                 ))}
               </tbody>

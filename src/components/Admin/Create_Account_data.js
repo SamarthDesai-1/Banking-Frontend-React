@@ -11,8 +11,7 @@ function Create_Account_data() {
   const navigate = useNavigate();
   const [accountData, setAccountData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [nameQuery, setNameQuery] = useState("");
-  const [incomeQuery, setIncomeQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -30,23 +29,20 @@ function Create_Account_data() {
         if (response.status === 200) {
           console.log(response);
           setAccountData(response.data.Data);
-          setOpen(false);
+   
         }
       } catch (error) {
         console.error("Error fetching data:", error);
-        setOpen(false);
       }
+      setOpen(false);
     };
     fetchData();
   }, []);
 
   const handleSearchNameChange = (event) => {
-    setNameQuery(event.target.value);
+    setSearchQuery(event.target.value);
   };
 
-  const handleSearchIncomeChange = (event) => {
-    setIncomeQuery(event.target.value);
-  };
 
   const handleProfile = async (id) => {
     console.log("User index : ", id);
@@ -66,13 +62,11 @@ function Create_Account_data() {
   useEffect(() => {
     const filteredResults = accountData.filter(
       (item) =>
-        `${item.FirstName} ${item.LastName}`
+        `${item.FirstName} ${item.LastName} ${item.Email} ${item.AccountNo} ${item.Mobile}`
           .toLowerCase()
-          .includes(nameQuery.toLowerCase()) &&
-        item.MonthlyIncome.toString().includes(incomeQuery)
-    );
+          .includes(searchQuery.toLowerCase()));
     setFilteredData(filteredResults);
-  }, [nameQuery, incomeQuery, accountData]);
+  }, [searchQuery, accountData]);
 
   return (
     <div className="adcreat">
@@ -89,36 +83,37 @@ function Create_Account_data() {
         </div>
         <div className="col-sm-9">
           <div className="createtable">
-            <h2 className="mb-3">Create Account data</h2>
-            <form className="d-flex adserch">
+            <div className="row">
+              <div className="col-md-6">
+              <h2 className="mb-3">Create Account data</h2>
+              </div>
+              <div className="col-md-6">
+              <form className="d-flex adserch">
               <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Search by Name"
+                placeholder="Search"
                 aria-label="Search"
-                value={nameQuery}
+                value={searchQuery}
                 onChange={handleSearchNameChange}
-              />
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search by Monthly Income"
-                aria-label="Search"
-                value={incomeQuery}
-                onChange={handleSearchIncomeChange}
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
             </form>
+              </div>
+            </div>
+            
             <table className="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
                   <th scope="col">Name</th>
+                  <th scope="col">Account No</th>
+                  <th scope="col">Email</th>
                   <th scope="col">Mobile</th>
-                  <th scope="col">DOB</th>
-                  <th scope="col">MonthlyIncome</th>
+                  <th scope="col">Profile</th>
+                  <th scope="col">Transection</th>
                 </tr>
               </thead>
               <tbody>
@@ -128,9 +123,9 @@ function Create_Account_data() {
                     <td className="text-deco">
                       {elem.FirstName} {elem.LastName}
                     </td>
+                    <td className="text-deco">{elem.AccountNo}</td>
+                    <td className="text-deco">{elem.Email}</td>
                     <td className="text-deco">{elem.Mobile}</td>
-                    <td className="text-deco">{elem.DOB}</td>
-                    <td className="text-deco">{elem.MonthlyIncome}</td>
                     <td className="text-deco">
                       <button
                         className="btn btn-primary"

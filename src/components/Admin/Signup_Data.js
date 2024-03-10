@@ -27,12 +27,11 @@ function Signup_Data() {
         if (response.status === 200) {
           console.log(response);
           setSignupData(response.data.Data);
-          setOpen(false);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
-        setOpen(false);
       }
+      setOpen(false);
     };
     fetchData();
   }, []);
@@ -65,8 +64,12 @@ function Signup_Data() {
         </div>
         <div className="col-sm-9">
           <div className="signtable">
-            <h2 className="mb-3">Signup data</h2>
-            <form className="d-flex adserch">
+            <div className="row">
+              <div className="col-md-6">
+              <h2 className="mb-3">Signup data</h2>
+              </div>
+              <div className="col-md-6">
+              <form className="d-flex adserch">
               <input
                 className="form-control me-2"
                 type="search"
@@ -79,6 +82,10 @@ function Signup_Data() {
                 Search
               </button>
             </form>
+              </div>
+            </div>
+      
+         
             <table className="table table-striped">
               <thead>
                 <tr>
