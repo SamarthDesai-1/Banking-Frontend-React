@@ -3,7 +3,6 @@ import Deshbord_Navbar from "./Deshbord_Navbar";
 import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import "../style-css/Deshbord.css";
 import { useEffect } from "react";
-import { PieChart, Pie, ResponsiveContainer } from "recharts";
 
 //chart import line
 import {
@@ -14,6 +13,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  PieChart, Pie, ResponsiveContainer
 } from "recharts";
 
 //chart import line

@@ -10,6 +10,9 @@ import { joiResolver } from "@hookform/resolvers/joi";
 // loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+//tostyfy
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const schema = joi
   .object({
@@ -69,8 +72,9 @@ function Signup_Signin() {
         console.log(e.response.data.msg);
         if (e.response.data.msg) {
           // alert("Your account is already open kindly login..");
-          alert(
-            `${email} email is already in use. Please try a different one.`
+          toast.error(
+            `${email} email is already in use. Please try a different one.`,
+          
           );
         }
       });
@@ -94,6 +98,7 @@ function Signup_Signin() {
       )
       .then((response) => {
         if (response?.status === 200) {
+          // toast.success("Login successfully");
           console.log(response);
           console.log("Token : ", response.data.Token);
           console.log("Email : ", response.data.Email);
@@ -106,7 +111,6 @@ function Signup_Signin() {
 
           /* Change. */
 
-          alert("Login successfully");
           setemail("");
           setpassword("");
           if (email === "admin@gmail.com" && password === "admin1234") {
@@ -117,9 +121,10 @@ function Signup_Signin() {
           }
         }
       })
-      .catch((e) => alert("Invalid Username or Password"));
-    setOpen(false);
-  };
+      .catch((e) => toast.error("Invalid Username or Password"));
+      setOpen(false);
+    };
+  
 
   const [isSignUpMode, setSignUpMode] = useState(false);
   const [isSignUpMode2, setSignUpMode2] = useState(false);
@@ -145,6 +150,17 @@ function Signup_Signin() {
 
   return (
     <>
+    <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"/>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

@@ -8,6 +8,11 @@ import OtpInput from 'react-otp-input';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
+//tostyfy
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function Otp() {
 
   const navigate = useNavigate();
@@ -44,14 +49,14 @@ function Otp() {
 
   const sendotpdata = async () => {
     setOpen(true)
-    const data = await axios.post('http://localhost:5000/test/api/users/verify', { otp }, {
+    const response = await axios.post('http://localhost:5000/test/api/users/verify', { otp }, {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).catch((e) => alert("OTP is invalid"))
+    }).catch((e) => toast.error(e.response.data.msg))
     setotp("");
     setOpen(false)
-    if (data) {
+    if (response?.status === 200) {
       navigate("/Signup_Signin");
     }
     handleVerifyOTP();
@@ -125,6 +130,17 @@ function Otp() {
 
   return (
     <>
+        <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"/>
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
