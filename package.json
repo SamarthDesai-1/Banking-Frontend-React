@@ -16,6 +16,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
+    "autotype": "^0.0.1",
     "axios": "^1.6.7",
     "font-awesome": "^4.7.0",
     "joi": "^17.12.2",

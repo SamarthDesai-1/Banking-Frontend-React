@@ -108,7 +108,7 @@ function Contect_data() {
                     <td className="text-deco">{elem.Message}</td>
                     <td className="text-deco">
                       {" "}
-                      <button className="btn btn-success">Process</button>{" "}
+                      {/* <button className="btn btn-success">Process</button>{" "} */}
                     </td>
                   </tr>
                 ))}

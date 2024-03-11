@@ -16,8 +16,8 @@ function Account_close_data() {
   const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
-    setOpen(true)
     const fetchData = async () => {
+      setOpen(true)
       await axios
         .get("http://localhost:5000/test/api/users/get-close-requests", {
           headers: {
@@ -31,10 +31,11 @@ function Account_close_data() {
         .catch((e) => {
           console.log(e);
         });
+        setOpen(false)
     };
 
     fetchData();
-    setOpen(false)
+    
   }, []);
 
   const handleConfirm = async (id, status) => {
