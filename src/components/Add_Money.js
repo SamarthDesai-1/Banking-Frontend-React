@@ -4,6 +4,8 @@ import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import "../style-css/Add_Money.css";
 import axios from "axios";
 
+import swal from 'sweetalert';
+
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -66,19 +68,24 @@ function Add_Money() {
                 })
                 .catch((e) => console.log(e));
             }
-            setAccountNo("");
-            setAmount("");
-            setPin("");
+            // setAccountNo("");
+            // setAmount("");
+            // setPin("");
+            swal({
+              icon: "success",
+              text:`$${amount} add successfuly`
+            });
+  
           })
           .catch((e) => {
             let msgFromServer = e.response.data.msg;
             console.log("Server says : ", msgFromServer);
             alert(msgFromServer);
-            return;
+            // return;
           });
       } else {
         alert("Fill the add funds details properly");
-        return;
+        // return;
       }
     } catch (error) {
       console.log("try catch error : ", error);
@@ -147,7 +154,7 @@ function Add_Money() {
 
             <input
               type="button"
-              class="btn btn-dark"
+              class="btn btn-primary"
               value="Deposit"
               onClick={handleData}
             />

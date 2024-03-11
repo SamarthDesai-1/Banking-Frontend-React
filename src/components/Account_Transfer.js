@@ -5,6 +5,8 @@ import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import { useState } from "react";
 import axios from "axios";
 
+import swal from 'sweetalert';
+
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -54,16 +56,21 @@ function Account_Transfer() {
             // setPin("");
             // setMsg("");
             // setRecevierAccount("");
+            swal({
+              icon: "success",
+              text:`$${amount} Sent successfuly`
+            });
+
           })
           .catch((e) => {
             let msgFromServer = e.response.data.msg;
             console.log("Server says : ", msgFromServer);
             alert(msgFromServer);
-            return;
+            // return;
           });
       } else {
         alert("Fill fields properly");
-        return;
+        // return;
       }
       setOpen(false);
     } catch (error) {}
@@ -140,7 +147,7 @@ function Account_Transfer() {
               />
             </div>
 
-            <button type="button" class="btn btn-dark" onClick={handleData}>
+            <button type="button" class="btn btn-primary" onClick={handleData}>
               Transfer
             </button>
           </form>

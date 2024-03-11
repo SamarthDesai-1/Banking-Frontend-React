@@ -5,10 +5,18 @@ import Admin_Navbar from "./Admin_Navbar";
 import { useEffect } from "react";
 import axios from "axios";
 
+//loading bar
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+
 function Account_close_data() {
+
   const [data, setData] = useState([]);
+  
+  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
+    setOpen(true)
     const fetchData = async () => {
       await axios
         .get("http://localhost:5000/test/api/users/get-close-requests", {
@@ -26,9 +34,11 @@ function Account_close_data() {
     };
 
     fetchData();
+    setOpen(false)
   }, []);
 
   const handleConfirm = async (id, status) => {
+    setOpen(true)
     console.log(id, status);
 
     const data = await axios
@@ -50,10 +60,18 @@ function Account_close_data() {
         alert("User delete account request is rejected");
         console.log(e);
       });
+      setOpen(false)
   };
 
   return (
     <div className="acclo">
+           <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Admin_Navbar></Admin_Navbar>
       <div className="row">
         <div className="col-sm-3">

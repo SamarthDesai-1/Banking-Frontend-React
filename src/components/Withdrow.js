@@ -3,7 +3,7 @@ import "../style-css/Withdrow.css";
 import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import Deshbord_Navbar from "./Deshbord_Navbar";
 import axios from "axios";
-
+import swal from "sweetalert";
 //loading bar
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -47,16 +47,20 @@ function Withdrow() {
 
           // setAmount();
           // setPin("")
+          swal({
+            icon: "success",
+            text:`$${amount} Withdrow successfuly`
+          });
 
         }).catch(e => {
           let msgFromServer = e.response.data.msg;
           console.log("Server says : ", msgFromServer);
           alert(msgFromServer);
-          return;
+          // return;
         })
       } else {
         alert("Fill the add funds details properly");
-        return;
+        // return;
       }
     } catch (error) { }
     setOpen(false)
@@ -111,7 +115,7 @@ function Withdrow() {
 
             <input
               type="button"
-              class="btn btn-dark"
+              class="btn btn-primary"
               value="Withdrow Money"
               onClick={handleData}
             />

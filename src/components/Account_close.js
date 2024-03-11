@@ -7,9 +7,16 @@ import Joi from "joi";
 import { useState } from "react";
 import axios from "axios";
 
+//loading bar
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+
 function Account_close() {
   const navigate = useNavigate();
   const [account, setAccount] = useState("");
+
+  
+  const [open, setOpen] = React.useState(false);
 
   const [formData, setFormData] = useState({
     FirstName: "",
@@ -53,7 +60,7 @@ function Account_close() {
 
       return;
     }
-
+    setOpen(true)
     try {
       const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
       const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
@@ -90,9 +97,11 @@ function Account_close() {
     } catch (e) {
       console.log("error from try catch");
     }
+    setOpen(false)
   };
 
   const handleEvent = async () => {
+    setOpen(true)
     const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
     const data = await axios
       .post(
@@ -121,22 +130,31 @@ function Account_close() {
         console.log(e);
         alert(e.response.data.msg);
       });
+      setOpen(false)
   };
 
   return (
     <div className="acclose">
+           <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Deshbord_Navbar></Deshbord_Navbar>
       <div className="row">
         <div className="col-md-3">
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
         <div className="col-md-7 closeform">
+        <button onClick={handleEvent} className="stbtn btn btn-primary">
+              Status
+            </button>
           <form onSubmit={handleSubmit} className="p-5">
             <h2 className="mb-4">Account close Application Form</h2>
 
-            <button onClick={handleEvent} className="stbtn btn btn-primary">
-              Status
-            </button>
+            
 
             <div className="row">
               <div className="col-md-6">

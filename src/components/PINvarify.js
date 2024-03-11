@@ -15,7 +15,6 @@ function PINvarify() {
   const navigate = useNavigate();
 
   const verifyPIN = async () => {
-    setOpen(true);
     console.log("User click verify PIN");
 
     const PIN = pin;
