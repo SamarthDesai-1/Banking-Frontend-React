@@ -1,0 +1,163 @@
+.loanreq .container {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.loanreq .flex {
+  display: flex;
+  align-items: center;
+}
+
+.loanreq .items-center {
+  align-items: center;
+}
+
+.loanreq .space-x-4 {
+  margin-right: 1rem;
+}
+
+/* Typography */
+.loanreq .text-3xl {
+  font-size: 1.875rem;
+}
+
+.loanreq .font-bold {
+  font-weight: bold;
+}
+
+.loanreq .tracking-tighter {
+  letter-spacing: -0.025em;
+}
+
+.loanreq .text-xs {
+  font-size: 0.75rem;
+}
+
+.loanreq .font-semibold {
+  font-weight: 600;
+}
+
+/* Borders */
+.loanreq .rounded-full {
+  border-radius: 9999px;
+}
+
+.loanreq .border {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.loanreq .px-2 {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+
+.loanreq .py-0 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+/* Colors */
+.loanreq .text-gray-500 {
+  color: #6b7280;
+}
+
+/* Layout */
+.loanreq .whitespace-nowrap {
+  white-space: nowrap;
+}
+
+/* Buttons */
+.loanreq .transition-colors {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.loanreq .focus\\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.loanreq .focus\\:ring-2:focus {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.loanreq .focus\\:ring-ring {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.loanreq .focus\\:ring-offset-2:focus {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Cards */
+.loanreq .rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.loanreq .bg-card {
+  background-color: #ffffff;
+}
+
+.loanreq .text-card-foreground {
+  color: #1f2937;
+}
+
+.loanreq .shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Padding */
+.loanreq .p-4 {
+  padding: 1rem;
+}
+
+.loanreq .md\\:p-6 {
+  padding: 1.5rem;
+}
+
+/* Grid */
+.loanreq .grid {
+  display: grid;
+}
+
+.loanreq .gap-4 {
+  gap: 1rem;
+}
+
+.loanreq .md\\:grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Spacing */
+.loanreq .space-y-2 {
+  margin-bottom: 0.5rem;
+}
+
+/* Icons */
+.loanreq .h-4 {
+  height: 1rem;
+}
+
+.loanreq .w-4 {
+  width: 1rem;
+}
+
+.loanreq .w-fit {
+  width: fit-content;
+}
+.loanreq .app {
+  position: absolute;
+  left: 250px;
+  margin-top: 15px;
+  padding: 10px;
+  width: 100px;
+}
+.loanreq .dis {
+  width: 100px;
+  position: absolute;
+  right: 250px;
+  margin-top: 15px;
+  padding: 10px;
+}
