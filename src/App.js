@@ -49,6 +49,11 @@ import View_Deposit_status from "./components/Admin/View_Deposit_status";
 import Contect_data from "./components/Admin/Contect_data";
 import Account_close from "./components/Account_close";
 import Account_close_data from "./components/Admin/Account_close_data";
+
+import Apply_Loan from "./components/Apply_Loan";
+import Loan_data from "./components/Admin/Loan_data";
+import Loan_status from "./components/Admin/Loan_status";
+
 import Tostyfy from "./components/Tostyfy";
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -123,6 +128,11 @@ function App() {
           <Route exact path="/Account_close" element={<Account_close />} />
           <Route exact path="/Account_close_data" element={<Account_close_data />} />
           <Route exact path="/Tostyfy" element={<Tostyfy />} />
+
+          <Route exact path="/Apply_Loan" element={<Apply_Loan/>} />
+          <Route exact path="/Loan_data" element={<Loan_data/>} />
+          <Route exact path="/Loan_status" element={<Loan_status/>} />
+
 
         </Routes>
       </BrowserRouter>

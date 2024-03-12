@@ -124,7 +124,7 @@ function Deshbord_Sidebar() {
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
-        // onClick={handleClose}
+      // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
@@ -195,7 +195,7 @@ function Deshbord_Sidebar() {
                     ></FileCopyIcon>
                   </li>
                   <li className="menuname">
-                    
+
                     {data && data.DebitCard === "No issue" ? (
                       <NavLink to="/Applydebit" className="linka">
                         Debit Card
@@ -218,14 +218,22 @@ function Deshbord_Sidebar() {
                       style={{ position: "relative", left: "53px" }}
                     ></LockClockIcon>
                   </li>
-<li className="menuname">
-                   <NavLink to="/Account_close" className="linka">
-                     Account Close Application
-                   </NavLink>
-                   <CancelIcon
-                     style={{ position: "relative", left: "6px" }}
-                   ></CancelIcon>
-                 </li>
+                  <li className="menuname">
+                    <NavLink to="/Apply_Loan" className="linka">
+                      Apply Loan
+                    </NavLink>
+                    <LockClockIcon
+                      style={{ position: "relative", left: "131px" }}
+                    ></LockClockIcon>
+                  </li>
+                  <li className="menuname">
+                    <NavLink to="/Account_close" className="linka">
+                      Account Close Application
+                    </NavLink>
+                    <CancelIcon
+                      style={{ position: "relative", left: "6px" }}
+                    ></CancelIcon>
+                  </li>
                 </ul>
               </div>
             </div>

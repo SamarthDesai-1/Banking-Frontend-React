@@ -1,0 +1,7 @@
+.aplloan .row{
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0;
+}
+.aplloan .aplform{
+    padding-left: 40px;
+}

@@ -71,6 +71,14 @@ function Admin_Sidebar() {
                     ></ContactsIcon>
                   </li>
                   <li className="menuname">
+                    <NavLink to="/Loan_data" className="linka">
+                      Loan Data
+                    </NavLink>
+                    <ContactsIcon
+                      style={{ position: "relative", left: "147px" }}
+                    ></ContactsIcon>
+                  </li>
+                  <li className="menuname">
                     <NavLink to="/Account_close_data" className="linka">
                       Account Close Data
                     </NavLink>
