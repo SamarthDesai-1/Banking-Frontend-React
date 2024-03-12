@@ -22,3 +22,7 @@
       position: relative;
       right: 10px;
   }
+  .adsidebar{
+    position: fixed;
+    width: 24.5vw;
+  }

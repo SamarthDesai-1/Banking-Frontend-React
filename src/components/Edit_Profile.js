@@ -11,6 +11,7 @@ import { joiResolver } from '@hookform/resolvers/joi';
 //loading bar
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import { toast } from 'react-toastify';
 
 function Edit_Profile() {
 
@@ -166,6 +167,7 @@ function Edit_Profile() {
         if (response?.status === 200) {
           console.log(response);
           console.log('Data updated successfully.');
+          toast.success(" Profile updated successfully")
           navigate("/PINvarify");
         }
 

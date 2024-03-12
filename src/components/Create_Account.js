@@ -11,6 +11,8 @@ import { joiResolver } from "@hookform/resolvers/joi";
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Tostyfy from "./Tostyfy";
+import { toast } from "react-toastify";
 
 const Create_Account = () => {
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
@@ -150,7 +152,7 @@ const Create_Account = () => {
           console.error(
             "Failed to insert data OR may be user enter duplicate data."
           );
-          alert("Please enter non-duplicate data");
+          toast.error("Please enter non-duplicate data");
         });
     } catch (error) {
       console.error("Error:", error);
@@ -160,10 +162,11 @@ const Create_Account = () => {
 
   return (
     <div className="Create_account mb-4 mt-4">
+      <Tostyfy></Tostyfy>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
-        // onClick={handleClose}
+      // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
       </Backdrop>

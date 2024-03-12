@@ -10,6 +10,7 @@ import swal from 'sweetalert';
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { toast } from "react-toastify";
 
 function Account_Transfer() {
   const [amount, setAmount] = useState();
@@ -58,18 +59,18 @@ function Account_Transfer() {
             // setRecevierAccount("");
             swal({
               icon: "success",
-              text:`$${amount} Sent successfuly`
+              text:`${amount}` + '\u20B9 ' + ' Sent successfuly'
             });
 
           })
           .catch((e) => {
             let msgFromServer = e.response.data.msg;
             console.log("Server says : ", msgFromServer);
-            alert(msgFromServer);
+            toast.error(msgFromServer);
             // return;
           });
       } else {
-        alert("Fill fields properly");
+        toast.error("Fill fields properly");
         // return;
       }
       setOpen(false);

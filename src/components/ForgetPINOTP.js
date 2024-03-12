@@ -7,6 +7,7 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import OtpInput from 'react-otp-input';
+import { toast } from 'react-toastify';
 
 function ForgetPINOTP() {
 
@@ -50,7 +51,7 @@ function ForgetPINOTP() {
   const sendotpdata = async () => {
 
     console.log("API call soon");
-    const data = await axios.post('http://localhost:5000/test/api/users/match-pin', { otp, sessionEmail, sessionToken }, {
+    const response = await axios.post('http://localhost:5000/test/api/users/match-pin', { otp, sessionEmail, sessionToken }, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -60,12 +61,8 @@ function ForgetPINOTP() {
         console.log(response);
         navigate("/Update_PIN");
       }
-
-    }).catch((e) => alert("OTP is invalid"))
-    setotp("");
-    if (data) {
-      navigate("/Reset_Password");
-    }
+    }).catch((e) => toast.error(e.response.data.msg))
+    // setotp("");
     handleVerifyOTP();
 
   }

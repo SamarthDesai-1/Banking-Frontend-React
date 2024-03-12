@@ -6,6 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
+//tostyfy
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function Reset_Password() {
 
@@ -37,9 +41,9 @@ function Reset_Password() {
 
                 setPassword("");
                 setCpassword("");
-                alert("your password is reset succesfully")
+                toast.success("your password is reset succesfully")
 
-                navigate("/Signup_Signin")
+                navigate("/Signup_Signin");
 
 
             }).catch(() => console.log("Error from API response"));
@@ -47,7 +51,7 @@ function Reset_Password() {
             console.log(data);
         }
         else {
-            alert("Retype password and confirm password");
+            toast.error("Retype password and confirm password");
         }
         setOpen(false)
 

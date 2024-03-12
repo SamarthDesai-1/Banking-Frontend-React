@@ -12,3 +12,7 @@
     right: 200px;
     top: 16px;
 }
+.adnav{
+    position: sticky;
+    top: 0px;
+}

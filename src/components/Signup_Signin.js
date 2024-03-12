@@ -117,6 +117,7 @@ function Signup_Signin() {
             navigate("../Admin_Dashbord");
           } 
           else {
+            toast.success("welcome");
             navigate("/");
           }
         }
@@ -150,17 +151,7 @@ function Signup_Signin() {
 
   return (
     <>
-    <ToastContainer
-position="top-right"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="colored"/>
+ 
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

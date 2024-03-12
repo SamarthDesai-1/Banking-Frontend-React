@@ -6,6 +6,9 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import Tostyfy from "./Tostyfy";
+import { toast } from "react-toastify";
+
 
 function Contect() {
 
@@ -34,12 +37,12 @@ function Contect() {
             // setSubject("");
             // setEmail("");
 
-            alert("Your query had been submitted our team will soon contact you.");
+            toast.success("Your query had been submitted our team will soon contact you.");
             return;
         }
       }).catch(e => {
         console.log("Error response : " ,e);
-        alert(e.response.data.msg);
+        toast.error(e.response.data.msg);
       });
     }
     catch (error) {
@@ -50,6 +53,7 @@ function Contect() {
 
   return (
     <>
+    <Tostyfy></Tostyfy>
       <Navbar></Navbar>
       <div className="Contect">
         <div className="image">

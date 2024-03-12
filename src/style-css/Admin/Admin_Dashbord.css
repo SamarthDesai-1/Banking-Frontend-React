@@ -2,3 +2,7 @@
     --bs-gutter-x: 0rem;
     --bs-gutter-y: 0
 }
+.adidas .cardrow{
+    justify-content: space-around;
+    padding-top: 30px;
+}

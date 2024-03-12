@@ -10,6 +10,7 @@ import axios from "axios";
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { toast } from "react-toastify";
 
 function Account_close() {
   const navigate = useNavigate();
@@ -31,10 +32,17 @@ function Account_close() {
   const schema = Joi.object({
     FirstName: Joi.string().required().label("First Name"),
     LastName: Joi.string().required().label("Last Name"),
-    Email: Joi.string()
-      .email({ tlds: { allow: false } })
-      .required()
-      .label("Email"),
+    // Email: Joi.string()
+    //   .email({ tlds: { allow: false } })
+    //   .required()
+    //   .label("Email"),
+      Email: Joi
+      .string()
+      .email({
+        minDomainSegments: 2,
+        tlds: { allow: ["com", "net", "org", "io"] },
+      })
+      .required(),
     AccountNo: Joi.string().required().label("Account Number"),
     Reason: Joi.string().required().label("Reason"),
   });
@@ -92,7 +100,7 @@ function Account_close() {
           setAccount(response.data.Data);
         })
         .catch((e) => {
-          alert(e.response.data.msg);
+          toast.error(e.response.data.msg);
         });
     } catch (e) {
       console.log("error from try catch");
@@ -119,16 +127,16 @@ function Account_close() {
         if (response?.status === 200) {
           console.log(response);
           if (response.data.Data[0].Status === "Pending") {
-            alert(response.data.msg);
+            toast.error(response.data.msg);
           } 
           if (response.data.Data[0].Status === "reject") {
-            alert(response.data.msg);
+            toast.error(response.data.msg);
           }
         }
       })
       .catch((e) => {
         console.log(e);
-        alert(e.response.data.msg);
+        toast.error(e.response.data.msg);
       });
       setOpen(false)
   };

@@ -49,66 +49,84 @@ import View_Deposit_status from "./components/Admin/View_Deposit_status";
 import Contect_data from "./components/Admin/Contect_data";
 import Account_close from "./components/Account_close";
 import Account_close_data from "./components/Admin/Account_close_data";
-
+import Tostyfy from "./components/Tostyfy";
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
-  <>
-  <BrowserRouter>
+    <>
+      <BrowserRouter>
+        <ToastContainer
+          style={{ zIndex: "10000000000" }}
+          transition={Slide}
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+
         <Routes>
-          <Route exact path="/" element={<Home/>} />
-          <Route exact path="/About_us" element={<About_us/>} />
-          <Route exact path="/Contect" element={<Contect/>} />
-          <Route exact path="/Signup_Signin" element={<Signup_Signin/>} />
-          <Route exact path="/Otp" element={<Otp/>} />
-          <Route exact path="/Help" element={<Help/>} />
-          <Route exact path="/Create_Account" element={<Create_Account/>} />
-          <Route exact path="/PINvarify" element={<PINvarify/>} />
-          <Route exact path="/Forget_Password" element={<Forget_Password/>} />
-          <Route exact path="/Reset_Password" element={<Reset_Password/>} />
-          <Route exact path="/ForgetPasswordOTP" element={<ForgetPasswordOTP/>} />
-          <Route exact path="/User_Profile" element={<User_Profile/>} />
-          <Route exact path="/PINvarify" element={<PINvarify/>} />
-          <Route exact path="/Create_Account" element={<Create_Account/>} />
-          <Route exact path="/Generate_PIN" element={<Generate_PIN/>} />
-          <Route exact path="/ForgetPINOTP" element={<ForgetPINOTP/>} />
-          <Route exact path="/Update_PIN" element={<Update_PIN/>} />
-          <Route exact path="/FormComponent" element={<FormComponent/>} />
-          <Route exact path="/Edit_Profile" element={<Edit_Profile/>} />
-          <Route exact path="/Deshbord_Navbar" element={<Deshbord_Navbar/>} />
-          <Route exact path="/Deshbord_Sidebar" element={<Deshbord_Sidebar/>} />
-          <Route exact path="/Deshbord" element={<Deshbord/>} />
-          <Route exact path="/Account_Transfer" element={<Account_Transfer/>} />
-          <Route exact path="/NotFound" element={<NotFound/>} />
-          <Route exact path="/Transection" element={<Transection/>} />
-          <Route exact path="/Add_Money" element={<Add_Money/>} />
-          <Route exact path="/Withdrow" element={<Withdrow/>} />
-          <Route exact path="/Applydebit" element={<Applydebit/>} />
-          <Route exact path="/Dabitcard_form" element={<Dabitcard_form/>} />
-          <Route exact path="/Debitcard" element={<Debitcard/>} />
-          <Route exact path="/Apply_fix_recurring" element={<Apply_fix_recurring/>} />
-          <Route exact path="/Fix_deposit_form" element={<Fix_deposit_form/>} />
-          <Route exact path="/Deposit_status" element={<Deposit_status/>} />
-          <Route exact path="/View_rates" element={<View_rates/>} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/About_us" element={<About_us />} />
+          <Route exact path="/Contect" element={<Contect />} />
+          <Route exact path="/Signup_Signin" element={<Signup_Signin />} />
+          <Route exact path="/Otp" element={<Otp />} />
+          <Route exact path="/Help" element={<Help />} />
+          <Route exact path="/Create_Account" element={<Create_Account />} />
+          <Route exact path="/PINvarify" element={<PINvarify />} />
+          <Route exact path="/Forget_Password" element={<Forget_Password />} />
+          <Route exact path="/Reset_Password" element={<Reset_Password />} />
+          <Route exact path="/ForgetPasswordOTP" element={<ForgetPasswordOTP />} />
+          <Route exact path="/User_Profile" element={<User_Profile />} />
+          <Route exact path="/PINvarify" element={<PINvarify />} />
+          <Route exact path="/Create_Account" element={<Create_Account />} />
+          <Route exact path="/Generate_PIN" element={<Generate_PIN />} />
+          <Route exact path="/ForgetPINOTP" element={<ForgetPINOTP />} />
+          <Route exact path="/Update_PIN" element={<Update_PIN />} />
+          <Route exact path="/FormComponent" element={<FormComponent />} />
+          <Route exact path="/Edit_Profile" element={<Edit_Profile />} />
+          <Route exact path="/Deshbord_Navbar" element={<Deshbord_Navbar />} />
+          <Route exact path="/Deshbord_Sidebar" element={<Deshbord_Sidebar />} />
+          <Route exact path="/Deshbord" element={<Deshbord />} />
+          <Route exact path="/Account_Transfer" element={<Account_Transfer />} />
+          <Route exact path="/NotFound" element={<NotFound />} />
+          <Route exact path="/Transection" element={<Transection />} />
+          <Route exact path="/Add_Money" element={<Add_Money />} />
+          <Route exact path="/Withdrow" element={<Withdrow />} />
+          <Route exact path="/Applydebit" element={<Applydebit />} />
+          <Route exact path="/Dabitcard_form" element={<Dabitcard_form />} />
+          <Route exact path="/Debitcard" element={<Debitcard />} />
+          <Route exact path="/Apply_fix_recurring" element={<Apply_fix_recurring />} />
+          <Route exact path="/Fix_deposit_form" element={<Fix_deposit_form />} />
+          <Route exact path="/Deposit_status" element={<Deposit_status />} />
+          <Route exact path="/View_rates" element={<View_rates />} />
 
-          <Route exact path="/Admin_Login" element={<Admin_Login/>} />
-          <Route exact path="/Admin_Navbar" element={<Admin_Navbar/>} />
-          <Route exact path="/Admin_Sidebar" element={<Admin_Sidebar/>} />
-          <Route exact path="/Admin_Dashbord" element={<Admin_Dashbord/>} />
-          <Route exact path="/Signup_Data" element={<Signup_Data/>} />
-          <Route exact path="/Create_Account_data" element={<Create_Account_data/>} />
-          <Route exact path="/Debit_Card_data" element={<Debit_Card_data/>} />
-          <Route exact path="/Fix_deposit_data" element={<Fix_deposit_data/>} />
-          <Route exact path="/Ad_User_Profile/:userId" element={<Ad_User_Profile/>} />
-          <Route exact path="/Ad_User_Transrction/:userId" element={<Ad_User_Transrction/>} />
-          <Route exact path="/View_Deposit_status" element={<View_Deposit_status/>} />
-          <Route exact path="/Contect_data" element={<Contect_data/>} />
+          <Route exact path="/Admin_Login" element={<Admin_Login />} />
+          <Route exact path="/Admin_Navbar" element={<Admin_Navbar />} />
+          <Route exact path="/Admin_Sidebar" element={<Admin_Sidebar />} />
+          <Route exact path="/Admin_Dashbord" element={<Admin_Dashbord />} />
+          <Route exact path="/Signup_Data" element={<Signup_Data />} />
+          <Route exact path="/Create_Account_data" element={<Create_Account_data />} />
+          <Route exact path="/Debit_Card_data" element={<Debit_Card_data />} />
+          <Route exact path="/Fix_deposit_data" element={<Fix_deposit_data />} />
+          <Route exact path="/Ad_User_Profile/:userId" element={<Ad_User_Profile />} />
+          <Route exact path="/Ad_User_Transrction/:userId" element={<Ad_User_Transrction />} />
+          <Route exact path="/View_Deposit_status" element={<View_Deposit_status />} />
+          <Route exact path="/Contect_data" element={<Contect_data />} />
 
-          <Route exact path="/Account_close" element={<Account_close/>} />
-          <Route exact path="/Account_close_data" element={<Account_close_data/>} />
+          <Route exact path="/Account_close" element={<Account_close />} />
+          <Route exact path="/Account_close_data" element={<Account_close_data />} />
+          <Route exact path="/Tostyfy" element={<Tostyfy />} />
 
         </Routes>
       </BrowserRouter>
-  </>
+    </>
   );
 }
 

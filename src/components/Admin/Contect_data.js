@@ -92,7 +92,7 @@ function Contect_data() {
                   <th scope="col">ID</th>
                   <th scope="col">Name</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Mobile</th>
+                  {/* <th scope="col">Mobile</th> */}
                   <th scope="col">Subject</th>
                   <th scope="col">Message</th>
                 </tr>
@@ -103,11 +103,11 @@ function Contect_data() {
                     <td className="text-deco">{index + 1}</td>
                     <td className="text-deco">{elem.Name}</td>
                     <td className="text-deco">{elem.Email}</td>
-                    <td className="text-deco">{elem.Mobile}</td>
+                    {/* <td className="text-deco">{elem.Mobile}</td> */}
                     <td className="text-deco">{elem.Subject}</td>
                     <td className="text-deco">{elem.Message}</td>
                     <td className="text-deco">
-                      {" "}
+                      {/* {" "} */}
                       {/* <button className="btn btn-success">Process</button>{" "} */}
                     </td>
                   </tr>

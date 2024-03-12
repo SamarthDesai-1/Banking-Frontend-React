@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { toast } from "react-toastify";
 
 function Apply_fix_recurring() {
 
@@ -35,7 +36,7 @@ function Apply_fix_recurring() {
         navigate("/Deposit_status");
       }
     }).catch(e => {
-      alert(e.response.data.msg);
+      toast.error(e.response.data.msg);
     })
     setOpen(false)
   };

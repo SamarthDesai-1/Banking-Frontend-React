@@ -8,6 +8,11 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import OtpInput from 'react-otp-input';
 
+//tostyfy
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function OTP() {
 
   const navigate = useNavigate();
@@ -44,14 +49,14 @@ function OTP() {
 
   const sendotpdata = async () => {
     setOpen(true)
-    const data = await axios.post('http://localhost:5000/test/api/users/reset-password-otp', { otp }, {
+    const response = await axios.post('http://localhost:5000/test/api/users/reset-password-otp', { otp }, {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).catch((e) => alert("OTP is invalid"))
-    setotp("");
+    }).catch((e) => toast.error(e.response.data.msg))
+    // setotp("");
     setOpen(false)
-    if (data) {
+    if (response?.status === 200) {
       navigate("/Reset_Password");
     }
     handleVerifyOTP();

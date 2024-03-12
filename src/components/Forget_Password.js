@@ -5,6 +5,11 @@ import { useNavigate } from 'react-router-dom';
 //loading bar
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+//tostyfy
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import swal from 'sweetalert';
+
 
 function Forget_Password() {
 
@@ -16,7 +21,7 @@ function Forget_Password() {
 
     const forgetpass = async () => {
 
-        alert("Check your inbox mail and enter OTP below for authentication.");
+       
         setOpen(true);
         const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
     
@@ -32,19 +37,26 @@ function Forget_Password() {
                 
             }
         }).then(response => {
-
             console.log("Response from server or forget-password : ", response);
-
+            
             const tokenString = response.data.RandomString;
-
+            
             sessionStorage.setItem("Random", response.data.RandomString);
-
+            
             console.log("Random String : ", tokenString);
             setemail("");
 
-            /* OTP page */ navigate("/ForgetPasswordOTP");
-
-
+            swal({
+                text: "Check your inbox mail and enter OTP below for authentication.",
+                icon: "info",
+                dangerMode: true,
+              })
+              .then(() => {
+                if (response?.status == 200) {
+                  console.log(response); 
+                  navigate("/ForgetPasswordOTP");
+                }
+              });
         }).catch(e => {
 
             const errorMessage = e.response.data.msg;
@@ -52,7 +64,7 @@ function Forget_Password() {
             console.log(`Error Message : ${errorMessage}`);
 
             if (e.response.data.isMailFound === true) {
-                alert(`${email} is not exist kindly Registration`);
+                toast.error(`${email} is not exist kindly Registration`);
             }
         });
         console.log(data);

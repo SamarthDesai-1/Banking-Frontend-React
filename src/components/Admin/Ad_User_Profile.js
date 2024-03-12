@@ -70,7 +70,7 @@ function Ad_User_Profile() {
           fontFamily: "Arial, sans-serif",
         }}
       >
-        <div style={{ padding: "20px", maxWidth: "1200px", margin: "0 auto" }}>
+        <div style={{ padding: "20px", maxWidth: "1200px", margin: "20px auto" }}>
           <div
             style={{
               display: "flex",
@@ -94,7 +94,7 @@ function Ad_User_Profile() {
                 }
                 width="100"
                 height="100"
-                style={{ borderRadius: "50%", objectFit: "cover" }}
+                style={{ borderRadius: "50%", objectFit: "cover" ,position:"absolute",left:"55px",marginBottom:"20px",}}
               />
               <div style={{ display: "grid", gridGap: "5px" }}>
                 <h1

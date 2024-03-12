@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 //loading
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import { toast } from 'react-toastify';
 
 
 function Navbar() {
@@ -38,7 +39,7 @@ function Navbar() {
       
     }).catch(e => {
       console.log(e.response.data.msg);
-      alert(e.response.data.msg);
+      toast.error(e.response.data.msg);
     });
     setOpen(false)
   };

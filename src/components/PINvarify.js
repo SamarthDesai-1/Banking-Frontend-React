@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 // loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { toast } from "react-toastify";
+import swal from "sweetalert";
 
 function PINvarify() {
   const [data, setData] = useState("");
@@ -20,7 +22,7 @@ function PINvarify() {
     const PIN = pin;
 
     if (PIN === "") {
-      alert("Enter PIN first to access your profile");
+      toast.error("Enter PIN first to access your profile");
       return;
     }
 
@@ -155,11 +157,11 @@ function PINvarify() {
         .catch(async (e) => {
           console.log(e.response.data.msg);
           console.log("Error : ", e);
-          alert(e.response.data.msg);
+          toast.error(e.response.data.msg);
         });
     } catch (e) {
       console.log("Error : ", e);
-      alert("Invalid PIN");
+      toast.error("Invalid PIN");
     }
     setOpen(false);
   };
@@ -169,7 +171,7 @@ function PINvarify() {
     const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
     const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
     console.log("User click forget PIN");
-    alert("Check your inbox mail and enter OTP below for authentication.");
+  
 
     const data = await axios
       .post(
@@ -182,12 +184,20 @@ function PINvarify() {
         }
       )
       .then((response) => {
-        if (response?.status == 200) {
-          console.log(response);
-          navigate("/ForgetPINOTP");
-        }
+        swal({
+          text: "Check your inbox mail and enter OTP below for authentication.",
+          icon: "info",
+          dangerMode: false,
+        })
+        .then(() => {
+          if (response?.status == 200) {
+            console.log(response); 
+            navigate("/ForgetPINOTP");
+          }
+        });
       })
       .catch((e) => console.log("Error : ", e));
+      
     setOpen(false);
   };
 

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 //loading bar
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import { toast } from 'react-toastify';
 
 function Update_PIN() {
 
@@ -27,28 +28,24 @@ function Update_PIN() {
         console.log(`Random String from session storage : ${tokenString}`);
 
         if (PIN === CPIN) {
-            const data = await axios.post('http://localhost:5000/test/api/users/update-pin', { PIN, CPIN, sessionEmail, sessionToken  }, {
+            const data = await axios.post('http://localhost:5000/test/api/users/update-pin', { PIN, CPIN, sessionEmail, sessionToken }, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
 
-            }).then((data) => {
-
-                console.log(data);
-
-                setPin("");
-                setCpin("");
-                alert("your PIN is reset succesfully")
-
-                navigate("/PINvarify");
-
-
-            }).catch(() => console.log("Error from API response"));
+            }).then((response) => {
+                if (response?.status === 200) {
+                    setPin("");
+                    setCpin("");
+                    toast.success("your PIN is reset succesfully")
+                    navigate("/PINvarify");
+                }
+            }).catch((e) => toast.error(e.response.data.msg));
 
             console.log(data);
         }
         else {
-            alert("Retype PIN and confirm PIN");
+            toast.error("Retype PIN and confirm PIN");
         }
         setOpen(false)
 
@@ -77,9 +74,9 @@ function Update_PIN() {
                         </div>
                         <div class="input-section">
                             <form action="" class="form-section">
-                                <input  maxLength={4} value={PIN} onChange={(e) => setPin(e.target.value)} type="password" class="format-text" placeholder="Enter new PIN" />
+                                <input maxLength={4} value={PIN} onChange={(e) => setPin(e.target.value)} type="password" class="format-text" placeholder="Enter new PIN" />
                                 <div class="seperator"></div>
-                                <input maxLength={4}  value={CPIN} onChange={(e) => setCpin(e.target.value)} t type="password" class="format-text" placeholder="Confirm PIN" />
+                                <input maxLength={4} value={CPIN} onChange={(e) => setCpin(e.target.value)} t type="password" class="format-text" placeholder="Confirm PIN" />
                                 <button onClick={resetPIN} type="button" class="btn">Reset PIN</button>
                             </form>
                         </div>

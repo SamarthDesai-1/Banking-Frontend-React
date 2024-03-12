@@ -14,7 +14,7 @@ function Admin_Sidebar() {
       <div className="adsidenav">
         <div className="row">
           <div className="tpart col-sm-12">
-            <div className="sidebar">
+            <div className="adsidebar">
               <div className="photo text-center pt-4">
                 <NavLink
                   to="/Admin_Dashbord"

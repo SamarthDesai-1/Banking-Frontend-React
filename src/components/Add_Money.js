@@ -9,6 +9,7 @@ import swal from 'sweetalert';
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { toast } from "react-toastify";
 
 function Add_Money() {
   /** Add loading bar at here */
@@ -73,18 +74,18 @@ function Add_Money() {
             // setPin("");
             swal({
               icon: "success",
-              text:`$${amount} add successfuly`
+              text: `${amount}` + '\u20B9 ' + ' added successfully'
             });
   
           })
           .catch((e) => {
             let msgFromServer = e.response.data.msg;
             console.log("Server says : ", msgFromServer);
-            alert(msgFromServer);
+            toast.error(msgFromServer);
             // return;
           });
       } else {
-        alert("Fill the add funds details properly");
+        toast.error("Fill the add funds details properly");
         // return;
       }
     } catch (error) {

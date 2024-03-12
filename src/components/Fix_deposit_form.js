@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { toast } from "react-toastify";
 
 function Fix_deposit_form() {
   const [account, setAccount] = useState("");
@@ -93,6 +94,8 @@ function Fix_deposit_form() {
               "FDdata",
               JSON.stringify(response.data.msg.Response.Data)
             );
+            toast.success('Fix Deposit Successfuly')
+            // toast.success( `${response.amount}` + '\u20B9' + 'Fix Deposit Successfuly')
             navigate("/Apply_fix_recurring");
           }
         })
@@ -100,7 +103,7 @@ function Fix_deposit_form() {
           console.log(
             "Failed to insert data OR may be user enter duplicate data."
           );
-          alert(e.response.data.msg);
+          toast.error(e.response.data.msg);
         });
     } catch (error) {
       console.error("Error:", error);

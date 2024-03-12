@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { toast } from "react-toastify";
 
 function Dabitcard_form() {
   const navigate = useNavigate();
@@ -124,7 +125,7 @@ function Dabitcard_form() {
 
               await fetcher();
             };
-            alert("Debit card generates successfuly");
+            toast.success("Debit card generates successfuly");
             navigate("/PINvarify");
           }
         })
@@ -132,7 +133,7 @@ function Dabitcard_form() {
           console.error(
             "Failed to insert data OR may be user enter duplicate data."
           );
-          alert(e.response.data.msg);
+          toast.error(e.response.data.msg);
         });
     } catch (error) {
       console.error("Error:", error);

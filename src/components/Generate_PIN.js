@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import { toast,ToastContainer } from 'react-toastify';
+import swal from 'sweetalert';
 
 
 const forFirstTimeOnly = {
@@ -62,11 +64,18 @@ function Generate_PIN() {
                     'Content-Type': 'application/json',
                 }
             }).then(response => {
-                if (response?.status === 200) {
-                    console.log("PIN save successfully");
-                    alert("PIN set successfully kindly");
-                    navigate("/PINvarify");
-                }
+                swal({
+                    text: "PIN Set Successfully Every Time Use This PIN.",
+                    icon: "info",
+                    dangerMode: false,
+                  })
+                  .then(() => {
+                    if (response?.status === 200) {
+                        console.log("PIN save successfully");
+                        navigate("/PINvarify");
+                    }
+                  });
+              
             }).catch(e => {
                 console.log("Something went wrong : ", e);
             })
@@ -104,7 +113,7 @@ function Generate_PIN() {
 
     return (
         <div className='generatepin'>
-
+            <ToastContainer></ToastContainer>
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={open}

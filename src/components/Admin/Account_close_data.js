@@ -8,6 +8,7 @@ import axios from "axios";
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { toast } from "react-toastify";
 
 function Account_close_data() {
 
@@ -54,11 +55,11 @@ function Account_close_data() {
       )
       .then((response) => {
         if (response?.status == 200) {
-          alert("User deleted successfully");
+          toast.success("User deleted successfully");
         }
       })
       .catch((e) => {
-        alert("User delete account request is rejected");
+        toast.success("User delete account request is rejected");
         console.log(e);
       });
       setOpen(false)
