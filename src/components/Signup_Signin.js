@@ -11,8 +11,8 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 //tostyfy
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const schema = joi
   .object({
@@ -73,8 +73,7 @@ function Signup_Signin() {
         if (e.response.data.msg) {
           // alert("Your account is already open kindly login..");
           toast.error(
-            `${email} email is already in use. Please try a different one.`,
-          
+            `${email} email is already in use. Please try a different one.`
           );
         }
       });
@@ -115,17 +114,15 @@ function Signup_Signin() {
           setpassword("");
           if (email === "admin@gmail.com" && password === "admin1234") {
             navigate("../Admin_Dashbord");
-          } 
-          else {
+          } else {
             toast.success("welcome");
             navigate("/");
           }
         }
       })
       .catch((e) => toast.error("Invalid Username or Password"));
-      setOpen(false);
-    };
-  
+    setOpen(false);
+  };
 
   const [isSignUpMode, setSignUpMode] = useState(false);
   const [isSignUpMode2, setSignUpMode2] = useState(false);
@@ -151,7 +148,6 @@ function Signup_Signin() {
 
   return (
     <>
- 
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

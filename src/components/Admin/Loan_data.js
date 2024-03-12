@@ -1,12 +1,40 @@
-import React from 'react';
-import '../../style-css/Admin/Loan_data.css'
+import React, { useEffect, useState } from "react";
+import "../../style-css/Admin/Loan_data.css";
 import Admin_Navbar from "./Admin_Navbar";
 import Admin_Sidebar from "./Admin_Sidebar";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 function Loan_data() {
+  const [data, setdata] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios
+        .get("http://localhost:5000/test/api/users/get-loan-data", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          // console.log(response.data.Data);
+          setdata(response.data.Data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    };
+    fetchData();
+  }, []);
+
+  const handleStatus = (idx, string) => {
+    console.log(idx);
+    
+    console.log(data);
+  };
+
   return (
-    <div className='londata'>
+    <div className="londata">
       <Admin_Navbar></Admin_Navbar>
       <div className="row">
         <div className="col-sm-3">
@@ -34,45 +62,41 @@ function Loan_data() {
                 </form>
               </div>
             </div>
-   
 
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Approve</th>
-                <th scope="col">Discard</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td><NavLink><button className='btn btn-primary'>Approve</button></NavLink></td>
-                <td><NavLink><button className='btn btn-primary'>Discard</button></NavLink></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td><NavLink><button className='btn btn-primary'>Approve</button></NavLink></td>
-                <td><NavLink><button className='btn btn-primary'>Discard</button></NavLink></td>
-              </tr>
-             
-            </tbody>
-          </table>
-
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Account No</th>
+                  <th scope="col">Profession</th>
+                  <th scope="col">Reason</th>
+                  <th scope="col">Employee</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((elem, index) => (
+                  <tr key={index}>
+                    <td className="text-deco">{index + 1}</td>
+                    <td className="text-deco">
+                      {elem.FirstName} {elem.LastName}
+                    </td>
+                    <td className="text-deco">{elem.AccountNo}</td>
+                    <td className="text-deco">{elem.Profession}</td>
+                    <td className="text-deco">{elem.Reason}</td>
+                    <td className="text-deco">{elem.Employee}</td>
+                    <td>
+                      <button className="btn btn-info" style={{ color: "white" }} onClick={() => handleStatus(index + 1, elem._id)}>Status</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default Loan_data
+export default Loan_data;

@@ -16,37 +16,37 @@ function Admin_Dashbord() {
   const [service, setServices] = useState([]);
   const [open, setOpen] = React.useState(false);
 
-  useEffect(() => {
-    const loadData = async () => {
-      const sessionEmail = "Samarth@gmail.com";
+  // useEffect(() => {
+  //   const loadData = async () => {
+  //     const sessionEmail = "Samarth@gmail.com";
 
-      setOpen(true);
-      try {
-        await axios
-          .post(
-            "http://localhost:5000/test/api/users/get-data",
-            { sessionEmail },
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          )
-          .then(async (response) => {
-            console.log(response);
+  //     setOpen(true);
+  //     try {
+  //       await axios
+  //         .post(
+  //           "http://localhost:5000/test/api/users/get-data",
+  //           { sessionEmail },
+  //           {
+  //             headers: {
+  //               "Content-Type": "application/json",
+  //             },
+  //           }
+  //         )
+  //         .then(async (response) => {
+  //           console.log(response);
 
 
-            console.log("Set Data : ", data);
+  //           console.log("Set Data : ", data);
         
-          })
-          .catch((e) => console.log(e));
-      } catch (e) {
-        console.log("Try catch error : ", e);
-      }
-      setOpen(false);
-    };
-    loadData();
-  }, []);
+  //         })
+  //         .catch((e) => console.log(e));
+  //     } catch (e) {
+  //       console.log("Try catch error : ", e);
+  //     }
+  //     setOpen(false);
+  //   };
+  //   loadData();
+  // }, []);
 
   // useEffect(() => {
     // const servicesData = async () => {
