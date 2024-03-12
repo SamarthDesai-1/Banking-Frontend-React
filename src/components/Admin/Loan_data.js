@@ -4,9 +4,11 @@ import Admin_Navbar from "./Admin_Navbar";
 import Admin_Sidebar from "./Admin_Sidebar";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Loan_data() {
   const [data, setdata] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,7 +19,6 @@ function Loan_data() {
           },
         })
         .then((response) => {
-          // console.log(response.data.Data);
           setdata(response.data.Data);
         })
         .catch((e) => {
@@ -30,7 +31,9 @@ function Loan_data() {
   const handleStatus = (idx, string) => {
     console.log(idx);
     
-    console.log(data);
+    console.log(data[idx]);
+    sessionStorage.setItem("LoanData", JSON.stringify(data[idx]));
+    navigate("/Loan_Request");
   };
 
   return (
@@ -86,7 +89,7 @@ function Loan_data() {
                     <td className="text-deco">{elem.Reason}</td>
                     <td className="text-deco">{elem.Employee}</td>
                     <td>
-                      <button className="btn btn-info" style={{ color: "white" }} onClick={() => handleStatus(index + 1, elem._id)}>Status</button>
+                      <button className="btn btn-info" style={{ color: "white" }} onClick={() => handleStatus(index, elem._id)}>Status</button>
                     </td>
                   </tr>
                 ))}
