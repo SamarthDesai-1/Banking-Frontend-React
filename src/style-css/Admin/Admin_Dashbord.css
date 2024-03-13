@@ -6,7 +6,16 @@
     justify-content: space-around;
     padding-top: 30px;
 }
+/* Add this CSS to your Admin_Dashbord.css file */
 
-.chart-w {
-    width: 400px;
-}
+.adidas .lichart {
+    width: 300px;
+    height: 100px;
+    margin-bottom: 20px; 
+  }
+  .adidas .circhart {
+    width: 400px; 
+    height: 400px; 
+    margin-bottom: 20px; 
+  }
+  

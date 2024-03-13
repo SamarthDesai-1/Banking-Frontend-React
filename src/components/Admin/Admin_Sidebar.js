@@ -18,7 +18,6 @@ function Admin_Sidebar() {
               <div className="photo text-center pt-4">
                 <NavLink
                   to="/Admin_Dashbord"
-                  className="linka"
                   style={{
                     textDecoration: "none",
                     color: "rgb(135, 135, 135)",

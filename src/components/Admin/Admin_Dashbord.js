@@ -68,7 +68,7 @@ function Admin_Dashbord() {
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
-        // onClick={handleClose}
+      // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
@@ -113,7 +113,7 @@ function Admin_Dashbord() {
                   <div class="card-img-overlay">
                     <h3>
                       &#x20B9;
-                      
+
                       {statusData && statusData[0].totals[0]}
 
                     </h3>
@@ -135,9 +135,9 @@ function Admin_Dashbord() {
                   <div class="card-img-overlay">
                     <h3>
                       &#x20B9;
-                      
+
                       {statusData && statusData[0].totals[1]}
-                      
+
                     </h3>
                     <p>Credit Transaction</p>
                   </div>
@@ -145,46 +145,52 @@ function Admin_Dashbord() {
               </div>
             </div>
           </div>
+
+          <div className="row">
+            <div className="col-md-6"   style={{ margin: "41px auto 0px auto"  }}>
+              <Line
+              style={{ margin: "40px 0px 0px 51px"}}
+                className="lichart"
+                data={{
+                  labels: data && data.map((elem, index) => elem.date),
+                  datasets: [
+                    {
+                      label: "Credit Transaction",
+                      data: data && data.map((elem) => elem.creditAmount),
+                      backgroundColor: ["rgb(75, 192, 192)"],
+                      borderColor: "rgb(75, 192, 192)",
+                    },
+                    {
+                      label: "Debit Transaction",
+                      data: data && data.map((elem) => elem.debitAmount),
+                      backgroundColor: ["rgb(255, 99, 132)"],
+                      borderColor: "rgb(255, 99, 132)",
+                    },
+                  ],
+                }}
+              />
+            </div>
+            <div className="col-md-6" style={{ margin: "41px auto 0px auto",padding:"0px 90px 20px 90px" }}>
+              <Doughnut
+                className="circhart"
+                data={{
+                  labels: ["Fixed Deposits", "Debit Card", "Users"],
+                  datasets: [
+                    {
+                      label: "Revenue",
+                      data: [
+                        service.FDusers,
+                        service.debitPercent,
+                        service.userPercent,
+                      ],
+                    },
+                  ],
+                }}
+              />
+            </div>
+          </div>
+
         </div>
-      </div>
-
-      <div>
-        <Line
-          style={{ width: "600px" }}
-          data={{
-            labels: data && data.map((elem, index) => elem.date),
-            datasets: [
-              {
-                label: "Credit Transaction",
-                data: data && data.map((elem) => elem.creditAmount),
-                backgroundColor: ["rgb(75, 192, 192)"],
-                borderColor: "rgb(75, 192, 192)",
-              },
-              {
-                label: "Debit Transaction",
-                data: data && data.map((elem) => elem.debitAmount),
-                backgroundColor: ["rgb(255, 99, 132)"],
-                borderColor: "rgb(255, 99, 132)",
-              },
-            ],
-          }}
-        />
-
-        <Doughnut
-          data={{
-            labels: ["Fixed Deposits", "Debit Card", "Users"],
-            datasets: [
-              {
-                label: "Revenue",
-                data: [
-                  service.FDusers,
-                  service.debitPercent,
-                  service.userPercent,
-                ],
-              },
-            ],
-          }}
-        />
       </div>
     </div>
   );

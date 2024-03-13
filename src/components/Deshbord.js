@@ -215,11 +215,12 @@ function Deshbord() {
           </div>
 
           {/* chart import line */}
-          <div className="charts charts-style">
+          <div className="col-md-8 charts charts-style" style={{margin:"40px auto 20px auto"}}>
             <div>
               <h1>Crypto Currency Data</h1>
             </div>
             <Line
+            style={{marginTop:"20px"}}
               data={{
                 labels: charts?.data?.coins?.map((x) => x.name),
                 datasets: [
@@ -236,7 +237,8 @@ function Deshbord() {
           {/* Statement */}
 
           <div className="trans p-4 mt-3">
-            <table className="table table-striped">
+            <h2> ▶️ Mini Statements</h2>
+            <table className="table table-striped mt-3">
               <thead>
                 <tr>
                   <td className="text-deco">No</td>

@@ -5,13 +5,17 @@ import Admin_Sidebar from "./Admin_Sidebar";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Loan_data() {
   const [data, setdata] = useState([]);
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setOpen(true);
       const response = await axios
         .get("http://localhost:5000/test/api/users/get-loan-data", {
           headers: {
@@ -24,6 +28,7 @@ function Loan_data() {
         .catch((e) => {
           console.log(e);
         });
+        setOpen(false);
     };
     fetchData();
   }, []);
@@ -38,6 +43,12 @@ function Loan_data() {
 
   return (
     <div className="londata">
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Admin_Navbar></Admin_Navbar>
       <div className="row">
         <div className="col-sm-3">
