@@ -30,7 +30,7 @@ function Loan_Request() {
             </div>
           </div>
           <div
-            className="rounded-lg border bg-card text-card-foreground shadow-sm"
+            className="rounded-lg border bg-card text-card-foreground shadow-sm mb-5"
             data-v0-t="card"
             style={{
               backgroundColor: "#ffffff",
@@ -168,10 +168,12 @@ function Loan_Request() {
                 </div>
               </div>
             </div>
+            <div className="mb-4">
+              <button className='btn btn-success app'>Approve</button>
+              <button className='btn btn-danger dis'>Discard</button>
+            </div>
           </div>
         </div>
-        <button className="btn btn-success app">Approve</button>
-        <button className="btn btn-danger dis">Discard</button>
       </div>
     </div>
   );

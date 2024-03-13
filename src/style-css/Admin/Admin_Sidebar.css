@@ -17,6 +17,7 @@
   .adsidebar .menuname .linka {
     text-decoration: none;
     color: rgb(135, 135, 135);
+    margin-left: 15px;
   }
   .adsidebar .iconmi{
       position: relative;

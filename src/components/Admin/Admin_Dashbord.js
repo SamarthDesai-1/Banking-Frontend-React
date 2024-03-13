@@ -82,7 +82,7 @@ function Admin_Dashbord() {
         // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
-             
+      
       </Backdrop>
 
       <Admin_Navbar></Admin_Navbar>
@@ -90,7 +90,7 @@ function Admin_Dashbord() {
         <div className="col-sm-3">
           <Admin_Sidebar></Admin_Sidebar>
         </div>
-        <div className="col-sm-9">
+        <div className="col-sm-9" style={{zIndex:"-1"}}>
           <div className="cardrow row">
             <div className=" col-sm-3">
               <div className="box">

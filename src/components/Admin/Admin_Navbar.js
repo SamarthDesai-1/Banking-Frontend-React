@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../../style-css/Admin/Admin_Navbar.css";
 import { useNavigate } from "react-router-dom";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function Admin_Navbar() {
   const navigate = useNavigate();
@@ -30,13 +31,9 @@ function Admin_Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <input
-              type="button"
-              value="Logout"
-              name="account"
-              className="adlogbtn btn btn-primary m-2"
-              onClick={handleLogout}
-            />
+            <LogoutIcon type="button" name="account" color="primary"
+              className="adlogbtn fa-plus-circle" fontSize="large" style={{marginTop:"11px"}}
+              onClick={handleLogout}></LogoutIcon>
           </div>
         </div>
       </nav>

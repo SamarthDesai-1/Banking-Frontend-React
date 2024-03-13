@@ -31,60 +31,60 @@ function Admin_Sidebar() {
               <div className="menubar ">
                 <ul className="uimenu">
                   <li className="menuname">
+                    <GroupAddIcon
+                      style={{marginLeft:"3px" }}
+                    ></GroupAddIcon>
                     <NavLink to="/Signup_Data" className="linka">
                       Signup Data
                     </NavLink>
-                    <GroupAddIcon
-                      style={{ position: "relative", left: "130px" }}
-                    ></GroupAddIcon>
                   </li>
                   <li className="menuname">
+                    <AccountCircleIcon
+                      // style={{ position: "relative", left: "59px" }}
+                    ></AccountCircleIcon>
                     <NavLink to="/Create_Account_data" className="linka">
                       Create Account Data
                     </NavLink>
-                    <AccountCircleIcon
-                      style={{ position: "relative", left: "59px" }}
-                    ></AccountCircleIcon>
                   </li>
                   <li className="menuname">
+                    <AddCardIcon
+                      // style={{ position: "relative", left: "58px" }}
+                    ></AddCardIcon>
                     <NavLink to="/Debit_Card_data" className="linka">
                       DebitCard issue Data
                     </NavLink>
-                    <AddCardIcon
-                      style={{ position: "relative", left: "58px" }}
-                    ></AddCardIcon>
                   </li>
                   <li className="menuname">
+                    <EnergySavingsLeafIcon
+                      // style={{ position: "relative", left: "100px" }}
+                    ></EnergySavingsLeafIcon>
                     <NavLink to="/Fix_deposit_data" className="linka">
                       Fix Deposit Data
                     </NavLink>
-                    <EnergySavingsLeafIcon
-                      style={{ position: "relative", left: "100px" }}
-                    ></EnergySavingsLeafIcon>
                   </li>
                   <li className="menuname">
+                    <ContactsIcon
+                      // style={{ position: "relative", left: "120px" }}
+                    ></ContactsIcon>
                     <NavLink to="/Contect_data" className="linka">
                       Contact Data
                     </NavLink>
-                    <ContactsIcon
-                      style={{ position: "relative", left: "120px" }}
-                    ></ContactsIcon>
                   </li>
                   <li className="menuname">
+                    <ContactsIcon
+                      // style={{ position: "relative", left: "147px" }}
+                    ></ContactsIcon>
                     <NavLink to="/Loan_data" className="linka">
                       Loan Data
                     </NavLink>
-                    <ContactsIcon
-                      style={{ position: "relative", left: "147px" }}
-                    ></ContactsIcon>
                   </li>
                   <li className="menuname">
+                    <CancelIcon
+                      // style={{ position: "relative", left: "69px" }}
+                    ></CancelIcon>
                     <NavLink to="/Account_close_data" className="linka">
                       Account Close Data
                     </NavLink>
-                    <CancelIcon
-                      style={{ position: "relative", left: "69px" }}
-                    ></CancelIcon>
                   </li>
                 </ul>
               </div>

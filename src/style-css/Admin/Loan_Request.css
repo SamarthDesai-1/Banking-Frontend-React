@@ -148,16 +148,12 @@
   width: fit-content;
 }
 .loanreq .app {
-  position: absolute;
-  left: 250px;
-  margin-top: 15px;
-  padding: 10px;
-  width: 100px;
+  margin-left: 20px;
+padding: 10px;
+width: 100px;
 }
 .loanreq .dis {
   width: 100px;
-  position: absolute;
-  right: 250px;
-  margin-top: 15px;
   padding: 10px;
+  margin-left: 25px;
 }

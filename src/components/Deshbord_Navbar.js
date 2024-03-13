@@ -2,6 +2,8 @@ import React from "react";
 import "../style-css/DeshNavbar.css";
 import { useNavigate } from 'react-router-dom';
 
+import LogoutIcon from '@mui/icons-material/Logout';
+
 function Deshbord_Navbar() {
   const navigate = useNavigate();
     
@@ -24,9 +26,8 @@ function Deshbord_Navbar() {
             </a>
           </div>
           <div className="log-button">
-            <button type="button" className="btn btn-primary" style={{ marginRight: "30px" }} onClick={handleLogout}>
-              Logout
-            </button>
+            <LogoutIcon type="button" fontSize="large" className="fa-plus-circle" color="primary" style={{ marginRight: "30px" }} onClick={handleLogout}>
+            </LogoutIcon>
           </div>
         </nav>
       </div>
