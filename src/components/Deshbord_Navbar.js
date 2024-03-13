@@ -8,8 +8,13 @@ function Deshbord_Navbar() {
   const navigate = useNavigate();
     
   const handleLogout = async () => {  
-    sessionStorage.clear();
-    console.log("Logout");
+    function deleteMultipleFromSessionStorage(keys) {
+      keys.forEach((key) => {
+        sessionStorage.removeItem(key);
+      });
+    }
+    const keysToDelete = ['Token', 'Email', 'AccountOpenData', 'AccountData', 'CardData', 'BalanceData'];
+    deleteMultipleFromSessionStorage(keysToDelete);
     navigate("/Signup_Signin");
   };
 
@@ -36,3 +41,4 @@ function Deshbord_Navbar() {
 }
 
 export default Deshbord_Navbar;
+

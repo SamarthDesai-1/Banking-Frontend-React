@@ -18,21 +18,25 @@ function Loan_Request() {
   const id = data && data._id;
   const handleDiscard = async () => {
 
-    console.log(id);
-    try {
-      await axios.post("http://localhost:5000/test/api/users/reject-loan", { id }, {
-        headers: {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      }).then((response) => {
-        console.log(response);
-      }).catch((e) => console.log(e));
-    }
-    catch (e) {
-      console.log("Error from catch : ", e);
-    }
+    sessionStorage.setItem("loanStatus", "Rejected");
+
+    console.log("Loan Status : ", sessionStorage.getItem("loanStatus"));
+
+    // console.log(id);
+    // try {
+    //   await axios.post("http://localhost:5000/test/api/users/reject-loan", { id }, {
+    //     headers: {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   }).then((response) => {
+    //     console.log(response);
+    //   }).catch((e) => console.log(e));
+    // }
+    // catch (e) {
+    //   console.log("Error from catch : ", e);
+    // }
 
   };
 

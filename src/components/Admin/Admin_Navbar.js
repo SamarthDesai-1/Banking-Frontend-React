@@ -2,14 +2,19 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../../style-css/Admin/Admin_Navbar.css";
 import { useNavigate } from "react-router-dom";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 
 function Admin_Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    sessionStorage.clear();
-    console.log("Logout");
+    function deleteMultipleFromSessionStorage(keys) {
+      keys.forEach((key) => {
+        sessionStorage.removeItem(key);
+      });
+    }
+    const keysToDelete = ['Token', 'Email'];
+    deleteMultipleFromSessionStorage(keysToDelete);
     navigate("/Signup_Signin");
   };
   return (
@@ -31,9 +36,15 @@ function Admin_Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <LogoutIcon type="button" name="account" color="primary"
-              className="adlogbtn fa-plus-circle" fontSize="large" style={{marginTop:"11px"}}
-              onClick={handleLogout}></LogoutIcon>
+            <LogoutIcon
+              type="button"
+              name="account"
+              color="primary"
+              className="adlogbtn fa-plus-circle"
+              fontSize="large"
+              style={{ marginTop: "11px" }}
+              onClick={handleLogout}
+            ></LogoutIcon>
           </div>
         </div>
       </nav>
@@ -42,3 +53,4 @@ function Admin_Navbar() {
 }
 
 export default Admin_Navbar;
+

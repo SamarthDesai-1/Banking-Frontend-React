@@ -7,9 +7,30 @@ import { useEffect } from "react";
 import axios from "axios";
 
 function Apply_Loan() {
-
   useEffect(() => {
+    const fetchData = async () => {
+      const x = 4120654120;
+
+      await axios
+        .post(
+          "http://localhost:5000/test/api/users/exists-loan",
+          { x },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    };
     console.log("inside useEffect");
+
+    fetchData();
   }, []);
 
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
@@ -26,7 +47,8 @@ function Apply_Loan() {
     MonthlyIncome: "",
     Address: "",
     flexRadioDefault: "",
-    Amount: ""
+    Amount: "",
+    Years: ""
   });
 
   const [errors, setErrors] = useState({});
@@ -48,7 +70,8 @@ function Apply_Loan() {
       .label("AadharCard"),
     Address: Joi.string().min(10).required().label("Address"),
     MonthlyIncome: Joi.number().min(0).required().label("Monthly Income"),
-    Amount: Joi.number().max(500000).required()
+    Amount: Joi.number().max(500000).required(),
+    Years: Joi.number().integer().min(5).max(30).required()
   });
 
   const handleInputChange = (e) => {
@@ -89,25 +112,34 @@ function Apply_Loan() {
       formDataToSend.append("flexRadioDefault", formData.flexRadioDefault);
       formDataToSend.append("Reason", formData.Reason);
       formDataToSend.append("Amount", formData.Amount);
+      formDataToSend.append("Years", formData.Years);
 
       console.log(formData);
 
-      await axios.post("http://localhost:5000/test/api/users/apply-loan", { sessionEmail, formData },  {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((response) => {
-        if (response?.status == 200) {
+      await axios
+        .post(
+          "http://localhost:5000/test/api/users/apply-loan",
+          { sessionEmail, formData },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          if (response?.status == 200) {
             /** add toastify if possible */
             console.log(response);
-        }
-      }).catch((e) => {
-        alert(e.response.data.msg);
-      });
+
+            sessionStorage.setItem("LoanData", "Pending");
+          }
+        })
+        .catch((e) => {
+          alert(e.response.data.msg);
+        });
     } catch (error) {
       console.error("Error:", error);
     }
-
   };
 
   return (
@@ -191,6 +223,31 @@ function Apply_Loan() {
                   )}
                 </div>
               </div>
+
+              <div className="col-sm-6">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">
+                    Years
+                  </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    name="Years"
+                    onChange={handleInputChange}
+                  />
+                  {errors.Years && (
+                    <div
+                      style={{ marginBottom: "0rem" }}
+                      className="text-danger error"
+                    >
+                      {errors.Years}
+                    </div>
+                  )}
+                </div>
+              </div>
+
             </div>
 
             <div className="row">
