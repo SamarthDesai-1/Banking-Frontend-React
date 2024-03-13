@@ -67,10 +67,16 @@ import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 // ];
 
 function Deshbord() {
+  const [statement, setStatement] = useState([]);
+  const [balance, setBalance] = useState();
+
+
   const [accountData, setAccountData] = useState();
   const [debit, setDebit] = useState();
   const [credit, setCredit] = useState();
   const [firstRender, setFirstRender] = useState(true);
+  const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+  const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
   const [charts, setCharts] = useState([]);
   let baseUrl = "https://api.coinranking.com/v2/coins/?limit=10";
@@ -87,9 +93,29 @@ function Deshbord() {
             "Access-Control-Allow-Origin": "*",
           },
         })
-        .then((response) => {
+        .then(async (response) => {
           console.log(response);
           setCharts(response.data);
+
+          await axios
+            .post(
+              "http://localhost:5000/test/api/users/transaction-history",
+              { sessionEmail, sessionToken },
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            )
+            .then((response) => {
+              setBalance(response.data.Data[0].Balance);
+              setStatement(response.data.Data[0].TransactionHistory);
+              console.log("State setted");
+              console.log("Transaction history : ", response);
+            })
+            .catch((e) => {
+              console.log(e);
+            });
         })
         .catch((e) => console.log(e));
     };
@@ -200,11 +226,55 @@ function Deshbord() {
                   {
                     label: `${charts?.data?.coins?.length} coins`,
                     data: charts?.data?.coins?.map((x) => x.price),
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderColor: "rgba(75, 192, 192, 1)",
                   },
                 ],
               }}
             />
+          </div>
+
+          {/* Statement */}
+
+          <div className="trans p-4 mt-3">
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <td className="text-deco">No</td>
+                  <td className="text-deco">Date</td>
+                  <td className="text-deco">Message</td>
+                  <td className="text-deco">Status</td>
+                  <td className="text-deco">Amount</td>
+                </tr>
+              </thead>
+              <tbody>
+                {statement.reverse().slice(0, 10).map((elem, index) => (
+                  <tr key={index} className="text-deco">
+                    <td className="text-deco">{index + 1}</td>
+                    <td className="text-deco">{elem.date?.substring(0, 10)}</td>
+                    <td className="text-deco">{elem.msg}</td>
+                    <td className="text-deco">
+                      {elem.statementStatus === "Dr" ? "Debit" : "Credit"}
+                    </td>
+                    <td
+                      className="status"
+                      style={{
+                        color: elem.statementStatus === "Dr" ? "red" : "green",
+                      }}
+                    >
+                      {elem.statementStatus === "Dr" ? "-" : "+"}
+                      {elem.transferAmount}
+                    </td>
+                  </tr>
+                ))}
+                <tr>
+                  <td className="text-deco">Net Balance</td>
+                  <td className="text-deco"></td>
+                  <td className="text-deco"></td>
+                  <td className="text-deco"></td>
+                  <td className="text-deco">&#x20B9;{balance && balance}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

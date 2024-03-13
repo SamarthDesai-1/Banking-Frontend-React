@@ -11,68 +11,57 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
 function Admin_Dashbord() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
+  const [statusData, setStatusData] = useState();
 
   const [service, setServices] = useState([]);
   const [open, setOpen] = React.useState(false);
 
-  // useEffect(() => {
-  //   const loadData = async () => {
-  //     const sessionEmail = "Samarth@gmail.com";
+  useEffect(() => {
+    const loadData = async () => {
+      const sessionEmail = "Samarth@gmail.com";
 
-  //     setOpen(true);
-  //     try {
-  //       await axios
-  //         .post(
-  //           "http://localhost:5000/test/api/users/get-data",
-  //           { sessionEmail },
-  //           {
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //           }
-  //         )
-  //         .then(async (response) => {
-  //           console.log(response);
+      setOpen(true);
+      try {
+        await axios
+          .post(
+            "http://localhost:5000/test/api/users/get-data",
+            { sessionEmail },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .then(async (response) => {
+            console.log(response);
 
+            setData(response.data.Data);
+            setStatusData(response.data.StatementStatus);
 
-  //           console.log("Set Data : ", data);
-        
-  //         })
-  //         .catch((e) => console.log(e));
-  //     } catch (e) {
-  //       console.log("Try catch error : ", e);
-  //     }
-  //     setOpen(false);
-  //   };
-  //   loadData();
-  // }, []);
+            console.log("Set Data : ", data);
 
-  // useEffect(() => {
-    // const servicesData = async () => {
-    //   console.log("Services data");
-
-      // try {
-      //   await axios
-      //     .post("http://localhost:5000/test/api/users/get-service", {
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //     })
-      //     .then((response) => {
-      //       console.log(response);
-      //       // setServices(response.data.Data);
-      //     })
-      //     .catch((e) => {
-      //       console.log(e);
-      //     });
-      // } catch (e) {
-      //   console.log("Try catch : ", e);
-      // }
-    // };
-
-    // servicesData();
-  // }, []);
+            setOpen(true);
+            await axios
+              .post("http://localhost:5000/test/api/users/get-service", {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+              .then((response) => {
+                console.log("Pie chart data : ", response);
+                setServices(response.data.Data);
+              })
+              .catch((e) => console.log(e));
+          })
+          .catch((e) => console.log(e));
+      } catch (e) {
+        console.log("Try catch error : ", e);
+      }
+      setOpen(false);
+    };
+    loadData();
+  }, []);
 
   return (
     <div className="adidas">
@@ -82,7 +71,6 @@ function Admin_Dashbord() {
         // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
-      
       </Backdrop>
 
       <Admin_Navbar></Admin_Navbar>
@@ -90,7 +78,7 @@ function Admin_Dashbord() {
         <div className="col-sm-3">
           <Admin_Sidebar></Admin_Sidebar>
         </div>
-        <div className="col-sm-9" style={{zIndex:"-1"}}>
+        <div className="col-sm-9" style={{ zIndex: "-1" }}>
           <div className="cardrow row">
             <div className=" col-sm-3">
               <div className="box">
@@ -105,7 +93,7 @@ function Admin_Dashbord() {
                   <div class="card-img-overlay">
                     <h3>
                       &#x20B9;
-                      {/* {accountData && accountData.Balance} */}
+                      {data && data[0].balance}
                     </h3>
                     <p>Balance</p>
                   </div>
@@ -125,9 +113,11 @@ function Admin_Dashbord() {
                   <div class="card-img-overlay">
                     <h3>
                       &#x20B9;
-                      {/* {credit && credit.totalAmount} */}
+                      
+                      {statusData && statusData[0].totals[0]}
+
                     </h3>
-                    <p>Credit Transection</p>
+                    <p>Debit Transaction</p>
                   </div>
                 </div>
               </div>
@@ -145,11 +135,11 @@ function Admin_Dashbord() {
                   <div class="card-img-overlay">
                     <h3>
                       &#x20B9;
-                      {/* {accountData &&
-                        credit &&
-                        accountData.Balance - credit.totalAmount} */}
+                      
+                      {statusData && statusData[0].totals[1]}
+                      
                     </h3>
-                    <p>Debit Transection</p>
+                    <p>Credit Transaction</p>
                   </div>
                 </div>
               </div>

@@ -30,7 +30,7 @@ function Loan_data() {
 
   const handleStatus = (idx, string) => {
     console.log(idx);
-    
+
     console.log(data[idx]);
     sessionStorage.setItem("LoanData", JSON.stringify(data[idx]));
     navigate("/Loan_Request");
@@ -89,7 +89,13 @@ function Loan_data() {
                     <td className="text-deco">{elem.Reason}</td>
                     <td className="text-deco">{elem.Employee}</td>
                     <td>
-                      <button className="btn btn-info" style={{ color: "white" }} onClick={() => handleStatus(index, elem._id)}>Status</button>
+                      <button
+                        className="btn btn-info"
+                        style={{ color: "white" }}
+                        onClick={() => handleStatus(index, elem._id)}
+                      >
+                        Status
+                      </button>
                     </td>
                   </tr>
                 ))}
