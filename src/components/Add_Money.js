@@ -4,7 +4,7 @@ import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import "../style-css/Add_Money.css";
 import axios from "axios";
 
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
@@ -74,9 +74,8 @@ function Add_Money() {
             // setPin("");
             swal({
               icon: "success",
-              text: `${amount}` + '\u20B9 ' + ' added successfully'
+              text: `${amount}` + "\u20B9 " + " added successfully",
             });
-  
           })
           .catch((e) => {
             let msgFromServer = e.response.data.msg;

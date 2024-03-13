@@ -7,6 +7,11 @@ import { useEffect } from "react";
 import axios from "axios";
 
 function Apply_Loan() {
+
+  useEffect(() => {
+    console.log("inside useEffect");
+  }, []);
+
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
 
@@ -21,6 +26,7 @@ function Apply_Loan() {
     MonthlyIncome: "",
     Address: "",
     flexRadioDefault: "",
+    Amount: ""
   });
 
   const [errors, setErrors] = useState({});
@@ -42,6 +48,7 @@ function Apply_Loan() {
       .label("AadharCard"),
     Address: Joi.string().min(10).required().label("Address"),
     MonthlyIncome: Joi.number().min(0).required().label("Monthly Income"),
+    Amount: Joi.number().max(500000).required()
   });
 
   const handleInputChange = (e) => {
@@ -81,6 +88,7 @@ function Apply_Loan() {
       formDataToSend.append("MonthlyIncome", formData.MonthlyIncome);
       formDataToSend.append("flexRadioDefault", formData.flexRadioDefault);
       formDataToSend.append("Reason", formData.Reason);
+      formDataToSend.append("Amount", formData.Amount);
 
       console.log(formData);
 
@@ -155,6 +163,30 @@ function Apply_Loan() {
                       className="text-danger error"
                     >
                       {errors.LastName}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="col-sm-6">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">
+                    Amount
+                  </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    name="Amount"
+                    onChange={handleInputChange}
+                  />
+                  {errors.Amount && (
+                    <div
+                      style={{ marginBottom: "0rem" }}
+                      className="text-danger error"
+                    >
+                      {errors.Amount}
                     </div>
                   )}
                 </div>

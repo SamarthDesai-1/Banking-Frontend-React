@@ -1,16 +1,40 @@
 import React, { useEffect, useState } from "react";
 import "../../style-css/Admin/Loan_Request.css";
+import axios from "axios";
+
 
 function Loan_Request() {
   const [data, setData] = useState([]);
+  const [account, setAccount] = useState();
 
+  
   useEffect(() => {
     const fetchData = () => {
       setData(JSON.parse(sessionStorage.getItem("LoanData")));
     };
     fetchData();
-  }, [])
+  }, []);
+  
+  const id = data && data._id;
+  const handleDiscard = async () => {
 
+    console.log(id);
+    try {
+      await axios.post("http://localhost:5000/test/api/users/reject-loan", { id }, {
+        headers: {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      }).then((response) => {
+        console.log(response);
+      }).catch((e) => console.log(e));
+    }
+    catch (e) {
+      console.log("Error from catch : ", e);
+    }
+
+  };
 
   return (
     <div className="loanreq">
@@ -46,7 +70,9 @@ function Loan_Request() {
                       <p className="text-sm font-medium text-gray-500">
                         Account Holder
                       </p>
-                      <p>{data && data.FirstName} {data && data.LastName}</p>
+                      <p>
+                        {data && data.FirstName} {data && data.LastName}
+                      </p>
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -55,6 +81,7 @@ function Loan_Request() {
                         Account No
                       </p>
                       <p>{data && data.AccountNo}</p>
+                      <p>{data && data._id}</p>
                     </div>
                   </div>
                 </div>
@@ -165,12 +192,13 @@ function Loan_Request() {
                     </div>
                   </div>
                    */}
+
                 </div>
               </div>
             </div>
             <div className="mb-4">
-              <button className='btn btn-success app'>Approve</button>
-              <button className='btn btn-danger dis'>Discard</button>
+              <button className="btn btn-success app">Approve</button>
+              <button className="btn btn-danger dis" onClick={(e) => handleDiscard()}>Discard</button>
             </div>
           </div>
         </div>

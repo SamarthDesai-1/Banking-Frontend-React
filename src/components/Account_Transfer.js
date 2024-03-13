@@ -5,7 +5,7 @@ import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import { useState } from "react";
 import axios from "axios";
 
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
@@ -50,18 +50,37 @@ function Account_Transfer() {
               "Content-Type": "application/json",
             }
           )
-          .then((response) => {
+          .then(async (response) => {
             console.log(response);
 
             // setAmount();
             // setPin("");
             // setMsg("");
             // setRecevierAccount("");
+
+            await axios
+              .post(
+                "http://localhost:5000/test/api/users/customer-finance",
+                { sessionEmail, sessionToken },
+                {
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              )
+              .then((response) => {
+                console.log("Updated Data : ", response.data.data[0]);
+                sessionStorage.setItem(
+                  "AccountData",
+                  JSON.stringify(response.data.data[0])
+                );
+              })
+              .catch((e) => console.log(e));
+
             swal({
               icon: "success",
-              text:`${amount}` + '\u20B9 ' + ' Sent successfuly'
+              text: `${amount}` + "\u20B9 " + " Sent successfuly",
             });
-
           })
           .catch((e) => {
             let msgFromServer = e.response.data.msg;
