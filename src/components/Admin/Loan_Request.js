@@ -16,28 +16,51 @@ function Loan_Request() {
   }, []);
   
   const id = data && data._id;
+  const amount = data && data.LoanAmount;
+  const year = data && data.LoanTimePeriod;
+  const rate = data && data.interest;
+
   const handleDiscard = async () => {
 
     sessionStorage.setItem("loanStatus", "Rejected");
 
     console.log("Loan Status : ", sessionStorage.getItem("loanStatus"));
 
-    // console.log(id);
-    // try {
-    //   await axios.post("http://localhost:5000/test/api/users/reject-loan", { id }, {
-    //     headers: {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   }).then((response) => {
-    //     console.log(response);
-    //   }).catch((e) => console.log(e));
-    // }
-    // catch (e) {
-    //   console.log("Error from catch : ", e);
-    // }
+    console.log(id);
+    try {
+      await axios.post("http://localhost:5000/test/api/users/reject-loan", { id }, {
+        headers: {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      }).then((response) => {
+        console.log(response);
+      }).catch((e) => console.log(e));
+    }
+    catch (e) {
+      console.log("Error from catch : ", e);
+    }
 
+  };
+
+  const handleApprove = async () => {
+    console.log("Approve for : ", id);
+
+    try {
+      await axios.post("http://localhost:5000/test/api/users/approve-loan", { id, amount, year, rate }, {
+        headers: {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      }).then((response) => {
+        console.log(response);
+      }).catch((e) => console.log(e));
+    }
+    catch (e) {
+      console.log("Error from catch : ", e);
+    }
   };
 
   return (
@@ -171,37 +194,20 @@ function Loan_Request() {
                     </div>
                   </div>
 
-                  {/* <div className="col-md-6">
+                  <div className="col-md-6">
                     <div className="space-y-2">
                       <p className="text-sm font-medium text-gray-500">
-                        Status
+                        Loan Duration
                       </p>
-                      <div className="flex items-center gap-2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="h-4 w-4 text-gray-500"
-                        >
-                          <circle cx="12" cy="12" r="10"></circle>
-                        </svg>
-                        <span className="font-medium">Active</span>
-                      </div>
+                      <p>{data && data.LoanTimePeriod}</p>
                     </div>
                   </div>
-                   */}
 
                 </div>
               </div>
             </div>
             <div className="mb-4">
-              <button className="btn btn-success app">Approve</button>
+              <button className="btn btn-success app" onClick={(e) => handleApprove()}>Approve</button>
               <button className="btn btn-danger dis" onClick={(e) => handleDiscard()}>Discard</button>
             </div>
           </div>
