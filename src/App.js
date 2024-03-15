@@ -54,6 +54,8 @@ import Apply_Loan from "./components/Apply_Loan";
 import Loan_data from "./components/Admin/Loan_data";
 import Loan_status from "./components/Admin/Loan_status";
 import Loan_Request from "./components/Admin/Loan_Request";
+import Loan_pending from "./components/Loan_pending";
+import Loan_pending_status from "./components/Loan_pending_status";
 
 
 import Tostyfy from "./components/Tostyfy";
@@ -135,6 +137,9 @@ function App() {
           <Route exact path="/Loan_data" element={<Loan_data/>} />
           <Route exact path="/Loan_status" element={<Loan_status/>} />
           <Route exact path="/Loan_Request" element={<Loan_Request/>} />
+          
+          <Route exact path="/Loan_pending" element={<Loan_pending/>} />
+          <Route exact path="/Loan_pending_status" element={<Loan_pending_status/>} />
 
 
         </Routes>
