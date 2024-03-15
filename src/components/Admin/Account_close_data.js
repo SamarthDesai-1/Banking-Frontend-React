@@ -9,16 +9,17 @@ import axios from "axios";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function Account_close_data() {
-
   const [data, setData] = useState([]);
-  
+  const navigate = useNavigate();
+
   const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      setOpen(true)
+      setOpen(true);
       await axios
         .get("http://localhost:5000/test/api/users/get-close-requests", {
           headers: {
@@ -32,15 +33,14 @@ function Account_close_data() {
         .catch((e) => {
           console.log(e);
         });
-        setOpen(false)
+      setOpen(false);
     };
 
     fetchData();
-    
   }, []);
 
   const handleConfirm = async (id, status) => {
-    setOpen(true)
+    setOpen(true);
     console.log(id, status);
 
     const data = await axios
@@ -62,12 +62,18 @@ function Account_close_data() {
         toast.success("User delete account request is rejected");
         console.log(e);
       });
-      setOpen(false)
+    setOpen(false);
+  };
+
+  const handleStatus = async (id) => {
+    console.log(id);
+    console.log("status");
+    navigate(`/Loan_status/${id}`);
   };
 
   return (
     <div className="acclo">
-           <Backdrop
+      <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
         // onClick={handleClose}
@@ -138,6 +144,16 @@ function Account_close_data() {
                         onClick={(e) => handleConfirm(elem.AccountNo, "reject")}
                       >
                         Reject
+                      </button>
+                    </td>
+
+                    <td>
+                      <button
+                        className="btn btn-info"
+                        style={{ color: "white" }}
+                        onClick={(e) => handleStatus(elem.AccountNo)}
+                      >
+                        Status
                       </button>
                     </td>
                   </tr>

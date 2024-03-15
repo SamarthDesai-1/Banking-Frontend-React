@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 function Loan_Request() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [account, setAccount] = useState();
 
   
@@ -166,6 +166,7 @@ function Loan_Request() {
                     </div>
                   </div>
                 </div>
+
                 <div className="row">
                   <div className="col-md-6">
                     <div className="space-y-2">
@@ -181,6 +182,74 @@ function Loan_Request() {
                         Monthly Income
                       </p>
                       <p>{data && data.MonthlyIncome}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-gray-500">
+                        Starting Date
+                      </p>
+                      <p>{data && data.LoanInfo[0].StartingDate}</p>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-gray-500">
+                        Ending date
+                      </p>
+                      <p>{data && data.LoanInfo[0].EndingDate}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-gray-500">
+                        Loan Amount
+                      </p>
+                      <p>{data && data.LoanInfo[0].Amount}</p>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-gray-500">
+                        Installment
+                      </p>
+                      <p>{data && data.LoanInfo[0].installment}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-gray-500">
+                        Payout settimeout
+                      </p>
+                      <p>null</p>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-gray-500">
+                        Total loan amount with interest
+                      </p>
+                      <p>{data && data.LoanInfo[0].totalLoanAmountReceviedYears}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-gray-500">
+                      Loan Amount After Interst
+                      </p>
+                      <p>{data && data.LoanInfo[0].loanAmountAfterInterst}</p>
                     </div>
                   </div>
                 </div>
@@ -219,3 +288,4 @@ function Loan_Request() {
 }
 
 export default Loan_Request;
+

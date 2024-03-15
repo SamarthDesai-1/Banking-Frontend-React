@@ -1,6 +1,39 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function Loan_status() {
+  const { userId } = useParams();
+
+  const [fdData, setFDData] = useState([]);
+  const [loanData, setLoanData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // setOpen(true);
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/test/api/users/get-fd-data-status/${userId}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        if (response?.status === 200) {
+          console.log(response);
+          setFDData(response.data.Data);
+          setLoanData(response.data.LoanData);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+      // setOpen(false);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <div className="deposit">
@@ -16,7 +49,7 @@ function Loan_status() {
                   boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
                 }}
               >
-                Fixed Deposit
+                <h1>Fixed Deposit</h1>
               </div>
             </div>
 
@@ -24,27 +57,28 @@ function Loan_status() {
               <thead>
                 <tr class="table-dark">
                   <td scope="col"> Account Holder</td>
-                  {/* <td scope="col">{data2 && data2.FirstName} {data2 && data2.LastName}</td> */}
+                  <td scope="col">{loanData && loanData.FirstName} {loanData && loanData.LastName}</td>
                 </tr>
               </thead>
               <tbody>
                 <tr class="table-secondary">
                   <td>Deposit Amount</td>
-                  {/* <td>{data1 && data1.date.substring(0, 10)}</td> */}
+                  <td>{fdData && fdData.Balance}</td>
                 </tr>
                 <tr class="table-dark">
                   <td> Account Number</td>
-                  {/* <td>{data1 && data1.AccountNo}</td> */}
+                  <td>{fdData && fdData.AccountNo}</td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Starting Date</td>
-                  {/* <td>{data1 && data1.date.substring(0, 10)}</td> */}
+                  <td>{fdData && fdData.date}</td>
                 </tr>
                 <tr class="table-dark">
                   <td>Interest Rate</td>
                   <td>4.5%</td>
                 </tr>
-                <tr class="table-secondary">
+
+                {/* <tr class="table-secondary">
                   <td>Status</td>
                   <td>
                     {" "}
@@ -64,7 +98,8 @@ function Loan_status() {
                     </svg>
                     <span className="font-medium ms-2">Active</span>
                   </td>
-                </tr>
+                </tr> */}
+
               </tbody>
             </table>
           </div>
@@ -92,21 +127,21 @@ function Loan_status() {
               <thead>
                 <tr class="table-dark">
                   <td scope="col"> Account Holder</td>
-                  {/* <td scope="col">{data2 && data2.FirstName} {data2 && data2.LastName}</td> */}
+                  <td scope="col">{loanData && loanData.FirstName} {loanData && loanData.LastName}</td>
                 </tr>
               </thead>
               <tbody>
                 <tr class="table-secondary">
-                  <td>Deposit Amount</td>
-                  {/* <td>{data1 && data1.date.substring(0, 10)}</td> */}
+                  <td>Balance</td>
+                  <td>{loanData && loanData.Balance}</td>
                 </tr>
                 <tr class="table-dark">
                   <td> Account Number</td>
-                  {/* <td>{data1 && data1.AccountNo}</td> */}
+                  <td>{loanData && loanData.AccountNo}</td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Starting Date</td>
-                  {/* <td>{data1 && data1.date.substring(0, 10)}</td> */}
+                  <td>{loanData && loanData.StartingDate}</td>
                 </tr>
                 <tr class="table-dark">
                   <td>Interest Rate</td>

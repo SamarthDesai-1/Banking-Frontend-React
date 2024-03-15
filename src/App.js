@@ -57,6 +57,8 @@ import Loan_Request from "./components/Admin/Loan_Request";
 import Loan_pending from "./components/Loan_pending";
 import Loan_pending_status from "./components/Loan_pending_status";
 
+import Apply_Loan_Rejected from "./components/Apply_Loan_Rejected";
+
 
 import Tostyfy from "./components/Tostyfy";
 import { ToastContainer, toast, Slide } from 'react-toastify';
@@ -135,11 +137,14 @@ function App() {
 
           <Route exact path="/Apply_Loan" element={<Apply_Loan/>} />
           <Route exact path="/Loan_data" element={<Loan_data/>} />
-          <Route exact path="/Loan_status" element={<Loan_status/>} />
+          <Route exact path="/Loan_status/:userId" element={<Loan_status/>} />
           <Route exact path="/Loan_Request" element={<Loan_Request/>} />
           
           <Route exact path="/Loan_pending" element={<Loan_pending/>} />
           <Route exact path="/Loan_pending_status" element={<Loan_pending_status/>} />
+
+          <Route exact path="/Apply_Loan_Rejected" element={<Apply_Loan_Rejected/>} />
+
 
 
         </Routes>
@@ -149,3 +154,4 @@ function App() {
 }
 
 export default App;
+

@@ -7,53 +7,10 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Apply_Loan() {
+function Apply_Loan_Rejected() {
   const navigate = useNavigate();
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
-  useEffect(() => {
-    const fetchData = async () => {
-
-      await axios
-        .post(
-          "http://localhost:5000/test/api/users/exists-loan",
-          { sessionEmail },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then((response) => {
-
-          if (response?.status == 200) {
-            console.log(response);
-
-            if (response.data.Data[0].Status == "Approved") {
-              console.log(response.data.OBJdata[0]);
-              console.log(response);
-              sessionStorage.setItem("UserLoan", JSON.stringify(response.data.OBJdata[0]));
-              navigate("/Loan_pending_status");
-            }   
-            else if (response.data.Data[0].Status == "Pending") {
-              console.log(response);
-              navigate("/Loan_pending");
-            }   
-            else if (response.data.Data[0].Status == "Rejected") {
-              console.log(response);
-              navigate("/Apply_Loan_Rejected");
-            }
-          }
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    };
-    console.log("inside useEffect");
-
-    fetchData();
-  }, []);
-
 
   const [formData, setFormData] = useState({
     FirstName: "",
@@ -67,7 +24,7 @@ function Apply_Loan() {
     Address: "",
     flexRadioDefault: "",
     Amount: "",
-    Years: ""
+    Years: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -89,8 +46,8 @@ function Apply_Loan() {
       .label("AadharCard"),
     Address: Joi.string().min(10).required().label("Address"),
     MonthlyIncome: Joi.number().min(0).required().label("Monthly Income"),
-    Amount: Joi.number().min(10000).max(500000).required(),
-    Years: Joi.number().integer().min(5).max(30).required()
+    Amount: Joi.number().max(500000).required(),
+    Years: Joi.number().integer().min(5).max(30).required(),
   });
 
   const handleInputChange = (e) => {
@@ -171,6 +128,9 @@ function Apply_Loan() {
         <div className="col-sm-9 aplform">
           <form onSubmit={handleSubmit} className="p-5">
             <h2 className="mb-4">Loan Application form</h2>
+            <h3 style={{ color: "red" }}>
+              Your previous application is rejected
+            </h3>
             <div className="row">
               <div className="col-sm-6">
                 <div class="mb-3 me-2">
@@ -220,7 +180,7 @@ function Apply_Loan() {
               </div>
 
               <div className="col-sm-6">
-                <div class="mb-3 me-2">
+                <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">
                     Amount
                   </label>
@@ -266,7 +226,6 @@ function Apply_Loan() {
                   )}
                 </div>
               </div>
-
             </div>
 
             <div className="row">
@@ -480,4 +439,4 @@ function Apply_Loan() {
   );
 }
 
-export default Apply_Loan;
+export default Apply_Loan_Rejected;

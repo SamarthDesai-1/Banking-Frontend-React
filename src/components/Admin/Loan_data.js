@@ -13,6 +13,8 @@ function Loan_data() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
+  const [statusData, setStatusData] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       setOpen(true);
@@ -23,12 +25,15 @@ function Loan_data() {
           },
         })
         .then((response) => {
+          console.log(response);
           setdata(response.data.Data);
+          setStatusData(response.data.StatusData);
+          console.log("Status Data : ", statusData);
         })
         .catch((e) => {
           console.log(e);
         });
-        setOpen(false);
+      setOpen(false);
     };
     fetchData();
   }, []);
@@ -99,6 +104,14 @@ function Loan_data() {
                     <td className="text-deco">{elem.Profession}</td>
                     <td className="text-deco">{elem.Reason}</td>
                     <td className="text-deco">{elem.Employee}</td>
+
+                    {/* {statusData &&
+                      statusData.map((elem, index) =>
+                        elem.Status === "Approved" ? (<td className="text-deco" style={{ color: "green" }}>Active</td>) : (<td className="text-deco" style={{ color: "red" }}>Pending</td>),
+                        elem.Status === "Pending" && (<td className="text-deco" style={{ color: "red" }}>Pending</td>) 
+                      )} */}
+
+
                     <td>
                       <button
                         className="btn btn-info"
@@ -120,3 +133,4 @@ function Loan_data() {
 }
 
 export default Loan_data;
+

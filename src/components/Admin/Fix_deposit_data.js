@@ -89,7 +89,7 @@ function Fix_deposit_data() {
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Name</th>
+                  {/* <th scope="col">Name</th> */}
                   <th scope="col">Account No</th>
                   <th scope="col">Email</th>
                   <th scope="col">FD Amount</th>
@@ -100,9 +100,9 @@ function Fix_deposit_data() {
                 {filteredData.map((elem, index) => (
                   <tr key={index}>
                     <td className="text-deco">{index + 1}</td>
-                    <td className="text-deco">
+                    {/* <td className="text-deco">
                       {elem.FirstName} {elem.LastName}
-                    </td>
+                    </td> */}
                     <td className="text-deco">{elem.AccountNo}</td>
                     <td className="text-deco">{elem.Email}</td>
                     <td className="text-deco">{elem.Balance}</td>
