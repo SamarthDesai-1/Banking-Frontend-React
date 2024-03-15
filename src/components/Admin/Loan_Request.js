@@ -19,6 +19,7 @@ function Loan_Request() {
   const amount = data && data.LoanAmount;
   const year = data && data.LoanTimePeriod;
   const rate = data && data.interest;
+  const accountNo = data && data.accountNo;
 
   const handleDiscard = async () => {
 
@@ -48,7 +49,7 @@ function Loan_Request() {
     console.log("Approve for : ", id);
 
     try {
-      await axios.post("http://localhost:5000/test/api/users/approve-loan", { id, amount, year, rate }, {
+      await axios.post("http://localhost:5000/test/api/users/approve-loan", { id, amount, year, rate, accountNo }, {
         headers: {
           headers: {
             "Content-Type": "application/json",
