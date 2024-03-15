@@ -2,16 +2,20 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+
 
 function Loan_status() {
   const { userId } = useParams();
 
   const [fdData, setFDData] = useState([]);
   const [loanData, setLoanData] = useState([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      // setOpen(true);
+      setOpen(true);
       try {
         const response = await axios.get(
           `http://localhost:5000/test/api/users/get-fd-data-status/${userId}`,
@@ -29,13 +33,19 @@ function Loan_status() {
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-      // setOpen(false);
+      setOpen(false);
     };
     fetchData();
   }, []);
 
   return (
     <div>
+       <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <div className="deposit">
         <div className="w-full py-6">
           <div className="container grid gap-6 px-4 md:px-6">
@@ -49,23 +59,24 @@ function Loan_status() {
                   boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
                 }}
               >
-                <h1>Fixed Deposit</h1>
+                Fixed Deposit
+                
               </div>
             </div>
 
             <table class="table table-bordered border-primary">
               <thead>
-                <tr class="table-dark">
+                <tr class="table-success">
                   <td scope="col"> Account Holder</td>
                   <td scope="col">{loanData && loanData.FirstName} {loanData && loanData.LastName}</td>
                 </tr>
               </thead>
               <tbody>
                 <tr class="table-secondary">
-                  <td>Deposit Amount</td>
+                  <td>Fix Deposit Amount</td>
                   <td>{fdData && fdData.Balance}</td>
                 </tr>
-                <tr class="table-dark">
+                <tr class="table-success">
                   <td> Account Number</td>
                   <td>{fdData && fdData.AccountNo}</td>
                 </tr>
@@ -73,12 +84,12 @@ function Loan_status() {
                   <td>Starting Date</td>
                   <td>{fdData && fdData.date}</td>
                 </tr>
-                <tr class="table-dark">
+                <tr class="table-success">
                   <td>Interest Rate</td>
                   <td>4.5%</td>
                 </tr>
 
-                {/* <tr class="table-secondary">
+                <tr class="table-secondary">
                   <td>Status</td>
                   <td>
                     {" "}
@@ -98,7 +109,7 @@ function Loan_status() {
                     </svg>
                     <span className="font-medium ms-2">Active</span>
                   </td>
-                </tr> */}
+                </tr>
 
               </tbody>
             </table>
@@ -125,7 +136,7 @@ function Loan_status() {
 
             <table class="table table-bordered border-primary">
               <thead>
-                <tr class="table-dark">
+                <tr class="table-success">
                   <td scope="col"> Account Holder</td>
                   <td scope="col">{loanData && loanData.FirstName} {loanData && loanData.LastName}</td>
                 </tr>
@@ -135,19 +146,52 @@ function Loan_status() {
                   <td>Balance</td>
                   <td>{loanData && loanData.Balance}</td>
                 </tr>
-                <tr class="table-dark">
+                <tr class="table-secondary">
                   <td> Account Number</td>
                   <td>{loanData && loanData.AccountNo}</td>
                 </tr>
+                <tr class="table-success">
+                  <td>AadharCard No</td>
+                  <td>{loanData && loanData.AadharCard}</td>
+                </tr>
                 <tr class="table-secondary">
+                  <td>Pancard No</td>
+                  <td>{loanData && loanData.PanCard}</td>
+                </tr>
+                <tr class="table-success">
+                  <td>Loan Amount</td>
+                  <td>{loanData && loanData.LoanAmount}</td>
+                </tr>
+                <tr class="table-secondary">
+                  <td>Loan Amount With interest</td>
+                  <td>{loanData && loanData.Balance}</td>
+                </tr>
+                <tr class="table-success">
+                  <td>Installment</td>
+                  <td>{loanData && loanData.Balance}</td>
+                </tr>
+                <tr class="table-secondary">
+                  <td>Interest Rate</td>
+                  <td></td>
+                </tr>
+                <tr class="table-success">
                   <td>Starting Date</td>
                   <td>{loanData && loanData.StartingDate}</td>
                 </tr>
-                <tr class="table-dark">
-                  <td>Interest Rate</td>
-                  <td>4.5%</td>
+                <tr class="table-secondary">
+                  <td>Ending Date</td>
+                  <td></td>
+                </tr>
+                <tr class="table-success">
+                  <td>Employee</td>
+                  <td></td>
                 </tr>
                 <tr class="table-secondary">
+                  <td>Monthly Income</td>
+                  <td></td>
+                </tr>
+                
+                <tr class="table-success">
                   <td>Status</td>
                   <td>
                     {" "}

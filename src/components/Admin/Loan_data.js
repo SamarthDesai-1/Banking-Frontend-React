@@ -91,6 +91,7 @@ function Loan_data() {
                   <th scope="col">Profession</th>
                   <th scope="col">Reason</th>
                   <th scope="col">Employee</th>
+                  <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody>

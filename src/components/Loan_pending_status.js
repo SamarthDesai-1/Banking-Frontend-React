@@ -1,6 +1,7 @@
 import React from "react";
 import "../style-css/Loan_pendig_status.css";
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 function Loan_pending_status() {
   const [data, setData] = useState();
@@ -14,19 +15,28 @@ function Loan_pending_status() {
     <div className="loanpend">
       <div className="w-full py-6">
         <div className="container grid gap-6 px-4 md:px-6">
-          <div className="flex items-center space-x-4 my-4">
-            <h1 className="text-3xl font-bold tracking-tighter">Ap003535</h1>
-            <div
-              className=" ms-3 inline-flex items-center rounded-full whitespace-nowrap border px-2.5 py-0.5 w-fit text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-              style={{
-                backgroundColor: "#ffffff",
-                color: "#1f2937",
-                boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-              }}
-            >
-              Loan Application
+          <div className="row">
+            <div className="col-sm-6">
+              <div className="flex items-center space-x-4 my-4">
+                <h1 className="text-3xl font-bold tracking-tighter">Ap003535</h1>
+                <div
+                  className=" ms-3 inline-flex items-center rounded-full whitespace-nowrap border px-2.5 py-0.5 w-fit text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  style={{
+                    backgroundColor: "#ffffff",
+                    color: "#1f2937",
+                    boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+                  }}
+                >
+                  Loan Application
+                </div>
+                <div className="got">
+                    <NavLink to="/Deshbord" className="">🏠</NavLink>
+                  </div>
+              </div>
             </div>
           </div>
+
+
           <div
             className="rounded-lg border bg-card text-card-foreground shadow-sm mb-5"
             data-v0-t="card"
@@ -109,7 +119,7 @@ function Loan_pending_status() {
                       <p className="text-sm font-medium text-gray-500">
                         Loan Amount With interest
                       </p>
-                      <p>{data && data.LoanInfo[0].loanAmountAfterInterst}</p>
+                      <p>{data && data.LoanInfo[0].loanAmountAfterInterst + data.LoanInfo[0].Amount}</p>
                     </div>
                   </div>
                 </div>

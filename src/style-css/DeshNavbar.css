@@ -8,4 +8,16 @@
     font-weight: bold;
     margin-left: 70px;
   }
+  .deshnav .photo{
+    margin-right: 60px;
+    margin-top: -18px;
+}
+  .deshnav .photo img{
+    margin-top: 6px;
+    margin-right: 7px;
+}
+.deshnav{
+  position: sticky;
+  top: 0px;
+}
 

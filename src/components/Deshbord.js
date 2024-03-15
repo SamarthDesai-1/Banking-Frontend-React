@@ -157,7 +157,7 @@ function Deshbord() {
         <div className="col-sm-3">
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
-        <div className="col-sm-9">
+        <div className="col-sm-9" style={{zIndex:"-1"}}>
           <div className="cardrow row">
             <div className=" col-sm-3">
               <div className="box">

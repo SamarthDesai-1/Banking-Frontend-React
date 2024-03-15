@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../style-css/User_Profile.css'
+import EditIcon from '@mui/icons-material/Edit';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -56,9 +57,11 @@ function User_Profile() {
                     <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>{`${data.FirstName} ${data.LastName}`}</h1>
                     <p style={{ fontSize: '0.875rem', margin: 0, color: '#666' }}>Customer ID : {!data ? "Waiting..." : data._id}</p>
                   </div>
-                  <div style={{ position: "absolute", right: "35px" }}>
-                    <NavLink to="/Edit_Profile"> <button style={{ padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Edit Profile</button></NavLink>
+                  <div style={{position: "absolute", right: "35px" }}>
+                  <NavLink to="/Edit_Profile" style={{color:"black"}}><EditIcon style={{fontSize:"30px"}} ></EditIcon></NavLink>
+                    {/* <NavLink style={{ zIndex:"1"}} to="/Edit_Profile"> <button style={{padding: '10px 20px', fontSize: '0.875rem', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>Edit Profile</button></NavLink> */}
                   </div>
+                  
                 </div>
                 {/* content */}
               </div>

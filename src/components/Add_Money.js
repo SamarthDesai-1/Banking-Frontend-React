@@ -74,7 +74,7 @@ function Add_Money() {
             // setPin("");
             swal({
               icon: "success",
-              text: `${amount}` + "\u20B9 " + " added successfully",
+              text: "\u20B9 " + `${amount}` + " added successfully",
             });
           })
           .catch((e) => {

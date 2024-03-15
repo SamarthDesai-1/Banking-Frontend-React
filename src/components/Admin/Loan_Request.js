@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "../../style-css/Admin/Loan_Request.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 
 function Loan_Request() {
   const [data, setData] = useState();
   const [account, setAccount] = useState();
+  const [open, setOpen] = useState(false);
 
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchData = () => {
@@ -28,6 +33,7 @@ function Loan_Request() {
     console.log("Loan Status : ", sessionStorage.getItem("loanStatus"));
 
     console.log(id);
+    setOpen(true)
     try {
       await axios.post("http://localhost:5000/test/api/users/reject-loan", { id }, {
         headers: {
@@ -37,15 +43,17 @@ function Loan_Request() {
         }
       }).then((response) => {
         console.log(response);
+        navigate('/Loan_data');
       }).catch((e) => console.log(e));
     }
     catch (e) {
       console.log("Error from catch : ", e);
     }
-
+    setOpen(false)
   };
 
   const handleApprove = async () => {
+    setOpen(true)
     console.log("Approve for : ", id);
 
     try {
@@ -62,10 +70,17 @@ function Loan_Request() {
     catch (e) {
       console.log("Error from catch : ", e);
     }
+    setOpen(false)
   };
 
   return (
     <div className="loanreq">
+       <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <div className="w-full py-6">
         <div className="container grid gap-6 px-4 md:px-6">
           <div className="flex items-center space-x-4 my-4">
@@ -186,26 +201,8 @@ function Loan_Request() {
                   </div>
                 </div>
 
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="space-y-2">
-                      <p className="text-sm font-medium text-gray-500">
-                        Starting Date
-                      </p>
-                      <p>{data && data.LoanInfo[0].StartingDate}</p>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="space-y-2">
-                      <p className="text-sm font-medium text-gray-500">
-                        Ending date
-                      </p>
-                      <p>{data && data.LoanInfo[0].EndingDate}</p>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="row">
+                {/* <div className="row">
                   <div className="col-md-6">
                     <div className="space-y-2">
                       <p className="text-sm font-medium text-gray-500">
@@ -217,63 +214,18 @@ function Loan_Request() {
                   <div className="col-md-6">
                     <div className="space-y-2">
                       <p className="text-sm font-medium text-gray-500">
-                        Installment
-                      </p>
-                      <p>{data && data.LoanInfo[0].installment}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="space-y-2">
-                      <p className="text-sm font-medium text-gray-500">
-                        Payout settimeout
-                      </p>
-                      <p>null</p>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="space-y-2">
-                      <p className="text-sm font-medium text-gray-500">
-                        Total loan amount with interest
-                      </p>
-                      <p>{data && data.LoanInfo[0].totalLoanAmountReceviedYears}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="space-y-2">
-                      <p className="text-sm font-medium text-gray-500">
-                      Loan Amount After Interst
-                      </p>
-                      <p>{data && data.LoanInfo[0].loanAmountAfterInterst}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="space-y-2">
-                      <p className="text-sm font-medium text-gray-500">
-                        Profession
-                      </p>
-                      <p>{data && data.Profession}</p>
-                    </div>
-                  </div>
-
-                  <div className="col-md-6">
-                    <div className="space-y-2">
-                      <p className="text-sm font-medium text-gray-500">
                         Loan Duration
                       </p>
                       <p>{data && data.LoanTimePeriod}</p>
                     </div>
                   </div>
+                </div> */}
+               
 
-                </div>
+              
+              
+
+            
               </div>
             </div>
             <div className="mb-4">

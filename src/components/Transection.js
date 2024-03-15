@@ -163,6 +163,7 @@ function Transection() {
           <DownloadForOfflineIcon
             className="download"
             onClick={downloadPDF}
+            style={{zIndex:"-1"}}
           ></DownloadForOfflineIcon>
           <div className="trans p-4 mt-3">
             <table className="table table-striped">

@@ -12,7 +12,7 @@ import { useState } from "react";
 import axios from "axios";
 import LockClockIcon from '@mui/icons-material/LockClock';
 import CancelIcon from '@mui/icons-material/Cancel';
-
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -131,70 +131,63 @@ function Deshbord_Sidebar() {
         <div className="row">
           <div className="tpart col-sm-12">
             <div className="sidebar">
-              <div className="photo text-center pt-4">
-                <img
-                  src={data && `http://localhost:5000/uploads/${data.Photo}`}
-                  width="100"
-                  height="100"
-                  style={{ borderRadius: "50%", objectFit: "cover" }}
-                />
-                <p className="mt-2">
-                  {data && data.FirstName} {data && data.LastName}
-                </p>
-              </div>
+            
 
               <div className="menubar ">
                 <ul className="uimenu">
                   <li className="menuname">
+                    <HomeIcon
+                      // style={{ position: "relative", left: "140px" }}
+                    ></HomeIcon>
                     <NavLink to="/Deshbord" className="linka">
                       Dashbord
                     </NavLink>
-                    <HomeIcon
-                      style={{ position: "relative", left: "140px" }}
-                    ></HomeIcon>
                   </li>
                   <li className="menuname">
+                    <AccountCircleIcon
+                      // style={{ position: "relative", left: "169px" }}
+                    ></AccountCircleIcon>
                     <NavLink to="/User_Profile" className="linka">
                       Profile
                     </NavLink>
-                    <AccountCircleIcon
-                      style={{ position: "relative", left: "169px" }}
-                    ></AccountCircleIcon>
                   </li>
                   <li className="menuname">
+                    <AddIcon
+                      // style={{ position: "relative", left: "126px" }}
+                    ></AddIcon>
                     <NavLink to="/Add_Money" className="linka">
                       Add Money
                     </NavLink>
-                    <AddIcon
-                      style={{ position: "relative", left: "126px" }}
-                    ></AddIcon>
                   </li>
                   <li className="menuname">
+                    <RemoveOutlinedIcon
+                      // style={{ position: "relative", left: "82px" }}
+                    ></RemoveOutlinedIcon>
                     <NavLink to="/Withdrow" className="linka">
                       Withdrow Money
                     </NavLink>
-                    <RemoveOutlinedIcon
-                      style={{ position: "relative", left: "82px" }}
-                    ></RemoveOutlinedIcon>
                   </li>
                   <li className="menuname">
+                    <PaidIcon
+                      // style={{ position: "relative", left: "107px" }}
+                    ></PaidIcon>
                     <NavLink to="/Account_Transfer" className="linka">
                       Transfer Fund
                     </NavLink>
-                    <PaidIcon
-                      style={{ position: "relative", left: "107px" }}
-                    ></PaidIcon>
                   </li>
                   <li className="menuname">
+                    <FileCopyIcon
+                      // style={{ position: "relative", left: "132px" }}
+                    ></FileCopyIcon>
                     <NavLink to="/Transection" className="linka">
                       Statement
                     </NavLink>
-                    <FileCopyIcon
-                      style={{ position: "relative", left: "132px" }}
-                    ></FileCopyIcon>
                   </li>
                   <li className="menuname">
 
+                  <CreditCardIcon
+                      // style={{ position: "relative", left: "131px" }}
+                    ></CreditCardIcon>
                     {data && data.DebitCard === "No issue" ? (
                       <NavLink to="/Applydebit" className="linka">
                         Debit Card
@@ -205,33 +198,31 @@ function Deshbord_Sidebar() {
                       </NavLink>
                     )}
 
-                    <CreditCardIcon
-                      style={{ position: "relative", left: "131px" }}
-                    ></CreditCardIcon>
+                   
                   </li>
                   <li className="menuname">
+                    <LockClockIcon
+                      // style={{ position: "relative", left: "53px" }}
+                    ></LockClockIcon>
                     <NavLink to="/Apply_fix_recurring" className="linka">
                       Fix/Recrring Deposits
                     </NavLink>
-                    <LockClockIcon
-                      style={{ position: "relative", left: "53px" }}
-                    ></LockClockIcon>
                   </li>
                   <li className="menuname">
+                    <CurrencyExchangeIcon
+                      // style={{ position: "relative", left: "131px" }}
+                    ></CurrencyExchangeIcon>
                     <NavLink to="/Apply_Loan" className="linka">
                       Apply Loan
                     </NavLink>
-                    <LockClockIcon
-                      style={{ position: "relative", left: "131px" }}
-                    ></LockClockIcon>
                   </li>
                   <li className="menuname">
-                    <NavLink to="/Account_close" className="linka">
-                      Account Close Application
-                    </NavLink>
                     <CancelIcon
-                      style={{ position: "relative", left: "6px" }}
+                      // style={{ position: "relative", left: "6px" }}
                     ></CancelIcon>
+                    <NavLink to="/Account_close" className="linka">
+                      Account Close
+                    </NavLink>
                   </li>
                 </ul>
               </div>

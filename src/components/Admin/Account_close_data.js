@@ -116,6 +116,9 @@ function Account_close_data() {
                   <th scope="col">Email</th>
                   <th scope="col">Account No</th>
                   <th scope="col">Reason</th>
+                  <th scope="col">close</th>
+                  <th scope="col">Discard</th>
+                  <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody>

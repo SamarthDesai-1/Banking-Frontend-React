@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../style-css/Loan_pending.css";
+import { NavLink } from "react-router-dom";
 
 function Loan_pending() {
   return (
@@ -18,6 +19,7 @@ function Loan_pending() {
           <p class="lead">
             Kindly review pending loan requests. Urgent action required for timely processing. Thank you for your attention.
           </p>
+          <NavLink to="/Deshbord"> 🏠 Go To Dashbord</NavLink>
         </div>
       </div>
     </div>

@@ -6,14 +6,23 @@ import Joi from "joi";
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+//loading bar
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+import { toast } from "react-toastify";
 
 function Apply_Loan() {
   const navigate = useNavigate();
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
+
+  
+  const [open, setOpen] = React.useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
-
+    setOpen(true)
       await axios
         .post(
           "http://localhost:5000/test/api/users/exists-loan",
@@ -25,7 +34,7 @@ function Apply_Loan() {
           }
         )
         .then((response) => {
-
+          setOpen(true)
           if (response?.status == 200) {
             console.log(response);
 
@@ -48,6 +57,7 @@ function Apply_Loan() {
         .catch((e) => {
           console.log(e);
         });
+        setOpen(false)
     };
     console.log("inside useEffect");
 
@@ -113,7 +123,7 @@ function Apply_Loan() {
       setErrors(validationErrors);
       return;
     }
-
+    setOpen(true)
     try {
       const formDataToSend = new FormData();
 
@@ -134,7 +144,7 @@ function Apply_Loan() {
       formDataToSend.append("Years", formData.Years);
 
       console.log(formData);
-
+     
       await axios
         .post(
           "http://localhost:5000/test/api/users/apply-loan",
@@ -151,18 +161,32 @@ function Apply_Loan() {
             console.log(response);
 
             sessionStorage.setItem("LoanData", "Pending");
+            swal({
+              icon: "success",
+              text: "Your Loan Application has been Submited",
+            });
+            navigate('/Loan_pending')
           }
         })
         .catch((e) => {
-          alert(e.response.data.msg);
+          toast.error(e.response.data.msg);
         });
+        
     } catch (error) {
       console.error("Error:", error);
     }
+    setOpen(false)
   };
 
   return (
     <div className="aplloan">
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Deshbord_Navbar></Deshbord_Navbar>
       <div className="row">
         <div className="col-sm-3">

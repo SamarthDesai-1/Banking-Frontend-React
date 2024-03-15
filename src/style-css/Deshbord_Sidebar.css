@@ -9,16 +9,65 @@
   }
   .sidebar .menuname {
     list-style: none;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   .sidebar .uimenu{
-      margin-top: 50px;
+      padding-top: 30px;
   }
   .sidebar .menuname .linka {
     text-decoration: none;
     color: rgb(135, 135, 135);
+    margin-left: 15px;
   }
   .sidebar .iconmi{
       position: relative;
       right: 10px;
   }
+.sidebar{
+  position: fixed;
+  width: 24.5vw;
+}
+
+
+
+  /* ========================================== */
+
+
+
+
+  
+.sidenav .menuname {
+  display: flex;
+  align-items: center;
+  /* margin-bottom: 20px; */
+  transition: all 0.3s ease; 
+  }
+  
+  .sidenav .menuname:hover {
+  transform: translateX(7px); 
+  }
+  .sidenav .linka {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(135, 135, 135);
+  text-decoration: none;
+  position: relative;
+  }
+  
+  .sidenav .linka::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px; 
+  background-color: #007bff;
+  left: 0;
+  transform: scaleX(0); 
+  transition: transform 0.3s ease;
+  }
+  
+  .sidenav .linka:hover::after {
+  transform: scaleX(1); 
+  }
+  
+  
