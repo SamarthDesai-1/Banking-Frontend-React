@@ -179,10 +179,12 @@ function Deshbord_Sidebar() {
                   <li className="menuname">
                     <PaidIcon
                       // style={{ position: "relative", left: "107px" }}
-                    ></PaidIcon>
-                    <NavLink to="/Account_Transfer" className="linka">
+                    ></PaidIcon>  
+                    {/* <NavLink to="/https://rzp.io/l/9XVjS1crX" className="linka">
                       Transfer via Razorpay
-                    </NavLink>
+                    </NavLink> */}
+                    <a style={{ textDecoration: "none", color: "black" }} href="https://rzp.io/l/9XVjS1crX">Transfer via razorpay</a>
+                    
                   </li>
 
                   <li className="menuname">
