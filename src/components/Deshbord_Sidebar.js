@@ -175,6 +175,16 @@ function Deshbord_Sidebar() {
                       Transfer Fund
                     </NavLink>
                   </li>
+
+                  <li className="menuname">
+                    <PaidIcon
+                      // style={{ position: "relative", left: "107px" }}
+                    ></PaidIcon>
+                    <NavLink to="/Account_Transfer" className="linka">
+                      Transfer via Razorpay
+                    </NavLink>
+                  </li>
+
                   <li className="menuname">
                     <FileCopyIcon
                       // style={{ position: "relative", left: "132px" }}
