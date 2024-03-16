@@ -27,6 +27,9 @@ function Deshbord() {
     if (!sessionEmail || !sessionToken) {
       navigate("/Signup_Signin");
     }
+    else {
+      navigate("/PINvarify");
+    }
   }, []);
 
   const [charts, setCharts] = useState([]);
