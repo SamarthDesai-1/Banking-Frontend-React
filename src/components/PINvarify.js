@@ -265,7 +265,7 @@ function PINvarify() {
           <br />
           <br />
           <div class="liner"></div>
-          <h3>Transact Banking Company.</h3>
+          <h3>Transact Banking</h3>
         </div>
       </div>
     </div>

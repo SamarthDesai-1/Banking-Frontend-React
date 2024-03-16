@@ -73,7 +73,7 @@ function Deposit_status() {
                       <p className="text-sm font-medium text-gray-500">
                         Interest Rate
                       </p>
-                      <p>4.5%</p>
+                      <p>4.25%</p>
                     </div>
                   </div>
                 </div>

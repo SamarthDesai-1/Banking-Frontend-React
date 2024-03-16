@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
+import moment from 'moment';
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -38,6 +39,22 @@ const Create_Account = () => {
     MonthlyIncome: "",
   });
 
+
+  const notFutureDate = Joi.extend((joi) => ({
+    type: 'notFutureDate',
+    base: joi.date(),
+    messages: {
+      'notFutureDate.base': 'Date must not be in the future',
+    },
+    validate(value, helpers) {
+      if (moment(value).isAfter(moment(), 'day')) {
+        return { value, errors: helpers.error('notFutureDate.base') };
+      }
+      return { value };
+    },
+  }));
+
+
   // State to hold validation errors
   const [errors, setErrors] = useState({});
 
@@ -45,7 +62,7 @@ const Create_Account = () => {
   const schema = Joi.object({
     FirstName: Joi.string().required().label("First Name"),
     LastName: Joi.string().required().label("Last Name"),
-    DOB: Joi.date().iso().required().label("Date of birth"),
+    DOB:notFutureDate.notFutureDate().required().label("Date of birth"),
     AccountType: Joi.string().required().label("AccountType"),
     Mobile: Joi.string()
       .pattern(/^[0-9]{10}$/)
@@ -142,9 +159,9 @@ const Create_Account = () => {
           }
         )
         .then((response) => {
+          toast.success("Account Create Successfully");
           if (response?.status === 200) {
             // Handle successful API call
-            console.log("Data inserted successfully.");
             navigate("/Generate_PIN");
           }
         })

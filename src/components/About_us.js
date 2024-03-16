@@ -12,7 +12,7 @@ function About_us() {
                     <div className="body-container">
                         <div className="left-part">
 
-                            <h1 className="title-company">About company.</h1>
+                            <h1 className="title-company">About Bank</h1>
                             <p className="text">Financial institutions play a critical role in the global economy, serving as the backbone of
                                 monetary transactions, investment activities, and wealth management. These institutions encompass a wide range
                                 of entities, including banks, credit unions, insurance companies, investment firms, and brokerage houses.
@@ -34,7 +34,7 @@ function About_us() {
                         <div className="text-cards-section">
 
                             <div className="title">
-                                <h1 className="cards-section-title">Company unique factor</h1>
+                                <h1 className="cards-section-title">Bank unique factor</h1>
                                 <div className="bod"></div>
                             </div>
 
@@ -104,7 +104,7 @@ function About_us() {
 
                                 <div className="data-statistics" >
 
-                                    <h1 className="data-statistics-text">Most trusted financial bank</h1>
+                                    <h1 className="data-statistics-text" style={{zIndex:"1"}}>Most trusted financial bank</h1>
 
                                     <div className="upper-container">
                                         <div className="container-1" data-aos="zoom-in">
@@ -126,7 +126,7 @@ function About_us() {
                     <div className="info-section-2">
 
                         <div className="info-section-2-left-part">
-                            <h1 className="info-section-2-font" data-aos="fade-up">**Security and Complinace</h1>
+                            <h1 className="info-section-2-font text-dark" data-aos="fade-up">Security and Complinace</h1>
                             <ul className="list" data-aos="fade-up">
                                 <li>
                                     <h2 className="bullets">Convenience and customer expectations</h2>

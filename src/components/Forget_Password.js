@@ -49,7 +49,7 @@ function Forget_Password() {
             swal({
                 text: "Check your inbox mail and enter OTP below for authentication.",
                 icon: "info",
-                dangerMode: true,
+                dangerMode: false,
               })
               .then(() => {
                 if (response?.status == 200) {

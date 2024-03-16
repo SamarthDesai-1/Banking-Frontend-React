@@ -12,7 +12,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function Otp() {
 
   const navigate = useNavigate();
@@ -58,6 +57,7 @@ function Otp() {
     setOpen(false)
     if (response?.status === 200) {
       navigate("/Signup_Signin");
+      toast.success("Signup Succesfuly");
     }
     handleVerifyOTP();
   }

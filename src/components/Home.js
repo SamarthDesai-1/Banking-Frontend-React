@@ -132,8 +132,7 @@ function Home() {
                                             <img src="./IMAGES/curr2.jpg" alt="Error" className="blog-images" />
                                             <div className="content">
                                                 <p>Mitesh Sharma</p>
-                                                <h5>Recieve money in any<br />
-                                                    currency with no fees.</h5>
+                                                <h5>The primary purpose is to generate revenue for the government.</h5>
                                                 <p className="blog-section-content-text">Our simple budgeting feature<br />
                                                     allow to seperate out your<br />
                                                     spending and set realistic limits<br />

@@ -6,6 +6,8 @@ import "../style-css/Transection.css";
 import axios from "axios";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -85,12 +87,12 @@ function Transection() {
       );
       setFilteredStatement(filteredTransactions);
       if (filteredTransactions.length === 0) {
-        setError(alert("No records found for the selected dates."));
+        setError(toast.error("No records found for the selected dates."));
       } else {
         setError("");
       }
     } else {
-      setError(alert("Please select valid start and end dates."));
+      setError(toast.error("Please select valid start and end dates."));
     }
   };
 
@@ -163,7 +165,7 @@ function Transection() {
           <DownloadForOfflineIcon
             className="download"
             onClick={downloadPDF}
-            style={{zIndex:"-1"}}
+            // style={{zIndex:"-1"}}
           ></DownloadForOfflineIcon>
           <div className="trans p-4 mt-3">
             <table className="table table-striped">

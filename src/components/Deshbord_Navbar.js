@@ -39,7 +39,7 @@ function Deshbord_Navbar() {
         >
           <div class="container-fluid">
             <a class="navbar-brand imgnav" href="#">
-              Transect
+              Transact
             </a>
           </div>
           <div className="photo text-center pt-4 d-flex ">

@@ -69,7 +69,7 @@ function User_Profile() {
             <div style={{ borderTop: '1px solid #ddd', padding: '20px 0' }}>
               <div className="d-flex">
                 <h2 style={{ fontWeight: 'bold', color: '#666' }} className='ps-4'>Balance</h2>
-                <h2 className='ms-5'>${data.Balance}</h2>
+                <h2 className='ms-5'>₹ {data.Balance}</h2>
               </div>
 
               <hr />

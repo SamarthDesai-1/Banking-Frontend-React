@@ -13,6 +13,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 //tostyfy
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import swal from "sweetalert";
 
 const schema = joi
   .object({
@@ -291,7 +292,7 @@ function Signup_Signin() {
           <div className="panels-container">
             <div className="panel left-panel">
               <div className="content">
-                <h3>Welcomt to transact</h3>
+                <h3>Signin with Transact</h3>
                 <p className="text-samarth">
                   Effortlessly sign up on the banking website to create your
                   account, providing essential details for secure access to
@@ -309,7 +310,7 @@ function Signup_Signin() {
             </div>
             <div className="panel right-panel">
               <div className="content">
-                <h3>New to Brand?</h3>
+                <h3>Welcome To Transact?</h3>
                 <p className="text-samarth">
                   Easily log in to your banking website to securely manage
                   accounts, conduct transactions, and access financial services

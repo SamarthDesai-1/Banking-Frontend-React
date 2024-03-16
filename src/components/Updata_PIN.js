@@ -34,10 +34,10 @@ function Update_PIN() {
                 }
 
             }).then((response) => {
+                toast.success("your PIN is reset succesfully")
                 if (response?.status === 200) {
                     setPin("");
                     setCpin("");
-                    toast.success("your PIN is reset succesfully")
                     navigate("/PINvarify");
                 }
             }).catch((e) => toast.error(e.response.data.msg));

@@ -16,7 +16,7 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-
+import GTranslateIcon from '@mui/icons-material/GTranslate';
 function Deshbord_Sidebar() {
   // const [data, setData] = useState("");
   // const [image, setImage] = useState();
@@ -178,13 +178,13 @@ function Deshbord_Sidebar() {
                   </li>
 
                   <li className="menuname">
-                    <PaidIcon
+                    <GTranslateIcon
                       // style={{ position: "relative", left: "107px" }}
-                    ></PaidIcon>  
+                    ></GTranslateIcon>  
                     {/* <NavLink to="/https://rzp.io/l/9XVjS1crX" className="linka">
                       Transfer via Razorpay
                     </NavLink> */}
-                    <a style={{ textDecoration: "none", color: "black" }} href="https://rzp.io/l/9XVjS1crX">Transfer via razorpay</a>
+                    <a className="linka" target="_blank" href="https://rzp.io/l/9XVjS1crX">Transfer via razorpay</a>
 
                   </li>
 

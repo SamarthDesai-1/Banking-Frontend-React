@@ -5,6 +5,7 @@ import "../style-css/Add_Money.css";
 import axios from "axios";
 
 import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
@@ -19,6 +20,7 @@ function Add_Money() {
   const [pin, setPin] = useState("");
 
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleData = async () => {
     const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
@@ -65,7 +67,8 @@ function Add_Money() {
                   sessionStorage.setItem(
                     "AccountData",
                     JSON.stringify(response.data.data[0])
-                  );
+                    );
+                    navigate("/Deshbord")
                 })
                 .catch((e) => console.log(e));
             }

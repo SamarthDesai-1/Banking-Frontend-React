@@ -40,6 +40,7 @@ function Navbar() {
     }).catch(e => {
       console.log(e.response.data.msg);
       toast.error(e.response.data.msg);
+      // alert(e.response.data.msg);
     });
     setOpen(false)
   };
@@ -71,9 +72,9 @@ function Navbar() {
               <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="/Contect">Contact</NavLink>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="#">Insurance</NavLink>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="/Help">Help</NavLink>
               </li>
@@ -81,16 +82,16 @@ function Navbar() {
 
             <div className="button">
               {/* <NavLink to="/Create_Account"><input type="button" value="My Account" name="account" className="btn btn-primary m-2" onClick={verifyUser} /></NavLink> */}
-              <input type="button" value="My Account" name="account" className="btn btn-primary m-2" onClick={verifyUser} />
+              <input type="button" value="My Account" name="account" className="btn btn-outline-primary m-2" onClick={verifyUser} />
 
-              <button type="button" className="btn btn-outline-primary m-2">Explore</button>
+              {/* <button type="button" className="btn btn-outline-primary m-2">Explore</button> */}
 
             </div>
 
-            <form className="d-flex">
+            {/* <form className="d-flex">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            </form> */}
 
             <NavLink to="/Signup_Signin"><input type="button" value="Login" name="account" className="btn btn-primary m-2" />
             </NavLink>

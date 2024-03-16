@@ -197,7 +197,7 @@ function Edit_Profile() {
 
         <div style={{ paddingRight: "20px" }} className="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-4xl" data-v0-t="card">
           <div className="flex flex-col space-y-1.5 p-6">
-            <h2 className=" font-semibold whitespace-nowrap leading-none tracking-tight">Edit Profile details</h2>
+            <h2 className="font-semibold whitespace-nowrap leading-none tracking-tight">Edit Profile details</h2>
             {/* <h4 className=" mt-3 text-sm text-muted-foreground">Enter your information to open a new account.</h4> */}
           </div>
           <div className="p-6 space-y-6">

@@ -8,12 +8,14 @@ import swal from "sweetalert";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function Withdrow() {
   const [amount, setAmount] = useState();
   const [pin, setPin] = useState("");
 
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleData = async () => {
     const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
@@ -43,6 +45,7 @@ function Withdrow() {
             }).then(response => {
               console.log("Updated Data : ", response.data.data[0]);
               sessionStorage.setItem("AccountData", JSON.stringify(response.data.data[0]));
+              navigate("/Deshbord")
             }).catch(e => console.log(e));
           }
 
@@ -50,7 +53,7 @@ function Withdrow() {
           // setPin("")
           swal({
             icon: "success",
-            text:`${amount}` + '\u20B9 ' + ' Withdrow successfuly'
+            text: '\u20B9 ' + `${amount}`  + ' Withdrow successfuly'
           });
 
         }).catch(e => {

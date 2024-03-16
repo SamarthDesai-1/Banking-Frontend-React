@@ -11,6 +11,7 @@ import swal from "sweetalert";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function Account_Transfer() {
   const [amount, setAmount] = useState();
@@ -19,6 +20,8 @@ function Account_Transfer() {
   const [recevier, setRecevierAccount] = useState("");
 
   const [open, setOpen] = React.useState(false);
+
+  const navigate = useNavigate();
 
   const handleData = async () => {
     console.log("Handle data");
@@ -74,12 +77,13 @@ function Account_Transfer() {
                   "AccountData",
                   JSON.stringify(response.data.data[0])
                 );
+                navigate("/Deshbord");
               })
               .catch((e) => console.log(e));
 
             swal({
               icon: "success",
-              text: `${amount}` + "\u20B9 " + " Sent successfuly",
+              text: "\u20B9 " + `${amount}`  + " Sent successfuly",
             });
           })
           .catch((e) => {

@@ -68,7 +68,7 @@ function Contect() {
                 className="card-title text-center "
                 style={{ color: "#4895ef" }}
               >
-                Contect Information
+                Contact Information
               </h1>
             </b>
             <p
@@ -166,8 +166,7 @@ function Contect() {
           <div className="map text-center" data-aos="zoom-in">
             <h2>Find Use On Google Map</h2>
             <p className="mt-4" style={{ padding: "0px 250px" }}>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam
-              dolore quam aut vitae illo error vero nam, nihil molestiae cum?
+            you can embed a Google Maps iframe in your webpage. Here's how you can do it
             </p>
             <div className="google-map mt-4">
               <iframe
