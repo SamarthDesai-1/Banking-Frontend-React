@@ -167,6 +167,7 @@ function Deshbord_Sidebar() {
                       Withdrow Money
                     </NavLink>
                   </li>
+                  
                   <li className="menuname">
                     <PaidIcon
                       // style={{ position: "relative", left: "107px" }}
@@ -184,7 +185,7 @@ function Deshbord_Sidebar() {
                       Transfer via Razorpay
                     </NavLink> */}
                     <a style={{ textDecoration: "none", color: "black" }} href="https://rzp.io/l/9XVjS1crX">Transfer via razorpay</a>
-                    
+
                   </li>
 
                   <li className="menuname">
