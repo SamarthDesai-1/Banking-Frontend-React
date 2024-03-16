@@ -5,12 +5,11 @@ import { useParams } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
-
 function Loan_status() {
   const { userId } = useParams();
 
   const [fdData, setFDData] = useState([]);
-  const [loanData, setLoanData] = useState([]);
+  const [loanData, setLoanData] = useState();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -40,7 +39,7 @@ function Loan_status() {
 
   return (
     <div>
-       <Backdrop
+      <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
       >
@@ -60,7 +59,6 @@ function Loan_status() {
                 }}
               >
                 Fixed Deposit
-                
               </div>
             </div>
 
@@ -68,7 +66,10 @@ function Loan_status() {
               <thead>
                 <tr class="table-success">
                   <td scope="col"> Account Holder</td>
-                  <td scope="col">{loanData && loanData.FirstName} {loanData && loanData.LastName}</td>
+                  <td scope="col">
+                    {loanData && loanData.FirstName}{" "}
+                    {loanData && loanData.LastName}
+                  </td>
                 </tr>
               </thead>
               <tbody>
@@ -110,7 +111,6 @@ function Loan_status() {
                     <span className="font-medium ms-2">Active</span>
                   </td>
                 </tr>
-
               </tbody>
             </table>
           </div>
@@ -138,7 +138,10 @@ function Loan_status() {
               <thead>
                 <tr class="table-success">
                   <td scope="col"> Account Holder</td>
-                  <td scope="col">{loanData && loanData.FirstName} {loanData && loanData.LastName}</td>
+                  <td scope="col">
+                    {loanData && loanData.FirstName}{" "}
+                    {loanData && loanData.LastName}
+                  </td>
                 </tr>
               </thead>
               <tbody>
@@ -164,33 +167,33 @@ function Loan_status() {
                 </tr>
                 <tr class="table-secondary">
                   <td>Loan Amount With interest</td>
-                  <td>{loanData && loanData.Balance}</td>
+                  <td>{loanData && loanData.LoanInfo[0].totalLoanAmountReceviedYears + loanData.LoanAmount}</td>
                 </tr>
                 <tr class="table-success">
                   <td>Installment</td>
-                  <td>{loanData && loanData.Balance}</td>
+                  <td>{loanData && loanData.LoanInfo[0].installment}</td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Interest Rate</td>
-                  <td></td>
+                  <td>{loanData && loanData.interest}</td>
                 </tr>
                 <tr class="table-success">
                   <td>Starting Date</td>
-                  <td>{loanData && loanData.StartingDate}</td>
+                  <td>{loanData && loanData.LoanInfo[0].StartingDate}</td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Ending Date</td>
-                  <td></td>
+                  <td>{loanData && loanData.LoanInfo[0].EndingDate}</td>
                 </tr>
                 <tr class="table-success">
                   <td>Employee</td>
-                  <td></td>
+                  <td>{loanData && loanData.Employee}</td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Monthly Income</td>
-                  <td></td>
+                  <td>{loanData && loanData.MonthlyIncome}</td>
                 </tr>
-                
+
                 <tr class="table-success">
                   <td>Status</td>
                   <td>

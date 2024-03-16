@@ -145,8 +145,6 @@ function App() {
 
           <Route exact path="/Apply_Loan_Rejected" element={<Apply_Loan_Rejected/>} />
 
-
-
         </Routes>
       </BrowserRouter>
     </>

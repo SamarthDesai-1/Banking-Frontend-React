@@ -216,6 +216,7 @@ function Deshbord_Sidebar() {
                       Apply Loan
                     </NavLink>
                   </li>
+
                   <li className="menuname">
                     <CancelIcon
                       // style={{ position: "relative", left: "6px" }}
@@ -224,6 +225,18 @@ function Deshbord_Sidebar() {
                       Account Close
                     </NavLink>
                   </li>
+
+
+                  {/* <li className="menuname">
+                    <CancelIcon
+                      // style={{ position: "relative", left: "6px" }}
+                    ></CancelIcon>
+                    <NavLink to="/PhonePe" className="linka">
+                      Phone Pe
+                    </NavLink>
+                  </li> */}
+
+
                 </ul>
               </div>
             </div>
