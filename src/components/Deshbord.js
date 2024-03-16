@@ -22,15 +22,6 @@ function Deshbord() {
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
-  /** Route verification */
-  useEffect(() => {
-    if (!sessionEmail || !sessionToken) {
-      navigate("/Signup_Signin");
-    }
-    else {
-      navigate("/PINvarify");
-    }
-  }, []);
 
   const [charts, setCharts] = useState([]);
   let baseUrl = "https://api.coinranking.com/v2/coins/?limit=10";
