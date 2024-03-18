@@ -117,7 +117,7 @@ function Create_Account_data() {
                   <th scope="col">Email</th>
                   <th scope="col">Mobile</th>
                   <th scope="col">Profile</th>
-                  <th scope="col">Transection</th>
+                  <th scope="col">Transaction</th>
                 </tr>
               </thead>
               <tbody>

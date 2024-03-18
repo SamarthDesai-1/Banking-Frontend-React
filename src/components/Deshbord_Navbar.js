@@ -1,7 +1,6 @@
 import React,{useEffect,useState} from "react";
 import "../style-css/DeshNavbar.css";
-import { useNavigate } from 'react-router-dom';
-
+import { NavLink, useNavigate } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 function Deshbord_Navbar() {
@@ -41,6 +40,24 @@ function Deshbord_Navbar() {
             <a class="navbar-brand imgnav" href="#">
               Transact
             </a>
+            <div className="collapse navbar-collapse ms-5" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto  mb-2 mb-lg-0">
+              <li className="nav-item">
+                <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link active" aria-current="page" to="/About_us">About</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link active" aria-current="page" to="/Contect">Contact</NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink className="nav-link active" aria-current="page" to="/Help">Help</NavLink>
+              </li>
+            </ul>
+
+          </div>
           </div>
           <div className="photo text-center pt-4 d-flex ">
                 <img

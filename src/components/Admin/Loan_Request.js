@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Tostyfy from "../Tostyfy";
+import { toast } from "react-toastify";
 
 
 function Loan_Request() {
@@ -45,6 +46,7 @@ function Loan_Request() {
       }).then((response) => {
         console.log(response);
         navigate('/Loan_data');
+        toast.success("Loan discard successfully")
       }).catch((e) => console.log(e));
     }
     catch (e) {
@@ -67,7 +69,8 @@ function Loan_Request() {
       }).then((response) => {
         console.log(response);
         navigate("/Loan_data");
-      }).catch((e) => console.log(e));
+        toast.success("Loan Approve successfully");
+      }).catch((e) => toast.success(e.response.data.msg));
     }
     catch (e) {
       console.log("Error from catch : ", e);
@@ -96,7 +99,7 @@ function Loan_Request() {
                 boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
               }}
             >
-              Fixed Deposit
+              Loan Application
             </div>
           </div>
           <div

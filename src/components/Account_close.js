@@ -97,6 +97,8 @@ function Account_close() {
         .then((response) => {
           console.log(response);
           setAccount(response.data.Data);
+          toast.success("Your close account application is submited successfully over management will inform you soon")
+          navigate("/Deshbord")
         })
         .catch((e) => {
           toast.error(e.response.data.msg);

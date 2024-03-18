@@ -20,4 +20,6 @@
   position: sticky;
   top: 0px;
 }
-
+.deshnav .nav-item .active{
+  margin-right: 25px;
+}

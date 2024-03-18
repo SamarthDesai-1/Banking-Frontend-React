@@ -10,9 +10,16 @@ import { Chart as Chartjs, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 import Tostyfy from "./Tostyfy";
 
+//loading bar
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+
 function Deshbord() {
   const [statement, setStatement] = useState([]);
   const [balance, setBalance] = useState();
+
+  const [open, setOpen] = useState(false);
+
   const navigate = useNavigate();
 
 
@@ -31,6 +38,7 @@ function Deshbord() {
 
   useEffect(() => {
     const fetchCoins = async () => {
+      setOpen(true)
       const data = await axios
         .get(`${baseUrl}`, {
           headers: {
@@ -42,7 +50,7 @@ function Deshbord() {
         .then(async (response) => {
           console.log(response);
           setCharts(response.data);
-
+          setOpen(true)
           await axios
             .post(
               "http://localhost:5000/test/api/users/transaction-history",
@@ -59,6 +67,7 @@ function Deshbord() {
               console.log("State setted");
               console.log("Transaction history : ", response);
 
+              setOpen(true)
               /** loading bar */
                 const balanceData = await axios
                   .post(
@@ -86,6 +95,7 @@ function Deshbord() {
             });
         })
         .catch((e) => console.log(e));
+        setOpen(false)
     };
 
     fetchCoins();
@@ -108,6 +118,13 @@ function Deshbord() {
   return (
     <div className="Deshbord">
       {/* <Tostyfy></Tostyfy> */}
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Deshbord_Navbar></Deshbord_Navbar>
       <div className="row">
         <div className="col-sm-3">

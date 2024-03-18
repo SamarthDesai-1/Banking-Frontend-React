@@ -8,6 +8,7 @@ import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Tostyfy from "../Tostyfy";
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 
 function Admin_Sidebar() {
   return (
@@ -31,14 +32,14 @@ function Admin_Sidebar() {
 
               <div className="menubar ">
                 <ul className="uimenu">
-                  <li className="menuname">
+                  {/* <li className="menuname">
                     <GroupAddIcon
                       style={{marginLeft:"3px" }}
                     ></GroupAddIcon>
                     <NavLink to="/Signup_Data" className="linka">
                       Signup Data
                     </NavLink>
-                  </li>
+                  </li> */}
                   <li className="menuname">
                     <AccountCircleIcon
                       // style={{ position: "relative", left: "59px" }}
@@ -72,9 +73,9 @@ function Admin_Sidebar() {
                     </NavLink>
                   </li>
                   <li className="menuname">
-                    <ContactsIcon
+                    <CurrencyExchangeIcon
                       // style={{ position: "relative", left: "147px" }}
-                    ></ContactsIcon>
+                    ></CurrencyExchangeIcon>
                     <NavLink to="/Loan_data" className="linka">
                       Loan Data
                     </NavLink>

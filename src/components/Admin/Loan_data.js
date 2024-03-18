@@ -11,6 +11,8 @@ import Tostyfy from "../Tostyfy";
 
 function Loan_data() {
   const [data, setdata] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
@@ -39,6 +41,17 @@ function Loan_data() {
     fetchData();
   }, []);
 
+
+  useEffect(() => {
+    const filteredResults = data.filter((item) =>
+      `${item.FirstName}  ${item.LastName}  ${item.AccountNo} ${item.Profession} ${item.Employee}`
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
+    setFilteredData(filteredResults);
+  }, [searchQuery, data]);
+
+
   const handleStatus = (idx, string) => {
     console.log(idx);
 
@@ -47,6 +60,12 @@ function Loan_data() {
     navigate("/Loan_Request");
   };
 
+
+  const handleSearchAccountNoChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  
   return (
     <div className="londata">
       {/* <Tostyfy></Tostyfy> */}
@@ -74,8 +93,8 @@ function Loan_data() {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                    // value={searchQuery}
-                    // onChange={handleSearchAccountNoChange}
+                    value={searchQuery}
+                    onChange={handleSearchAccountNoChange}
                   />
                   <button className="btn btn-outline-success" type="submit">
                     Search

@@ -53,7 +53,7 @@ function Ad_User_Transrction() {
         <CircularProgress color="inherit" />
       </Backdrop>
       <div className="Transectiontable">
-        <h2 className="mb-3">User Transection data</h2>
+        <h2 className="mb-3">User Transaction data</h2>
         <table class="table table-striped">
           <thead>
             <tr>
