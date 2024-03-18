@@ -65,6 +65,7 @@ function Loan_Request() {
         }
       }).then((response) => {
         console.log(response);
+        navigate("/Loan_data");
       }).catch((e) => console.log(e));
     }
     catch (e) {

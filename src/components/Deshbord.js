@@ -52,11 +52,33 @@ function Deshbord() {
                 },
               }
             )
-            .then((response) => {
+            .then(async (response) => {
               setBalance(response.data.Data[0].Balance);
               setStatement(response.data.Data[0].TransactionHistory);
               console.log("State setted");
               console.log("Transaction history : ", response);
+
+              /** loading bar */
+                const balanceData = await axios
+                  .post(
+                    "http://localhost:5000/test/api/users/get-debit-data",
+                    { sessionEmail },
+                    {
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                    }
+                  )
+                  .then((response) => {
+                    console.log(response);
+                    sessionStorage.setItem(
+                      "BalanceData",
+                      JSON.stringify(response.data.Data)
+                    );
+                    const amount = JSON.parse(sessionStorage.getItem("BalanceData"));
+                    setCredit(amount);
+                  })
+                  .catch((e) => console.log(e));
             })
             .catch((e) => {
               console.log(e);
@@ -74,26 +96,13 @@ function Deshbord() {
       setAccountData(data);
       console.log("Account data : ", data);
 
-      const amount = JSON.parse(sessionStorage.getItem("BalanceData"));
-      setCredit(amount);
+      // const amount = JSON.parse(sessionStorage.getItem("BalanceData"));
+      // setCredit(amount);
 
       setFirstRender(false);
     }
   }, [firstRender]);
 
-  const data01 = [
-    {
-      name: "Credit Transaction",
-      value: accountData && credit && credit.totalAmount / accountData.Balance,
-    },
-    {
-      name: "Debit Transaction",
-      value:
-        accountData &&
-        credit &&
-        (accountData.Balance - credit.totalAmount) / accountData.Balance,
-    },
-  ];
 
   return (
     <div className="Deshbord">
@@ -161,7 +170,7 @@ function Deshbord() {
           {/* chart import line */}
           <div className="col-md-8 charts charts-style" style={{margin:"40px auto 20px auto"}}>
             <div>
-              <h1>Crypto Currency Data</h1>
+              <h1>Crypto Currency</h1>
             </div>
             <Line
             style={{marginTop:"20px"}}

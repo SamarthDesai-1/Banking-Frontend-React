@@ -13,14 +13,13 @@ import CircularProgress from "@mui/material/CircularProgress";
 function Admin_Dashbord() {
   const [data, setData] = useState();
   const [statusData, setStatusData] = useState();
+  const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
 
   const [service, setServices] = useState([]);
   const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     const loadData = async () => {
-      const sessionEmail = "Samarth@gmail.com";
-
       setOpen(true);
       try {
         await axios
@@ -68,7 +67,7 @@ function Admin_Dashbord() {
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
-      // onClick={handleClose}
+        // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
@@ -113,9 +112,7 @@ function Admin_Dashbord() {
                   <div class="card-img-overlay">
                     <h3>
                       &#x20B9;
-
                       {statusData && statusData[0].totals[0]}
-
                     </h3>
                     <p>Debit Transaction</p>
                   </div>
@@ -135,9 +132,7 @@ function Admin_Dashbord() {
                   <div class="card-img-overlay">
                     <h3>
                       &#x20B9;
-
                       {statusData && statusData[0].totals[1]}
-
                     </h3>
                     <p>Credit Transaction</p>
                   </div>
@@ -147,9 +142,9 @@ function Admin_Dashbord() {
           </div>
 
           <div className="row">
-            <div className="col-md-6"   style={{ margin: "41px auto 0px auto"  }}>
+            <div className="col-md-6" style={{ margin: "41px auto 0px auto" }}>
               <Line
-              style={{ margin: "40px 0px 0px 51px"}}
+                style={{ margin: "40px 0px 0px 51px" }}
                 className="lichart"
                 data={{
                   labels: data && data.map((elem, index) => elem.date),
@@ -170,7 +165,13 @@ function Admin_Dashbord() {
                 }}
               />
             </div>
-            <div className="col-md-6" style={{ margin: "41px auto 0px auto",padding:"0px 90px 20px 90px" }}>
+            <div
+              className="col-md-6"
+              style={{
+                margin: "41px auto 0px auto",
+                padding: "0px 90px 20px 90px",
+              }}
+            >
               <Doughnut
                 className="circhart"
                 data={{
@@ -189,7 +190,6 @@ function Admin_Dashbord() {
               />
             </div>
           </div>
-
         </div>
       </div>
     </div>
