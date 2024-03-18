@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Tostyfy from "../Tostyfy";
 
 
 function Loan_Request() {
@@ -76,6 +77,7 @@ function Loan_Request() {
 
   return (
     <div className="loanreq">
+      {/* <Tostyfy></Tostyfy> */}
        <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

@@ -5,6 +5,7 @@ import "../../style-css/Admin/Signup_Data.css";
 import axios from "axios";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Tostyfy from "../Tostyfy";
 
 function Signup_Data() {
   const [signupData, setSignupData] = useState([]);
@@ -51,6 +52,7 @@ function Signup_Data() {
 
   return (
     <div className="adsign">
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

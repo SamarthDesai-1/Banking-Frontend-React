@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../style-css/Deposit_status.css";
+import Tostyfy from "./Tostyfy";
 
 function Deposit_status() {
 
@@ -14,6 +15,7 @@ function Deposit_status() {
 
   return (
     <div className="deposit">
+      {/* <Tostyfy></Tostyfy> */}
       <div className="w-full py-6">
         <div className="container grid gap-6 px-4 md:px-6">
           <div className="flex items-center space-x-4 my-4">

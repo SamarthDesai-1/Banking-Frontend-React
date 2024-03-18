@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Tostyfy from "./Tostyfy";
 
 function Transection() {
   const [startDate, setStartDate] = useState("");
@@ -116,6 +117,7 @@ function Transection() {
 
   return (
     <div className="Transection">
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

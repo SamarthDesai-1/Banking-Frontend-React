@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Tostyfy from '../Tostyfy';
 
 function Contect_data() {
 
@@ -51,6 +52,7 @@ function Contect_data() {
 
   return (
     <div className='contectdata'>
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

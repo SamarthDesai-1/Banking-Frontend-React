@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import Tostyfy from "../Tostyfy";
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -53,6 +54,7 @@ function Ad_User_Profile() {
 
   return (
     <div className="aduserprofile">
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

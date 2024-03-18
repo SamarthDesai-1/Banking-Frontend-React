@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-toastify";
+import Tostyfy from "./Tostyfy";
 
 function Fix_deposit_form() {
   const [account, setAccount] = useState("");
@@ -113,6 +114,7 @@ function Fix_deposit_form() {
 
   return (
     <div className="fix">
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

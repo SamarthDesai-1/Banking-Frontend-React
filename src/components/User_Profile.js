@@ -8,6 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { NavLink } from 'react-router-dom';
 import Deshbord_Navbar from './Deshbord_Navbar';
 import Deshbord_Sidebar from './Deshbord_Sidebar';
+import Tostyfy from './Tostyfy';
 
 function User_Profile() {
 
@@ -34,6 +35,7 @@ function User_Profile() {
 
   return (
     <div className='user'>
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

@@ -1,9 +1,11 @@
 import React from 'react'
 import '../style-css/View_rates.css'
+import Tostyfy from './Tostyfy'
 
 function View_rates() {
   return (
     <div className='rates'>
+        {/* <Tostyfy></Tostyfy> */}
       <h2 className='mb-5'>Transect Bank Fixed Deposit Rates</h2>
 <table>
     <thead>

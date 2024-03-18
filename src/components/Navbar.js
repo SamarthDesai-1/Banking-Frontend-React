@@ -54,7 +54,6 @@ function Navbar() {
             >
                 <CircularProgress color="inherit" />
             </Backdrop>
-
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand imgnav" href="#">Transact</a>

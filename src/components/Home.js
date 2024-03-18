@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import PaymentOutlinedIcon from '@mui/icons-material/PaymentOutlined';
 import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
 import { NavLink } from 'react-router-dom';
+import Tostyfy from './Tostyfy.js';
 
 function Home() {
 
@@ -28,6 +29,7 @@ function Home() {
 
     return (
         <>
+        {/* <Tostyfy></Tostyfy> */}
             <Navbar></Navbar>
             <div className='Home'>
                 <div className="container-fluid">

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-toastify';
+import Tostyfy from './Tostyfy';
 
 function Update_PIN() {
 
@@ -54,6 +55,7 @@ function Update_PIN() {
 
     return (
         <div className='Reset'>
+            {/* <Tostyfy></Tostyfy> */}
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={open}

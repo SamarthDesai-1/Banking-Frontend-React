@@ -6,6 +6,7 @@ import axios from "axios";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
+import Tostyfy from "../Tostyfy";
 
 function Create_Account_data() {
   const navigate = useNavigate();
@@ -72,6 +73,7 @@ function Create_Account_data() {
 
   return (
     <div className="adcreat">
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

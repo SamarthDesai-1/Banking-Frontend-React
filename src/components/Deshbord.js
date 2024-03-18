@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Chart as Chartjs, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
+import Tostyfy from "./Tostyfy";
 
 function Deshbord() {
   const [statement, setStatement] = useState([]);
@@ -106,6 +107,7 @@ function Deshbord() {
 
   return (
     <div className="Deshbord">
+      {/* <Tostyfy></Tostyfy> */}
       <Deshbord_Navbar></Deshbord_Navbar>
       <div className="row">
         <div className="col-sm-3">

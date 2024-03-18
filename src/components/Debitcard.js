@@ -3,6 +3,7 @@ import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import Deshbord_Navbar from "./Deshbord_Navbar";
 import "../style-css/Debitcard.css";
 import axios from "axios";
+import Tostyfy from "./Tostyfy";
 
 function Debitcard() {
 
@@ -19,6 +20,7 @@ function Debitcard() {
 
   return (
     <div className="debitcard">
+      {/* <Tostyfy></Tostyfy> */}
       <Deshbord_Navbar></Deshbord_Navbar>
       <div className="row">
         <div className="col-sm-3">

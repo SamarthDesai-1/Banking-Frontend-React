@@ -1,9 +1,11 @@
 import React from "react";
 import "../../style-css/Admin/Admin_Login.css";
+import Tostyfy from "../Tostyfy";
 
 function Admin_Login() {
   return (
     <div className="adlog">
+      {/* <Tostyfy></Tostyfy> */}
       <section class="vh-100">
         <div class="container-fluid h-custom">
           <div class="row d-flex justify-content-center align-items-center h-100">

@@ -11,6 +11,7 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
+import Tostyfy from "./Tostyfy";
 
 
 function Apply_Loan_Rejected() {
@@ -135,6 +136,7 @@ function Apply_Loan_Rejected() {
 
   return (
     <div className="aplloan">
+      {/* <Tostyfy></Tostyfy> */}
        <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

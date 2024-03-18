@@ -3,14 +3,15 @@ import Deshbord_Navbar from "./Deshbord_Navbar";
 import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import "../style-css/Add_Money.css";
 import axios from "axios";
-
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-import { toast } from "react-toastify";
+import Tostyfy from "./Tostyfy";
 
 function Add_Money() {
   /** Add loading bar at here */
@@ -98,6 +99,7 @@ function Add_Money() {
 
   return (
     <div className="money">
+     {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

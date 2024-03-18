@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../style-css/Loan_pending.css";
 import { NavLink } from "react-router-dom";
+import Tostyfy from "./Tostyfy";
 
 function Loan_pending() {
   return (
@@ -13,6 +14,7 @@ function Loan_pending() {
         height: "100vh",
       }}
     >
+      {/* <Tostyfy></Tostyfy> */}
       <div class="jumbotron jumbotron-fluid jomtext">
         <div class="container">
           <h1 class="display-4">Your loan application is pending</h1>

@@ -5,10 +5,12 @@ import SecurityIcon from '@mui/icons-material/Security';
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Tostyfy from './Tostyfy';
 
 function Help() {
     return (
         <div className='Help'>
+            {/* <Tostyfy></Tostyfy> */}
             <Navbar></Navbar>
             <div className="container">
 

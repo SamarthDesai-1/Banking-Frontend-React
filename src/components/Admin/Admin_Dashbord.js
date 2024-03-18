@@ -9,6 +9,7 @@ import { Chart as Chartjs, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Tostyfy from "../Tostyfy";
 
 function Admin_Dashbord() {
   const [data, setData] = useState();
@@ -64,6 +65,7 @@ function Admin_Dashbord() {
 
   return (
     <div className="adidas">
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

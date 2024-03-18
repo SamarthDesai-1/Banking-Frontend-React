@@ -179,7 +179,7 @@ const Create_Account = () => {
 
   return (
     <div className="Create_account mb-4 mt-4">
-      <Tostyfy></Tostyfy>
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

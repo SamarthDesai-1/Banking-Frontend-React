@@ -17,6 +17,7 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import GTranslateIcon from '@mui/icons-material/GTranslate';
+import Tostyfy from "./Tostyfy";
 function Deshbord_Sidebar() {
   // const [data, setData] = useState("");
   // const [image, setImage] = useState();
@@ -120,6 +121,7 @@ function Deshbord_Sidebar() {
 
   return (
     <div>
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

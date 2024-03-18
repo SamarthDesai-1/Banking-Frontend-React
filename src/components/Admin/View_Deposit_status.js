@@ -1,9 +1,11 @@
 import React from "react";
 import "../../style-css/Admin/View_Deposit_status.css";
+import Tostyfy from "../Tostyfy";
 
 function View_Deposit_status() {
   return (
     <div>
+      {/* <Tostyfy></Tostyfy> */}
       <div className="vdeposit">
         <div className="w-full py-6">
           <div className="container grid gap-6 px-4 md:px-6">

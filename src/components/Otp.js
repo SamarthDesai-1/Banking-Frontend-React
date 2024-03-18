@@ -11,6 +11,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 //tostyfy
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Tostyfy from './Tostyfy';
 
 function Otp() {
 
@@ -130,7 +131,7 @@ function Otp() {
 
   return (
     <>
-
+{/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

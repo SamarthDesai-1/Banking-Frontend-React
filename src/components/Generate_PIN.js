@@ -7,6 +7,7 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast,ToastContainer } from 'react-toastify';
 import swal from 'sweetalert';
+import Tostyfy from './Tostyfy';
 
 
 const forFirstTimeOnly = {
@@ -113,7 +114,7 @@ function Generate_PIN() {
 
     return (
         <div className='generatepin'>
-            <ToastContainer></ToastContainer>
+            {/* <Tostyfy></Tostyfy> */}
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={open}

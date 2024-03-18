@@ -3,11 +3,13 @@ import "../style-css/Applydebit.css";
 import Deshbord_Navbar from "./Deshbord_Navbar";
 import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import { NavLink } from "react-router-dom";
+import Tostyfy from "./Tostyfy";
 
 function Applydebit() {
 
   return (
     <div className="applydebit">
+      {/* <Tostyfy></Tostyfy> */}
       <Deshbord_Navbar></Deshbord_Navbar>
       <div className="row">
         <div className="col-sm-3">

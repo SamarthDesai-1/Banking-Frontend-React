@@ -10,6 +10,7 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Tostyfy from "../Tostyfy";
 
 function Account_close_data() {
   const [data, setData] = useState([]);
@@ -73,6 +74,7 @@ function Account_close_data() {
 
   return (
     <div className="acclo">
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

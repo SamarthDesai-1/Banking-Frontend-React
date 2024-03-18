@@ -67,7 +67,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <ToastContainer
+        {/* <ToastContainer
           style={{ zIndex: "10000000000" }}
           transition={Slide}
           position="top-right"
@@ -80,7 +80,7 @@ function App() {
           draggable
           pauseOnHover
           theme="colored"
-        />
+        /> */}
 
         <Routes>
           <Route exact path="/" element={<Home />} />

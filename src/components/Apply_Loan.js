@@ -11,6 +11,7 @@ import swal from "sweetalert";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-toastify";
+import Tostyfy from "./Tostyfy";
 
 function Apply_Loan() {
   const navigate = useNavigate();
@@ -180,6 +181,7 @@ function Apply_Loan() {
 
   return (
     <div className="aplloan">
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

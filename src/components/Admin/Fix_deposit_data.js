@@ -5,6 +5,7 @@ import "../../style-css/Admin/Fix_deposit_data.css";
 import axios from "axios";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Tostyfy from "../Tostyfy";
 
 function Fix_deposit_data() {
   const [fdData, setFDData] = useState([]);
@@ -51,6 +52,7 @@ function Fix_deposit_data() {
 
   return (
     <div className="fixdeposit">
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

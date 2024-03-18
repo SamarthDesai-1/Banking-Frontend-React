@@ -2,6 +2,7 @@ import React from "react";
 import "../style-css/Loan_pendig_status.css";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import Tostyfy from "./Tostyfy";
 
 function Loan_pending_status() {
   const [data, setData] = useState();
@@ -13,6 +14,7 @@ function Loan_pending_status() {
   }, []);
   return (
     <div className="loanpend">
+      {/* <Tostyfy></Tostyfy> */}
       <div className="w-full py-6">
         <div className="container grid gap-6 px-4 md:px-6">
           <div className="row">

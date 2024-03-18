@@ -9,6 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import swal from 'sweetalert';
+import Tostyfy from './Tostyfy';
 
 
 function Forget_Password() {
@@ -73,6 +74,7 @@ function Forget_Password() {
 
     return (
         <div className='Forget'>
+            {/* <Tostyfy></Tostyfy> */}
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={open}

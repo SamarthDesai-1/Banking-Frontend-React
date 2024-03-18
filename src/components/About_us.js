@@ -2,10 +2,12 @@ import React from 'react'
 import '../style-css/About_us.css'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import Tostyfy from './Tostyfy'
 
 function About_us() {
     return (
         <>
+        {/* <Tostyfy></Tostyfy> */}
             <Navbar></Navbar>
             <div className='About'>
                 <div className="container-spec">

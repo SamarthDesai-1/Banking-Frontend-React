@@ -9,6 +9,7 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Tostyfy from "./Tostyfy";
 
 function Withdrow() {
   const [amount, setAmount] = useState();
@@ -72,7 +73,7 @@ function Withdrow() {
 
   return (
     <div className="Withdrow">
-
+{/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

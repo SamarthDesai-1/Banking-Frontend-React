@@ -12,6 +12,7 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-toastify';
+import Tostyfy from './Tostyfy';
 
 function Edit_Profile() {
 
@@ -184,7 +185,7 @@ function Edit_Profile() {
 
   return (
       <div className='Create_account mb-4 mt-4'>
-
+{/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

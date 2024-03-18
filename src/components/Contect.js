@@ -53,7 +53,7 @@ function Contect() {
 
   return (
     <>
-    <Tostyfy></Tostyfy>
+    {/* <Tostyfy></Tostyfy> */}
       <Navbar></Navbar>
       <div className="Contect">
         <div className="image">

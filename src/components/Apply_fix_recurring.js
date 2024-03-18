@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-toastify";
+import Tostyfy from "./Tostyfy";
 
 function Apply_fix_recurring() {
 
@@ -45,6 +46,7 @@ function Apply_fix_recurring() {
 
   return (
     <div className="Apply_fix_recurring">
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

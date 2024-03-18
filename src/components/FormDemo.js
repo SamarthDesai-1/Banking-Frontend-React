@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Joi from 'joi';
 import axios from 'axios';
+import Tostyfy from './Tostyfy';
 
 
 const FormComponent = () => {
@@ -127,6 +128,8 @@ const FormComponent = () => {
   };
 
   return (
+    <>
+    {/* <Tostyfy></Tostyfy> */}
     <form onSubmit={handleSubmit}>
 
       <div>
@@ -208,6 +211,7 @@ const FormComponent = () => {
 
       <button type="submit">Submit</button>
     </form>
+    </>
   );
 };
 

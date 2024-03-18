@@ -1,10 +1,12 @@
 import React from 'react'
 import '../style-css/NotFound.css'
 import { NavLink } from 'react-router-dom'
+import Tostyfy from './Tostyfy';
 
 function NotFound() {
   return (
     <div className='notfound'>
+      {/* <Tostyfy></Tostyfy> */}
        <div className="container">
       <section>
         <div className="container">

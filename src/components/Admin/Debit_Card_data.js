@@ -5,6 +5,7 @@ import Admin_Sidebar from "./Admin_Sidebar";
 import axios from "axios";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Tostyfy from "../Tostyfy";
 
 function Debit_Card_data() {
   const [cardData, setCardData] = useState([]);
@@ -51,6 +52,7 @@ function Debit_Card_data() {
 
   return (
     <div className="addebitcard">
+      {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
