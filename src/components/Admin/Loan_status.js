@@ -69,7 +69,7 @@ function Loan_status() {
                 <tr class="table-success">
                   <td scope="col"> Account Holder</td>
                   <td scope="col">
-                    {!loanData ? "null" : loanData && loanData.FirstName}{" "}
+                    {!loanData ? "null" : loanData.FirstName}{" "}
                     {loanData && loanData.LastName}
                   </td>
                 </tr>
@@ -77,15 +77,19 @@ function Loan_status() {
               <tbody>
                 <tr class="table-secondary">
                   <td>Fix Deposit Amount</td>
-                  <td>{!fdData ? "null" : fdData && fdData.Balance}</td>
+                  <td>{!fdData ? "null" : fdData.Balance}</td>
                 </tr>
                 <tr class="table-success">
                   <td> Account Number</td>
-                  <td>{!fdData ? "null" : fdData && fdData.AccountNo}</td>
+                  <td>{!fdData ? "null" : fdData.AccountNo}</td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Starting Date</td>
-                  <td>{!fdData ? "null" : fdData && fdData.date}</td>
+                  <td>
+                    {!fdData || !fdData.date
+                      ? "null"
+                      : fdData.date.substring(0, 10)}
+                  </td>
                 </tr>
                 <tr class="table-success">
                   <td>Interest Rate</td>
@@ -110,7 +114,9 @@ function Loan_status() {
                     >
                       <circle cx="12" cy="12" r="10"></circle>
                     </svg>
-                    <span className="font-medium ms-2">{!fdData ? "null" : "Active" }</span>
+                    <span className="font-medium ms-2">
+                      {!fdData ? "null" : "Active"}
+                    </span>
                   </td>
                 </tr>
               </tbody>
@@ -157,7 +163,9 @@ function Loan_status() {
                 </tr>
                 <tr class="table-success">
                   <td>AadharCard No</td>
-                  <td>{!loanData ? "null" : loanData && loanData.AadharCard}</td>
+                  <td>
+                    {!loanData ? "null" : loanData && loanData.AadharCard}
+                  </td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Pancard No</td>
@@ -165,24 +173,26 @@ function Loan_status() {
                 </tr>
                 <tr class="table-success">
                   <td>Loan Amount</td>
-                  <td>{!loanData ? "null" : loanData && loanData.LoanAmount}</td>
+                  <td>
+                    {!loanData ? "null" : loanData && loanData.LoanAmount}
+                  </td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Loan Amount With interest</td>
                   <td>
                     {!loanData
                       ? "null"
-                      : loanData &&
-                        loanData.LoanInfo[0].totalLoanAmountReceviedYears +
-                          loanData.LoanAmount}
+                      : (loanData.LoanInfo && loanData.LoanInfo[0]
+                          ? loanData.LoanInfo[0].totalLoanAmountReceviedYears
+                          : 0) + (loanData.LoanAmount || 0)}
                   </td>
                 </tr>
                 <tr class="table-success">
                   <td>Installment</td>
                   <td>
-                    {!loanData
+                    {!loanData || !loanData.LoanInfo || !loanData.LoanInfo[0]
                       ? "null"
-                      : loanData && loanData.LoanInfo[0].installment}
+                      : loanData.LoanInfo[0].installment}
                   </td>
                 </tr>
                 <tr class="table-secondary">
@@ -194,15 +204,17 @@ function Loan_status() {
                   <td>
                     {!loanData
                       ? "null"
-                      : loanData && loanData.LoanInfo[0].StartingDate}
+                      : loanData.LoanInfo[0]
+                      ? loanData.LoanInfo[0].StartingDate
+                      : "null"}
                   </td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Ending Date</td>
                   <td>
-                    {!loanData
+                    {!loanData || !loanData.LoanInfo || !loanData.LoanInfo[0]
                       ? "null"
-                      : loanData && loanData.LoanInfo[0].EndingDate}
+                      : loanData.LoanInfo[0].EndingDate}
                   </td>
                 </tr>
                 <tr class="table-success">
@@ -234,7 +246,9 @@ function Loan_status() {
                     >
                       <circle cx="12" cy="12" r="10"></circle>
                     </svg>
-                    <span className="font-medium ms-2">{!loanData ? "null" : "Active"}</span>
+                    <span className="font-medium ms-2">
+                      {!loanData ? "null" : "Active"}
+                    </span>
                   </td>
                 </tr>
               </tbody>
