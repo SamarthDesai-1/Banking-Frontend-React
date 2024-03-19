@@ -144,7 +144,7 @@ function Deshbord() {
                   />
                   <div class="card-img-overlay">
                     <p className="fs-5">Balance</p>
-                    <h3>₹ {accountData && accountData.Balance}</h3>
+                    <h3>₹ {credit && credit.Balance}</h3>
                   </div>
                 </div>
               </div>
@@ -160,7 +160,7 @@ function Deshbord() {
                     />
                   <div class="card-img-overlay">
                     <p className="fs-5">Credit Transaction</p>
-                    <h3>₹ {credit && credit.totalAmount}</h3>
+                    <h3>₹ {credit && credit.Cr}</h3>
                   </div>
                 </div>
               </div>
@@ -177,9 +177,7 @@ function Deshbord() {
                   <div class="card-img-overlay">
                       <p className="fs-5">Debit Transaction</p>
                     <h3>
-                    ₹ {accountData &&
-                        credit &&
-                        accountData.Balance - credit.totalAmount}
+                    ₹ {credit && credit.Balance - credit.Cr}
                     </h3>
                   </div>
                 </div>
