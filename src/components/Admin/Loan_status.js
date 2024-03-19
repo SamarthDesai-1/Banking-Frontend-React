@@ -69,7 +69,7 @@ function Loan_status() {
                 <tr class="table-success">
                   <td scope="col"> Account Holder</td>
                   <td scope="col">
-                    {loanData && loanData.FirstName}{" "}
+                    {!loanData ? "null" : loanData && loanData.FirstName}{" "}
                     {loanData && loanData.LastName}
                   </td>
                 </tr>
@@ -77,19 +77,19 @@ function Loan_status() {
               <tbody>
                 <tr class="table-secondary">
                   <td>Fix Deposit Amount</td>
-                  <td>{fdData && fdData.Balance}</td>
+                  <td>{!fdData ? "null" : fdData && fdData.Balance}</td>
                 </tr>
                 <tr class="table-success">
                   <td> Account Number</td>
-                  <td>{fdData && fdData.AccountNo}</td>
+                  <td>{!fdData ? "null" : fdData && fdData.AccountNo}</td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Starting Date</td>
-                  <td>{fdData && fdData.date}</td>
+                  <td>{!fdData ? "null" : fdData && fdData.date}</td>
                 </tr>
                 <tr class="table-success">
                   <td>Interest Rate</td>
-                  <td>4.5%</td>
+                  <td>{!fdData ? "null" : "4.5%"}</td>
                 </tr>
 
                 <tr class="table-secondary">
@@ -110,7 +110,7 @@ function Loan_status() {
                     >
                       <circle cx="12" cy="12" r="10"></circle>
                     </svg>
-                    <span className="font-medium ms-2">Active</span>
+                    <span className="font-medium ms-2">{!fdData ? "null" : "Active" }</span>
                   </td>
                 </tr>
               </tbody>
@@ -141,7 +141,7 @@ function Loan_status() {
                 <tr class="table-success">
                   <td scope="col"> Account Holder</td>
                   <td scope="col">
-                    {loanData && loanData.FirstName}{" "}
+                    {!loanData ? "null" : loanData && loanData.FirstName}{" "}
                     {loanData && loanData.LastName}
                   </td>
                 </tr>
@@ -149,51 +149,71 @@ function Loan_status() {
               <tbody>
                 <tr class="table-secondary">
                   <td>Balance</td>
-                  <td>{loanData && loanData.Balance}</td>
+                  <td>{!loanData ? "null" : loanData && loanData.Balance}</td>
                 </tr>
                 <tr class="table-secondary">
                   <td> Account Number</td>
-                  <td>{loanData && loanData.AccountNo}</td>
+                  <td>{!loanData ? "null" : loanData && loanData.AccountNo}</td>
                 </tr>
                 <tr class="table-success">
                   <td>AadharCard No</td>
-                  <td>{loanData && loanData.AadharCard}</td>
+                  <td>{!loanData ? "null" : loanData && loanData.AadharCard}</td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Pancard No</td>
-                  <td>{loanData && loanData.PanCard}</td>
+                  <td>{!loanData ? "null" : loanData && loanData.PanCard}</td>
                 </tr>
                 <tr class="table-success">
                   <td>Loan Amount</td>
-                  <td>{loanData && loanData.LoanAmount}</td>
+                  <td>{!loanData ? "null" : loanData && loanData.LoanAmount}</td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Loan Amount With interest</td>
-                  <td>{loanData && loanData.LoanInfo[0].totalLoanAmountReceviedYears + loanData.LoanAmount}</td>
+                  <td>
+                    {!loanData
+                      ? "null"
+                      : loanData &&
+                        loanData.LoanInfo[0].totalLoanAmountReceviedYears +
+                          loanData.LoanAmount}
+                  </td>
                 </tr>
                 <tr class="table-success">
                   <td>Installment</td>
-                  <td>{loanData && loanData.LoanInfo[0].installment}</td>
+                  <td>
+                    {!loanData
+                      ? "null"
+                      : loanData && loanData.LoanInfo[0].installment}
+                  </td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Interest Rate</td>
-                  <td>{loanData && loanData.interest}</td>
+                  <td>{!loanData ? "null" : loanData && loanData.interest}</td>
                 </tr>
                 <tr class="table-success">
                   <td>Starting Date</td>
-                  <td>{loanData && loanData.LoanInfo[0].StartingDate}</td>
+                  <td>
+                    {!loanData
+                      ? "null"
+                      : loanData && loanData.LoanInfo[0].StartingDate}
+                  </td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Ending Date</td>
-                  <td>{loanData && loanData.LoanInfo[0].EndingDate}</td>
+                  <td>
+                    {!loanData
+                      ? "null"
+                      : loanData && loanData.LoanInfo[0].EndingDate}
+                  </td>
                 </tr>
                 <tr class="table-success">
                   <td>Employee</td>
-                  <td>{loanData && loanData.Employee}</td>
+                  <td>{!loanData ? "null" : loanData && loanData.Employee}</td>
                 </tr>
                 <tr class="table-secondary">
                   <td>Monthly Income</td>
-                  <td>{loanData && loanData.MonthlyIncome}</td>
+                  <td>
+                    {!loanData ? "null" : loanData && loanData.MonthlyIncome}
+                  </td>
                 </tr>
 
                 <tr class="table-success">
@@ -214,7 +234,7 @@ function Loan_status() {
                     >
                       <circle cx="12" cy="12" r="10"></circle>
                     </svg>
-                    <span className="font-medium ms-2">Active</span>
+                    <span className="font-medium ms-2">{!loanData ? "null" : "Active"}</span>
                   </td>
                 </tr>
               </tbody>

@@ -18,25 +18,26 @@ function Account_close_data() {
 
   const [open, setOpen] = React.useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setOpen(true);
-      await axios
-        .get("http://localhost:5000/test/api/users/get-close-requests", {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((response) => {
-          console.log(response);
-          setData(response.data.Data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-      setOpen(false);
-    };
+  const fetchData = async () => {
+    setOpen(true);
+    await axios
+      .get("http://localhost:5000/test/api/users/get-close-requests", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        setData(response.data.Data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    setOpen(false);
+  };
 
+  useEffect(() => {
+    
     fetchData();
   }, []);
 
@@ -54,14 +55,16 @@ function Account_close_data() {
           },
         }
       )
-      .then((response) => {
+      .then(async (response) => {
         if (response?.status == 200) {
           toast.success("User deleted successfully");
         }
+        fetchData();
       })
-      .catch((e) => {
+      .catch(async (e) => {
         toast.success("User delete account request is rejected");
         console.log(e);
+        fetchData();
       });
     setOpen(false);
   };
