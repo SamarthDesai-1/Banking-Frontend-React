@@ -181,7 +181,7 @@ function Home() {
                                 <div class="card" style={{ textAlign: "center" }}>
                                     <div class="card-body">
                                         <LockOutlinedIcon color="primary" style={{ fontSize: '60px', margin: "0px 0px" }}></LockOutlinedIcon>
-                                        <h5 class="card-title">Manage your Pin</h5>
+                                        <h5 class="card-title">Login</h5>
                                         <p class="card-text">Create, View or Change your PIN with a few simple steps</p>
                                         <NavLink to="/Signup_Signin"><Button size="large" className='lern' variant="contained">Login Now</Button></NavLink>
                                     </div>

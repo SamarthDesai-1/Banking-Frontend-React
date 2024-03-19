@@ -87,8 +87,8 @@ function Withdrow() {
         <div className="col-sm-3">
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
-        <div className="col-sm-6 withdrowform">
-          <form className="p-5">
+        <div className="col-sm-6 pt-4 withdrowform">
+          <form className="p-5 wdfom">
             <h2 className="">Withdraw Money</h2>
             <p>Enter the amount you eant to Withdrow.</p>
             <div class="mb-3">

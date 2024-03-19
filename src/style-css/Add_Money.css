@@ -3,7 +3,11 @@
     --bs-gutter-y: 0
 }
 .money .addform{
-    padding-left: 40px;
+    padding: 20px 20px 10px 40px;
+}
+.money .admfom{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
 }
 .money input{
     border: 1px solid black;

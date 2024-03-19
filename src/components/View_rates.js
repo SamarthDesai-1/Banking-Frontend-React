@@ -6,7 +6,7 @@ function View_rates() {
   return (
     <div className='rates'>
         {/* <Tostyfy></Tostyfy> */}
-      <h2 className='mb-5'>Transect Bank Fixed Deposit Rates</h2>
+      <h2 className='mb-5'>Transact Bank Fixed Deposit Rates</h2>
 <table>
     <thead>
         <tr>

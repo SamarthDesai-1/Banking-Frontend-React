@@ -30,7 +30,7 @@ function Debitcard() {
           <div class="card text-white debit">
             <img src="/IMAGES/dabitcard.png" class="card-img" alt="..." />
             <div class="card-img-overlay">
-              <p className="cvv">CVV/ {data && data.CVV}</p>
+              <p className="cvv">CVV/ {data && data.CVV.substring(0,3)}</p>
               <p className="expire">EX:- {data && data.ExpiryDate.substring(0,10)}</p>
               <h4 className="cardno">
                 {data && data.DebitCardNumber.match(/.{1,4}/g).map((group, index) => (

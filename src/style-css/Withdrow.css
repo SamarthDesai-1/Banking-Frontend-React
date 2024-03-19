@@ -17,3 +17,7 @@
 .Withdrow .sidebar{
     height: 110vh;
 }
+.Withdrow .wdfom{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}

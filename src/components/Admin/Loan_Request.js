@@ -14,14 +14,14 @@ function Loan_Request() {
   const [open, setOpen] = useState(false);
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const fetchData = () => {
       setData(JSON.parse(sessionStorage.getItem("LoanData")));
     };
     fetchData();
   }, []);
-  
+
   const id = data && data._id;
   const amount = data && data.LoanAmount;
   const year = data && data.LoanTimePeriod;
@@ -81,7 +81,7 @@ function Loan_Request() {
   return (
     <div className="loanreq">
       {/* <Tostyfy></Tostyfy> */}
-       <Backdrop
+      <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
       >
@@ -207,6 +207,17 @@ function Loan_Request() {
                   </div>
                 </div>
 
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-gray-500">
+                        Loan Amount
+                      </p>
+                      <p>{data && data.LoanAmount}</p>
+                    </div>
+                  </div>
+                </div>
+
 
                 {/* <div className="row">
                   <div className="col-md-6">
@@ -226,12 +237,12 @@ function Loan_Request() {
                     </div>
                   </div>
                 </div> */}
-               
 
-              
-              
 
-            
+
+
+
+
               </div>
             </div>
             <div className="mb-4">

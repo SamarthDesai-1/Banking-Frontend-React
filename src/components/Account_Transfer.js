@@ -116,8 +116,8 @@ function Account_Transfer() {
         <div className="col-sm-3">
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
-        <div className="col-sm-5 accountform">
-          <form className="p-5">
+        <div className="col-sm-5 pt-4 pb-4 accountform">
+          <form className="p-4 atfom">
             <h2 className="">Account Transfer</h2>
             <p>Enter the amount you want to Transfer.</p>
             <div class="mb-3 mt-5">

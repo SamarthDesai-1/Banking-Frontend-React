@@ -16,3 +16,8 @@
     position: sticky;
     top: 0px;
 }
+.adnav .ffscreen{
+    position: absolute;
+    right: 100px;
+    top: 30px;
+}

@@ -79,7 +79,7 @@ function Apply_fix_recurring() {
                 </div>
                 <div className="box">
 
-                  <NavLink onClick={handleData}><h4 className="ms-3">View Fix/Recurring Deposit Status</h4></NavLink>
+                  <NavLink onClick={handleData}><h4 className="ms-3">View Fix Deposit Status</h4></NavLink>
                   {/* <NavLink to="">
                     {(data) ? navigate("/Deposit_status") : alert("testing") } 
                   </NavLink> */}

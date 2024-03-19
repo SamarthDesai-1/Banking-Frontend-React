@@ -2,3 +2,7 @@
     --bs-gutter-x: 0rem;
     --bs-gutter-y: 0
 }
+.dabitcardform .apdbt{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}

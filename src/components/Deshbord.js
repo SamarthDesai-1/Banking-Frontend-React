@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { Chart as Chartjs, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 import Tostyfy from "./Tostyfy";
+import Tooltip from '@mui/material/Tooltip';
 
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
@@ -158,7 +159,7 @@ function Deshbord() {
                     alt="..."
                     />
                   <div class="card-img-overlay">
-                    <p className="fs-5">Credit Transection</p>
+                    <p className="fs-5">Credit Transaction</p>
                     <h3>₹ {credit && credit.totalAmount}</h3>
                   </div>
                 </div>
@@ -174,7 +175,7 @@ function Deshbord() {
                     alt="..."
                   />
                   <div class="card-img-overlay">
-                      <p className="fs-5">Debit Transection</p>
+                      <p className="fs-5">Debit Transaction</p>
                     <h3>
                     ₹ {accountData &&
                         credit &&

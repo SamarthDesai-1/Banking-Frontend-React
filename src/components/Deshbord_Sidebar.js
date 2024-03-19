@@ -179,16 +179,16 @@ function Deshbord_Sidebar() {
                     </NavLink>
                   </li>
 
-                  <li className="menuname">
-                    <GTranslateIcon
-                      // style={{ position: "relative", left: "107px" }}
-                    ></GTranslateIcon>  
+                  {/* <li className="menuname"> */}
+                    {/* <GTranslateIcon */}
+                      {/* // style={{ position: "relative", left: "107px" }} */}
+                    {/* ></GTranslateIcon>   */}
                     {/* <NavLink to="/https://rzp.io/l/9XVjS1crX" className="linka">
                       Transfer via Razorpay
                     </NavLink> */}
-                    <a className="linka" target="_blank" href="https://rzp.io/l/9XVjS1crX">Transfer via razorpay</a>
+                    {/* <a className="linka" target="_blank" href="https://rzp.io/l/9XVjS1crX">Transfer via razorpay</a> */}
 
-                  </li>
+                  {/* </li> */}
 
                   <li className="menuname">
                     <FileCopyIcon
@@ -220,7 +220,7 @@ function Deshbord_Sidebar() {
                       // style={{ position: "relative", left: "53px" }}
                     ></LockClockIcon>
                     <NavLink to="/Apply_fix_recurring" className="linka">
-                      Fix/Recrring Deposits
+                      Fix Deposits
                     </NavLink>
                   </li>
                   <li className="menuname">

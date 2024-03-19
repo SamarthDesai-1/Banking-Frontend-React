@@ -122,12 +122,12 @@ function Fix_deposit_form() {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
+
+      <div className=" fixform col-md-8">
       <div className="bal">
         <h2 className="">Balance : ${account.Balance}</h2>
       </div>
-
-      <div className=" fixform col-md-8">
-        <form onSubmit={handleSubmit} className="mt-4">
+        <form onSubmit={handleSubmit} className="mt-4 fxfom p-3">
           <div class="form-group m-3">
             <label className="mb-2" for="amount">
               Deposit Amount:

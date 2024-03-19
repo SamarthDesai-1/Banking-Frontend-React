@@ -27,7 +27,7 @@ function Help() {
                                 <div className="conte">
                                     <p> we understand that your financial needs are as unique as you are. That's why we're dedicated to providing personalized banking solutions tailored to your specific goals and aspirations. Whether you're saving for the future, investing in your dreams, or simply managing your day-to-day finances, we're here to help you every step of the way.</p>
 
-                                    <h3 style={{ color: "#4895ef" }}>Explore Our Services</h3>
+                                    <h3 className='hlpser' style={{ color: "#4895ef" }}>Explore Our Services</h3>
                                     <p>Personal Banking: From checking and savings accounts to loans and credit cards, we offer a comprehensive range of personal banking solutions designed to meet your individual needs.</p>
                                     <p>Business Banking: Whether you're a small startup or a large corporation, our business banking services provide the tools and expertise you need to thrive in today's competitive marketplace.</p>
                                 </div>
@@ -42,7 +42,7 @@ function Help() {
                     <div className="card-1" data-aos="zoom-in">
                         <div className="icon-container" >
                             <CreditCardIcon style={{ fontSize: "40px" }} />
-                            <p className='mt-2'>Block Debit Card</p>
+                            <p className='mt-2'>Debit Card</p>
                         </div>
                     </div>
                     <div className="card-1" data-aos="zoom-in">
@@ -54,7 +54,7 @@ function Help() {
                     <div className="card-1" data-aos="zoom-in">
                         <div className="icon-container">
                             <MiscellaneousServicesIcon style={{ fontSize: "40px" }} />
-                            <p className='mt-2'>Inqury Services</p>
+                            <p className='mt-2'>Inquriy Services</p>
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@ function Help() {
 
             <div className="help-services p-5">
                 <div className="Transection">
-                    <b><h3>Account Management</h3></b>
+                    <b><h3 className='hlpser'>Account Management</h3></b>
                     <p>By mastering the fundamentals of account management, you can take control of your finances and make the most of your banking relationship with Transect.</p>
                 </div>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -145,7 +145,7 @@ function Help() {
                 </div>
 
                 <div className="Transection">
-                    <b><h3>Transactions</h3></b>
+                    <b><h3 className='hlpser'>Transactions</h3></b>
                     <p>By mastering the fundamentals of account management, you can take control of your finances and make the most of your banking relationship with Transect.</p>
                 </div>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -201,7 +201,7 @@ function Help() {
                 </div>
 
                 <div className="Transection">
-                    <b><h3>Payments and Transfers</h3></b>
+                    <b><h3 className='hlpser'>Payments and Transfers</h3></b>
                     <p>Get help with making payments, setting up transfers, and resolving issues with your transactions.</p>
                 </div>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -267,7 +267,7 @@ function Help() {
 
 
                 <div className="Transection">
-                    <b><h3>Mobile Banking</h3></b>
+                    <b><h3 className='hlpser'>Mobile Banking</h3></b>
                     <p>Get the most out of your mobile banking app, troubleshoot common issues, and explore the features available on the go.</p>
                 </div>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -342,7 +342,7 @@ function Help() {
                 </div>
 
                 <div className="Transection">
-                    <b><h3>Security</h3></b>
+                    <b><h3 className='hlpser'>Security</h3></b>
                     <p> Learn how to protect your account, recognize potential security threats, and secure your online banking experience.</p>
                 </div>
                 <div class="accordion" id="accordionPanelsStayOpenExample">

@@ -112,8 +112,8 @@ function Add_Money() {
         <div className="col-sm-3">
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
-        <div className="col-sm-6 addform">
-          <form className="p-5">
+        <div className="col-sm-6 pt-4 addform">
+          <form className=" p-4 admfom">
             <h2 className="">Add Money</h2>
             <p>Enter the amount you want to add.</p>
             <div class="mb-3 mt-5">

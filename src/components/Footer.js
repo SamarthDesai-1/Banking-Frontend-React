@@ -44,7 +44,7 @@ function Footer() {
           <div className="section me-5">
             <ul>
               <b>
-                <h3>Support Assistense</h3>
+                <h3>Support Assistanse</h3>
               </b>
               <div  className="tag d-flex">
                         <div style={{color:"#4895ef"}} className='me-2'><PhoneInTalkOutlinedIcon ></PhoneInTalkOutlinedIcon></div>
@@ -65,8 +65,8 @@ function Footer() {
           <div className="border-style"></div>
           <div className="footer-1">
           <NavLink to="/PINvarify" style={{ textDecoration: "none" }}> <p>Accounts Trasfer</p></NavLink>
-          <NavLink to="/PINvarify" style={{ textDecoration: "none" }}><p>Credit</p></NavLink>
-          <NavLink to="/PINvarify" style={{ textDecoration: "none" }}><p>Debit</p></NavLink>
+          <NavLink to="/PINvarify" style={{ textDecoration: "none" }}><p>Deposit</p></NavLink>
+          <NavLink to="/PINvarify" style={{ textDecoration: "none" }}><p>Withdraw</p></NavLink>
           <NavLink to="/PINvarify" style={{ textDecoration: "none" }}> <p>Debit Card</p></NavLink>
             <NavLink to="/Signup_Signin" style={{ textDecoration: "none" }}>
               <p>Signup</p>

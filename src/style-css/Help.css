@@ -86,7 +86,7 @@ padding-bottom: 12px;
 }
 
 /* Heading styles */
-.Help h3 {
+.Help .hlpser {
 font-size: 1.5rem;
 font-weight: bold;
 line-height: 1.2;

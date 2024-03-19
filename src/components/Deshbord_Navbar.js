@@ -4,6 +4,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
 
 function Deshbord_Navbar() {
   const navigate = useNavigate();
@@ -87,7 +89,7 @@ function Deshbord_Navbar() {
 
             </div>
           </div>
-          
+
           <div className="photo text-center pt-4 d-flex ">
             <img
               src={data && `http://localhost:5000/uploads/${data.Photo}`}
@@ -101,9 +103,10 @@ function Deshbord_Navbar() {
           </div>
 
           <div className="log-button">
-            <FullscreenIcon type="button" className=" fullscreen" onClick={handleFullScreen}>
-              {/* {isFullScreen ? 'Exit Fullscreen' : 'Fullscreen'} */}
-            </FullscreenIcon>
+            <Tooltip title={isFullScreen ? 'Exit Fullscreen' : 'Full Screen'} arrow>
+              <FullscreenIcon type="button" className=" fullscreen" onClick={handleFullScreen}>
+              </FullscreenIcon>
+            </Tooltip>
           </div>
 
 

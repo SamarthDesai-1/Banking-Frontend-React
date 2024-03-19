@@ -127,16 +127,16 @@ function Contect() {
                   Feel free to contact me about anything related to Web
                   Development.
                 </p>
-                <form className="contact-form">
+                <form className="contact-form p-3">
                   <div className="row">
                     <div className="col-sm-6">
                       <div className="input-area">
-                        <input type="text" placeholder="Your name" onChange={(e) => setName(e.target.value)} />
+                        <input type="text"  placeholder="Your name" onChange={(e) => setName(e.target.value)} />
                       </div>
                     </div>
                     <div className="col-sm-6">
                       <div className="input-area">
-                        <input type="email" placeholder="Email address" onChange={(e) => setEmail(e.target.value)} />
+                        <input type="email" className="ms-2" placeholder="Email address" onChange={(e) => setEmail(e.target.value)} />
                       </div>
                     </div>
                   </div>

@@ -157,11 +157,11 @@ function Account_close() {
         <div className="col-md-3">
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
-        <div className="col-md-7 closeform">
+        <div className="col-md-7 closeform p-5">
           <button onClick={handleEvent} className="stbtn btn btn-primary">
             Status
           </button>
-          <form onSubmit={handleSubmit} className="p-5">
+          <form onSubmit={handleSubmit} className="p-4 accfom">
             <h2 className="mb-4">Account close Application Form</h2>
 
             <div className="row">

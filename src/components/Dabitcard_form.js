@@ -157,8 +157,8 @@ function Dabitcard_form() {
         <div className="col-sm-3">
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
-        <div className="col-sm-6">
-          <form onSubmit={handleSubmit} className="p-5">
+        <div className="col-sm-6 p-5">
+          <form onSubmit={handleSubmit} className="p-4 apdbt">
             <h2 className="">Debit Card Form</h2>
 
             <div className="row">
@@ -252,7 +252,7 @@ function Dabitcard_form() {
               )}
             </div>
 
-            <button type="submit" class="btn btn-dark">
+            <button type="submit" class="btn btn-primary">
               Apply
             </button>
           </form>
