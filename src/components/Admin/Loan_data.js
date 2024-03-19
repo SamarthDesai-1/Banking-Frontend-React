@@ -51,7 +51,7 @@ function Loan_data() {
     setFilteredData(filteredResults);
   }, [searchQuery, data]);
 
-
+  
   const handleStatus = (idx, string) => {
     console.log(idx);
 
@@ -89,12 +89,12 @@ function Loan_data() {
               <div className="col-md-6">
                 <form className="d-flex adserch">
                   <input
-                    className="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                    value={searchQuery}
-                    onChange={handleSearchAccountNoChange}
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  value={searchQuery}
+                  onChange={handleSearchAccountNoChange}
                   />
                   <button className="btn btn-outline-success" type="submit">
                     Search
@@ -116,7 +116,7 @@ function Loan_data() {
                 </tr>
               </thead>
               <tbody>
-                {data.map((elem, index) => (
+              {filteredData.map((elem, index) => (
                   <tr key={index}>
                     <td className="text-deco">{index + 1}</td>
                     <td className="text-deco">
@@ -126,14 +126,6 @@ function Loan_data() {
                     <td className="text-deco">{elem.Profession}</td>
                     <td className="text-deco">{elem.Reason}</td>
                     <td className="text-deco">{elem.Employee}</td>
-
-                    {/* {statusData &&
-                      statusData.map((elem, index) =>
-                        elem.Status === "Approved" ? (<td className="text-deco" style={{ color: "green" }}>Active</td>) : (<td className="text-deco" style={{ color: "red" }}>Pending</td>),
-                        elem.Status === "Pending" && (<td className="text-deco" style={{ color: "red" }}>Pending</td>) 
-                      )} */}
-
-
                     <td>
                       <button
                         className="btn btn-info"

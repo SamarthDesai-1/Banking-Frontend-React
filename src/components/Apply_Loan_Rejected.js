@@ -204,7 +204,7 @@ function Apply_Loan_Rejected() {
               </div>
 
               <div className="col-sm-6">
-                <div class="mb-3">
+                <div class="mb-3 me-2">
                   <label for="exampleInputEmail1" class="form-label">
                     Amount
                   </label>

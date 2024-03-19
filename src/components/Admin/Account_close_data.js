@@ -15,6 +15,8 @@ import Tostyfy from "../Tostyfy";
 function Account_close_data() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const [open, setOpen] = React.useState(false);
 
@@ -40,6 +42,24 @@ function Account_close_data() {
     
     fetchData();
   }, []);
+
+
+
+  useEffect(() => {
+    const filteredResults = data.filter((item) =>
+      `${item.LastName}  ${item.FirstName}  ${item.AccountNo} ${item.Email}`
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
+    setFilteredData(filteredResults);
+  }, [searchQuery, data]);
+
+
+  
+  const handleSearchAccountNoChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
 
   const handleConfirm = async (id, status) => {
     setOpen(true);
@@ -98,13 +118,13 @@ function Account_close_data() {
               </div>
               <div className="col-md-6">
                 <form className="d-flex adserch">
-                  <input
-                    className="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                    // value={searchQuery}
-                    // onChange={handleSearchAccountNoChange}
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  value={searchQuery}
+                  onChange={handleSearchAccountNoChange}
                   />
                   <button className="btn btn-outline-success" type="submit">
                     Search
@@ -127,7 +147,7 @@ function Account_close_data() {
                 </tr>
               </thead>
               <tbody>
-                {data.map((elem, index) => (
+              {filteredData.map((elem, index) => (
                   <tr key={index}>
                     <td className="text-deco">{index + 1}</td>
                     <td className="text-deco">

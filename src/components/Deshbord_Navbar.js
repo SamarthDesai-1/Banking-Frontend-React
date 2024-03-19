@@ -1,12 +1,15 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import "../style-css/DeshNavbar.css";
 import { NavLink, useNavigate } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+
 
 function Deshbord_Navbar() {
   const navigate = useNavigate();
-    
-  const handleLogout = async () => {  
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
+  const handleLogout = async () => {
     function deleteMultipleFromSessionStorage(keys) {
       keys.forEach((key) => {
         sessionStorage.removeItem(key);
@@ -29,6 +32,31 @@ function Deshbord_Navbar() {
     fetchData();
   }, []);
 
+
+  const handleFullScreen = () => {
+    if (!isFullScreen) {
+      // Fullscreen mode
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) { /* IE11 */
+        document.documentElement.msRequestFullscreen();
+      }
+    } else {
+      // Exit fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
+      }
+    }
+    setIsFullScreen(!isFullScreen); // Toggle fullscreen state
+  };
+
+
   return (
     <>
       <div className="deshnav">
@@ -41,35 +69,44 @@ function Deshbord_Navbar() {
               Transact
             </a>
             <div className="collapse navbar-collapse ms-5" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto  mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/About_us">About</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/Contect">Contact</NavLink>
-              </li>
+              <ul className="navbar-nav me-auto  mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link active" aria-current="page" to="/About_us">About</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link active" aria-current="page" to="/Contect">Contact</NavLink>
+                </li>
 
-              <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/Help">Help</NavLink>
-              </li>
-            </ul>
+                <li className="nav-item">
+                  <NavLink className="nav-link active" aria-current="page" to="/Help">Help</NavLink>
+                </li>
+              </ul>
 
+            </div>
           </div>
-          </div>
+          
           <div className="photo text-center pt-4 d-flex ">
-                <img
-                  src={data && `http://localhost:5000/uploads/${data.Photo}`}
-                  width="50"
-                  height="50"
-                  style={{ borderRadius: "50%", objectFit: "cover" }}
-                />
-                <p className="cont mt-2">
-                  {data && data.FirstName} {data && data.LastName}
-                </p>
-              </div>
+            <img
+              src={data && `http://localhost:5000/uploads/${data.Photo}`}
+              width="55"
+              height="55"
+              style={{ borderRadius: "50%", objectFit: "cover" }}
+            />
+            <p className="cont mt-2">
+              {data && data.FirstName} {data && data.LastName}
+            </p>
+          </div>
+
+          <div className="log-button">
+            <FullscreenIcon type="button" className=" fullscreen" onClick={handleFullScreen}>
+              {/* {isFullScreen ? 'Exit Fullscreen' : 'Fullscreen'} */}
+            </FullscreenIcon>
+          </div>
+
+
           <div className="log-button">
             <LogoutIcon type="button" fontSize="large" className="fa-plus-circle" color="primary" style={{ marginRight: "30px" }} onClick={handleLogout}>
             </LogoutIcon>
