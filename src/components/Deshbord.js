@@ -51,25 +51,27 @@ function Deshbord() {
         .then(async (response) => {
           console.log(response);
           setCharts(response.data);
-          setOpen(true)
-          await axios
-            .post(
-              "http://localhost:5000/test/api/users/transaction-history",
-              { sessionEmail, sessionToken },
-              {
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            )
-            .then(async (response) => {
-              setBalance(response.data.Data[0].Balance);
-              setStatement(response.data.Data[0].TransactionHistory);
-              console.log("State setted");
-              console.log("Transaction history : ", response);
+
+          // setOpen(true)
+          // await axios
+          //   .post(
+          //     "http://localhost:5000/test/api/users/transaction-history",
+          //     { sessionEmail, sessionToken },
+          //     {
+          //       headers: {
+          //         "Content-Type": "application/json",
+          //       },
+          //     }
+          //   )
+          //   .then(async (response) => {
+          //     setBalance(response.data.Data[0].Balance);
+          //     setStatement(response.data.Data[0].TransactionHistory);
+          //     console.log("State setted");
+          //     console.log("Transaction history : ", response);
 
               setOpen(true)
               /** loading bar */
+
                 const balanceData = await axios
                   .post(
                     "http://localhost:5000/test/api/users/get-debit-data",
@@ -88,12 +90,16 @@ function Deshbord() {
                     );
                     const amount = JSON.parse(sessionStorage.getItem("BalanceData"));
                     setCredit(amount);
+
+                    setStatement(response.data.Data.TransactionHistory);
+                    setBalance(response.data.Data.Balance);
                   })
                   .catch((e) => console.log(e));
-            })
-            .catch((e) => {
-              console.log(e);
-            });
+
+            // })
+            // .catch((e) => {
+            //   console.log(e);
+            // });
         })
         .catch((e) => console.log(e));
         setOpen(false)
@@ -208,7 +214,7 @@ function Deshbord() {
           {/* Statement */}
 
           <div className="trans p-4 mt-3">
-            <h2> ▶️ Mini Statements</h2>
+            <h2> 📘 Mini Statements</h2>
             <table className="table table-striped mt-3">
               <thead>
                 <tr>
