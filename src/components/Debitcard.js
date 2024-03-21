@@ -10,10 +10,12 @@ import BlockIcon from '@mui/icons-material/Block';
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Tooltip from '@mui/material/Tooltip';
+import { useNavigate } from "react-router-dom";
 
-/** Apply Joi validation on account and cvv */
 
 function Debitcard() {
+
+  const navigate = useNavigate();
 
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
@@ -72,6 +74,34 @@ function Debitcard() {
 
   };
 
+
+  const [reason, setReason] = useState("");
+  const handleBlock = async () => {
+    console.log("Handle block");
+
+    try {
+      
+      if (reason === "") {
+        toast.error("Please fill the form for payment");
+        return;
+      }
+      
+      /** API for block card */
+      const data = await axios.post("http://localhost:5000/test/api/users/block-card", { sessionEmail, sessionToken }, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+      }).then((response) => {
+
+        if (response?.status == 200) navigate("/PINvarify");
+  
+      });
+
+    } catch (error) {
+      console.log("Error : ", error);
+    }
+  };
+
   return (
     <div className="debitcard">
 
@@ -79,20 +109,20 @@ function Debitcard() {
         <div class="modal-dialog modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Block Debit card</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Block Debit Card</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form>
                 <div class="mb-3">
-                  <label for="message-text" class="col-form-label">reason:</label>
-                  <textarea class="form-control" id="message-text"></textarea>
+                  <label for="message-text" class="col-form-label">Reason</label>
+                  <textarea class="form-control" id="message-text" onChange={(e) => setReason(e.target.value)}></textarea>
                 </div>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-danger">Block</button>
+              <button type="button" class="btn btn-danger" onClick={handleBlock}>Block</button>
             </div>
           </div>
         </div>
@@ -144,7 +174,7 @@ function Debitcard() {
             <div className="col-md-4" >
               <form className="m-4 dcardform">
                 <div class="mb-3">
-                  <input type="number" onChange={(e) => setAccount(e.target.value)} placeholder="Account No" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                  <input type="text" onChange={(e) => setAccount(e.target.value)} placeholder="Account No" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                 </div>
                 <div class="mb-3">
                   <input type="number" placeholder="Amount" onChange={(e) => setAmount(e.target.value)} class="form-control" id="exampleInputPassword1" />

@@ -94,17 +94,6 @@ function Deshbord_Sidebar() {
                     </NavLink>
                   </li>
 
-                  {/* <li className="menuname"> */}
-                    {/* <GTranslateIcon */}
-                      {/* // style={{ position: "relative", left: "107px" }} */}
-                    {/* ></GTranslateIcon>   */}
-                    {/* <NavLink to="/https://rzp.io/l/9XVjS1crX" className="linka">
-                      Transfer via Razorpay
-                    </NavLink> */}
-                    {/* <a className="linka" target="_blank" href="https://rzp.io/l/9XVjS1crX">Transfer via razorpay</a> */}
-
-                  {/* </li> */}
-
                   <li className="menuname">
                     <FileCopyIcon
                       // style={{ position: "relative", left: "132px" }}
