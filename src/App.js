@@ -59,6 +59,9 @@ import Loan_pending_status from "./components/Loan_pending_status";
 
 import Apply_Loan_Rejected from "./components/Apply_Loan_Rejected";
 
+import Success from "./components/Success";
+import Cancel from "@mui/icons-material/Cancel";
+
 
 import Tostyfy from "./components/Tostyfy";
 import { ToastContainer, toast, Slide } from 'react-toastify';
@@ -144,6 +147,9 @@ function App() {
           <Route exact path="/Loan_pending_status" element={<Loan_pending_status/>} />
 
           <Route exact path="/Apply_Loan_Rejected" element={<Apply_Loan_Rejected/>} />
+
+          {/* <Route exact path="/Success" element={<Success />} /> */}
+          {/* <Route exact path="/Cancel" element={<Cancel />} /> */}
 
         </Routes>
       </BrowserRouter>
