@@ -120,7 +120,7 @@ function Ad_User_Profile() {
             >
               Balance
             </h2>
-            <h2 className="ms-5">${customerData && customerData.Balance}</h2>
+            <h2 className="ms-5">₹{customerData && customerData.Balance}</h2>
           </div>
 
           <hr />

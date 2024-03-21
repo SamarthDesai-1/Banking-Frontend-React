@@ -67,7 +67,7 @@ function Deposit_status() {
                       <p className="text-sm font-medium text-gray-500">
                         Deposit Amount
                       </p>
-                      <p>${data1 && data1.Balance}</p>
+                      <p>₹{data1 && data1.Balance}</p>
                     </div>
                   </div>
                   <div className="col-md-6">

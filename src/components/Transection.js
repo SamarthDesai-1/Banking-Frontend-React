@@ -205,7 +205,7 @@ function Transection() {
                   <td className="text-deco"></td>
                   <td className="text-deco"></td>
                   <td className="text-deco"></td>
-                  <td className="text-deco">${balance}</td>
+                  <td className="text-deco">₹{balance}</td>
                 </tr>
               </tbody>
             </table>

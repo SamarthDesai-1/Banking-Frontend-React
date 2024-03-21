@@ -1,28 +1,47 @@
-.debitcard .row{
-    --bs-gutter-x: 0rem;
-    --bs-gutter-y: 0
+.debitcard .row {
+  --bs-gutter-x: 0rem;
+  --bs-gutter-y: 0;
 }
-.debitcard .debit{
-    width:60vw;
-    display: flex;
-    text-align: center;
-    margin:  60px auto;
+.debitcard .debit {
+    margin-left: 30px;
+    
 }
-.debitcard .cardno{
-    position: relative;
-    top: 245px;
-    right: 93px;
+.debitcard .debit .ddcardimg{
+    width: 40vw;
 }
-.debitcard .expire{
-    position: relative;
-    top: 195px;
-    left: 68px;
+.debitcard .debit .dcardform{
+    margin-right: 50px;
 }
-.debitcard .cvv{
-    position: relative;
-    top: 195px;
-    left: 43px;
+.debitcard .dcardform .row{
+    justify-content: space-evenly;
 }
-.debitcard .sidebar{
-    height: 110vh;
+.debitcard .blockcard{
+    position: absolute;
+    right:40px;
+    top: 90px;
+}
+.debitcard .dcardform .row{
+  text-align: center;
+  margin: 100px auto;
+}
+.debitcard .cardno {
+  position: relative;
+  top: 134px;
+  right: 60px;
+  font-size: 18px;
+}
+.debitcard .expire {
+  position: relative;
+  top: 110px;
+  left: 42px;
+  font-size: 12px;
+}
+.debitcard .cvv {
+  position: relative;
+  top: 120px;
+  left: 23px;
+  font-size: 12px;
+}
+.debitcard .sidebar {
+  height: 110vh;
 }

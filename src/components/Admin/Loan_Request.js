@@ -213,7 +213,7 @@ function Loan_Request() {
                       <p className="text-sm font-medium text-gray-500">
                         Loan Amount
                       </p>
-                      <p>{data && data.LoanAmount}</p>
+                      <p>₹{data && data.LoanAmount}</p>
                     </div>
                   </div>
                 </div>
