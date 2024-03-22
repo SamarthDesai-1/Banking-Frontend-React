@@ -58,6 +58,7 @@ import Loan_pending from "./components/Loan_pending";
 import Loan_pending_status from "./components/Loan_pending_status";
 
 import Apply_Loan_Rejected from "./components/Apply_Loan_Rejected";
+import Close_Account_Rejected from "./components/Close_Account_Rejected";
 
 import Success from "./components/Success";
 import Cancel from "@mui/icons-material/Cancel";
@@ -147,9 +148,9 @@ function App() {
           <Route exact path="/Loan_pending_status" element={<Loan_pending_status/>} />
 
           <Route exact path="/Apply_Loan_Rejected" element={<Apply_Loan_Rejected/>} />
+          <Route exact path="/Close_Account_Rejected" element={<Close_Account_Rejected />} />
 
-          {/* <Route exact path="/Success" element={<Success />} /> */}
-          {/* <Route exact path="/Cancel" element={<Cancel />} /> */}
+        
 
         </Routes>
       </BrowserRouter>

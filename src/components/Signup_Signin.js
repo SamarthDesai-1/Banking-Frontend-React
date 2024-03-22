@@ -172,7 +172,7 @@ function Signup_Signin() {
               <div className="input-field">
                 <i className="fas fa-envelope"></i>
                 <input
-                  type="text"
+                  type="email"
                   placeholder="Email"
                   onChange={(e) => setemail(e.target.value)}
                 />

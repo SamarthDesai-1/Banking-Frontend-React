@@ -13,7 +13,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-toastify";
 import Tostyfy from "./Tostyfy";
 
-function Account_close() {
+function Close_Account_Rejected() {
   const navigate = useNavigate();
   const [account, setAccount] = useState("");
 
@@ -97,8 +97,10 @@ function Account_close() {
         .then((response) => {
           console.log(response);
           setAccount(response.data.Data);
-          toast.success("Your close account application is submited successfully over management will inform you soon")
-          navigate("/Deshbord")
+          toast.success(
+            "Your close account application is submited successfully over management will inform you soon"
+          );
+          navigate("/Deshbord");
         })
         .catch((e) => {
           toast.error(e.response.data.msg);
@@ -132,7 +134,7 @@ function Account_close() {
           }
           if (response.data.Data[0].Status === "reject") {
             toast.error(response.data.msg);
-            navigate("/Close_Account_Rejected");
+            navigate("/Deshbord");
           }
         }
       })
@@ -164,7 +166,7 @@ function Account_close() {
           </button>
           <form onSubmit={handleSubmit} className="p-4 accfom">
             <h2 className="mb-4">Account close Application Form</h2>
-
+            <h5 style={{ color: "red" }}>Your previous account close application has been rejected</h5>
             <div className="row">
               <div className="col-md-6">
                 <div class="mb-3 pe-2">
@@ -291,5 +293,4 @@ function Account_close() {
   );
 }
 
-export default Account_close;
-
+export default Close_Account_Rejected;
