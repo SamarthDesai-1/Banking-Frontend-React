@@ -80,12 +80,12 @@ function Debitcard() {
     console.log("Handle block");
 
     try {
-      
+
       if (reason === "") {
         toast.error("Please fill the form for payment");
         return;
       }
-      
+      setOpen(true)
       /** API for block card */
       const data = await axios.post("http://localhost:5000/test/api/users/block-card", { sessionEmail, sessionToken }, {
         headers: {
@@ -93,13 +93,16 @@ function Debitcard() {
         },
       }).then((response) => {
 
-        if (response?.status == 200) navigate("/PINvarify");
-  
-      });
+        if (response?.status === 200) {
+          navigate("/PINvarify");
+        }
 
+      });
+      setOpen(false)
     } catch (error) {
       console.log("Error : ", error);
     }
+    setOpen(false)
   };
 
   return (
@@ -112,7 +115,7 @@ function Debitcard() {
               <h5 class="modal-title" id="exampleModalLabel">Block Debit Card</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body"> 
               <form>
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label">Reason</label>
@@ -122,7 +125,7 @@ function Debitcard() {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-danger" onClick={handleBlock}>Block</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onClick={handleBlock}>Block</button>
             </div>
           </div>
         </div>
