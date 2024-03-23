@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import Deshbord_Navbar from "./Deshbord_Navbar";
 import Deshbord_Sidebar from "./Deshbord_Sidebar";
@@ -20,6 +21,7 @@ function Transection() {
   const [statement, setStatement] = useState({ TransactionHistory: [] });
   const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
+  const [specificAmount, setSpecificAmount] = useState("")
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
 
@@ -115,6 +117,30 @@ function Transection() {
     doc.save("statement.pdf");
   };
 
+
+  const handleSortBySpecificAmountup = () => {
+    if (specificAmount !== "") {
+      const amount = parseFloat(specificAmount);
+      const specificAmountTransactions = statement.TransactionHistory.filter(
+        (transaction) => transaction.transferAmount >= amount
+      );
+      setFilteredStatement(specificAmountTransactions);
+    } else {
+      setFilteredStatement(statement.TransactionHistory);
+    }
+  };
+  const handleSortBySpecificAmountdw = () => {
+    if (specificAmount !== "") {
+      const amount = parseFloat(specificAmount);
+      const specificAmountTransactions = statement.TransactionHistory.filter(
+        (transaction) => transaction.transferAmount <= amount
+      );
+      setFilteredStatement(specificAmountTransactions);
+    } else {
+      setFilteredStatement(statement.TransactionHistory);
+    }
+  };
+
   return (
     <div className="Transection">
       {/* <Tostyfy></Tostyfy> */}
@@ -169,6 +195,32 @@ function Transection() {
             onClick={downloadPDF}
             // style={{zIndex:"-1"}}
           ></DownloadForOfflineIcon>
+
+
+          <div className="sorting">
+          <div className="col-md-2">
+                <div>
+                  <input
+                    type="number"
+                    placeholder="Enter Specific Amount"
+                    value={specificAmount}
+                    onChange={(e) => setSpecificAmount(e.target.value)}
+                  />
+                  <button
+                    className="btn btn-primary"
+                    onClick={handleSortBySpecificAmountup}
+                  >
+                    Sort up
+                  </button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={handleSortBySpecificAmountdw}
+                  >
+                    Sort dw
+                  </button>
+                </div>
+              </div>
+          </div>
           <div className="trans p-4 mt-3">
             <table className="table table-striped">
               <thead>
