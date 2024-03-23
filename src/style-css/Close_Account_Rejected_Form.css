@@ -1,26 +1,26 @@
 
-.acclose .row{
+.accloserj .row{
     --bs-gutter-x: 0rem;
     --bs-gutter-y: 0
 }
-.acclose .closeform{
+.accloserj .closeform{
     padding-left: 40px;
 }
-.acclose input{
+.accloserj input{
     border: 1px solid black;
 }
-.acclose textarea{
+.accloserj textarea{
     border: 1px solid black;
 }
-.acclose .sidebar{
+.accloserj .sidebar{
     height: 106vh;
 }
-.acclose .closeform .stbtn{
+.accloserj .closeform .stbtn{
     position: absolute;
     right: 20px;
     top: 115px;
 }
-.acclose .accfom{
+.accloserj .accfom{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
 }

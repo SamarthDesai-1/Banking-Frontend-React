@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../style-css/Account_close.css";
 import Deshbord_Sidebar from "./Deshbord_Sidebar";
 import Deshbord_Navbar from "./Deshbord_Navbar";
@@ -98,7 +98,7 @@ function Account_close() {
           console.log(response);
           setAccount(response.data.Data);
           toast.success("Your close account application is submited successfully over management will inform you soon")
-          navigate("/Deshbord")
+          navigate("/Close_Account_Pending");
         })
         .catch((e) => {
           toast.error(e.response.data.msg);
@@ -108,6 +108,8 @@ function Account_close() {
     }
     setOpen(false);
   };
+
+  useEffect(()=>{
 
   const handleEvent = async () => {
     setOpen(true);
@@ -128,20 +130,24 @@ function Account_close() {
         if (response?.status === 200) {
           console.log(response);
           if (response.data.Data[0].Status === "Pending") {
-            toast.error(response.data.msg);
+            // toast.error(response.data.msg);
+            navigate("/Close_Account_Pending");
           }
           if (response.data.Data[0].Status === "reject") {
-            toast.error(response.data.msg);
+            // toast.error(response.data.msg);
             navigate("/Close_Account_Rejected");
           }
         }
       })
       .catch((e) => {
         console.log(e);
-        toast.error(e.response.data.msg);
+        // toast.error(e.response.data.msg);
       });
     setOpen(false);
   };
+
+  handleEvent();
+},[])
 
   return (
     <div className="acclose">
@@ -159,9 +165,7 @@ function Account_close() {
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
         <div className="col-md-7 closeform p-5">
-          <button onClick={handleEvent} className="stbtn btn btn-primary">
-            Status
-          </button>
+
           <form onSubmit={handleSubmit} className="p-4 accfom">
             <h2 className="mb-4">Account close Application Form</h2>
 
