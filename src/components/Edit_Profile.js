@@ -64,6 +64,13 @@ function Edit_Profile() {
     fetchData();
   }, []);
 
+  const handlePhotoUpload = (e) => {
+    console.log("Files : ", e.target.files);
+    const file = e.target.files;
+    console.log(file.name);
+    setFormData({ ...formData, Photo: file });
+  };
+
   
   const navigate = useNavigate();
   const PhototRef = useRef();
@@ -72,6 +79,7 @@ function Edit_Profile() {
   const [formData, setFormData] = useState({
     FirstName: '',
     LastName: '',
+    Photo: null,
     DOB: '',
     Mobile: '',
     PanCard: '',
@@ -110,6 +118,7 @@ function Edit_Profile() {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("userRef data : ", PhototRef.current.files[0]);
 
     // Validate form data
     
@@ -144,6 +153,7 @@ function Edit_Profile() {
 
       formDataToSend.append("FirstName", data.FirstName);
       formDataToSend.append("LastName", data.LastName);
+      formDataToSend.append("Photo", PhototRef.current.files[0]);
       formDataToSend.append('DOB', data.DOB);
       formDataToSend.append('Mobile', data.Mobile);
       formDataToSend.append('PanCard', data.PanCard);
@@ -152,6 +162,7 @@ function Edit_Profile() {
       formDataToSend.append('NomineeAadharCard', data.NomineeAadharCard);
       formDataToSend.append('Address', data.Address);
       formDataToSend.append('MonthlyIncome', data.MonthlyIncome);
+      formDataToSend.append('Email', sessionEmail);
 
       console.log("FirstName : ", data.FirstName);
       console.log("LastName : ", data.LastName);
@@ -160,9 +171,9 @@ function Edit_Profile() {
 
       console.log("Form Data to send : ", formDataToSend);
       
-      const response = await axios.post('http://localhost:5000/test/api/users/update-account-details', { sessionEmail, sessionToken, data }, {
+      const response = await axios.post('http://localhost:5000/test/api/users/update-account-details', formDataToSend, {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "multipart/form-data",
         },
       }).then(response => {
         if (response?.status === 200) {
@@ -218,6 +229,24 @@ function Edit_Profile() {
                 <input type="text" id="LastName" name="LastName" value={data.LastName} onChange={handleInputChange} className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Enter your last name" />
                 {errors.LastName && <div style={{ marginBottom: "0rem" }} className='text-danger error'>{errors.LastName}</div>}
               </div>
+            </div>
+
+            <div className="space-y-2">
+              <label
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                htmlFor="Photo"
+              >
+                Photo
+              </label>
+              <input
+                type="file"
+                id="Photo"
+                name="Photo"
+                ref={PhototRef}
+                onChange={handlePhotoUpload}
+                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                accept="image/*"
+              />
             </div>
 
             <div className="grid grid-cols-2 gap-6">
@@ -350,3 +379,4 @@ function Edit_Profile() {
 }
 
 export default Edit_Profile;
+
