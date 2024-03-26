@@ -61,6 +61,7 @@ import Apply_Loan_Rejected from "./components/Apply_Loan_Rejected";
 import Close_Account_Rejected from "./components/Close_Account_Rejected";
 import Close_Account_Pending from "./components/Close_Account_Pending";
 import Close_Account_Rejected_Form from "./components/Close_Account_Rejected_Form";
+import Loan_pending_Form from "./components/Loan_pending_Form";
 
 import Success from "./components/Success";
 import Cancel from "@mui/icons-material/Cancel";
@@ -153,6 +154,7 @@ function App() {
           <Route exact path="/Close_Account_Rejected" element={<Close_Account_Rejected />} />
           <Route exact path="/Close_Account_Pending" element={<Close_Account_Pending />} />
           <Route exact path="/Close_Account_Rejected_Form" element={<Close_Account_Rejected_Form />} />
+          <Route exact path="/Loan_pending_Form" element={<Loan_pending_Form />} />
 
         
 

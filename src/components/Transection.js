@@ -9,7 +9,8 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Tostyfy from "./Tostyfy";
@@ -193,33 +194,39 @@ function Transection() {
           <DownloadForOfflineIcon
             className="download"
             onClick={downloadPDF}
-            // style={{zIndex:"-1"}}
+          // style={{zIndex:"-1"}}
           ></DownloadForOfflineIcon>
 
 
-          <div className="sorting">
-          <div className="col-md-2">
+          <div className="sorting" style={{ marginLeft: "80px", marginTop: "20px" }}>
+            <div className="row">
+
+
+              <div className="col-md-4">
                 <div>
                   <input
                     type="number"
-                    placeholder="Enter Specific Amount"
+                    placeholder="Enter Amount"
                     value={specificAmount}
                     onChange={(e) => setSpecificAmount(e.target.value)}
                   />
-                  <button
-                    className="btn btn-primary"
-                    onClick={handleSortBySpecificAmountup}
-                  >
-                    Sort up
-                  </button>
-                  <button
-                    className="btn btn-primary"
-                    onClick={handleSortBySpecificAmountdw}
-                  >
-                    Sort dw
-                  </button>
                 </div>
               </div>
+              <div className="col-md-3">
+                <ArrowCircleDownIcon
+                style={{fontSize:"30px"}}
+                  onClick={handleSortBySpecificAmountup}
+                >
+                  Sort up
+                </ArrowCircleDownIcon>
+                <ArrowCircleUpIcon
+                style={{fontSize:"30px",marginLeft:"13px"}}
+                  onClick={handleSortBySpecificAmountdw}
+                >
+                  Sort dw
+                </ArrowCircleUpIcon>
+              </div>
+            </div>
           </div>
           <div className="trans p-4 mt-3">
             <table className="table table-striped">
