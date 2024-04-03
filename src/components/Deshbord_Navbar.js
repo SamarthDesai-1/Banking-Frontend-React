@@ -111,8 +111,10 @@ function Deshbord_Navbar() {
 
 
           <div className="log-button">
-            <LogoutIcon type="button" fontSize="large" className="fa-plus-circle" color="primary" style={{ marginRight: "30px" }} onClick={handleLogout}>
-            </LogoutIcon>
+            <Tooltip title="Logout" arrow>
+              <LogoutIcon type="button" fontSize="large" className="fa-plus-circle" color="primary" style={{ marginRight: "30px" }} onClick={handleLogout}>
+              </LogoutIcon>
+            </Tooltip>
           </div>
         </nav>
       </div>

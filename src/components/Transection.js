@@ -213,18 +213,18 @@ function Transection() {
                 </div>
               </div>
               <div className="col-md-3">
-                <ArrowCircleDownIcon
-                style={{fontSize:"30px"}}
-                  onClick={handleSortBySpecificAmountup}
-                >
-                  Sort up
-                </ArrowCircleDownIcon>
                 <ArrowCircleUpIcon
-                style={{fontSize:"30px",marginLeft:"13px"}}
-                  onClick={handleSortBySpecificAmountdw}
+                  style={{ fontSize: "30px" }}
+                  onClick={handleSortBySpecificAmountup}
                 >
                   Sort dw
                 </ArrowCircleUpIcon>
+                <ArrowCircleDownIcon
+                  style={{ fontSize: "30px", marginLeft: "13px" }}
+                  onClick={handleSortBySpecificAmountdw}
+                >
+                  Sort up
+                </ArrowCircleDownIcon>
               </div>
             </div>
           </div>
