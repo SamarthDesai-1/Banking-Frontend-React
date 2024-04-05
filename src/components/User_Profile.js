@@ -102,7 +102,7 @@ function User_Profile() {
                   }}
                 >
                   <img
-                    src={`http://localhost:5000/uploads/${data.image}`}
+                    src={`http://localhost:5000/uploads/${data.Photo}`}
                     width="100"
                     height="100"
                     style={{ borderRadius: "50%", objectFit: "cover" }}
