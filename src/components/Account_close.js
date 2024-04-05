@@ -80,14 +80,52 @@ function Account_close() {
       formDataToSend.append("FirstName", formData.FirstName);
       formDataToSend.append("LastName", formData.LastName);
       formDataToSend.append("AccountNo", formData.AccountNo);
+      formDataToSend.append("Email", formData.Email);
       formDataToSend.append("Reason", formData.Reason);
 
       console.log(formDataToSend);
 
+      console.log(formData.Email);
+      if (formData.Email !== sessionEmail) {
+        document.getElementById("emailError").innerHTML = "Email not match";
+      } 
+      else {
+        const data = await axios
+          .post(
+            "http://localhost:5000/test/api/users/close-account",
+            { sessionEmail, sessionToken, formData, accountNo, userID },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .then((response) => {
+            console.log(response);
+            setAccount(response.data.Data);
+            toast.success(
+              "Your close account application is submited successfully over management will inform you soon"
+            );
+            navigate("/Close_Account_Pending");
+          })
+          .catch((e) => {
+            toast.error(e.response.data.msg);
+          });
+      }
+    } catch (e) {
+      console.log("error from try catch");
+    }
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    const handleEvent = async () => {
+      setOpen(true);
+      const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
       const data = await axios
         .post(
-          "http://localhost:5000/test/api/users/close-account",
-          { sessionEmail, sessionToken, formData, accountNo, userID },
+          "http://localhost:5000/test/api/users/exists-request",
+          { sessionEmail },
           {
             headers: {
               "Content-Type": "application/json",
@@ -95,59 +133,29 @@ function Account_close() {
           }
         )
         .then((response) => {
-          console.log(response);
-          setAccount(response.data.Data);
-          toast.success("Your close account application is submited successfully over management will inform you soon")
-          navigate("/Close_Account_Pending");
+          console.log("Status report : ", response);
+
+          if (response?.status === 200) {
+            console.log(response);
+            if (response.data.Data[0].Status === "Pending") {
+              // toast.error(response.data.msg);
+              navigate("/Close_Account_Pending");
+            }
+            if (response.data.Data[0].Status === "reject") {
+              // toast.error(response.data.msg);
+              navigate("/Close_Account_Rejected");
+            }
+          }
         })
         .catch((e) => {
-          toast.error(e.response.data.msg);
+          console.log(e);
+          // toast.error(e.response.data.msg);
         });
-    } catch (e) {
-      console.log("error from try catch");
-    }
-    setOpen(false);
-  };
+      setOpen(false);
+    };
 
-  useEffect(()=>{
-
-  const handleEvent = async () => {
-    setOpen(true);
-    const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
-    const data = await axios
-      .post(
-        "http://localhost:5000/test/api/users/exists-request",
-        { sessionEmail },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        console.log("Status report : ", response);
-
-        if (response?.status === 200) {
-          console.log(response);
-          if (response.data.Data[0].Status === "Pending") {
-            // toast.error(response.data.msg);
-            navigate("/Close_Account_Pending");
-          }
-          if (response.data.Data[0].Status === "reject") {
-            // toast.error(response.data.msg);
-            navigate("/Close_Account_Rejected");
-          }
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-        // toast.error(e.response.data.msg);
-      });
-    setOpen(false);
-  };
-
-  handleEvent();
-},[])
+    handleEvent();
+  }, []);
 
   return (
     <div className="acclose">
@@ -165,7 +173,6 @@ function Account_close() {
           <Deshbord_Sidebar></Deshbord_Sidebar>
         </div>
         <div className="col-md-7 closeform p-5">
-
           <form onSubmit={handleSubmit} className="p-4 accfom">
             <h2 className="mb-4">Account close Application Form</h2>
 
@@ -254,6 +261,7 @@ function Account_close() {
                 name="Email"
                 onChange={handleInputChange}
               />
+              <span className="text-danger error" id="emailError"></span>
               {errors.Email && (
                 <div
                   style={{ marginBottom: "0rem" }}
@@ -296,4 +304,3 @@ function Account_close() {
 }
 
 export default Account_close;
-
