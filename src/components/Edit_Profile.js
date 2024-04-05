@@ -185,7 +185,7 @@ function Edit_Profile() {
 
       }).catch(e => {
         console.error('Failed to insert data OR may be user enter duplicate data.');
-        alert("Please enter non-duplicate data")
+        toast.error("please fill the form")
       })
     }
     catch (error) {
