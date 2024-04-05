@@ -77,7 +77,7 @@ function Loan_pending_status() {
                       <p className="text-sm font-medium text-gray-500">
                         Balance
                       </p>
-                      <p>&#x20B9; {data && data.Balance}</p>
+                      <p>&#x20B9; {data && data.Balance + data.LoanInfo[0].Amount}</p>
                     </div>
                   </div>
                   <div className="col-md-6">
