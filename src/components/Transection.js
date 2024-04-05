@@ -15,6 +15,8 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Tostyfy from "./Tostyfy";
 
+import Tooltip from '@mui/material/Tooltip';
+
 function Transection() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -191,18 +193,20 @@ function Transection() {
               </div>
             </div>
           </div>
-          <DownloadForOfflineIcon
-            className="download"
-            onClick={downloadPDF}
-          // style={{zIndex:"-1"}}
-          ></DownloadForOfflineIcon>
-
+          <Tooltip title="Download Statement" arrow>
+            <DownloadForOfflineIcon
+              className="download"
+              onClick={downloadPDF}
+            // style={{zIndex:"-1"}}
+            ></DownloadForOfflineIcon>
+          </Tooltip>
 
           <div className="sorting" style={{ marginLeft: "80px", marginTop: "20px" }}>
             <div className="row">
 
 
-              <div className="col-md-4">
+              <h4 className="mb-3">Sorting</h4>
+              <div className="col-md-4 ">
                 <div>
                   <input
                     type="number"

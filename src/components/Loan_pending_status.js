@@ -135,12 +135,11 @@ function Loan_pending_status() {
                     </div>
                   </div>
                   <div className="col-md-6">
-                    <div className="space-y-2">
+                  <div className="space-y-2">
                       <p className="text-sm font-medium text-gray-500">
-                        Amount for payout
+                        Profession
                       </p>
-                      {/* <p>{data && data.LoanInfo[0].userPayAmount}</p> */}
-                      <p>settimeout is remain to added</p>
+                      <p>{data && data.Profession}</p>
                     </div>
                   </div>
                 </div>
@@ -198,7 +197,7 @@ function Loan_pending_status() {
                   </div>
                 </div>
 
-                <div className="row">
+                {/* <div className="row">
                   <div className="col-md-6">
                     <div className="space-y-2">
                       <p className="text-sm font-medium text-gray-500">
@@ -207,7 +206,7 @@ function Loan_pending_status() {
                       <p>{data && data.Profession}</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
