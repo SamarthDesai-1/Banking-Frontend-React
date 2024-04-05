@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
-import moment from 'moment';
+import moment from "moment";
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -16,6 +16,7 @@ import Tostyfy from "./Tostyfy";
 import { toast } from "react-toastify";
 
 const Create_Account = () => {
+
   const sessionToken = JSON.parse(sessionStorage.getItem("Token"));
   const sessionEmail = JSON.parse(sessionStorage.getItem("Email"));
 
@@ -39,21 +40,19 @@ const Create_Account = () => {
     MonthlyIncome: "",
   });
 
-
   const notFutureDate = Joi.extend((joi) => ({
-    type: 'notFutureDate',
+    type: "notFutureDate",
     base: joi.date(),
     messages: {
-      'notFutureDate.base': 'Date must not be in the future',
+      "notFutureDate.base": "Date must not be in the future",
     },
     validate(value, helpers) {
-      if (moment(value).isAfter(moment(), 'day')) {
-        return { value, errors: helpers.error('notFutureDate.base') };
+      if (moment(value).isAfter(moment(), "day")) {
+        return { value, errors: helpers.error("notFutureDate.base") };
       }
       return { value };
     },
   }));
-
 
   // State to hold validation errors
   const [errors, setErrors] = useState({});
@@ -62,7 +61,7 @@ const Create_Account = () => {
   const schema = Joi.object({
     FirstName: Joi.string().required().label("First Name"),
     LastName: Joi.string().required().label("Last Name"),
-    DOB:notFutureDate.notFutureDate().required().label("Date of birth"),
+    DOB: notFutureDate.notFutureDate().required().label("Date of birth"),
     AccountType: Joi.string().required().label("AccountType"),
     Mobile: Joi.string()
       .pattern(/^[0-9]{10}$/)
@@ -123,7 +122,6 @@ const Create_Account = () => {
 
     // If form data is valid, proceed to API call
     try {
-      setOpen(true);
       console.log("API execute successfully");
       console.log("Form Data : ", formData);
 
@@ -146,8 +144,13 @@ const Create_Account = () => {
       formDataToSend.append("sessionEmail", sessionEmail);
 
       console.log("Form data : ", formData);
+      console.log("Photo : ", PhototRef.current.files[0].type);
+      const fileType = PhototRef.current.files[0].type.split("/")[1];
+      console.log(fileType);
 
-      const response = await axios
+      if (fileType === "jpg" || fileType === "jpeg" || fileType === "png") {
+        setOpen(true);
+        const response = await axios
         .post(
           "http://localhost:5000/test/api/users/open-account",
           formDataToSend,
@@ -161,16 +164,21 @@ const Create_Account = () => {
         .then((response) => {
           toast.success("Account Create Successfully");
           if (response?.status === 200) {
-            // Handle successful API call
             navigate("/Generate_PIN");
           }
         })
         .catch((e) => {
+          console.log(e);
           console.error(
             "Failed to insert data OR may be user enter duplicate data."
           );
           toast.error("Please enter non-duplicate data");
         });
+      }
+      else {
+        document.getElementById("PhotoError").innerText = "Please upload jpg/jpeg/png file only";
+      }
+      
     } catch (error) {
       console.error("Error:", error);
     }
@@ -183,7 +191,7 @@ const Create_Account = () => {
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
-      // onClick={handleClose}
+        // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
@@ -272,6 +280,7 @@ const Create_Account = () => {
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 accept="image/*"
               />
+              <span className="text-danger error" id="PhotoError"></span>
             </div>
 
             <div className="grid grid-cols-2 gap-6">
@@ -542,5 +551,3 @@ const Create_Account = () => {
 };
 
 export default Create_Account;
-
-
