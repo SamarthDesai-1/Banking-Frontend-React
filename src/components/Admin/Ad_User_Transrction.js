@@ -3,6 +3,12 @@ import "../../style-css/Admin/Ad_User_Transrction.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+import Tooltip from '@mui/material/Tooltip';
+
+import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+
 //loading bar
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -11,6 +17,7 @@ import Tostyfy from "../Tostyfy";
 function Ad_User_Transrction() {
   const { userId } = useParams();
   const [dataTrans, setData] = useState([]);
+  const [statement, setStatement] = useState({ TransactionHistory: [] });
 
   const [open, setOpen] = React.useState(false);
 
@@ -27,6 +34,7 @@ function Ad_User_Transrction() {
           }
         )
         .then((response) => {
+          setStatement(response.data.Data[0]);
           if (response?.status == 200) {
             console.log(response);
             setData(response.data.Data[0].TransactionHistory);
@@ -42,18 +50,51 @@ function Ad_User_Transrction() {
     fetchData();
   }, []);
 
+
+  const downloadPDF = () => {
+    const doc = new jsPDF();
+    doc.text("Transaction Statement", 10, 10);
+    doc.autoTable({
+      head: [["No", "Date", "Message", "Status", "Amount"]],
+      body: statement.TransactionHistory.map((elem, index) => {
+        return [
+          index + 1,
+          elem.date?.substring(0, 10),
+          elem.msg,
+          elem.statementStatus,
+          elem.transferAmount,
+        ];
+      }),
+    });
+    doc.save("statement.pdf");
+  };
+
   return (
     <div>
       {/* <Tostyfy></Tostyfy> */}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
-        // onClick={handleClose}
+      // onClick={handleClose}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
       <div className="Transectiontable">
-        <h2 className="mb-3">User Transaction data</h2>
+        <div className="row">
+          <div className="col-sm-11">
+            <h2 className="mb-3">User Transaction data</h2>
+          </div>
+          <div className="col-sm-1">
+            <Tooltip title="Download Statement" arrow>
+            <DownloadForOfflineIcon
+              className="download"
+              onClick={downloadPDF}
+            style={{fontSize:"33px"}}
+            ></DownloadForOfflineIcon>
+            </Tooltip>
+          </div>
+        </div>
+
         <table class="table table-striped">
           <thead>
             <tr>
