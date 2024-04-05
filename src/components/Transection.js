@@ -202,7 +202,8 @@ function Transection() {
             <div className="row">
 
 
-              <div className="col-md-4">
+          <h4 className="mb-3">Sorting</h4>
+              <div className="col-md-4 ">
                 <div>
                   <input
                     type="number"
