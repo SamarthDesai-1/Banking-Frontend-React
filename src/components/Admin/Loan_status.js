@@ -228,7 +228,7 @@ function Loan_status() {
                   </td>
                 </tr>
 
-                <tr class="table-success">
+                {/* <tr class="table-success">
                   <td>Status</td>
                   <td>
                     {" "}
@@ -250,7 +250,7 @@ function Loan_status() {
                       {!loanData ? "null" : "Active"}
                     </span>
                   </td>
-                </tr>
+                </tr> */}
               </tbody>
             </table>
           </div>

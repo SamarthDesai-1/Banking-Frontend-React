@@ -125,7 +125,7 @@ function Fix_deposit_form() {
 
       <div className=" fixform col-md-8">
       <div className="bal">
-        <h2 className="">Balance : ₹{account.Balance}</h2>
+        <h2 className="">Balance : ₹{account.Balance} </h2>
       </div>
         <form onSubmit={handleSubmit} className="mt-4 fxfom p-3">
           <div class="form-group m-3">
