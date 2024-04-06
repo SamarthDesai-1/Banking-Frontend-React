@@ -116,7 +116,7 @@ function Contect() {
                 <PhoneInTalkOutlinedIcon className="email-img"></PhoneInTalkOutlinedIcon>{" "}
                 <br />
                 <h3 className="mt-3"> Support Assistanse</h3>
-                <p className="">(+456)785-785-900</p>
+                <p className="">(+91)785-785-900</p>
                 <p>(+90)240-240-240</p>
               </div>
             </div>

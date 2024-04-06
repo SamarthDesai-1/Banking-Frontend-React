@@ -53,7 +53,27 @@ function Ad_User_Transrction() {
 
   const downloadPDF = () => {
     const doc = new jsPDF();
-    doc.text("Transaction Statement", 10, 10);
+
+   // Adding heading for Transect Bank
+   doc.setFont("helvetica", "bold");
+   doc.setFontSize(24);
+   doc.setTextColor(0, 102, 204); // Setting text color to a shade of blue
+
+   // Adding heading for Transect Bank
+   const headingText = "Transact Bank";
+   const headingWidth = doc.getStringUnitWidth(headingText) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+   const pageWidth = doc.internal.pageSize.getWidth();
+   const xPosition = (pageWidth - headingWidth) / 2;
+   doc.text(headingText, xPosition, 10);
+
+   // Reset font styles for the rest of the content
+   doc.setFont("helvetica", "normal");
+   doc.setFontSize(12);
+   doc.setTextColor(0, 0, 0); // Reset text color to black
+
+   // Adding Transaction Statement title
+   doc.text("Transaction Statement", 12, 10);
+
     doc.autoTable({
       head: [["No", "Date", "Message", "Status", "Amount"]],
       body: statement.TransactionHistory.map((elem, index) => {

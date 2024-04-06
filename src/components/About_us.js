@@ -158,7 +158,7 @@ function About_us() {
                             </ul>
                         </div>
 
-                        <div className="info-section-2-left-part">
+                        <div className="info-section-2-left-part" style={{marginBottom:"60px"}}>
                             <ul className="list" data-aos="fade-up">
                                 <li>
                                     <h2 className="bullets">Institutional mindset</h2>
